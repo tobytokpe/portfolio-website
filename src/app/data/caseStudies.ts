@@ -44,7 +44,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Core Role**: As the Founding Product Designer, my primary focus was establishing the end-to-end user experience and overall visual direction of the Moore application. Moore was created to simplify digital banking for new markets, combining sending money, savings, and personal finance utilities into a cohesive, high-trust experience."
+            "text": "**The Big Picture & Core Role**: As the Founding Product Designer, my primary focus was establishing the end-to-end user experience and overall visual direction of the Moore application. Moore was designed to simplify digital banking for new markets, combining sending money, savings, and personal finance utilities into a cohesive, high-trust experience."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Balancing Act**: Our primary challenge was a classic product design dilemma: we had to hide complex, heavy-duty banking systems behind an ultra-simple, lightning-fast app that needed to feel warm and welcoming, even when running on slow phones or unstable internet networks."
           },
           {
             "type": "paragraph",
@@ -63,16 +67,47 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Simplifying the Funnel**: Initially, the user registration sequence was highly complex, requiring users to navigate 8 different onboarding stages before accessing their accounts. This resulted in significant user drop-off and friction during initial test runs."
+            "text": "**The Problems We Inherited**: When I first joined, the app felt completely disconnected. New users were quitting during a confusing sign-up process (onboarding drop-off sat at a high 48%), and we had no foundation to easily launch the app on different types of phones or in new languages."
           },
           {
             "type": "paragraph",
-            "text": "**Structuring a 3-Step Flow**: I overhauled the flow, compressing the 8 stages down to 3 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
+            "text": "**Structuring a 3-Step Flow**: I overhauled the flow, compressing the 8 onboarding stages down to 3 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC) by educating users on security before they even downloaded the app, resulting in a pre-conditioned, high-intent user base."
           },
           {
             "type": "image",
             "src": img_project4_29,
-            "alt": "Moore onboarding flow diagrams showing 3-step registration optimization"
+            "alt": "Moore onboarding flow diagrams showing 3-step registration optimization and user path map"
+          }
+        ]
+      },
+      {
+        "title": "Removing Fear: Designing a Stress-Free Payment Experience",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The Nerve-Wracking Moment**: The highest-stakes part of the app was the payment confirmation screen where users enter their PIN. In areas where internet connections drop unexpectedly, any delay caused massive panic. Users would worry their money was lost and tap the confirm button repeatedly, creating accidental double-payments or freezing the app."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Learning from Mistakes**: Our first test designs used standard spinning loading wheels while processing payments. However, when we watched real people use the app, we realized these empty animations actually made them more anxious. They assumed the app had crashed."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Asynchronous Trade-Off & Progress Tracker**: We completely changed our approach. We built a step-by-step progress tracker that explicitly shows users exactly what the system is doing in real time. The final layout isolates the PIN boxes clearly, uses gentle vibration feedback when buttons are tapped, and summarizes all the transfer details right before you hit send."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Real-World Engineering Compromise**: I initially designed smooth, physics-based custom animations for the transition states. However, live testing showed these animations stuttered heavily on low-end Android devices running on 2G networks. I made the executive decision to swap these out for lightweight, code-driven CSS opacity fades. This saved crucial device processing power and kept the transaction sequence functional under worst-case network conditions."
+          },
+          {
+            "type": "image",
+            "src": img_project4_29,
+            "alt": "Before and After comparison of the Payment PIN interface showing the step-by-step progress design"
           }
         ]
       },
@@ -94,9 +129,17 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Figma Variables Integration**: By linking design tokens to developer components, we streamlined handoffs and drastically reduced software iteration cycles, maintaining layout parity across all platforms."
           },
           {
+            "type": "paragraph",
+            "text": "**Simulating Worst-Case Scenarios**: We didn't just design for perfect conditions. We built highly realistic digital models to test how our screens behaved under terrible internet conditions. We even tested how the screen looked when displaying massive account balances like ₦2,905,215.23 to ensure the numbers never cut off or looked messy."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Partnering with Engineers**: I worked hand-in-hand with our developers to make sure our designs translated perfectly to live code. By aligning our Figma library directly with their design tokens, developers could build identical, beautiful screens across mobile and web at lightning speed."
+          },
+          {
             "type": "image",
             "src": img_project4_29,
-            "alt": "Moore Design System tokenized variables and styles mapping"
+            "alt": "Moore Design System guide showing Montserrat typography, colors, and button components"
           }
         ]
       },
@@ -104,6 +147,10 @@ export const CASE_STUDIES: Record<string, any> = {
         "title": "Proven Growth & Performance Results",
         "type": "section",
         "items": [
+          {
+            "type": "paragraph",
+            "text": "**Setting Quality Gates**: To maintain this quality as the company grew, I introduced Design Gates. These are quick review checkpoints ensuring no feature gets sent to developers without being checked for errors, edge cases, and visual polish. This gave our junior designers a clear blueprint to work independently."
+          },
           {
             "type": "paragraph",
             "text": "**Organic Scale**: Because we built a highly usable, accessible product from day one, Moore successfully scaled to over **8,000 user downloads** organically without any prior marketing initiatives."
@@ -114,7 +161,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Development Efficiency**: Establishing tokenized components and rigid layout checks cut developer handoff and implementation timelines by 50%."
+            "text": "**Efficiency & Conversion**: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%. Overhauling the payment verification flow cut accidental double-tap payment errors down to 0.2%, while shipping a component-driven token system cut our software development and engineering handoff times by 50%."
           }
         ]
       }
@@ -129,8 +176,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead UX / UI Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Vulnerable communities in conflict-prone areas lacked accessible tools to report emergencies, struggling with complex text inputs and registration screens on weak networks.",
-    "solution": "We designed a voice-first, offline-capable grid reporting system that bypasses text forms and logs alerts locally, reducing emergency reporting time from 95 seconds to 4 seconds.",
+    "problem": "Vulnerable communities in conflict-prone regions lack fast, safe, and reliable infrastructure to report emergencies and coordinate response initiatives.",
+    "solution": "We engineered CEWERS, a highly optimized mobile early-warning system that supports rapid alert dispatch, geo-location logging, and secure responder synchronization.",
     "heroImage": project5_hero,
     "sections": [
       {
@@ -289,8 +336,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Sole Product Designer",
       "Project Type": "Web"
     },
-    "problem": "Fintech teams struggled to manage fragmented B2B APIs, leading to visual incongruity, configuration errors, and separate administrative billing pipelines.",
-    "solution": "We designed a unified API gateway dashboard featuring inline data previews, slide-out code configurations, and a consolidated billing panel that cut integration timelines by 46%.",
+    "problem": "Fintech developers and bank partners struggle to orchestrate multiple fragmented B2B APIs, leading to visual incongruity, configuration errors, separate billing systems, and delayed integration timelines.",
+    "solution": "We architected Hydra, a unified B2B API gateway dashboard that standardizes payload visualization, streamlines credentials configuration, and consolidates multi-provider billing.",
     "heroImage": project1_hero,
     "sections": [
       {
@@ -433,8 +480,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Microfinance banks faced multi-month engineering cycles to deploy banking apps, while unstructured brand configurations often broke screen layouts and WCAG readability criteria.",
-    "solution": "We built a multi-tenant setup engine using fixed layouts and monochrome-base styling tokens, allowing institutions to securely configure and launch custom apps in a single afternoon.",
+    "problem": "Emerging market retail banking users face fragmented interfaces, security friction, and slow transaction flows on traditional bank applications.",
+    "solution": "We architected Qore B2C, a high-trust, white-label neobanking interface that streamlines fund transfers, automates micro-payments, and implements personalized budgeting utilities.",
     "heroImage": project2_hero,
     "sections": [
       {
@@ -567,8 +614,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead UX / UI Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Emerging market retail investors faced high drop-off rates due to complex onboarding and trade failures caused by network volatility during multi-market executions.",
-    "solution": "We implemented an asynchronous order confirmation flow and local balance caching mechanisms, reducing registration drop-offs to 19% and transaction failures by 41%.",
+    "problem": "Retail stock investors in emerging markets face complex jargon, high latency, and fragmented platforms when trying to trade international and domestic equities.",
+    "solution": "We designed Omney, a unified multi-market trading platform that simplifies portfolio metrics, standardizes cross-exchange order books, and accelerates transaction cycles.",
     "heroImage": project3_hero,
     "sections": [
       {
