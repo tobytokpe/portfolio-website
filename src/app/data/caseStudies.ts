@@ -34,8 +34,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Founding Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Users faced high onboarding drop-off rates and visual inconsistency across platforms, alongside transaction anxiety caused by UI freezes during low-network payment confirmations.",
-    "solution": "We established a tokenized cross-platform design system and overhauled the payment flow with high-trust progress patterns, cutting onboarding drop-off to 14% and transaction errors to 0.2%.",
+    "problem": "We needed to unify visual fragmentation across platforms and optimize a complex 8-stage onboarding flow, while mitigating user anxiety during low-network transaction freezes.",
+    "solution": "We restructured onboarding into a validated 3-step sequence, aligned Web/Mobile layout variables, and shipped a high-trust payment progress engine — driving 8,000+ organic downloads and securing a Friends & Family seed round.",
     "heroImage": project4_hero,
     "sections": [
       {
