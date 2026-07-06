@@ -828,6 +828,26 @@ function ProjectPage() {
                       </h4>
                     );
                   }
+                  if (item.type === 'cta') {
+                    return (
+                      <div key={itemIdx} className="my-8 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest font-['Syne']">Figma &amp; Design Systems</span>
+                          <p className="text-[15px] font-semibold text-gray-800 leading-normal">
+                            {item.text}
+                          </p>
+                        </div>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-5 py-2.5 bg-gray-900 text-white text-xs font-bold rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
+                        >
+                          View Presentation &rarr;
+                        </a>
+                      </div>
+                    );
+                  }
                   if (item.type === 'image') {
                     return (
                       <img

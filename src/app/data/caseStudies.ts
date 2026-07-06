@@ -34,25 +34,21 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Founding Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Traditional financial frameworks shut out over 60% of Africa's population, making transactions, savings, and investments inaccessible to the unbanked.",
-    "solution": "A high-performance neobanking solution designed for mobile and web, bridging physical cash ecosystems and online banking through high-trust interfaces.",
+    "problem": "Users faced high onboarding drop-off rates and visual inconsistency across platforms, alongside transaction anxiety caused by UI freezes during low-network payment confirmations.",
+    "solution": "We established a tokenized cross-platform design system and overhauled the payment flow with high-trust progress patterns, cutting onboarding drop-off to 14% and transaction errors to 0.2%.",
     "heroImage": project4_hero,
     "sections": [
       {
-        "title": "Building Confidence in Cash: Creating a Stress-Free App for Everyone",
+        "title": "Establishing the End-to-End Visual & Interaction Flow",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: As the Founding Product Designer, I looked after how MOMENT looked, felt, and worked. Moore is a digital banking app built to make sending money, saving automatically, and learning about personal finance completely effortless for everyday people."
+            "text": "**The Core Role**: As the Founding Product Designer, my primary focus was establishing the end-to-end user experience and overall visual direction of the Moore application. Moore was created to simplify digital banking for new markets, combining sending money, savings, and personal finance utilities into a cohesive, high-trust experience."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: Our biggest challenge was a classic dilemma: we had to hide complex, heavy-duty banking systems behind an ultra-simple, lightning-fast app. It needed to feel warm and welcoming, even when running on slow phones or unstable internet networks."
-          },
-          {
-            "type": "paragraph",
-            "text": "**My Role**: To bridge this gap, I worked as both a design leader and a hands-on product manager. I wrote clear feature guides, set strict quality checks, and coached our junior design team to stop just drawing pretty screens and start building a growing, practical system."
+            "text": "**Defining the Experience**: Working directly with the founding team, I defined the primary flows across web and mobile platforms, aligning layouts to make technical transactions simple, clear, and reassuring."
           },
           {
             "type": "image",
@@ -62,108 +58,63 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
-        "title": "The Blueprint: Matching Screens Across Phones and Computers",
+        "title": "Optimizing Onboarding: Redesigning Sign-Up Friction",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Problems We Inherited**: When I first joined, the app felt completely disconnected. New users were quitting during a confusing sign-up process (onboarding drop-off sat at a high 48%), the screens looked inconsistent (which made people worry about trusting us with their money), and we had no foundation to easily launch the app on different types of phones or in new languages."
+            "text": "**Simplifying the Funnel**: Initially, the user registration sequence was highly complex, requiring users to navigate 8 different onboarding stages before accessing their accounts. This resulted in significant user drop-off and friction during initial test runs."
           },
           {
             "type": "paragraph",
-            "text": "**Building a Strong Base**: I created a single layout framework and an easy-to-adapt design system. Using Figma Variables (Design Tokens) mapped directly to our developers' React Native components, we ensured that changes to padding, colors, and typography scaled instantly across iOS, Android, and web screens without losing our core look."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Keeping Teams on the Same Page & The Web Strategy**: To balance our business goals with what our engineers could actually build, I mapped out exactly how the product should work. Alongside the core mobile product, I pushed to design the public marketing website in tandem. This wasn't just for branding—it was a calculated move to lower Customer Acquisition Costs (CAC) by educating users on security before they even downloaded the app, resulting in a pre-conditioned, high-intent user base."
+            "text": "**Structuring a 3-Step Flow**: I overhauled the flow, compressing the 8 stages down to 3 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
           },
           {
             "type": "image",
             "src": img_project4_29,
-            "alt": "Moore user path map showing mobile navigation translating to a web layout"
+            "alt": "Moore onboarding flow diagrams showing 3-step registration optimization"
           }
         ]
       },
       {
-        "title": "Removing Fear: Designing a Stress-Free Payment Experience",
+        "title": "Tokenizing the Visual System: Aligning Cross-Platform Layouts",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Nerve-Wracking Moment**: The highest-stakes part of the app was the payment confirmation screen where users enter their PIN. In areas where internet connections drop unexpectedly, any delay caused massive panic. Users would worry their money was lost and tap the confirm button repeatedly, creating accidental double-payments or freezing the app."
+            "text": "**Unified Design Foundation**: To scale Moore efficiently across iOS, Android, and web screens, I transformed the initial layouts into an established component library. The system ensures that visual details remain uniform and easily updatable."
+          },
+          {
+            "type": "cta",
+            "text": "Read about our post-design-system Figma variables & AI accessibility presentation at UX Scotland",
+            "url": "https://www.figma.com/deck/dylqMGVCzMlD4XPwP1l4is/AI-for-Accessibility-with-Variables?node-id=2014-27&t=RfplUrqVv6K3hFya-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
           },
           {
             "type": "paragraph",
-            "text": "**Learning from Mistakes**: Our first test designs used standard spinning loading wheels while processing payments. However, when we watched real people use the app, we realized these empty animations actually made them more anxious. They assumed the app had crashed."
-          },
-          {
-            "type": "paragraph",
-            "text": "We completely changed our approach. We built a step-by-step progress tracker that explicitly shows users exactly what the system is doing in real time."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The Final Design & Engineering Compromise**: The final layout isolates the PIN boxes clearly, uses gentle vibration feedback when buttons are tapped, and summarizes all the transfer details right before you hit send."
-          },
-          {
-            "type": "paragraph",
-            "text": "Real-World Trade-Off: I initially designed smooth, physics-based custom animations for the transition states. However, live testing showed these animations stuttered heavily on low-end Android devices running on 2G networks. I made the executive decision to swap these out for lightweight, code-driven CSS opacity fades. This saved crucial device processing power and kept the transaction sequence functional under worst-case network conditions."
+            "text": "**Figma Variables Integration**: By linking design tokens to developer components, we streamlined handoffs and drastically reduced software iteration cycles, maintaining layout parity across all platforms."
           },
           {
             "type": "image",
             "src": img_project4_29,
-            "alt": "Before and After comparison of the Payment PIN interface showing the step-by-step progress design"
-          },
-          {
-            "type": "paragraph",
-            "text": "Testing Under Pressure: From Rough Ideas to Real Code"
-          },
-          {
-            "type": "paragraph",
-            "text": "**Simulating Worst-Case Scenarios**: We didn't just design for perfect conditions. We built highly realistic digital models to test how our screens behaved under terrible internet conditions. We even tested how the screen looked when displaying massive account balances like ₦2,905,215.23 to ensure the numbers never cut off or looked messy."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Talking to Real People**: I set up a local research plan to watch how people actually behaved, rather than just asking for their opinions. We sat down with users to see how long tasks took them and where they got stuck, using those lessons to instantly fix our sign-up and savings screens."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Partnering with Engineers**: I worked hand-in-hand with our developers to make sure our designs translated perfectly to live code. By aligning our Figma library directly with their design tokens, developers could build identical, beautiful screens across mobile and web at lightning speed."
-          },
-          {
-            "type": "image",
-            "src": img_project4_29,
-            "alt": "Moore Design System guide showing Montserrat typography, colors, and button components"
+            "alt": "Moore Design System tokenized variables and styles mapping"
           }
         ]
       },
       {
-        "title": "Raising the Bar: Helping the Team and Growing the Brand",
+        "title": "Proven Growth & Performance Results",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**Setting Quality Gates**: To maintain this quality as the company grew, I introduced Design Gates. These are quick review checkpoints ensuring no feature gets sent to developers without being checked for errors, edge cases, and visual polish. This gave our junior designers a clear blueprint to work independently."
-          },
-          {
-            "type": "image",
-            "src": img_project4_29,
-            "alt": "timeline graphic showing old onboarding screens compared to new high-performing layouts"
+            "text": "**Organic Scale**: Because we built a highly usable, accessible product from day one, Moore successfully scaled to over **8,000 user downloads** organically without any prior marketing initiatives."
           },
           {
             "type": "paragraph",
-            "text": "**The Results: Speed, Growth, and Success**: Fewer Dropped Users: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%."
+            "text": "**Secured Investment**: The strong user adoption metrics and polished product execution directly helped the company secure its **Friends & Family investment round** to power next-phase expansion."
           },
           {
             "type": "paragraph",
-            "text": "Fewer Transaction Mistakes: Overhauling the payment verification flow cut accidental double-tap payment errors down to a microscopic 0.2%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Ready for New Countries: Because we built a flexible, multi-language structure from day one, we can expand into new regions without expensive redesigns."
-          },
-          {
-            "type": "paragraph",
-            "text": "Cutting Work in Half: Shipping a component-driven token system cut our software development and engineering handoff times by 50%. At the same time, the highly polished experience kept users coming back and increased overall bank deposits."
+            "text": "**Development Efficiency**: Establishing tokenized components and rigid layout checks cut developer handoff and implementation timelines by 50%."
           }
         ]
       }
@@ -178,8 +129,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead UX / UI Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Vulnerable communities in conflict-prone regions lack fast, safe, and reliable infrastructure to report emergencies and coordinate response initiatives.",
-    "solution": "We engineered CEWERS, a highly optimized mobile early-warning system that supports rapid alert dispatch, geo-location logging, and secure responder synchronization.",
+    "problem": "Vulnerable communities in conflict-prone areas lacked accessible tools to report emergencies, struggling with complex text inputs and registration screens on weak networks.",
+    "solution": "We designed a voice-first, offline-capable grid reporting system that bypasses text forms and logs alerts locally, reducing emergency reporting time from 95 seconds to 4 seconds.",
     "heroImage": project5_hero,
     "sections": [
       {
@@ -338,8 +289,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Sole Product Designer",
       "Project Type": "Web"
     },
-    "problem": "Fintech developers and bank partners struggle to orchestrate multiple fragmented B2B APIs, leading to visual incongruity, configuration errors, separate billing systems, and delayed integration timelines.",
-    "solution": "We architected Hydra, a unified B2B API gateway dashboard that standardizes payload visualization, streamlines credentials configuration, and consolidates multi-provider billing.",
+    "problem": "Fintech teams struggled to manage fragmented B2B APIs, leading to visual incongruity, configuration errors, and separate administrative billing pipelines.",
+    "solution": "We designed a unified API gateway dashboard featuring inline data previews, slide-out code configurations, and a consolidated billing panel that cut integration timelines by 46%.",
     "heroImage": project1_hero,
     "sections": [
       {
@@ -482,8 +433,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Emerging market retail banking users face fragmented interfaces, security friction, and slow transaction flows on traditional bank applications.",
-    "solution": "We architected Qore B2C, a high-trust, white-label neobanking interface that streamlines fund transfers, automates micro-payments, and implements personalized budgeting utilities.",
+    "problem": "Microfinance banks faced multi-month engineering cycles to deploy banking apps, while unstructured brand configurations often broke screen layouts and WCAG readability criteria.",
+    "solution": "We built a multi-tenant setup engine using fixed layouts and monochrome-base styling tokens, allowing institutions to securely configure and launch custom apps in a single afternoon.",
     "heroImage": project2_hero,
     "sections": [
       {
@@ -616,8 +567,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead UX / UI Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Retail stock investors in emerging markets face complex jargon, high latency, and fragmented platforms when trying to trade international and domestic equities.",
-    "solution": "We designed Omney, a unified multi-market trading platform that simplifies portfolio metrics, standardizes cross-exchange order books, and accelerates transaction cycles.",
+    "problem": "Emerging market retail investors faced high drop-off rates due to complex onboarding and trade failures caused by network volatility during multi-market executions.",
+    "solution": "We implemented an asynchronous order confirmation flow and local balance caching mechanisms, reducing registration drop-offs to 19% and transaction failures by 41%.",
     "heroImage": project3_hero,
     "sections": [
       {
