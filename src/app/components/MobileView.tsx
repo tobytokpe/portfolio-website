@@ -136,13 +136,16 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
         onZoomToFit={() => {}}
         onReset={() => {}}
         currentZoom={1}
-        projects={projects.map((p) => ({ id: p.id, title: p.title }))}
+        projects={projects.map((p) => ({ id: p.id, title: p.title, slug: p.slug }))}
         leadership={leadership.map((l) => ({ id: l.id, title: l.title }))}
         onProjectOpen={(id) => {
           if (id === 'project6') {
             window.open('https://www.signaturebankng.com/', '_blank');
           } else {
-            navigate(`/projects/${id}`);
+            const proj = projects.find((p) => p.id === id);
+            if (proj) {
+              navigate(`/works/${proj.slug}`);
+            }
           }
         }}
         onLeadershipOpen={(id) => {
@@ -250,7 +253,10 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               if (projectId === 'project6') {
                 window.open('https://www.signaturebankng.com/', '_blank');
               } else {
-                navigate(`/projects/${projectId}`);
+                const proj = projects.find((p) => p.id === projectId);
+                if (proj) {
+                  navigate(`/works/${proj.slug}`);
+                }
               }
             }}
           />

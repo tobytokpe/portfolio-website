@@ -16,7 +16,7 @@ import { InteractiveGridBackground } from './components/ui/InteractiveGridBackgr
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
 import projectImg2 from 'figma:asset/23219589c1a205fe377485579956acafd1b4f098.png';
-import projectImg3 from 'figma:asset/2d89fe81df37e2795686073746b236d694313ad0.png';
+import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
@@ -44,7 +44,8 @@ const CANVAS_HEIGHT = 2200;
 const PROJECTS = [
   { 
     id: 'project1', 
-    title: 'Hydra SaaS API Platform',
+    slug: 'Hydra',
+    title: 'HYDRA: Bringing Order to Fragmented Banking Code',
     description: 'User-centric SaaS B2B platform for financial industries, streamlining API integration, reducing costs, and driving fintech innovation.',
     tag: 'Fintech', 
     iframeUrl: 'https://oolowu.com/select-projects/hydra-project-cc/',
@@ -52,7 +53,8 @@ const PROJECTS = [
   },
   { 
     id: 'project2', 
-    title: 'Qore B2C Banking App',
+    slug: 'Qore',
+    title: 'QORE: Launching Banking Apps Instantly',
     description: 'Mobile banking app delivering seamless transactions, bill payments, and personalized insights for improved financial management.',
     tag: 'Banking', 
     iframeUrl: 'https://oolowu.com/select-projects/qore-cc/',
@@ -60,7 +62,8 @@ const PROJECTS = [
   },
   { 
     id: 'project3', 
-    title: 'MAMVest (Mango Asset Management)',
+    slug: 'MAMVest',
+    title: 'MAMVest: Digitizing Traditional Wealth Management',
     description: 'Digital wealth management platform democratizing access to institutional-grade instruments like Mutual Funds, Bonds, and Bills.',
     tag: 'Wealth Management', 
     iframeUrl: 'https://oolowu.com/select-projects/mamvest-cc/',
@@ -68,7 +71,8 @@ const PROJECTS = [
   },
   { 
     id: 'project4', 
-    title: 'Moore Neobank App',
+    slug: 'Moore',
+    title: 'Moore: Making Digital Banking Simple for New Markets',
     description: 'Digital banking app offering comprehensive financial management tools, from budgeting to secure transactions, in one user-friendly platform.',
     tag: 'Banking', 
     iframeUrl: 'https://oolowu.com/select-projects/moore-cc/',
@@ -76,7 +80,8 @@ const PROJECTS = [
   },
   { 
     id: 'project5', 
-    title: 'Conflict Early Warning System',
+    slug: 'UNDP',
+    title: 'UNDP: Rebuilding Security and Alert Systems in Crisis Zones',
     description: 'Mobile app empowering users in conflict-prone areas with incident reporting, real-time updates, and authority connections for better safety.',
     tag: 'Social Impact', 
     iframeUrl: 'https://oolowu.com/select-projects/cewers-cc/',
@@ -84,6 +89,7 @@ const PROJECTS = [
   },
   { 
     id: 'project6', 
+    slug: 'Signature-Bank',
     title: 'Signature Bank',
     description: 'A website for a tier 1 bank helping with seamless banking and transactions transactions',
     tag: 'Banking', 
@@ -402,13 +408,16 @@ function FigmaCanvas() {
         onZoomToFit={handleZoomToFit}
         onReset={handleReset}
         currentZoom={transform.scale}
-        projects={PROJECTS.map((p) => ({ id: p.id, title: p.title }))}
+        projects={PROJECTS.map((p) => ({ id: p.id, title: p.title, slug: p.slug }))}
         leadership={LEADERSHIP.map((l) => ({ id: l.id, title: l.title }))}
         onProjectOpen={(id) => {
           if (id === 'project6') {
             window.open('https://www.signaturebankng.com/', '_blank');
           } else {
-            navigate(`/projects/${id}`);
+            const project = PROJECTS.find((p) => p.id === id);
+            if (project) {
+              navigate(`/works/${project.slug}`);
+            }
           }
         }}
         onLeadershipOpen={(id) => {
@@ -564,7 +573,10 @@ function FigmaCanvas() {
                   if (projectId === 'project6') {
                     window.open('https://www.signaturebankng.com/', '_blank');
                   } else {
-                    navigate(`/projects/${projectId}`);
+                    const project = PROJECTS.find((p) => p.id === projectId);
+                    if (project) {
+                      navigate(`/works/${project.slug}`);
+                    }
                   }
                 }}
               />
@@ -667,12 +679,12 @@ function FigmaCanvas() {
 }
 
 function ProjectPage() {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const project = PROJECTS.find((p) => p.id === id);
-  const data = id ? CASE_STUDIES[id] : null;
+  const project = PROJECTS.find((p) => p.slug === slug);
+  const data = project ? CASE_STUDIES[project.id] : null;
 
   useEffect(() => {
     if (project?.id === 'project6') {
@@ -685,7 +697,7 @@ function ProjectPage() {
     if (containerRef.current) {
       containerRef.current.scrollTop = 0;
     }
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     if (data) {
@@ -744,59 +756,76 @@ function ProjectPage() {
           >
             {data.title}
           </h1>
+          {project.description && (
+            <p className="text-[#5D6C7C] text-[16px] max-w-2xl mx-auto mb-8 leading-relaxed font-['Poppins']">
+              {project.description}
+            </p>
+          )}
+        </div>
 
-          {/* Project description under title */}
-          <p className="text-[#5D6C7C] text-[16px] max-w-2xl mx-auto mb-8 leading-relaxed font-['Poppins']">
-            {project.description}
-          </p>
-
-          {/* Metadata Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left w-full mx-auto">
-            {Object.entries(data.metadata).map(([key, value]) => (
-              <div
-                key={key}
-                className="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-[#E5E5E5] shadow-sm flex flex-col justify-between"
-              >
-                <span className="text-[11px] font-bold tracking-wider text-gray-400 uppercase font-['Syne']">{key}</span>
-                <span className="text-sm font-semibold text-gray-800 mt-2 leading-relaxed">{value as string}</span>
+        {/* Metadata Details Table */}
+        <div className="bg-white rounded-3xl shadow-[0px_8px_30px_rgba(0,0,0,0.04)] border border-[#E5E5E5] p-8 md:p-10 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {Object.entries(data.metadata).map(([key, val]: any) => (
+              <div key={key} className="space-y-1">
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider font-['Syne']">{key}</span>
+                <p className="text-[15px] font-semibold text-gray-800 leading-snug">{val}</p>
               </div>
             ))}
+            <div className="space-y-1">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider font-['Syne']">Timeline</span>
+              <p className="text-[15px] font-semibold text-gray-800 leading-snug">2 Months</p>
+            </div>
           </div>
         </div>
 
-        {/* Hero/Intro Image */}
-        {data.heroImage && (
-          <div className="w-full mb-16 rounded-3xl overflow-hidden border border-[#E5E5E5] shadow-sm bg-white p-2">
-            <img
-              src={data.heroImage}
-              alt={`${data.title} Overview`}
-              className="w-full h-auto rounded-2xl object-cover"
-            />
-          </div>
-        )}
-
-        {/* Problem and Solution Columns */}
+        {/* Challenge & Solution Cards */}
         {(data.problem || data.solution) && (
           <div className="grid md:grid-cols-2 gap-6 mb-16">
             {data.problem && (
-              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-[#E5E5E5] shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-[#E5E5E5] shadow-[0px_8px_30px_rgba(0,0,0,0.02)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
                   The Challenge
                 </h3>
-                <p className="text-[#4A5568] text-[14px] leading-[1.7] whitespace-pre-line">
+                <p className="text-[#4A5568] text-[15px] leading-[1.7] whitespace-pre-line">
                   {data.problem}
                 </p>
               </div>
             )}
             {data.solution && (
-              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-3xl border border-[#E5E5E5] shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-[#E5E5E5] shadow-[0px_8px_30px_rgba(0,0,0,0.02)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
                   The Solution
                 </h3>
-                <p className="text-[#4A5568] text-[14px] leading-[1.7] whitespace-pre-line">
+                <p className="text-[#4A5568] text-[15px] leading-[1.7] whitespace-pre-line">
                   {data.solution}
                 </p>
               </div>
+            )}
+          </div>
+        )}
+
+        {/* Hero Image / Header Display */}
+        {data.heroImage && (
+          <div className="mb-16">
+            {data.heroImage.endsWith('.mp4') ? (
+              <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                <video
+                  src={data.heroImage}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  style={{ width: '400px', borderRadius: '58px', display: 'block', background: 'transparent', pointerEvents: 'none' }}
+                />
+              </div>
+            ) : (
+              <img
+                src={data.heroImage}
+                alt={`${data.title} Hero mockup`}
+                className="w-full h-auto rounded-[32px] shadow-[0px_16px_40px_rgba(0,0,0,0.06)] border border-[#E5E5E5] object-contain"
+              />
             )}
           </div>
         )}
@@ -860,6 +889,21 @@ function ProjectPage() {
                     );
                   }
                   if (item.type === 'video') {
+                    if (item.fullWidth) {
+                      return (
+                        <div key={itemIdx} style={{ margin: '2rem 0' }}>
+                          <video
+                            src={item.src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                            style={{ width: '100%', borderRadius: '24px', display: 'block', background: 'transparent' }}
+                          />
+                        </div>
+                      );
+                    }
                     return (
                       <div key={itemIdx} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
                         <video
@@ -894,7 +938,7 @@ function ProjectPage() {
         {/* Project Pagination (Prev / Next) */}
         {(() => {
           const localPages = PROJECTS.filter((p) => p.id !== 'project6');
-          const currentIndex = localPages.findIndex((p) => p.id === id);
+          const currentIndex = localPages.findIndex((p) => p.slug === slug);
           if (currentIndex === -1) return null;
 
           const prevProject = localPages[(currentIndex - 1 + localPages.length) % localPages.length];
@@ -903,7 +947,7 @@ function ProjectPage() {
           return (
             <div className="flex justify-between items-center border-t border-gray-200 pt-8 mt-16 w-full mx-auto">
               <button
-                onClick={() => navigate(`/projects/${prevProject.id}`)}
+                onClick={() => navigate(`/works/${prevProject.slug}`)}
                 className="flex flex-col items-start gap-1 group text-left cursor-pointer border-0 bg-transparent p-0"
               >
                 <span className="text-xs text-gray-400 font-bold uppercase tracking-wider font-['Syne']">Previous Project</span>
@@ -915,7 +959,7 @@ function ProjectPage() {
               <div className="w-[1px] h-8 bg-gray-200" />
 
               <button
-                onClick={() => navigate(`/projects/${nextProject.id}`)}
+                onClick={() => navigate(`/works/${nextProject.slug}`)}
                 className="flex flex-col items-end gap-1 group text-right cursor-pointer border-0 bg-transparent p-0"
               >
                 <span className="text-xs text-gray-400 font-bold uppercase tracking-wider font-['Syne']">Next Project</span>
@@ -943,13 +987,16 @@ function ProjectPage() {
         onZoomToFit={() => {}}
         onReset={() => {}}
         currentZoom={1}
-        projects={PROJECTS.map((p) => ({ id: p.id, title: p.title }))}
+        projects={PROJECTS.map((p) => ({ id: p.id, title: p.title, slug: p.slug }))}
         leadership={LEADERSHIP.map((l) => ({ id: l.id, title: l.title }))}
         onProjectOpen={(projId) => {
           if (projId === 'project6') {
             window.open('https://www.signaturebankng.com/', '_blank');
           } else {
-            navigate(`/projects/${projId}`);
+            const project = PROJECTS.find((p) => p.id === projId);
+            if (project) {
+              navigate(`/works/${project.slug}`);
+            }
           }
         }}
         onLeadershipOpen={(leadId) => {
@@ -998,7 +1045,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/projects/:id" element={<ProjectPage />} />
+      <Route path="/works/:slug" element={<ProjectPage />} />
     </Routes>
   );
 }

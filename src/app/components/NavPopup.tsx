@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { useLocation, useParams } from 'react-router';
 import { WorkIcon, LeadershipIcon } from './Navigation';
 
 interface PopupItem {
   id: string;
   title: string;
+  slug?: string;
 }
 
 interface NavPopupProps {
@@ -78,8 +80,15 @@ export function NavPopup({ type, items, onNavigateToSection, onItemClick, onClos
       </div>
 
       {/* "All" first item */}
-      <button
-        onClick={() => { onNavigateToSection(); onClose(); }}
+      <a
+        href={`/#${type}`}
+        onClick={(e) => {
+          if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+            e.preventDefault();
+            onNavigateToSection();
+            onClose();
+          }
+        }}
         className="w-full flex items-center gap-[8px] px-[18px] py-[8px] hover:bg-[#f9fafb] transition-colors text-left"
       >
         <div className="shrink-0 size-[18px]">
@@ -88,31 +97,65 @@ export function NavPopup({ type, items, onNavigateToSection, onItemClick, onClos
         <span className="text-[#101828] text-[14px] leading-[20px]" style={{ fontFamily: 'Gilmer, sans-serif' }}>
           {meta.allLabel}
         </span>
-      </button>
+      </a>
 
       {/* Divider */}
       <div className="mx-[18px] my-[4px] h-px bg-[#f2f4f7]" />
 
       {/* Individual items */}
       <div className="pb-[8px]">
-        {items.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => { onItemClick(item.id); onClose(); }}
-            className="w-full flex items-center gap-[8px] px-[18px] py-[8px] hover:bg-[#f9fafb] transition-colors text-left"
-          >
-            {/* Custom file or link icon */}
-            <div className="shrink-0 size-[18px]">
-              {type === 'work' ? <CaseStudiesIcon size={18} /> : <LeadershipLinksIcon size={18} />}
-            </div>
-            <span
-              className="text-[#101828] text-[14px] leading-[20px] truncate flex-1 min-w-0"
-              style={{ fontFamily: 'Gilmer, sans-serif' }}
-            >
-              {item.title}
-            </span>
-          </button>
-        ))}
+        {(() => {
+          const { slug: activeSlug } = useParams<{ slug: string }>();
+          const location = useLocation();
+          
+          return items.map((item) => {
+            const isProjectPage = location.pathname.startsWith('/works/');
+            const isActive = type === 'work' && isProjectPage && activeSlug === item.slug;
+            
+            const href = type === 'work'
+              ? (item.id === 'project6' ? 'https://www.signaturebankng.com/' : `/works/${item.slug}`)
+              : '#'; // Leadership handles external redirection or fits a hash
+
+            return (
+              <a
+                key={item.id}
+                href={href}
+                target={item.id === 'project6' || type === 'leadership' ? '_blank' : undefined}
+                rel={item.id === 'project6' || type === 'leadership' ? 'noopener noreferrer' : undefined}
+                onClick={(e) => {
+                  // Standard left click overrides to trigger case study modal/redirection, but lets right-click work natively
+                  if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+                    e.preventDefault();
+                    onItemClick(item.id);
+                    onClose();
+                  }
+                }}
+                className={`w-full flex items-center gap-[8px] px-[18px] py-[8px] transition-colors text-left ${
+                  isActive 
+                    ? 'bg-blue-50/50 hover:bg-blue-50 text-blue-600' 
+                    : 'hover:bg-[#f9fafb] text-[#101828]'
+                }`}
+              >
+                {/* Custom file or link icon */}
+                <div className="shrink-0 size-[18px]">
+                  {type === 'work' ? (
+                    <CaseStudiesIcon size={18} />
+                  ) : (
+                    <LeadershipLinksIcon size={18} />
+                  )}
+                </div>
+                <span
+                  className={`text-[14px] leading-[20px] truncate flex-1 min-w-0 font-medium ${
+                    isActive ? 'text-blue-600 font-semibold' : 'text-inherit'
+                  }`}
+                  style={{ fontFamily: 'Gilmer, sans-serif' }}
+                >
+                  {item.title}
+                </span>
+              </a>
+            );
+          });
+        })()}
       </div>
     </div>
   );

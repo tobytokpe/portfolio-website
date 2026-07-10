@@ -46,6 +46,7 @@ export const ContactIcon = ({ size = 24 }: { size?: number }) => (
 interface NavItem {
   id: string;
   title: string;
+  slug?: string;
 }
 
 interface NavigationProps {
@@ -161,13 +162,21 @@ export function Navigation({
           {/* Icon buttons */}
           {ICON_BUTTONS.map((icon) => {
             const isActive = openPopup === icon.popup && icon.popup !== null;
+            const href = icon.popup ? '#' : `/#${icon.id}`;
+
             return (
               <div key={icon.id} className="relative flex items-center">
-                <button
-                  onClick={() => handleIconClick(icon.id, icon.popup)}
+                <a
+                  href={href}
+                  onClick={(e) => {
+                    if (!icon.popup && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+                      e.preventDefault();
+                    }
+                    handleIconClick(icon.id, icon.popup);
+                  }}
                   onMouseEnter={() => setHoveredIcon(icon.id)}
                   onMouseLeave={() => setHoveredIcon(null)}
-                  className={`relative shrink-0 size-[24px] rounded-md transition-all duration-150 ${
+                  className={`relative flex items-center justify-center shrink-0 size-[24px] rounded-md transition-all duration-150 ${
                     isActive ? 'bg-gray-100' : 'hover:bg-gray-100 active:bg-gray-200'
                   }`}
                 >
@@ -176,7 +185,7 @@ export function Navigation({
                    icon.id === 'work' ? <WorkIcon size={24} /> :
                    icon.id === 'leadership' ? <LeadershipIcon size={24} /> :
                    <ContactIcon size={24} />}
-                </button>
+                </a>
                 {hoveredIcon === icon.id && !isActive && (
                   <div className="absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+8px)] bg-gray-800 text-white px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap pointer-events-none z-10">
                     {icon.label}

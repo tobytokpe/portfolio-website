@@ -19,12 +19,14 @@ import img_project1_billing from '../../assets/case-studies/project1/Billing.svg
 import img_project1_10 from '../../assets/case-studies/project1/Key-Configuration.png';
 import img_project1_card_sorting from '../../assets/case-studies/project1/Rectangle-18863.jpg';
 import img_project1_wireframe from '../../assets/case-studies/project1/Refined-Wireframe-scaled.jpg';
-import project2_hero from '../../assets/case-studies/project2/Qore.png';
-import img_project2_11 from '../../assets/case-studies/project2/Qore.png';
+import project2_hero from '../../assets/case-studies/project2/qore-hero.png';
+import img_project2_11 from '../../assets/case-studies/project2/qore-hero.png';
 import img_project2_15 from '../../assets/case-studies/project2/Userflow.png';
-import img_project2_17 from '../../assets/case-studies/project2/Design-system.jpg';
+import img_project2_17 from '../../assets/case-studies/project2/qore-design-system.jpg';
 import img_project2_20 from '../../assets/case-studies/project2/Monochrome-colours-1024x894.png';
 import img_project2_22 from '../../assets/case-studies/project2/Future-Works.png';
+import img_project2_app_core from '../../assets/case-studies/project2/qore-app-core.png';
+import img_project2_management_layer from '../../assets/case-studies/project2/qore-management-layer.png';
 import project3_hero from '../../assets/case-studies/project3/mamvest-hero.svg';
 import img_project3_app_showcase from '../../assets/case-studies/project3/mamvest-app-showcase.svg';
 import img_project3_user_flow from '../../assets/case-studies/project3/mamvest-user-flow.png';
@@ -33,8 +35,13 @@ import img_project3_design_system from '../../assets/case-studies/project3/mamve
 import img_project3_taxonomy_table from '../../assets/case-studies/project3/mamvest-taxonomy-table.png';
 import img_project3_admin_portal from '../../assets/case-studies/project3/mamvest-admin-portal.svg';
 import video_project3_onboarding from '../../assets/case-studies/project3/mamvest-demo.mp4';
-import project4_hero from '../../assets/case-studies/project4/Moore-1.jpg';
-import img_project4_29 from '../../assets/case-studies/project4/Moore-1.jpg';
+import project4_hero from '../../assets/case-studies/project4/moore-hero.svg';
+import img_project4_hero from '../../assets/case-studies/project4/moore-hero.svg';
+import img_project4_onboarding from '../../assets/case-studies/project4/moore-onboarding.svg';
+import img_project4_website from '../../assets/case-studies/project4/moore-website.png';
+import img_project4_design_system from '../../assets/case-studies/project4/moore-design-system.png';
+import video_project4_preview from '../../assets/case-studies/project4/moore-preview.mp4';
+import img_project4_conclusion from '../../assets/case-studies/project4/moore-conclusion.png';
 
 export const CASE_STUDIES: Record<string, any> = {
   "project4": {
@@ -66,9 +73,10 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Defining the Experience**: Working directly with the founding team, I defined the primary flows across web and mobile platforms, aligning layouts to make technical transactions simple, clear, and reassuring."
           },
           {
-            "type": "image",
-            "src": project4_hero,
-            "alt": "Moore mobile dashboard and desktop web platform side-by-side showing unified layout"
+            "type": "video",
+            "src": video_project4_preview,
+            "alt": "Moore mobile dashboard and desktop web platform preview",
+            "fullWidth": true
           }
         ]
       },
@@ -82,16 +90,21 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Structuring a 3-Step Flow**: I overhauled the flow, compressing the 8 onboarding stages down to 3 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC) by educating users on security before they even downloaded the app, resulting in a pre-conditioned, high-intent user base."
+            "text": "**Structuring a 5-Step Flow**: I overhauled the flow, compressing the 8 onboarding stages down to 5 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
           },
           {
             "type": "image",
-            "src": img_project4_29,
-            "alt": "Moore onboarding flow diagrams showing 3-step registration optimization and user path map"
+            "src": img_project4_onboarding,
+            "alt": "Moore 3-step onboarding screens showing BVN/NIN verification, OTP, passcode and transaction PIN setup"
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC) by educating users on features"
+          },
+          {
+            "type": "image",
+            "src": img_project4_website,
+            "alt": "Moore public marketing website showcasing the registration process and brand landing page"
           }
         ]
       },
@@ -99,10 +112,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "title": "Removing Fear: Designing a Stress-Free Payment Experience",
         "type": "section",
         "items": [
-          {
-            "type": "paragraph",
-            "text": "**The Nerve-Wracking Moment**: The highest-stakes part of the app was the payment confirmation screen where users enter their PIN. In areas where internet connections drop unexpectedly, any delay caused massive panic. Users would worry their money was lost and tap the confirm button repeatedly, creating accidental double-payments or freezing the app."
-          },
+         
           {
             "type": "paragraph",
             "text": "**Learning from Mistakes**: Our first test designs used standard spinning loading wheels while processing payments. However, when we watched real people use the app, we realized these empty animations actually made them more anxious. They assumed the app had crashed."
@@ -111,15 +121,7 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "paragraph",
             "text": "**The Asynchronous Trade-Off & Progress Tracker**: We completely changed our approach. We built a step-by-step progress tracker that explicitly shows users exactly what the system is doing in real time. The final layout isolates the PIN boxes clearly, uses gentle vibration feedback when buttons are tapped, and summarizes all the transfer details right before you hit send."
           },
-          {
-            "type": "paragraph",
-            "text": "**Real-World Engineering Compromise**: I initially designed smooth, physics-based custom animations for the transition states. However, live testing showed these animations stuttered heavily on low-end Android devices running on 2G networks. I made the executive decision to swap these out for lightweight, code-driven CSS opacity fades. This saved crucial device processing power and kept the transaction sequence functional under worst-case network conditions."
-          },
-          {
-            "type": "image",
-            "src": img_project4_29,
-            "alt": "Before and After comparison of the Payment PIN interface showing the step-by-step progress design"
-          }
+
         ]
       },
       {
@@ -149,8 +151,8 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "image",
-            "src": img_project4_29,
-            "alt": "Moore Design System guide showing Montserrat typography, colors, and button components"
+            "src": img_project4_design_system,
+            "alt": "Moore Figma design system showing 133 variables including colour tokens, spacing, radius, and button components"
           }
         ]
       },
@@ -168,11 +170,12 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Secured Investment**: The strong user adoption metrics and polished product execution directly helped the company secure its **Friends & Family investment round** to power next-phase expansion."
+            "text": "**Efficiency & Conversion**: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%. Overhauling the payment verification flow cut accidental double-tap payment errors down to 0.2%, while shipping a component-driven token system cut our software development and engineering handoff times by 50%."
           },
           {
-            "type": "paragraph",
-            "text": "**Efficiency & Conversion**: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%. Overhauling the payment verification flow cut accidental double-tap payment errors down to 0.2%, while shipping a component-driven token system cut our software development and engineering handoff times by 50%."
+            "type": "image",
+            "src": img_project4_conclusion,
+            "alt": "Moore mobile application screen mockups and showcases"
           }
         ]
       }
@@ -395,7 +398,7 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "paragraph",
             "text": "**Collaboration and Alignment**: As the lone designer working alongside a project manager, a product manager, and three engineers, managing system constraints was a daily focus. We created a low-fidelity wireframe in a workshop led by me for the Hydra dashboard web app to outline the basic layout and functionality. This simplified representation aids in rapid design iteration and facilitates early feedback, ensuring that the final design aligns with user needs and project objectives."
           },
-  
+
           {
             "type": "image",
             "src": img_project1_wireframe,
@@ -489,8 +492,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Emerging market retail banking users face fragmented interfaces, security friction, and slow transaction flows on traditional bank applications.",
-    "solution": "We architected Qore B2C, a high-trust, white-label neobanking interface that streamlines fund transfers, automates micro-payments, and implements personalized budgeting utilities.",
+    "problem": "Microfinance banks across Africa faced months of manual development cycles to launch digital apps, resulting in fragmented interfaces, accessibility failures from unconstrained client styling, and high sign-up drop-offs.",
+    "solution": "We architected an administrative no-code setup wizard allowing bank operators to dynamically configure brand identities within a resilient token system, alongside an optimized, 2-minute consumer onboarding flow.",
     "heroImage": project2_hero,
     "sections": [
       {
@@ -499,20 +502,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: As the Lead Product Designer on a high-velocity 6-week project for Qore Technologies, I took charge of the complete product design for a multi-tenant software system. This platform allows microfinance banks across Africa to launch fully functional, custom-branded web and mobile banking apps instantly, completely bypassing months of traditional coding."
+            "text": "**The Big Picture**: I took charge of the complete product design for a multi-tenant software system. This platform allows small and large scale banks across Africa to launch fully functional, custom-branded web and mobile banking apps instantly, completely bypassing months of traditional coding."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: We had to solve a difficult design puzzle: providing total styling flexibility to bank managers who wanted their apps to look unique, while maintaining strict layout limits so the apps remained secure, accessible, and completely bug-free for everyday consumers."
+            "text": "**The Balancing Act**: We had to solve a difficult design puzzle: providing total styling flexibility to bank stakeholders who wanted their apps to look unique, while maintaining strict layout limits so the apps remained secure, accessible, and completely bug-free for everyday consumers."
           },
           {
             "type": "paragraph",
             "text": "**My Role**: My core strategy was building a linear, step-by-step setup engine. This desktop wizard allowed non-technical bank operators to select themes, map corporate colors, and immediately generate a downloadable, testable preview version of their custom application."
-          },
-          {
-            "type": "image",
-            "src": img_project2_11,
-            "alt": "split layout showcasing the clean desktop setup wizard on the right and a dynamically updating customer mobile banking app on the left"
           }
         ]
       },
@@ -535,19 +533,71 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "The Customer Application Core: A standardized user flow covering money transfers, bill payments, and expense tracking optimized for everyday banking clients."
+          }
+        ]
+      },
+      {
+        "title": "The Management Layer: Configuration and Customization Dashboard",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Admin Control Center**: The Management Layer provides a clear dashboard interface for bank administrators to handle their branding setup, user permissions, dynamic styling variables, and live configurations."
           },
           {
             "type": "paragraph",
-            "text": "**Aligning the Team & The Token Blueprint**: I negotiated an alignment between our product managers and engineers based on a strict design rule: the structural layouts remained locked to prevent code bugs, while visual properties were treated as dynamic variables."
-          },
-          {
-            "type": "paragraph",
-            "text": "To bridge design to code seamlessly, we used Figma Variables (Design Tokens) exported directly via Style Dictionary into a shared configuration file that engineers could instantly plug into their codebase."
+            "text": "**No-Code Branding Setup**: Bank operators can utilize this interface to customize and test their color choices, manage logo placements, adjust corner radii options, and select typography systems live before deployment."
           },
           {
             "type": "image",
-            "src": img_project2_15,
-            "alt": "Low-fidelity wireframe blueprints showing early layouts of the configuration engine and initial user flows"
+            "src": img_project2_management_layer,
+            "alt": "Qore admin branding setup dashboard showing theme configuration and phone mockup live preview side-by-side"
+          }
+        ]
+      },
+      {
+        "title": "The Customer Application Core: Optimizing White-Label Onboarding",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Everyday Banking Optimized**: The Customer Application Core provides a standardized, high-performance user flow covering money transfers, bill payments, and expense tracking optimized for everyday banking clients."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Redefining the Onboarding Flow**: Our product design work on the white-labeled consumer app focused heavily on redefining the onboarding flow to significantly reduce sign-up steps and drop-off friction."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Fast Identity Verification**: Account opening now takes under two minutes. We’ve cut the onboarding flow down to the fields that actually matter, so there’s less standing between your customer and their new account number. They start transacting sooner, and a quick, easy start tells them they picked the right bank."
+          },
+          {
+            "type": "image",
+            "src": img_project2_app_core,
+            "alt": "High-fidelity mockups of Qore Customer Application identity verification and profile setup steps"
+          }
+        ]
+      },
+      {
+        "title": "Aligning the Team & The Token Blueprint",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Strict Design System Boundaries**: I negotiated an alignment between our product managers and engineers based on a strict design rule: the structural layouts remained locked to prevent code bugs, while visual properties were treated as dynamic variables."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Dynamic Tokens**: To bridge design to code seamlessly, we used Figma Variables (Design Tokens) exported directly via Style Dictionary into a shared configuration file that engineers could instantly plug into their codebase."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Scalable Foundations**: By establishing this variable-driven token ecosystem, we ensured that changes to color values, spacing parameters, and component styles could be automatically updated and compiled across all micro-sites and white-labeled modules without manual developer intervention."
+          },
+          {
+            "type": "image",
+            "src": img_project2_17,
+            "alt": "Qore Design System showing variables, color mappings, components, and token specifications"
           }
         ]
       },
@@ -568,22 +618,10 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The Monochrome Base Pattern**: I pivoted the interface to a monochrome-base scaling pattern. The foundational application layout was permanently anchored to a safe gray, white, and black palette. The bank’s custom brand colors were then dynamically injected only into highly specific, safe surfaces—such as action buttons, active tabs, and success screens. This maintained perfect accessibility compliance while safely accommodating any corporate identity."
           },
           {
-            "type": "paragraph",
-            "text": "Real-World Engineering Trade-Off: The engineering team initially pushed to let bank admins upload custom CSS sheets for maximum flexibility. I pushed back, proving that custom code snippets would break layout alignment on older Android devices. Instead, we compromised on a rigid grid format with a predefined, variable-driven color mapping tool. This guaranteed a 100% bug-free rendering rate across all customer screen sizes."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Simulating Extreme Data Loads**: To ensure absolute reliability, we stress-tested our component architecture by flooding our Figma designs with dense, real-world banking data. We tested screens using massive account balances, long truncated transaction names, and complex history logs to ensure typography layouts never broke under pressure."
-          },
-          {
             "type": "image",
             "src": img_project2_20,
             "alt": "Comprehensive view of the high-fidelity interactive prototype canvas displaying dozens of screens and state variations"
           },
-          {
-            "type": "paragraph",
-            "text": "**Research & Usability Validation**: We conducted validation sessions with real regional banking customers using our interactive prototypes. A key behavioral finding showed that users struggled to find digital card controls because they were buried deep within settings. Based on this insight, I immediately skipped the deep sub-menus and redesigned the navigation layout, surfacing Card Management directly onto the global sidebar menu for quick access."
-          }
         ]
       },
       {
@@ -596,27 +634,23 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "Drastic Launch Acceleration: Reduced the time required for microfinance institutions to customize, preview, and deploy their digital banking applications from 4 months down to a single afternoon."
+            "text": "**Drastic Launch Acceleration:** Reduced the time required for microfinance institutions to customize, preview, and deploy their digital banking applications from 4 months down to a single afternoon."
           },
           {
             "type": "paragraph",
-            "text": "Zero Onboarding Drop-off From Style Changes: Locking accessibility layers reduced customer onboarding failure rates from 45% to under 8%, regardless of the clashing color themes chosen by bank managers."
+            "text": "**Reduce Onboarding Drop-off:** Locking accessibility layers reduced customer onboarding failure rates from 45% to under 8%, regardless of the clashing color themes chosen by bank managers."
           },
           {
             "type": "paragraph",
-            "text": "Massive Market Scale: The platform's highly flexible design architecture successfully scaled to power digital banking applications for over 500 Microfinance Banks across Africa."
+            "text": "**Massive Market Scale:** The platform's highly flexible design architecture successfully scaled to power digital banking applications for over 500 Microfinance Banks across Africa."
           },
-          {
-            "type": "paragraph",
-            "text": "Corporate Business Impact: This design transformation securely supports a massive market scale, with the underlying platform infrastructure now safely processing an annual transaction volume exceeding $5 Billion."
-          }
         ]
       }
     ]
   },
   "project3": {
     "id": "project3",
-    "title": "MAMVest (Mango Asset Management): Digitizing Traditional Wealth Management",
+    "title": "MAMVest: Digitizing Traditional Wealth Management",
     "metadata": {
       "Client": "Mango Asset Management",
       "Role": "Lead Product Designer",
@@ -680,7 +714,8 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "video",
-            "src": video_project3_onboarding
+            "src": video_project3_onboarding,
+            "fullWidth": true
           },
           {
             "type": "paragraph",
