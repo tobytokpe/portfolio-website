@@ -131,9 +131,6 @@ export function Navigation({
                 src={imgProfile}
               />
             </div>
-            <p className="hidden sm:block font-['Montserrat',sans-serif] font-medium leading-none text-black text-[16px] whitespace-nowrap">
-              Tobi Olowu
-            </p>
             <div className="hidden sm:flex bg-white items-center justify-center pl-[6px] pr-[8px] py-[3px] rounded-[8px] shrink-0 border border-[#d0d5dd]">
               <div className="flex gap-[4px] items-center">
                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
