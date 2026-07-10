@@ -31,6 +31,7 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 
 // Hero image
 import image_585c477c511121f68283baf747a1742f4dc74091 from 'figma:asset/585c477c511121f68283baf747a1742f4dc74091.png';
+import aboutMeSvg from '../assets/about-me.svg';
 
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 2;
@@ -518,34 +519,12 @@ function FigmaCanvas() {
               <div className="space-y-4 text-gray-600">
                 <p className="font-[Architects_Daughter]">A Designer dedicated to iterative improvement, ensuring products are usable with extensive experience in B2C and B2B SaaS products across mobile and web platforms. With about a decade of experience, I have led design initiatives across diverse industries, including Finance, Energy, and Technology, delivering user-centric solutions that drive significant business impact. Recently, I received the esteemed endorsement as an exceptional talent for the Global Talent UK, an acknowledgement of my dedication to the world of Design and Technology</p>
                 
-                <div className="pt-6 space-y-5">
-                  {[
-                    {
-                      label: 'Leadership',
-                      skills: ['Design Strategy', 'Team Development', 'Mentorship & Coaching', 'Process Improvement', 'Stakeholder Management', 'Project Management', 'Communication'],
-                    },
-                    {
-                      label: 'Design Expertise',
-                      skills: ['UX/UI Design', 'Design Thinking', 'Wireframing & Prototyping', 'User Research', 'Interaction Design', 'Information Architecture', 'Design Systems'],
-                    },
-                    {
-                      label: 'Tools & Technologies',
-                      skills: ['Sketch', 'Figma', 'InVision', 'Adobe Creative Suite', 'Zeplin', 'Adobe XD', 'Dovetail', 'Amplitude', 'Hotjar', 'Balsamiq', 'HTML', 'CSS', 'CMS (WordPress, Webflow, Framer)'],
-                    },
-                    {
-                      label: 'Research & Analysis',
-                      skills: ['Heuristic Evaluation', 'A/B Testing', 'Surveys', 'User Interviews', 'Usability Testing', 'Cognitive Walkthroughs'],
-                    },
-                  ].map(({ label, skills }) => (
-                    <div key={label}>
-                      <h4 className="font-semibold text-gray-900 mb-2 font-[Syne] font-bold text-sm">{label}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.map((skill) => (
-                          <span key={skill} className="px-3 py-1 text-xs rounded-full font-medium text-gray-900 bg-gray-100 border border-gray-300">{skill}</span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                <div className="pt-6">
+                  <img
+                    src={aboutMeSvg}
+                    alt="Skills and Expertise Overview"
+                    className="w-full h-auto object-contain rounded-2xl"
+                  />
                 </div>
 
                 <div className="pt-6">
