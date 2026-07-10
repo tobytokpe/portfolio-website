@@ -693,7 +693,7 @@ function ProjectPage() {
     }
     
     return () => {
-      document.title = 'Tobi Olowu - Portfolio';
+      document.title = 'Tobi | Designer | Product Innovator |';
     };
   }, [data]);
 
