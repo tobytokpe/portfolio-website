@@ -51,8 +51,8 @@ export function InteractiveGridBackground({
       time += 0.015;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const spacing = 18; // base spacing in pixels
-      const dotRadius = 1;
+      const spacing = 9; // base spacing in pixels (reduced by 50%)
+      const dotRadius = 0.8;
       const { x: panX, y: panY, scale } = transform;
 
       // Calculate screen-space bounding boxes for cards to apply gravity/warping
@@ -66,19 +66,19 @@ export function InteractiveGridBackground({
       // Base grid spacing scales with zoom
       const scaledSpacing = spacing * scale;
       
-      // Determine viewport grid boundaries
-      const startX = (panX % scaledSpacing) - scaledSpacing;
-      const startY = (panY % scaledSpacing) - scaledSpacing;
+      // Determine viewport grid boundaries handling negative modulo alignment properly
+      const startX = (((panX % scaledSpacing) + scaledSpacing) % scaledSpacing) - scaledSpacing;
+      const startY = (((panY % scaledSpacing) + scaledSpacing) % scaledSpacing) - scaledSpacing;
 
       const mouseX = mouseRef.current.x;
       const mouseY = mouseRef.current.y;
       const mouseActive = mouseRef.current.active;
 
-      const mouseInfluenceRadius = 130;
-      const mouseWarpStrength = 16;
+      const mouseInfluenceRadius = 65; // reduced by 50%
+      const mouseWarpStrength = 8;     // reduced by 50%
 
-      const cardInfluenceRadius = 40 * Math.max(0.7, scale);
-      const cardWarpStrength = 10 * Math.max(0.7, scale);
+      const cardInfluenceRadius = 20 * Math.max(0.7, scale); // reduced by 50%
+      const cardWarpStrength = 5 * Math.max(0.7, scale);    // reduced by 50%
 
       for (let x = startX; x < canvas.width + scaledSpacing; x += scaledSpacing) {
         for (let y = startY; y < canvas.height + scaledSpacing; y += scaledSpacing) {
@@ -91,35 +91,7 @@ export function InteractiveGridBackground({
           drawX += waveX;
           drawY += waveY;
 
-          // 2. Gravitational warp around the UI elements (cards)
-          let isUnderCard = false;
-          for (const card of screenCards) {
-            // Check if point is inside card
-            if (
-              drawX >= card.x &&
-              drawX <= card.x + card.w &&
-              drawY >= card.y &&
-              drawY <= card.y + card.h
-            ) {
-              isUnderCard = true;
-              break;
-            }
 
-            // Find nearest point on card bounding box
-            const nearestX = Math.max(card.x, Math.min(drawX, card.x + card.w));
-            const nearestY = Math.max(card.y, Math.min(drawY, card.y + card.h));
-
-            const dx = drawX - nearestX;
-            const dy = drawY - nearestY;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist > 0 && dist < cardInfluenceRadius) {
-              const force = Math.pow(1 - dist / cardInfluenceRadius, 1.8);
-              // Push dots outwards from card borders (creates rubber-sheet gravity indent look)
-              drawX += (dx / dist) * force * cardWarpStrength;
-              drawY += (dy / dist) * force * cardWarpStrength;
-            }
-          }
 
           // Render all dots to ensure the grid pattern is continuous under transparent cards
 

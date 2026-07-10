@@ -188,9 +188,9 @@ export function Canvas({ children }: CanvasProps) {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            radial-gradient(circle, #d0d0d0 1px, transparent 1px)
+            radial-gradient(circle, #d0d0d0 0.8px, transparent 0.8px)
           `,
-          backgroundSize: '20px 20px',
+          backgroundSize: '10px 10px',
         }}
       />
 

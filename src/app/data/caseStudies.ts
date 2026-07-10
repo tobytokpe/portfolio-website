@@ -1,6 +1,10 @@
 /* Auto-generated case studies data */
-import project5_hero from '../../assets/case-studies/project5/Cewers-1.png';
-import img_project5_30 from '../../assets/case-studies/project5/Cewers-1.png';
+import project5_hero from '../../assets/case-studies/project5/cewers-hero.png';
+import img_project5_30 from '../../assets/case-studies/project5/cewers-hero.png';
+import img_project5_roles from '../../assets/case-studies/project5/cewers-roles.png';
+import img_project5_flawed_first_try from '../../assets/case-studies/project5/cewers-flawed-first-try.png';
+import img_project5_voice_alert from '../../assets/case-studies/project5/cewers-voice-alert.png';
+import img_project5_states from '../../assets/case-studies/project5/cewers-states.png';
 import img_project5_36 from '../../assets/case-studies/project5/cewers-mockups.png';
 import img_project5_37 from '../../assets/case-studies/project5/Group-33639-768x534.png';
 import img_project5_38 from '../../assets/case-studies/project5/Frame-1000004419-e1694894615508.png';
@@ -9,19 +13,26 @@ import img_project5_40 from '../../assets/case-studies/project5/Frame-1000004543
 import project1_hero from '../../assets/case-studies/project1/Hydra-1024x671.png';
 import img_project1_1 from '../../assets/case-studies/project1/Hydra-1024x671.png';
 import img_project1_4 from '../../assets/case-studies/project1/Group-1000004248.jpg';
-import img_project1_9 from '../../assets/case-studies/project1/Key-Configuration.png';
-import img_project1_10 from '../../assets/case-studies/project1/Billing-Management-1.png';
+import img_project1_payload_structure from '../../assets/case-studies/project1/Hydra Admin.svg';
+import img_project1_dashboards from '../../assets/case-studies/project1/Dashboards.png';
+import img_project1_billing from '../../assets/case-studies/project1/Billing.svg';
+import img_project1_10 from '../../assets/case-studies/project1/Key-Configuration.png';
+import img_project1_card_sorting from '../../assets/case-studies/project1/Rectangle-18863.jpg';
+import img_project1_wireframe from '../../assets/case-studies/project1/Refined-Wireframe-scaled.jpg';
 import project2_hero from '../../assets/case-studies/project2/Qore.png';
 import img_project2_11 from '../../assets/case-studies/project2/Qore.png';
 import img_project2_15 from '../../assets/case-studies/project2/Userflow.png';
 import img_project2_17 from '../../assets/case-studies/project2/Design-system.jpg';
 import img_project2_20 from '../../assets/case-studies/project2/Monochrome-colours-1024x894.png';
 import img_project2_22 from '../../assets/case-studies/project2/Future-Works.png';
-import project3_hero from '../../assets/case-studies/project3/_MacBook-Pro-1024x601.png';
-import img_project3_23 from '../../assets/case-studies/project3/_MacBook-Pro-1024x601.png';
-import img_project3_26 from '../../assets/case-studies/project3/Group-464.png';
-import img_project3_27 from '../../assets/case-studies/project3/Dashboard-Web-1.jpg';
-import img_project3_28 from '../../assets/case-studies/project3/Asset-Web.jpg';
+import project3_hero from '../../assets/case-studies/project3/mamvest-hero.svg';
+import img_project3_app_showcase from '../../assets/case-studies/project3/mamvest-app-showcase.svg';
+import img_project3_user_flow from '../../assets/case-studies/project3/mamvest-user-flow.png';
+import img_project3_sprint_plan from '../../assets/case-studies/project3/mamvest-sprint-plan.png';
+import img_project3_design_system from '../../assets/case-studies/project3/mamvest-design-system.svg';
+import img_project3_taxonomy_table from '../../assets/case-studies/project3/mamvest-taxonomy-table.png';
+import img_project3_admin_portal from '../../assets/case-studies/project3/mamvest-admin-portal.svg';
+import video_project3_onboarding from '../../assets/case-studies/project3/mamvest-demo.mp4';
 import project4_hero from '../../assets/case-studies/project4/Moore-1.jpg';
 import img_project4_29 from '../../assets/case-studies/project4/Moore-1.jpg';
 
@@ -198,8 +209,8 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "image",
-            "src": img_project5_30,
-            "alt": "CEWERS ecosystem showing high-contrast dashboard and single-tap emergency alert interface"
+            "src": img_project5_states,
+            "alt": "CEWERS onboarding layouts showcasing state-specific themes and photos"
           }
         ]
       },
@@ -224,6 +235,11 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**2. Streamlined Roles**: The system accommodates five types of users: Citizens, Monitors, Security, Observers, and Admins. I focused on the connection between the Citizen sending the alert and the local Monitor validating it on the ground, cutting out unnecessary middle-management steps to save time."
           },
           {
+            "type": "image",
+            "src": img_project5_roles,
+            "alt": "cewers user roles: citizen, monitor, security, observer, admin"
+          },
+          {
             "type": "paragraph",
             "text": "**3. Engineering Trade-offs for Poor Signal**: To beat the lack of consistent internet in remote farming regions, I made a deal with our engineering team. We dropped mandatory sign-ups and typing requirements. Instead, we prioritized background GPS tracking and offline data saving. This lets citizens send a location-verified alert instantly without logging in; the app holds the data packet and sends it automatically the second a phone signal is found."
           }
@@ -239,7 +255,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "image",
-            "src": img_project5_36,
+            "src": img_project5_flawed_first_try,
             "alt": "Side-by-side layout evolution: discarded swipe design versus the final grid design"
           },
           {
@@ -255,6 +271,11 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Voice Over Text & Handoff Pipeline**: Field data proved that typing details was impossible when running from danger or for users who struggled with reading. To fix this, I put a large, one-tap voice recorder directly into the alert screen. Citizens simply tap, speak, and send."
           },
           {
+            "type": "image",
+            "src": img_project5_voice_alert,
+            "alt": "Voice alert recording screen and interface details"
+          },
+          {
             "type": "paragraph",
             "text": "To guarantee this complex engine didn't crash on standard local hardware, I used Zeplin to bridge design to development. I built out global style tokens mapped directly to a lightweight Tailwind CSS framework used by the front-end engineers. This guaranteed that layout grids remained rock-solid across various budget Android phones."
           },
@@ -265,11 +286,6 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Simulating Emergencies**: Validating an app that saves lives requires going far beyond office testing. Alongside the UNDP and local leaders, we took an Android test app to rural impact zones to run live trials with 12 to 15 community leaders, farmers, and security workers."
-          },
-          {
-            "type": "image",
-            "src": img_project5_38,
-            "alt": "user path wireframes showing paths for citizens reporting and monitors verifying data"
           },
           {
             "type": "paragraph",
@@ -308,7 +324,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "image",
-            "src": img_project5_30,
+            "src": img_project5_36,
             "alt": "high-fidelity desktop and mobile app screens showing multilingual support and conflict maps"
           },
           {
@@ -338,7 +354,7 @@ export const CASE_STUDIES: Record<string, any> = {
     },
     "problem": "Fintech developers and bank partners struggle to orchestrate multiple fragmented B2B APIs, leading to visual incongruity, configuration errors, separate billing systems, and delayed integration timelines.",
     "solution": "We architected Hydra, a unified B2B API gateway dashboard that standardizes payload visualization, streamlines credentials configuration, and consolidates multi-provider billing.",
-    "heroImage": project1_hero,
+    "heroImage": img_project1_payload_structure,
     "sections": [
       {
         "title": "The Control Center for Connected Finance",
@@ -356,11 +372,6 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "paragraph",
             "text": "**The Solution**: By replacing confusing data charts with a clean, filter-driven system and moving technical guides directly into the workspace, I removed the constant friction between teams. This allowed engineers and business managers to work comfortably inside the exact same tool."
           },
-          {
-            "type": "image",
-            "src": img_project1_1,
-            "alt": "Hydra desktop dashboard showing a clean corporate banking overview"
-          }
         ]
       },
       {
@@ -376,18 +387,20 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Designing the Map**: To fix this, I ran an interactive card-sorting exercise with real users to understand how they naturally group information. This research shaped a clean, easy-to-scan navigation system:"
           },
           {
-            "type": "paragraph",
-            "text": "**Working Around System Heavy Loads**: As the lone designer working alongside a project manager, a product manager, and three engineers, managing system constraints was a daily focus. Tracking live banking transactions uses a massive amount of server power. If our screens refreshed every stream constantly, the app would crawl to a halt."
+            "type": "image",
+            "src": img_project1_card_sorting,
+            "alt": "Card sorting results and research grouping information mapping"
           },
           {
             "type": "paragraph",
-            "text": "I collaborated with our backend engineers to prioritize screen updates: critical error alerts pop up instantly, while regular transaction details update in quiet background batches to keep the app fast."
+            "text": "**Collaboration and Alignment**: As the lone designer working alongside a project manager, a product manager, and three engineers, managing system constraints was a daily focus. We created a low-fidelity wireframe in a workshop led by me for the Hydra dashboard web app to outline the basic layout and functionality. This simplified representation aids in rapid design iteration and facilitates early feedback, ensuring that the final design aligns with user needs and project objectives."
           },
+  
           {
             "type": "image",
-            "src": img_project1_4,
-            "alt": "low-fidelity wireframes mapping the user path from login to service setup"
-          }
+            "src": img_project1_wireframe,
+            "alt": "Refined high-fidelity wireframes mapping the user paths"
+          },
         ]
       },
       {
@@ -399,21 +412,17 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The Problem Point**: During initial testing, we noticed a major drop-off point where developers kept making mistakes. The original system let users manage security keys, but it didn't show them the actual structure of the data they were sending. Engineers had to constantly leave the app to read external code documents, breaking their focus."
           },
           {
-            "type": "image",
-            "src": img_project1_9,
-            "alt": "UI comparison showing the shift from colorful circle charts to clean line graphs with filters"
-          },
-          {
             "type": "paragraph",
             "text": "**The Pivot**: Our earliest designs used complex, multi-colored circle charts to show product performance. However, feedback from users showed these charts were confusing and exhausting for daily office work. We stripped out the circular charts and replaced them with clean line graphs and simple dropdown filters, making it effortless to isolate specific dates or transaction problems."
           },
           {
-            "type": "paragraph",
-            "text": "**The Code Panel & The Technical Token Pipeline**: To solve the developer problem, I built an interactive slide-out side drawer right into the key configuration screen. Now, when an engineer clicks a security key, the exact code structure slides open directly on the screen."
+            "type": "image",
+            "src": img_project1_dashboards,
+            "alt": "Hydra analytics dashboard pivot showing line graphs and transaction filters"
           },
           {
             "type": "paragraph",
-            "text": "To turn this into a reality seamlessly, I set up our design tokens using Style Dictionary, exporting design properties into clean JSON files that mapped straight into the engineering team’s Tailwind CSS configuration. This kept typography scales and component padding perfectly aligned between design mockups and production code."
+            "text": "**The Code Panel & The Technical Token Pipeline**: To solve the developer problem, I built an interactive slide-out side drawer right into the key configuration screen. Now, when an engineer clicks a security key, the exact code structure slides open directly on the screen."
           },
           {
             "type": "paragraph",
@@ -442,7 +451,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "image",
-            "src": img_project1_10,
+            "src": img_project1_billing,
             "alt": "detailed Billing History screen showing itemized product metrics and status badges"
           }
         ]
@@ -605,166 +614,154 @@ export const CASE_STUDIES: Record<string, any> = {
       }
     ]
   },
-
   "project3": {
     "id": "project3",
-    "title": " Omney: Opening Global Wealth Channelsp",
+    "title": "MAMVest (Mango Asset Management): Digitizing Traditional Wealth Management",
     "metadata": {
-      "Client": "CSL Stockbrokers",
-      "Role": "Lead UX / UI Designer",
+      "Client": "Mango Asset Management",
+      "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile"
     },
-    "problem": "Retail stock investors in emerging markets face complex jargon, high latency, and fragmented platforms when trying to trade international and domestic equities.",
-    "solution": "We designed Omney, a unified multi-market trading platform that simplifies portfolio metrics, standardizes cross-exchange order books, and accelerates transaction cycles.",
+    "problem": "Mango Asset Management operated strictly as a traditional financial institution, managing portfolios through manual paperwork. The operational workflow spanned 3 to 5 business days, requiring physical prospectus distribution and manual KYC/wire checks.",
+    "solution": "We designed MAMVest, an SEC-approved digital wealth platform that democratizes access to Mutual Funds, Bonds, Treasury Bills, and Commercial Papers with a minimum entry point of ₦1,000, reducing transaction times to under 4 minutes.",
     "heroImage": project3_hero,
     "sections": [
       {
-        "title": "Democratizing Cross-Border Equities for Emerging Markets",
+        "title": "Re-Engineering a Legacy Institution: Designing the First Digital Wealth Platform",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: As the Lead UX/UI Designer, I spearheaded the 5-week end-to-end design strategy and cross-platform product architecture for Omney—a digital investment ecosystem commissioned by CSL Stockbrokers to open up international and local stock markets to retail investors across Nigeria."
+            "text": "**The Big Picture**: For decades, Mango Asset Management operated strictly as a traditional financial institution, managing premium portfolios for corporate entities and high-net-worth individuals through manual paperwork, relationship managers, and bespoke offline operations. To expand market share and tap into emerging retail capital channels, the firm launched a comprehensive 4-month digitization initiative to build MAMVest—their foundational customer-facing digital product ecosystem."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: The challenge lay in a difficult paradox: we needed to display the information-dense, fast-moving realities of global stock exchanges, but keep the interface simple enough for users with varying financial literacy levels who were trading on volatile mobile networks."
+            "text": "Approved by the SEC (Securities and Exchange Commission, Nigeria), the platform democratizes access to institutional-grade financial instruments, enabling retail users to deploy capital into Mutual Funds, Bonds, Treasury Bills, Commercial Papers, and Liquidity Management tools with a barrier-breaking minimum entry point of ₦1,000."
           },
           {
             "type": "paragraph",
-            "text": "**My Role**: I introduced a highly scannable, mobile-first interaction framework that stripped away intimidating financial jargon while unifying fragmented local and international market data into a single, intuitive interface."
+            "text": "**The Balancing Act**: The core architectural challenge lay in an intense operational transition: transforming highly complex, compliance-heavy offline investment mechanisms into a unified, lightweight, multi-platform digital software system. We had to reconcile the strict regulatory demands of an SEC-regulated entity with the friction-free interaction patterns expected by a mobile-first generation, all while ensuring that decades of institutional trust and brand equity were preserved across modern user interfaces."
           },
           {
             "type": "paragraph",
-            "text": "```\n[Legacy Data Pools] ----> [API Normalization Layer] ----> [Unified Wallet Engine] ----> [Responsive UI Layouts]\n```"
+            "text": "**My Role & Strategic Mandate**: As Lead Product Designer, I owned the end-to-end design strategy, visual system governance, and cross-platform architecture across three interconnected endpoints: the customer Mobile Application (React Native), the responsive customer Web Portal, and the internal operational Admin Control Desk."
           },
           {
             "type": "paragraph",
-            "text": "(NYSE / NGX Feeds)       (Tokenized Architecture)         (Cross-Border Rules)         (Mobile & Web Contexts)"
+            "text": "Directing a team of 3 product designers, my mandate extended far beyond interface layouts; I was responsible for cross-departmental stakeholder management, mapping the end-to-end service blueprint, orchestrating our research and testing frameworks, and engineering a resilient design-to-code component pipeline capable of scaling without generating technical debt."
+          },
+          {
+            "type": "image",
+            "src": img_project3_app_showcase,
+            "alt": "MAMVest app showcase preview showing user interfaces"
           }
         ]
       },
       {
-        "title": "Simplifying Financial Fragmentation: Market Taxonomy & Strategic Alignment",
+        "title": "From Paper to Pixels: Service Blueprinting & Cross-Functional Alignment",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Problems We Inherited**: Retail investors looking to trade international stocks were previously trapped between two bad options: complex global platforms designed for high-resolution desktop monitors, or local apps hampered by slow trade execution, confusing terminology, and broken mobile interfaces. Onboarding steps were incredibly messy, resulting in a 62% user drop-off rate before a single trade could be completed."
+            "text": "**Deconstructing Legacy Operational Friction**: Our initial discovery and diagnostic phase revealed profound operational inefficiencies. Traditionally, when an investor wanted to allocate capital into an instrument like a Commercial Paper or a Bond, the workflow spanned 3 to 5 business days. It required physical prospectus distribution, manual KYC document signing via post or courier, bank wire verifications, and manual data logging onto internal spreadsheets by account officers."
           },
           {
             "type": "paragraph",
-            "text": "**Designing for Behavioral Archetypes**: To transform this chaotic environment, I ran a user research phase to categorize our target audience into three distinct behavioral profiles, aligning our app's information architecture to meet their unique needs:"
+            "text": "**The Service Blueprinting Approach**: To dissolve these departmental silos, I mapped out a comprehensive Service Blueprint. This document aligned the customer's visible digital journey (Frontstage Actions) directly with Mango’s backend operations (Backstage Actions), compliance checks, clearinghouse timeframes, and banking settlement rails."
           },
           {
             "type": "paragraph",
-            "text": "**The 5-Day Alignment Sprint**: I ran a structured, 5-day rapid alignment sprint with engineering, product strategy, and business stakeholders. By anchoring the team around a Lean Canvas framework, we shifted the conversation away from subjective design opinions and focused entirely on critical business outcomes: accelerating trade initiation speeds, simplifying onboarding registration, and building user trust through interface transparency."
+            "text": "By visualizing the manual dependencies, we isolated exactly where technology could automate the sequence, transforming a fragmented operational web into an immediate, linear software pipeline."
           },
           {
             "type": "image",
-            "src": img_project3_26,
-            "alt": "Design Sprint Workshop Post-It Matrix documenting the cross-functional alignment phase across Days 1 to 5"
+            "src": img_project3_user_flow,
+            "alt": "MAMVest flow chart mapping user actions to investment potfolios"
+          },
+          {
+            "type": "video",
+            "src": video_project3_onboarding
+          },
+          {
+            "type": "paragraph",
+            "text": "**The 5-Day Executive Alignment Sprint**: To build organization-wide buy-in for this radical workflow shift, I facilitated a 5-day rapid product alignment sprint with the firm’s executive leadership, including the Product Management Director, Head of Engineering, Compliance Directors, and senior Traditional Portfolio Managers."
+          },
+          {
+            "type": "paragraph",
+            "text": "Using a Lean Canvas framework, I successfully anchored the design trajectory to critical business performance metrics rather than subjective aesthetic preferences. We achieved hard consensus on a vital product rule: legal disclosure parameters remained structurally locked to protect institutional compliance, while data-entry paths were optimized to reduce friction."
+          },
+          {
+            "type": "image",
+            "src": img_project3_sprint_plan,
+            "alt": "5-day design sprint sticky notes plan mapping out project milestones"
           }
         ]
       },
       {
-        "title": "The Asynchronous Execution Challenge: Designing for Network Volatility",
+        "title": "The 3-Tier Design System & Token Architecture",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Interaction Dilemma**: A major design challenge emerged when handling real-time order books across two completely different stock environments: global exchanges (like the NYSE) and local exchanges (NGX). In areas with unpredictable mobile network speeds, a user attempting to buy a stock could face price shifts or network dropouts midway through the transaction. If the UI failed to manage this delay gracefully, it triggered severe user anxiety, causing repeated clicks or abandoned trades."
+            "text": "**Engineering a Multi-Platform Single Source of Truth**: Because we were designing for three distinct tech stacks simultaneously (Flutter for iOS and Android, and Tailwind CSS for web platforms), I architected a 3-Tier Design System Foundation to eliminate engineering handoff lag and prevent UI drift."
           },
           {
             "type": "paragraph",
-            "text": "```\n[User Initiates Order] ---> (Validate Purchasing Power vs. Total Cost)\n                                   |\n```"
-          },
-          {
-            "type": "paragraph",
-            "text": "+-----------------------+-----------------------+"
-          },
-          {
-            "type": "paragraph",
-            "text": "| (Sufficient Balance)                          | (Insufficient Balance)"
-          },
-          {
-            "type": "paragraph",
-            "text": "v                                               v"
-          },
-          {
-            "type": "paragraph",
-            "text": "[Asynchronous Order Processing]                  [Prompt: Inline Wallet Funding]"
-          },
-          {
-            "type": "paragraph",
-            "text": "|                                               |"
-          },
-          {
-            "type": "paragraph",
-            "text": "+----------> [Real-Time Ledger Update] <-------+"
-          },
-          {
-            "type": "paragraph",
-            "text": "**Learning from Mistakes**: Our early layout concepts used a traditional, multi-screen confirmation process. However, performance testing quickly revealed that this approach amplified anxiety when network connections slowed down, leaving users stuck on loading screens unsure if their money had been moved or if their order went through."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The Asynchronous Trade Pattern**: I redesigned the flow into an asynchronous order confirmation state. The interface validates the user's intent locally on the device instantly, visually isolates the trade container, and checks background balances."
-          },
-          {
-            "type": "paragraph",
-            "text": "If the user's purchasing power is less than the total cost, the UI smoothly shifts to provide an alternative, inline wallet-funding option right within the checkout screen, preventing a broken or timed-out transaction."
-          },
-          {
-            "type": "paragraph",
-            "text": "Real-World Business Strategy & Compromise: To lower customer drop-offs during volatile market hours, the product team initially wanted to execute trades even if network pings failed, reconciling balances later. I stepped in and designed a local balance cache mechanism. This visually confirmed the user's trade placement instantly on the UI while queuing the data packet to hit the API asynchronously, balancing user anxiety with engineering system safety."
+            "text": "We maintained this token repository as a single source of truth within a centralized JSON layout file, distributed via Style Dictionary directly into our developers' production environments."
           },
           {
             "type": "image",
-            "src": img_project3_23,
-            "alt": "High-Fidelity Desktop & Mobile Responsive Core Trading Engine Mockups showing unified balance states"
+            "src": img_project3_design_system,
+            "alt": "MAMVest design system snapshot showing color tokens and specifications"
           },
           {
             "type": "paragraph",
-            "text": "**Stress-Testing Market Graphs**: We subjected our high-density dashboards and interactive market graphs to rigorous data-load stress tests. Our prototypes were designed to handle high-frequency price updates, ensuring that data-heavy charts scaled down cleanly to smaller mobile screens without causing layout shifts, performance lag, or text overlap on lower-end devices."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Handoff and Component Foundations**: I collaborated intimately with the engineering team throughout the 5-week project lifecycle. Rather than handing off flat images, I delivered a responsive layout framework using Zeplin mapped directly to engineering logic."
-          },
-          {
-            "type": "paragraph",
-            "text": "Core features—such as multi-currency account balances, historic performance charts, analyst sentiment meters, and transaction ledger rows—were designed as independent, reusable component sheets using a Tailwind CSS framework structure. We defined UI responses for every possible platform state—including active market hours, trading halts, empty watchlists, and network disconnections—ensuring a smooth transition from Figma to live code."
+            "text": "**Resolving the Universal Product Catalog**: To ensure retail investors could intuitively browse high-yield assets without suffering from cognitive overload or jargon confusion, my design team restructured Mango's institutional offerings into a clean, unified market taxonomy framework:"
           },
           {
             "type": "image",
-            "src": img_project3_28,
-            "alt": "Architectural Information Flow Diagrams highlighting the user journey across onboarding, asset discovery, wallet states, and trade execution"
+            "src": img_project3_taxonomy_table,
+            "alt": "Mango Asset Management digitized product catalog and taxonomy matrix"
           }
         ]
       },
       {
-        "title": "Business Performance: Democratizing Wealth Across Borders",
+        "title": "High-Density Stress Testing & Real-World Layout Scaling",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "By refactoring the checkout sequence and introducing proactive purchasing power checks, Omney successfully turned a complex financial process into an accessible digital product:"
+            "text": "**Simulating Extreme Financial Edge Cases**: Financial systems operate under chaotic real-world conditions. Over our 4-month lifecycle, I led our design team through rigorous programmatic stress testing. We flooded our interactive Figma prototypes with extreme data loads—populating dashboards with astronomical account balances (₦180,500,750.22), deeply stacked multi-asset histories, fractional interest values, and localized network errors."
           },
           {
             "type": "paragraph",
-            "text": "Slashed Registration Drop-offs: Streamlining the onboarding flows and bypassing document bottlenecks cut registration drop-offs from 62% down to 19%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Eliminated Network-Driven Trade Failures: The asynchronous checkout engine and inline funding options reduced failed transactions due to network timeouts by 41%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Reduced Support Overheads: Clear educational tools and layout transparency decreased transaction-related customer support tickets by 34%, providing a highly scalable foundation to grow transaction-based revenue streams securely across the region."
+            "text": "This validation ensured that layout containers expanded dynamically, typography scaling remained visually pristine, and critical numeric values never clipped or overflowed across budget or low-resolution mobile devices."
           }
         ]
-      }
+      },
+      {
+        "title": "Business Performance & Systemic Transformation Impact",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "By replacing manual, paper-bound workflows with a multi-platform digital architecture, the 4-month initiative transformed Mango Asset Management's position in the market:"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Velocity & Acquisition Drivers**\n\n **Slashed Time-to-Investment**: The total timeline required to discover an asset, successfully clear onboarding compliance, and fund a portfolio plummeted from 3 to 5 business days down to a friction-free 3 minutes and 42 seconds.\n **Lowered Acquisition Barriers**: Streamlining regulatory sign-up screens into a chunked, progressive verification wizard reduced consumer onboarding abandonment from 54% down to 11%, significantly lowering the Customer Acquisition Cost (CAC)."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Multiplied Team Capabilities**: Formalizing our assets into a unified design system framework allowed Mango's internal teams to build secondary features up to 40% faster, completely eliminating technical debt and proving design as a core driver of business growth."
+          },
+          {
+            "type": "image",
+            "src": img_project3_admin_portal,
+            "alt": "MAMVest admin portal showing operational dashboards and verification metrics"
+          }
+        ]
+      },
     ]
   }
 };

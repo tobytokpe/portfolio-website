@@ -60,10 +60,10 @@ const PROJECTS = [
   },
   { 
     id: 'project3', 
-    title: 'Omney Trading App',
-    description: 'Trading app offering real-time data, user-friendly design, educational tools, and integrated wallet functionality.',
-    tag: 'Fintech', 
-    iframeUrl: 'https://oolowu.com/select-projects/omney-cc/',
+    title: 'MAMVest (Mango Asset Management)',
+    description: 'Digital wealth management platform democratizing access to institutional-grade instruments like Mutual Funds, Bonds, and Bills.',
+    tag: 'Wealth Management', 
+    iframeUrl: 'https://oolowu.com/select-projects/mamvest-cc/',
     imageSrc: projectImg3
   },
   { 
@@ -764,6 +764,17 @@ function ProjectPage() {
           </div>
         </div>
 
+        {/* Hero/Intro Image */}
+        {data.heroImage && (
+          <div className="w-full mb-16 rounded-3xl overflow-hidden border border-[#E5E5E5] shadow-sm bg-white p-2">
+            <img
+              src={data.heroImage}
+              alt={`${data.title} Overview`}
+              className="w-full h-auto rounded-2xl object-cover"
+            />
+          </div>
+        )}
+
         {/* Problem and Solution Columns */}
         {(data.problem || data.solution) && (
           <div className="grid md:grid-cols-2 gap-6 mb-16">
@@ -845,6 +856,21 @@ function ProjectPage() {
                         >
                           View Presentation &rarr;
                         </a>
+                      </div>
+                    );
+                  }
+                  if (item.type === 'video') {
+                    return (
+                      <div key={itemIdx} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                        <video
+                          src={item.src}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="auto"
+                          style={{ width: '400px', borderRadius: '58px', display: 'block', background: 'transparent', pointerEvents: 'none' }}
+                        />
                       </div>
                     );
                   }

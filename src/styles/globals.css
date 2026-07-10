@@ -1,0 +1,13 @@
+/* Remove browser native video player overlay/chrome */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
