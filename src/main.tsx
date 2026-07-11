@@ -1,9 +1,10 @@
-
   import { createRoot } from "react-dom/client";
   import { BrowserRouter } from "react-router";
   import React from "react";
   import App from "./app/App.tsx";
   import "./styles/index.css";
+  import { Analytics } from "@vercel/analytics/react";
+  import { SpeedInsights } from "@vercel/speed-insights/react";
 
   class ErrorBoundary extends React.Component<
     { children: React.ReactNode },
@@ -37,6 +38,8 @@
     <BrowserRouter>
       <ErrorBoundary>
         <App />
+        <Analytics />
+        <SpeedInsights />
       </ErrorBoundary>
     </BrowserRouter>
   );
