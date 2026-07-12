@@ -90,13 +90,13 @@ export function Navigation({
 
   return (
     <motion.div
-      className="fixed bottom-5 left-0 right-0 z-50 flex justify-center pointer-events-none md:bottom-5 bottom-0"
+      className="fixed bottom-5 left-0 right-0 z-50 flex justify-center pointer-events-none"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       {/* Wrapper gives the popup a reference width equal to the nav pill */}
-      <div className="relative pointer-events-auto w-full md:w-auto flex justify-center">
+      <div className="relative pointer-events-auto">
 
         {/* Work popup */}
         {openPopup === 'work' && (
@@ -121,7 +121,7 @@ export function Navigation({
         )}
 
         {/* Nav pill */}
-        <div className="bg-white flex gap-4 sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] md:rounded-[16px] rounded-none drop-shadow-[0px_2.154px_2.154px_rgba(0,0,0,0.1)] w-full md:w-auto md:max-w-[calc(100vw-24px)] justify-center border-t border-gray-100 md:border-none">
+        <div className="bg-white flex gap-4 sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] rounded-[16px] drop-shadow-[0px_2.154px_2.154px_rgba(0,0,0,0.1)] max-w-[calc(100vw-24px)]">
           {/* Profile block */}
           <div className="flex gap-0 sm:gap-[16px] items-center shrink-0">
             <div className="relative rounded-full shrink-0 size-[38px]">
