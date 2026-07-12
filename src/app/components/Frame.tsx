@@ -34,7 +34,7 @@ export function Frame({ title, x, y, width, height, children, onClick, id }: Fra
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
-      whileHover={{ scale: 1.003 }}
+      whileHover={{ scale: 1.009 }}
       transition={{ duration: 0.3 }}
     >
       {/* Frame container */}
