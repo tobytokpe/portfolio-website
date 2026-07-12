@@ -121,7 +121,7 @@ export function Navigation({
         )}
 
         {/* Nav pill */}
-        <div className="bg-white flex gap-4 sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] rounded-[16px] drop-shadow-[0px_2.154px_2.154px_rgba(0,0,0,0.1)] max-w-[calc(100vw-24px)]">
+        <div className="bg-white flex gap-[22px] sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] rounded-[16px] drop-shadow-[0px_8px_16px_rgba(0,0,0,0.14)] max-w-[calc(100vw-24px)]">
           {/* Profile block */}
           <div className="flex gap-0 sm:gap-[16px] items-center shrink-0">
             <div className="relative rounded-full shrink-0 size-[38px]">
