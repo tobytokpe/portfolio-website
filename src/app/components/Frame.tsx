@@ -34,8 +34,8 @@ export function Frame({ title, x, y, width, height, children, onClick, id }: Fra
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
-      whileHover={{ scale: 1.002 }}
-      transition={{ duration: 0.2 }}
+      whileHover={{ scale: 1.003 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Frame container */}
       <motion.div
@@ -46,7 +46,7 @@ export function Frame({ title, x, y, width, height, children, onClick, id }: Fra
           border: 'none',
           boxShadow: 'none',
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.3 }}
       >
         {children}
       </motion.div>
