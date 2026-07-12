@@ -31,9 +31,9 @@ function SectionCard({ id, children }: { id: string; children: React.ReactNode }
   return (
     <section
       id={`mobile-${id}`}
-      className="w-full max-w-[480px] mx-auto px-4 py-8 scroll-mt-20"
+      className="w-full max-w-[480px] mx-auto px-4 py-[38px] scroll-mt-20"
     >
-      <div className="relative">
+      <div className="relative bg-white rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-6">
         <div className="p-0">{children}</div>
       </div>
     </section>
