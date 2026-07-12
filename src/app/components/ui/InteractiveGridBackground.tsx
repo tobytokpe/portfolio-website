@@ -74,8 +74,8 @@ export function InteractiveGridBackground({
       const mouseY = mouseRef.current.y;
       const mouseActive = mouseRef.current.active;
 
-      const mouseInfluenceRadius = 65; // reduced by 50%
-      const mouseWarpStrength = 8;     // reduced by 50%
+      const mouseInfluenceRadius = 100; // increased to 100px
+      const mouseWarpStrength = 10;     // increased to 10
 
       const cardInfluenceRadius = 20 * Math.max(0.7, scale); // reduced by 50%
       const cardWarpStrength = 5 * Math.max(0.7, scale);    // reduced by 50%
