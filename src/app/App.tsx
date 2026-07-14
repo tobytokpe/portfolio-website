@@ -34,7 +34,6 @@ import tobiGif from '../assets/Tobi video.gif';
 import aboutMeSvg from '../assets/about-me.svg';
 
 // Stickers
-import thumbsupSticker from '../assets/stickers/thumbsup.png';
 import starSticker from '../assets/stickers/star.png';
 import plus1Sticker from '../assets/stickers/plus1.png';
 import { Sticker } from './components/Sticker';
@@ -510,11 +509,6 @@ function FigmaCanvas() {
               </motion.div>
 
               {/* Interactive Stickers */}
-              <Sticker
-                src={thumbsupSticker}
-                className="absolute w-[45px] h-[45px] left-[445px] bottom-[95px]"
-                alt="Thumbs up sticker"
-              />
               <Sticker
                 src={starSticker}
                 className="absolute w-[45px] h-[45px] right-[15px] bottom-[150px]"

@@ -6,7 +6,6 @@ import { Navigation } from './Navigation';
 import { ProjectGrid } from './ProjectGrid';
 import { LeadershipGrid } from './LeadershipGrid';
 import aboutMeSvg from '../../assets/about-me.svg';
-import thumbsupSticker from '../../assets/stickers/thumbsup.png';
 import starSticker from '../../assets/stickers/star.png';
 import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
@@ -116,11 +115,6 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                 )}
               </div>
               {/* Mobile stickers beside the avatar */}
-              <Sticker
-                src={thumbsupSticker}
-                className="absolute w-[35px] h-[35px] -left-3 -bottom-1 z-10"
-                alt="Thumbs up sticker"
-              />
               <Sticker
                 src={starSticker}
                 className="absolute w-[35px] h-[35px] -right-3 bottom-8 z-10"
