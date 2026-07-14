@@ -30,7 +30,7 @@ import leadershipImg5 from 'figma:asset/30b8b64f96a5c24586ebb4bfd106e35cb3241c25
 import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40.png';
 
 // Hero image
-import image_585c477c511121f68283baf747a1742f4dc74091 from 'figma:asset/585c477c511121f68283baf747a1742f4dc74091.png';
+import tobiGif from '../assets/Tobi video.gif';
 import aboutMeSvg from '../assets/about-me.svg';
 
 const MIN_ZOOM = 0.5;
@@ -496,10 +496,10 @@ function FigmaCanvas() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <ImageWithFallback
-                  src={image_585c477c511121f68283baf747a1742f4dc74091}
+                <img
+                  src={tobiGif}
                   alt="Tobi Olowu"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover mix-blend-multiply"
                 />
               </motion.div>
             </div>
@@ -1013,7 +1013,7 @@ function Home() {
       <MobileView
         projects={PROJECTS}
         leadership={LEADERSHIP}
-        heroImage={image_585c477c511121f68283baf747a1742f4dc74091}
+        heroImage={tobiGif}
       />
     );
   }

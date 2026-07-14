@@ -96,11 +96,19 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
         <SectionCard id="hero">
           <div className="flex flex-col items-center justify-between gap-6 py-6">
             <div className="w-[180px] h-[180px] overflow-hidden flex-shrink-0">
-              <ImageWithFallback
-                src={heroImage}
-                alt="Tobi Olowu"
-                className="w-full h-full object-contain"
-              />
+              {heroImage.endsWith('.gif') || heroImage.endsWith('.mp4') ? (
+                <img
+                  src={heroImage}
+                  alt="Tobi Olowu"
+                  className="w-full h-full object-cover mix-blend-multiply"
+                />
+              ) : (
+                <ImageWithFallback
+                  src={heroImage}
+                  alt="Tobi Olowu"
+                  className="w-full h-full object-contain"
+                />
+              )}
             </div>
             <div className="text-center">
               <h1
