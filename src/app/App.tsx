@@ -33,6 +33,12 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 import tobiGif from '../assets/Tobi video.gif';
 import aboutMeSvg from '../assets/about-me.svg';
 
+// Stickers
+import thumbsupSticker from '../assets/stickers/thumbsup.png';
+import starSticker from '../assets/stickers/star.png';
+import plus1Sticker from '../assets/stickers/plus1.png';
+import { Sticker } from './components/Sticker';
+
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 2;
 const FRICTION = 0.92;
@@ -470,7 +476,7 @@ function FigmaCanvas() {
             width={800}
             height={500}
           >
-            <div className="h-full flex items-center justify-between px-12 gap-8">
+            <div className="h-full flex items-center justify-between px-12 gap-8 relative">
               {/* Text on the left */}
               <div className="flex-1">
                 <motion.h1
@@ -491,7 +497,7 @@ function FigmaCanvas() {
 
               {/* Image on the right */}
               <motion.div
-                className="w-[280px] h-[280px] overflow-hidden flex-shrink-0"
+                className="w-[280px] h-[280px] overflow-hidden flex-shrink-0 relative"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
@@ -502,6 +508,23 @@ function FigmaCanvas() {
                   className="w-full h-full object-cover mix-blend-multiply"
                 />
               </motion.div>
+
+              {/* Interactive Stickers */}
+              <Sticker
+                src={thumbsupSticker}
+                className="absolute w-[45px] h-[45px] left-[445px] bottom-[95px]"
+                alt="Thumbs up sticker"
+              />
+              <Sticker
+                src={starSticker}
+                className="absolute w-[45px] h-[45px] right-[15px] bottom-[150px]"
+                alt="Star sticker"
+              />
+              <Sticker
+                src={plus1Sticker}
+                className="absolute w-[45px] h-[45px] right-[10px] top-[140px]"
+                alt="+1 sticker"
+              />
             </div>
           </Frame>
 

@@ -6,6 +6,10 @@ import { Navigation } from './Navigation';
 import { ProjectGrid } from './ProjectGrid';
 import { LeadershipGrid } from './LeadershipGrid';
 import aboutMeSvg from '../../assets/about-me.svg';
+import thumbsupSticker from '../../assets/stickers/thumbsup.png';
+import starSticker from '../../assets/stickers/star.png';
+import plus1Sticker from '../../assets/stickers/plus1.png';
+import { Sticker } from './Sticker';
 
 interface Project {
   id: string;
@@ -95,22 +99,40 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
       <div className="pt-6 pb-28">
         <SectionCard id="hero">
           <div className="flex flex-col items-center justify-between gap-6 py-6">
-            <div className="w-[180px] h-[180px] overflow-hidden flex-shrink-0">
-              {heroImage.endsWith('.gif') || heroImage.endsWith('.mp4') ? (
-                <img
-                  src={heroImage}
-                  alt="Tobi Olowu"
-                  className="w-full h-full object-cover mix-blend-multiply"
-                />
-              ) : (
-                <ImageWithFallback
-                  src={heroImage}
-                  alt="Tobi Olowu"
-                  className="w-full h-full object-contain"
-                />
-              )}
+            <div className="relative w-[180px] h-[180px] flex-shrink-0">
+              <div className="w-full h-full overflow-hidden">
+                {heroImage.endsWith('.gif') || heroImage.endsWith('.mp4') ? (
+                  <img
+                    src={heroImage}
+                    alt="Tobi Olowu"
+                    className="w-full h-full object-cover mix-blend-multiply"
+                  />
+                ) : (
+                  <ImageWithFallback
+                    src={heroImage}
+                    alt="Tobi Olowu"
+                    className="w-full h-full object-contain"
+                  />
+                )}
+              </div>
+              {/* Mobile stickers beside the avatar */}
+              <Sticker
+                src={thumbsupSticker}
+                className="absolute w-[35px] h-[35px] -left-3 -bottom-1 z-10"
+                alt="Thumbs up sticker"
+              />
+              <Sticker
+                src={starSticker}
+                className="absolute w-[35px] h-[35px] -right-3 bottom-8 z-10"
+                alt="Star sticker"
+              />
+              <Sticker
+                src={plus1Sticker}
+                className="absolute w-[35px] h-[35px] -right-2 top-8 z-10"
+                alt="+1 sticker"
+              />
             </div>
-            <div className="text-center">
+            <div className="text-center relative px-6">
               <h1
                 className="text-3xl font-bold text-gray-900 mb-3"
                 style={{ fontFamily: 'Syne, sans-serif' }}
