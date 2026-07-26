@@ -32,6 +32,7 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 // Hero image
 import tobiGif from '../assets/Tobi video.gif';
 import aboutMeSvg from '../assets/about-me.svg';
+import techNationLogo from '../assets/tech-nation-logo.png';
 
 // Stickers
 import starSticker from '../assets/stickers/star.png';
@@ -61,7 +62,7 @@ const PROJECTS = [
     id: 'project2', 
     slug: 'Qore',
     title: 'QORE: Launching Banking Apps Instantly',
-    description: 'Mobile banking app delivering seamless transactions, bill payments, and personalized insights for improved financial management.',
+    description: 'White-label B2B platform enabling African microfinance banks to launch fully branded digital banking apps instantly, scaling to 500+ institutions and cutting deployment from months to a single afternoon.',
     tag: 'Banking', 
     iframeUrl: 'https://oolowu.com/select-projects/qore-cc/',
     imageSrc: projectImg2
@@ -97,7 +98,7 @@ const PROJECTS = [
     id: 'project6', 
     slug: 'Signature-Bank',
     title: 'Signature Bank',
-    description: 'A website for a tier 1 bank helping with seamless banking and transactions transactions',
+    description: 'A website for a tier 1 bank delivering a seamless digital banking experience for customers across Nigeria.',
     tag: 'Banking', 
     iframeUrl: 'https://www.signaturebankng.com/',
     imageSrc: projectImg6
@@ -115,22 +116,22 @@ const LEADERSHIP = [
   },
   {
     id: 'leader2',
-    title: 'Article: AI and Variables',
-    description: 'Learn how AI can speed up the development of more accessible designsystems with variables.',
+    title: 'Article: AI & Variables, Accessible Design Systems at Scale (Zeroheight)',
+    description: 'Published on Zeroheight: a strategic exploration of how AI accelerates the development of accessible, scalable design systems using variables.',
     imageSrc: leadershipImg2,
     iframeUrl: 'https://zeroheight.com/blog/ai-and-variables-building-more-accessible-design-systems-faster/'
   },
   {
     id: 'leader3',
-    title: 'Article: Mastering AG-Grid: Designing Efficient Data Tables',
-    description: 'Best practices for AG-Grid data-tables, a framework renowned for its robust features.',
+    title: 'Article: Mastering AG-Grid, Efficient Data Tables at Scale (Woodmac)',
+    description: 'Published in Woodmac\'s design practice on Medium: a practical deep-dive into designing user-centred, high-performance data tables for enterprise-grade products.',
     imageSrc: leadershipImg3,
     iframeUrl: 'https://medium.com/woodmac/mastering-ag-grid-designing-efficient-and-user-centered-data-tables-8fa35580f4f7'
   },
   {
     id: 'leader4',
     title: 'CVSpan Product Design Learning Course',
-    description: 'Comprehensive course equipping aspiring designers with hands-on training in user-centric product design and development.',
+    description: 'Designed and facilitated a hands-on product design curriculum, covering UX research, interaction design, systems thinking, and cross-platform development, to equip the next generation of African designers.',
     imageSrc: leadershipImg4,
     iframeUrl: 'https://learn.cvspan.com/'
   },
@@ -139,12 +140,12 @@ const LEADERSHIP = [
     title: 'CVSpan Design Jam Competition',
     description: 'Organized and led collaborative design sprints, fostering innovation and teamwork within a vibrant community of designers and developers.',
     imageSrc: leadershipImg5,
-    iframeUrl: 'https://example.com/leadership/design-jam'
+    iframeUrl: 'https://community.cvspan.com/designjam-2025/'
   },
   {
     id: 'leader6',
-    title: 'Article: Design Thinking in Fintech; Creating User-Centric Experience',
-    description: 'Exploring creativity and technology to craft engaging, user-centric financial experiences that redefine traditional banking.',
+    title: 'Article: Design Thinking in Fintech, Crafting User-Centric Experiences (Qore)',
+    description: 'Published on the Qore blog: how design thinking and systems-level creativity can reshape traditional banking into engaging, trust-building digital experiences.',
     imageSrc: leadershipImg6,
     iframeUrl: 'https://qore.inc/design-thinking-in-crafting-user-centric-experiences/'
   },
@@ -491,7 +492,7 @@ function FigmaCanvas() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                >A product designer with a decade of pushing pixels, fixing flows, and making sense of chaos across fintech, SaaS, and energy, all in the name of building things people actually want to use.</motion.p>
+                >A product designer with a decade of untangling complex systems, fixing broken flows, and making sense of chaos across fintech, SaaS, and energy, from platforms serving 500+ banks to life-critical tools for the United Nations, all in the name of building things people actually want to use.</motion.p>
               </div>
 
               {/* Image on the right */}
@@ -534,7 +535,17 @@ function FigmaCanvas() {
             <div className="p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>About Me</h2>
               <div className="space-y-4 text-gray-600">
-                <p className="font-[Architects_Daughter]">A Designer dedicated to iterative improvement, ensuring products are usable with extensive experience in B2C and B2B SaaS products across mobile and web platforms. With about a decade of experience, I have led design initiatives across diverse industries, including Finance, Energy, and Technology, delivering user-centric solutions that drive significant business impact. Recently, I received the esteemed endorsement as an exceptional talent for the Global Talent UK, an acknowledgement of my dedication to the world of Design and Technology</p>
+                <p className="font-[Architects_Daughter]">A product designer with over a decade of experience building B2C and B2B SaaS products across mobile and web platforms. I've led design initiatives across Finance, Wealth Management, Energy, and Humanitarian technology, directing teams of designers, aligning stakeholders across departments, and delivering user-centric solutions that drive significant business impact. Recently, I received the prestigious endorsement as an Exceptional Talent in Digital Technology by the UK Government, an acknowledgement of my dedication to the world of Design and Technology.</p>
+
+                <div className="mt-2 bg-white border border-gray-900 rounded-2xl p-4 flex items-start gap-3">
+                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
+                    <img src={techNationLogo} alt="Tech Nation" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-900 uppercase tracking-widest font-['Syne']">UK Global Talent Endorsement</p>
+                    <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">Recognised as an Exceptional Talent in Digital Technology by the UK Government, a highly selective credential for those making outstanding contributions to tech and design.</p>
+                  </div>
+                </div>
                 
                 <div className="pt-6">
                   <img
@@ -666,6 +677,35 @@ function FigmaCanvas() {
                   <Linkedin size={20} />
                   <span>LinkedIn</span>
                 </a>
+                <div className="flex gap-3">
+                  <a
+                    href="https://www.webbie.io/u/001"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M30 0L40 9.99V40H30V0Z" fill="currentColor"/>
+                      <path d="M0 30H40V40H10.01L0 30Z" fill="currentColor"/>
+                      <path d="M20 20H30V30H20V20Z" fill="currentColor"/>
+                      <path d="M10 0H20V10H10V0Z" fill="currentColor"/>
+                      <path d="M0 10H10V20H0V10Z" fill="currentColor"/>
+                    </svg>
+                    <span>Webbie</span>
+                  </a>
+                  <a
+                    href="https://www.behance.net/oluwatobiolowu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                  >
+                    {/* Behance icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.477.602.406.272.72.63.94 1.064.22.435.33.954.33 1.56 0 .666-.15 1.224-.46 1.67-.31.445-.757.81-1.34 1.088.81.232 1.415.642 1.816 1.23.4.587.6 1.296.6 2.127 0 .666-.13 1.248-.39 1.745-.26.497-.62.907-1.08 1.23-.46.322-.997.56-1.61.713-.612.153-1.26.23-1.946.23H0V4.51h6.938v-.007zM16.94 16.665c.44.428 1.073.643 1.9.643.592 0 1.1-.148 1.527-.45.428-.3.688-.622.78-.966h2.334c-.373 1.153-.946 1.977-1.716 2.474-.77.497-1.7.746-2.788.746-.757 0-1.44-.12-2.05-.36-.61-.24-1.13-.583-1.56-1.03-.43-.447-.762-.985-.998-1.612-.235-.627-.353-1.318-.353-2.073 0-.727.12-1.407.353-2.04.233-.633.563-1.178.988-1.635.426-.457.935-.812 1.527-1.065.593-.252 1.25-.378 1.973-.378.803 0 1.504.155 2.105.465.6.31 1.097.735 1.49 1.276.39.54.67 1.155.843 1.845.173.69.23 1.42.173 2.19h-6.804c0 .89.22 1.544.66 1.97zm3.227-5.323c-.35-.385-.876-.578-1.576-.578-.47 0-.855.08-1.16.24-.3.16-.547.36-.733.6-.185.24-.313.5-.38.776-.067.276-.107.54-.12.794h4.484c-.088-.795-.365-1.447-.515-1.832zM15.5 7.5h5V6h-5v1.5zM4.715 10.957H2.43V8.21h2.284c.92 0 1.38.408 1.38 1.224 0 .443-.116.77-.35.982-.232.21-.587.316-1.03.54zm.427 4.71H2.43v-2.98h2.713c.56 0 .984.13 1.274.393.29.263.437.66.437 1.19 0 .525-.15.908-.45 1.148-.3.24-.737.36-1.262.36v-.11z"/>
+                    </svg>
+                    <span>Behance</span>
+                  </a>
+                </div>
               </div>
             </div>
           </Frame>
@@ -769,10 +809,7 @@ function ProjectPage() {
                 <p className="text-[15px] font-semibold text-gray-800 leading-snug">{val}</p>
               </div>
             ))}
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider font-['Syne']">Timeline</span>
-              <p className="text-[15px] font-semibold text-gray-800 leading-snug">2 Months</p>
-            </div>
+
           </div>
         </div>
 

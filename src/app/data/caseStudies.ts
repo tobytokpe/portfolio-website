@@ -50,10 +50,11 @@ export const CASE_STUDIES: Record<string, any> = {
     "metadata": {
       "Client": "Moore",
       "Role": "Founding Designer",
-      "Project Type": "Web & Mobile"
+      "Project Type": "Web & Mobile",
+      "Timeline": "5 Months"
     },
     "problem": "We needed to unify visual fragmentation across platforms and optimize a complex 8-stage onboarding flow, while mitigating user anxiety during low-network transaction freezes.",
-    "solution": "We restructured onboarding into a validated 3-step sequence, aligned Web/Mobile layout variables, and shipped a high-trust payment progress engine — driving 8,000+ organic downloads and securing a Friends & Family seed round.",
+    "solution": "We restructured onboarding into a validated 3-step sequence, aligned Web/Mobile layout variables, and shipped a high-trust payment progress engine, driving 8,000+ organic downloads and securing a Friends & Family seed round.",
     "heroImage": project4_hero,
     "sections": [
       {
@@ -95,11 +96,11 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "image",
             "src": img_project4_onboarding,
-            "alt": "Moore 3-step onboarding screens showing BVN/NIN verification, OTP, passcode and transaction PIN setup"
+            "alt": "Moore 5-step onboarding screens showing BVN/NIN verification, OTP, passcode and transaction PIN setup"
           },
           {
             "type": "paragraph",
-            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC) by educating users on features"
+            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC), educating users on the app's core value before they downloaded it, reducing cold-start friction and improving organic conversion rates."
           },
           {
             "type": "image",
@@ -147,6 +148,10 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
+            "text": "**Accessibility & Inclusive Design**: Because Moore serves users across diverse economic backgrounds, many on older, lower-end Android devices, accessibility was non-negotiable. We ensured all interactive elements met WCAG 2.1 AA contrast ratios, tested legibility at minimum font sizes, and verified the payment flow was fully navigable with screen reader tools. High-contrast text, haptic feedback patterns, and clear error states were designed in from the first iteration, not added as an afterthought."
+          },
+          {
+            "type": "paragraph",
             "text": "**Partnering with Engineers**: I worked hand-in-hand with our developers to make sure our designs translated perfectly to live code. By aligning our Figma library directly with their design tokens, developers could build identical, beautiful screens across mobile and web at lightning speed."
           },
           {
@@ -173,6 +178,10 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Efficiency & Conversion**: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%. Overhauling the payment verification flow cut accidental double-tap payment errors down to 0.2%, while shipping a component-driven token system cut our software development and engineering handoff times by 50%."
           },
           {
+            "type": "paragraph",
+            "text": "**Seed Funding Validation**: The combination of organic growth, a measurably usable product, and a complete design system foundation contributed directly to Moore securing a Friends & Family seed round. For the founding team, the design wasn't just a visual layer, it was a core product proof point demonstrating user traction and engineering readiness to early investors."
+          },
+          {
             "type": "image",
             "src": img_project4_conclusion,
             "alt": "Moore mobile application screen mockups and showcases"
@@ -188,7 +197,8 @@ export const CASE_STUDIES: Record<string, any> = {
     "metadata": {
       "Client": "United Nations Development Programme (UNDP)",
       "Role": "Lead UX / UI Designer",
-      "Project Type": "Web & Mobile"
+      "Project Type": "Web & Mobile",
+      "Timeline": "3 Months"
     },
     "problem": "Vulnerable communities in conflict-prone regions lack fast, safe, and reliable infrastructure to report emergencies and coordinate response initiatives.",
     "solution": "We engineered CEWERS, a highly optimized mobile early-warning system that supports rapid alert dispatch, geo-location logging, and secure responder synchronization.",
@@ -284,7 +294,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "Real-World Trade-Off: The project stakeholders initially requested that the voice notes be automatically translated to text on the device using AI before sending. However, the processing delay on low-tier smartphones took up to 12 seconds—a dangerous gap in a crisis. I fought to remove on-device translation entirely, trading automated text strings for raw audio file streaming, which dropped the transmission time down to under 2 seconds."
+            "text": "**Real-World Trade-Off**: The project stakeholders initially requested that the voice notes be automatically translated to text on the device using AI before sending. However, the processing delay on low-tier smartphones took up to 12 secondsa dangerous gap in a crisis. I fought to remove on-device translation entirely, trading automated text strings for raw audio file streaming, which dropped the transmission time down to under 2 seconds."
           },
           {
             "type": "paragraph",
@@ -292,15 +302,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "Stress Drills: We observed people trying to report incidents during simulated emergency drills to see exactly where they got confused."
-          },
-          {
-            "type": "paragraph",
-            "text": "Clearer Labels: Testing proved that our initial instructions were too vague during high-stress moments. We changed them into bold, highly noticeable warning banners that guide users step-by-step."
-          },
-          {
-            "type": "paragraph",
-            "text": "The Power of Audio: Adding the voice recorder instantly fixed the errors and frustrations people experienced when forced to type under pressure."
+            "text": "**Field Testing Outcomes**: Across 12 to 15 live simulations with community leaders, farmers, and security workers, three critical insights shaped the final design. First, our initial alert labels were too ambiguous under pressure, we replaced vague text with bold, high-contrast warning banners that guide users step by step. Second, swiping between hidden categories caused significant confusion during stress drills, validating our pivot to the always-visible grid layout. Third, adding the one-tap voice recorder eliminated the primary failure mode: participants who struggled to type under duress could now file a complete, location-tagged report in under four seconds."
           }
         ]
       },
@@ -319,7 +321,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "We also designed easy-to-read print guides and documentation. This helped local governments launch community training programs to ensure communities were fully prepared to use the tool in real life."
+            "text": "We also designed easy-to-read print guides and documentation, with deliberate attention to literacy-level language and visual clarity. This helped local governments launch community training programs to ensure communities were fully prepared to use the tool in real life. Across all interface decisions, WCAG-compliant contrast ratios, large tap targets, and a voice-first primary flow ensured the app remained accessible regardless of literacy level, cognitive load, or physical environment."
           },
           {
             "type": "paragraph",
@@ -353,7 +355,8 @@ export const CASE_STUDIES: Record<string, any> = {
     "metadata": {
       "Client": "Qore Technologies",
       "Role": "Sole Product Designer",
-      "Project Type": "Web"
+      "Project Type": "Web",
+      "Timeline": "2 Months"
     },
     "problem": "Fintech developers and bank partners struggle to orchestrate multiple fragmented B2B APIs, leading to visual incongruity, configuration errors, separate billing systems, and delayed integration timelines.",
     "solution": "We architected Hydra, a unified B2B API gateway dashboard that standardizes payload visualization, streamlines credentials configuration, and consolidates multi-provider billing.",
@@ -365,7 +368,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Project**: Over a fast-paced two-month timeline, I looked after the end-to-end design for Hydra—a business software platform built by Qore Technologies to combine messy, scattered financial software links (APIs) for banks and financial tech platforms."
+            "text": "**The Project**: Over a fast-paced two-month timeline, I looked after the end-to-end design for Hydraa business software platform built by Qore Technologies to combine messy, scattered financial software links (APIs) for banks and financial tech platforms."
           },
           {
             "type": "paragraph",
@@ -383,7 +386,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Chaos**: Before Hydra, financial institutions had to buy digital services—like payment processing, balance checks, and transaction tracking—from completely separate external companies. For teams on the ground, this was an operational nightmare. Developers had to read completely different code styles, office admins had to pay separate bills for every tool, and reporting required manually downloading endless, messy spreadsheets."
+            "text": "**The Chaos**: Before Hydra, financial institutions had to buy digital serviceslike payment processing, balance checks, and transaction trackingfrom completely separate external companies. For teams on the ground, this was an operational nightmare. Developers had to read completely different code styles, office admins had to pay separate bills for every tool, and reporting required manually downloading endless, messy spreadsheets."
           },
           {
             "type": "paragraph",
@@ -438,7 +441,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Heavy-Duty Prototyping**: Financial dashboards live and die by how they handle massive amounts of text and numbers. I built highly realistic interactive prototypes in Figma to simulate extreme situations—like displaying tables holding thousands of row entries. This helped us polish spacing, row layouts, and how long numbers cut off before writing any live code."
+            "text": "**Heavy-Duty Prototyping**: Financial dashboards live and die by how they handle massive amounts of text and numbers. I built highly realistic interactive prototypes in Figma to simulate extreme situationslike displaying tables holding thousands of row entries. This helped us polish spacing, row layouts, and how long numbers cut off before writing any live code."
           },
           {
             "type": "paragraph",
@@ -460,9 +463,13 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
-        "title": "The Ultimate Impact",
+        "title": "From Fragmented APIs to ₦60M+ in Processed Transactions",
         "type": "section",
         "items": [
+          {
+            "type": "paragraph",
+            "text": "**Accessibility & WCAG Compliance**: All financial data tables, status badges, and billing displays were designed and validated against WCAG 2.1 AA standards, ensuring that high-density content like transaction histories, API key configurations, and billing records remained fully legible and navigable for enterprise users with visual impairments or assistive technology dependencies."
+          },
           {
             "type": "paragraph",
             "text": "Faster Integration Timelines: Providing step-by-step setup guides and side-drawer code panels slashed developer integration times by 46%."
@@ -490,7 +497,8 @@ export const CASE_STUDIES: Record<string, any> = {
     "metadata": {
       "Client": "Qore Technologies",
       "Role": "Lead Product Designer",
-      "Project Type": "Web & Mobile"
+      "Project Type": "Web & Mobile",
+      "Timeline": "5 Months"
     },
     "problem": "Microfinance banks across Africa faced months of manual development cycles to launch digital apps, resulting in fragmented interfaces, accessibility failures from unconstrained client styling, and high sign-up drop-offs.",
     "solution": "We architected an administrative no-code setup wizard allowing bank operators to dynamically configure brand identities within a resilient token system, alongside an optimized, 2-minute consumer onboarding flow.",
@@ -521,6 +529,10 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**The Problems We Inherited**: Historically, every new bank that required an app triggered a long, manual development cycle. This created massive engineering delays, pushing product launch times out to several months. The resulting apps were slow and cluttered, leading to an onboarding drop-off rate of 45% and failing to build user trust."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Research & Discovery**: I structured our discovery around two distinct user groups with very different mental models. Bank administrators participated in expert interviews and stakeholder mapping sessions, exposing the friction in their existing brand customization workflows. End consumers joined benchmarking usability tests on competing white-label apps to identify precise drop-off moments. Card sorting workshops with both groups validated our navigation taxonomy and revealed a key insight: bank operators prioritized configuration control, while consumers prioritized speed and reassurance during onboarding."
           },
           {
             "type": "paragraph",
@@ -615,7 +627,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**The Monochrome Base Pattern**: I pivoted the interface to a monochrome-base scaling pattern. The foundational application layout was permanently anchored to a safe gray, white, and black palette. The bank’s custom brand colors were then dynamically injected only into highly specific, safe surfaces—such as action buttons, active tabs, and success screens. This maintained perfect accessibility compliance while safely accommodating any corporate identity."
+            "text": "**The Monochrome Base Pattern**: I pivoted the interface to a monochrome-base scaling pattern. The foundational application layout was permanently anchored to a safe gray, white, and black palette. The bank’s custom brand colors were then dynamically injected only into highly specific, safe surfacessuch as action buttons, active tabs, and success screens. This maintained perfect accessibility compliance while safely accommodating any corporate identity."
           },
           {
             "type": "image",
@@ -654,7 +666,8 @@ export const CASE_STUDIES: Record<string, any> = {
     "metadata": {
       "Client": "Mango Asset Management",
       "Role": "Lead Product Designer",
-      "Project Type": "Web & Mobile"
+      "Project Type": "Web & Mobile",
+      "Timeline": "4 Months"
     },
     "problem": "Mango Asset Management operated strictly as a traditional financial institution, managing portfolios through manual paperwork. The operational workflow spanned 3 to 5 business days, requiring physical prospectus distribution and manual KYC/wire checks.",
     "solution": "We designed MAMVest, an SEC-approved digital wealth platform that democratizes access to Mutual Funds, Bonds, Treasury Bills, and Commercial Papers with a minimum entry point of ₦1,000, reducing transaction times to under 4 minutes.",
@@ -666,7 +679,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: For decades, Mango Asset Management operated strictly as a traditional financial institution, managing premium portfolios for corporate entities and high-net-worth individuals through manual paperwork, relationship managers, and bespoke offline operations. To expand market share and tap into emerging retail capital channels, the firm launched a comprehensive 4-month digitization initiative to build MAMVest—their foundational customer-facing digital product ecosystem."
+            "text": "**The Big Picture**: For decades, Mango Asset Management operated strictly as a traditional financial institution, managing premium portfolios for corporate entities and high-net-worth individuals through manual paperwork, relationship managers, and bespoke offline operations. To expand market share and tap into emerging retail capital channels, the firm launched a comprehensive 4-month digitization initiative to build MAMVesttheir foundational customer-facing digital product ecosystem."
           },
           {
             "type": "paragraph",
@@ -710,11 +723,12 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "image",
             "src": img_project3_user_flow,
-            "alt": "MAMVest flow chart mapping user actions to investment potfolios"
+            "alt": "MAMVest flow chart mapping user actions to investment portfolios"
           },
           {
             "type": "video",
             "src": video_project3_onboarding,
+            "alt": "MAMVest onboarding flow demo, showing the streamlined account opening and KYC verification process",
             "fullWidth": true
           },
           {
@@ -766,7 +780,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Simulating Extreme Financial Edge Cases**: Financial systems operate under chaotic real-world conditions. Over our 4-month lifecycle, I led our design team through rigorous programmatic stress testing. We flooded our interactive Figma prototypes with extreme data loads—populating dashboards with astronomical account balances (₦180,500,750.22), deeply stacked multi-asset histories, fractional interest values, and localized network errors."
+            "text": "**Simulating Extreme Financial Edge Cases**: Financial systems operate under chaotic real-world conditions. Over our 4-month lifecycle, I led our design team through rigorous programmatic stress testing. We flooded our interactive Figma prototypes with extreme data loadspopulating dashboards with astronomical account balances (₦180,500,750.22), deeply stacked multi-asset histories, fractional interest values, and localized network errors."
           },
           {
             "type": "paragraph",
@@ -789,6 +803,10 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Multiplied Team Capabilities**: Formalizing our assets into a unified design system framework allowed Mango's internal teams to build secondary features up to 40% faster, completely eliminating technical debt and proving design as a core driver of business growth."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Admin Control Desk**: The internal operational portal was designed for Mango's relationship managers and compliance officers, providing real-time visibility into investor KYC verification status, portfolio subscription activity, and regulatory audit trails. Centralizing these operations into a single dashboard eliminated the manual spreadsheet workflows that previously required 3 to 5 business days to reconcile, empowering account officers to service multiple clients simultaneously."
           },
           {
             "type": "image",
