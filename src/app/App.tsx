@@ -20,6 +20,7 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
+import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
 import leadershipImg1 from 'figma:asset/c155cac86dd8ff90a2a85cab8016320721e754d1.png';
@@ -94,8 +95,17 @@ const PROJECTS = [
     iframeUrl: 'https://oolowu.com/select-projects/cewers-cc/',
     imageSrc: projectImg5
   },
-  { 
-    id: 'project6', 
+  {
+    id: 'project7',
+    slug: 'Bespoka',
+    title: 'Bespoka: Building an Operating System for an Industry Nobody Digitised',
+    description: 'A marketplace and full operating system for bespoke tailors, designed and built solo end to end, from client booking to order tracking to split-deposit invoicing.',
+    tag: 'Marketplace',
+    iframeUrl: '',
+    imageSrc: projectImg7
+  },
+  {
+    id: 'project6',
     slug: 'Signature-Bank',
     title: 'Signature Bank',
     description: 'A public website for a tier 1 bank, built to make digital banking feel straightforward for customers across Nigeria.',

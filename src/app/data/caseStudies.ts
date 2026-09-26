@@ -1,4 +1,10 @@
 /* Auto-generated case studies data */
+import project6_hero from '../../assets/case-studies/project6/bespoka-landing.png';
+import img_project6_marketplace from '../../assets/case-studies/project6/bespoka-marketplace-home.webp';
+import img_project6_signup from '../../assets/case-studies/project6/bespoka-signup-selection.webp';
+import img_project6_dashboard from '../../assets/case-studies/project6/bespoka-tailor-dashboard.webp';
+import img_project6_features from '../../assets/case-studies/project6/bespoka-features.png';
+import img_project6_pricing from '../../assets/case-studies/project6/bespoka-pricing.png';
 import project5_hero from '../../assets/case-studies/project5/cewers-hero.png';
 import img_project5_30 from '../../assets/case-studies/project5/cewers-hero.png';
 import img_project5_roles from '../../assets/case-studies/project5/cewers-roles.png';
@@ -815,6 +821,125 @@ export const CASE_STUDIES: Record<string, any> = {
           }
         ]
       },
+    ]
+  },
+
+  "project7": {
+    "id": "project7",
+    "title": "Bespoka: Building an Operating System for an Industry Nobody Digitised",
+    "metadata": {
+      "Client": "Personal / Founder Project",
+      "Role": "Founder, Product Designer & Builder",
+      "Project Type": "Web & Mobile, Full-Stack",
+      "Timeline": "Ongoing"
+    },
+    "problem": "Bespoke tailors run real, sophisticated businesses, measurements, staged production, deposits, repeat clients, entirely on WhatsApp, memory, and paper. There's no software built around how a tailor actually works, and no way for a buyer to trust a tailor with their money and their measurements up front.",
+    "solution": "I designed and built Bespoka end to end, product, interface, and the underlying backend, a two-sided platform: a public marketplace where buyers discover and book verified tailors, and a full operating system for the tailor's side of the business, from a measurement vault to a 6-stage order tracker to split-deposit invoicing.",
+    "heroImage": project6_hero,
+    "sections": [
+      {
+        "title": "Designing for a Trade With No Software Category",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The gap**: Every fintech I'd worked on before this had a category to sit inside, banking, wealth management, payments infrastructure. Tailoring didn't. Master tailors run genuinely complex operations, cutting schedules, fitting appointments, fabric costs, staggered deposits, and almost none of it lives anywhere but a notebook or a WhatsApp thread."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Why that's a design problem, not just a market gap**: When there's no existing software category to reference, there's no established interaction pattern to borrow either. I couldn't design \"a CRM for tailors\" by looking at how CRMs work, because a tailor's real unit of work isn't a contact record, it's a garment moving through physical stages that a spreadsheet has no language for."
+          },
+          {
+            "type": "image",
+            "src": img_project6_marketplace,
+            "alt": "Bespoka marketplace home showing recommended tailors, new-to-Bespoka listings, and trending studios"
+          }
+        ]
+      },
+      {
+        "title": "The Two-Sided Problem: Trust on One Side, Depth on the Other",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Two very different jobs under one roof**: A buyer needs to trust a stranger with their body measurements and a deposit before they've seen a single stitch. A tailor needs a tool sophisticated enough to actually replace the notebook, not a simplified toy version of their real workflow. Building both into one coherent product meant neither side could compromise the other."
+          },
+          {
+            "type": "paragraph",
+            "text": "**One design system, two audiences**: I built a single navy-and-white, border-led design system, shared design tokens synced by hand between the web and mobile codebases, so the marketplace felt calm and trustworthy for a first-time buyer while the same visual language held up under the density of a real business dashboard: revenue, active orders, staff permissions, invoices."
+          },
+          {
+            "type": "image",
+            "src": img_project6_signup,
+            "alt": "Bespoka account creation screen letting a new user choose between signing up as a buyer or as a business"
+          }
+        ]
+      },
+      {
+        "title": "The Order Pipeline as the Spine of the Product",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Turning \"trust me\" into \"watch it happen\"**: The single feature I'd point to as the core of the product is the 6-stage order tracker, cutting, first fitting, sewing, quality check, and delivery. Every garment moves through it, and every stage change fires an automatic update to the client by SMS or email."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Why a tracker, not a status field**: A dropdown that says \"in progress\" tells a client nothing. A tracker that says \"fabric cut, fitting scheduled for Thursday\" replaces the anxious WhatsApp check-in that every tailor I spoke to described as their biggest daily interruption. It's the same instinct behind CEWERS's field alerts or Hydra's billing view: don't make someone ask a question the system already knows the answer to."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Money follows the same logic**: Invoicing supports split deposits (a percentage upfront, the balance on completion) with itemised fabric, labour, and service charges, and payment links sent straight to WhatsApp, SMS, or email, because that's where tailors' clients already are, not where I'd prefer them to be."
+          },
+          {
+            "type": "image",
+            "src": img_project6_features,
+            "alt": "Bespoka feature set covering saved client measurements, the 6-stage order tracker, invoicing, staff roles, and revenue tracking"
+          }
+        ]
+      },
+      {
+        "title": "Building It Solo, End to End",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The actual craft story here**: Bespoka is the first project where I've owned the whole stack myself, product decisions, interface design, and the Node/Express/Prisma backend underneath it. That's a different discipline from designing screens for someone else's engineering team to build. Every trade-off I'd normally negotiate with an engineer, I had to make and live with directly."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Where that discipline shows up**: subscription tiers (Free, Growth, Fashion House) are enforced server-side, not just hidden in the UI, and every tier-gated feature has to agree on both layers before I consider it done. A five-state rule runs across the whole interface, populated, empty, loading, error, and disabled, so nothing ships half-finished just because the happy path looks good in a demo."
+          },
+          {
+            "type": "image",
+            "src": img_project6_dashboard,
+            "alt": "Bespoka tailor dashboard showing active workroom orders, revenue, upcoming timeline, and weekly capacity"
+          }
+        ]
+      },
+      {
+        "title": "Where It Stands",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Honest about the stage**: Bespoka is pre-launch. There's no traction number to put here yet, and I'd rather say that plainly than dress up a seeded demo as proof. What exists instead is a complete, working product: marketplace, booking, measurements, order pipeline, invoicing, staff management, and a super-admin layer behind it, built by one person."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Pricing built for how the industry actually grows**: Free for a solo tailor with up to 5 clients, ₦5,000/month once a workshop needs unlimited clients and a small team, ₦15,000/month for a multi-tailor fashion house with staff permissions and marketing tools. The tiers map to how a workshop actually scales, not to arbitrary feature buckets."
+          },
+          {
+            "type": "image",
+            "src": img_project6_pricing,
+            "alt": "Bespoka pricing page comparing Free, Growth, and Fashion House plans against a full feature matrix"
+          },
+          {
+            "type": "paragraph",
+            "text": "**What's next**: getting it in front of real tailors and buyers, and finding out which of these decisions survive contact with people who aren't me."
+          }
+        ]
+      }
     ]
   }
 };
