@@ -161,11 +161,32 @@ const LEADERSHIP = [
   },
 ];
 
+const WORK_FRAME_MIN_HEIGHT = 1600;
+
 function FigmaCanvas() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
+  // The "Selected Work" frame sizes itself to its content instead of a fixed
+  // height, so adding/removing project cards never clips the grid again.
+  const workContentRef = useRef<HTMLDivElement>(null);
+  const [workFrameHeight, setWorkFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+
+  useEffect(() => {
+    const el = workContentRef.current;
+    if (!el) return;
+
+    const updateHeight = () => {
+      setWorkFrameHeight(Math.max(el.scrollHeight, WORK_FRAME_MIN_HEIGHT));
+    };
+
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Email copy state
   const [emailCopied, setEmailCopied] = useState(false);
   const [hoveredCopyButton, setHoveredCopyButton] = useState(false);
@@ -581,9 +602,9 @@ function FigmaCanvas() {
             x={1850}
             y={200}
             width={800}
-            height={1600}
+            height={workFrameHeight}
           >
-            <div className="h-full w-full overflow-hidden p-12">
+            <div ref={workContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>Selected Work</h2>
               <ProjectGrid
                 projects={PROJECTS}
