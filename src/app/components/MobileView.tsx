@@ -134,7 +134,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                 Hi, I'm Tobi Olowu
               </h1>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                A product designer with a decade of pushing pixels, fixing flows, and making sense of chaos across fintech, SaaS, and energy, all in the name of building things people actually want to use.
+                A product designer with a decade of fixing broken flows across fintech, SaaS, and energy, all in the name of building things people actually want to use.
               </p>
             </div>
             <button
@@ -156,7 +156,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           </h2>
           <div className="space-y-6 text-[#5d6c7c] text-sm leading-[1.7]">
             <p className="font-[Architects_Daughter]">
-              A Designer dedicated to iterative improvement, ensuring products are usable with extensive experience in B2C and B2B SaaS products across mobile and web platforms. With about a decade of experience, I have led design initiatives across diverse industries, including Finance, Energy, and Technology, delivering user-centric solutions that drive significant business impact. Recently, I received the esteemed endorsement as an exceptional talent for the Global Talent UK, an acknowledgement of my dedication to the world of Design and Technology.
+              A designer who believes usable beats clever, with close to a decade building B2C and B2B SaaS products across mobile and web. I've led design across Finance, Energy, and Technology, delivering solutions that drive real business impact, not just better-looking screens. I was recently endorsed as an Exceptional Talent by the UK Government's Global Talent scheme, recognition for the work, not the title.
             </p>
             
             <div className="pt-6">
@@ -214,7 +214,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           <div className="h-full flex flex-col items-center justify-center text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
             <p className="text-gray-600 mb-8 max-w-sm text-sm">
-              Interested in working together? Feel free to reach out through any of these channels.
+              Got a project, a question, or just want to talk shop? Reach out through any of these.
             </p>
             <div className="space-y-3 w-full max-w-xs mx-auto">
               <div className="flex gap-3">

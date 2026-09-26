@@ -46,15 +46,15 @@ import img_project4_conclusion from '../../assets/case-studies/project4/moore-co
 export const CASE_STUDIES: Record<string, any> = {
   "project4": {
     "id": "project4",
-    "title": "Moore: Making Digital Banking Simple for New Markets",
+    "title": "Moore: Banking That Doesn't Feel Like Banking",
     "metadata": {
       "Client": "Moore",
       "Role": "Founding Designer",
       "Project Type": "Web & Mobile",
       "Timeline": "5 Months"
     },
-    "problem": "We needed to unify visual fragmentation across platforms and optimize a complex 8-stage onboarding flow, while mitigating user anxiety during low-network transaction freezes.",
-    "solution": "We restructured onboarding into a validated 3-step sequence, aligned Web/Mobile layout variables, and shipped a high-trust payment progress engine, driving 8,000+ organic downloads and securing a Friends & Family seed round.",
+    "problem": "Moore's onboarding had eight stages, its web and mobile screens didn't look like the same product, and every time the network dropped mid-transaction, users assumed the app had crashed and them lost their money.",
+    "solution": "We cut onboarding to three validated steps, aligned the web and mobile layouts to one set of rules, and built a payment progress engine people could actually trust. That combination took Moore to 8,000+ organic downloads and a Friends & Family seed round.",
     "heroImage": project4_hero,
     "sections": [
       {
@@ -63,15 +63,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture & Core Role**: As the Founding Product Designer, my primary focus was establishing the end-to-end user experience and overall visual direction of the Moore application. Moore was designed to simplify digital banking for new markets, combining sending money, savings, and personal finance utilities into a cohesive, high-trust experience."
+            "text": "**The role**: As founding product designer, I owned the end-to-end experience and visual direction for Moore. The idea was simple to say and hard to build: fold sending money, savings, and everyday finance into one app that felt like it belonged in a new market, not a scaled-down version of a Western bank app."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: Our primary challenge was a classic product design dilemma: we had to hide complex, heavy-duty banking systems behind an ultra-simple, lightning-fast app that needed to feel warm and welcoming, even when running on slow phones or unstable internet networks."
+            "text": "**The tension**: Underneath a warm, welcoming surface sat genuinely heavy banking infrastructure. The job was to hide that weight without hiding the trust that comes with knowing your money is safe, on phones that weren't fast and networks that weren't stable."
           },
           {
             "type": "paragraph",
-            "text": "**Defining the Experience**: Working directly with the founding team, I defined the primary flows across web and mobile platforms, aligning layouts to make technical transactions simple, clear, and reassuring."
+            "text": "**Working with the founders**: I sat with the founding team to map the primary flows across web and mobile, aligning the two so a transaction felt like the same action wherever you tapped it."
           },
           {
             "type": "video",
@@ -87,11 +87,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Problems We Inherited**: When I first joined, the app felt completely disconnected. New users were quitting during a confusing sign-up process (onboarding drop-off sat at a high 48%), and we had no foundation to easily launch the app on different types of phones or in new languages."
+            "text": "**What I inherited**: When I joined, the app felt like three products stitched together. New users were quitting mid sign-up, drop-off sat at 48%, and there was no shared foundation to launch on different phones or in new languages without rebuilding from scratch."
           },
           {
             "type": "paragraph",
-            "text": "**Structuring a 5-Step Flow**: I overhauled the flow, compressing the 8 onboarding stages down to 5 highly intuitive steps. The new structure prioritized validation in real time following industry-standard input guidelines, preventing errors before submission."
+            "text": "**Cutting eight stages to five**: I compressed the sign-up flow from eight stages to five, with real-time validation against standard input guidelines so an error got caught before submission, not after."
           },
           {
             "type": "image",
@@ -100,7 +100,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**The Web & CAC Strategy**: Alongside the core mobile product, I pushed to design the public marketing website in tandem. This was a calculated move to lower Customer Acquisition Costs (CAC), educating users on the app's core value before they downloaded it, reducing cold-start friction and improving organic conversion rates."
+            "text": "**Designing the website alongside the app**: I pushed to design the public marketing site at the same time as the mobile product. The bet was that if people understood what the app did before they downloaded it, we'd lower acquisition cost and cut cold-start friction. It worked."
           },
           {
             "type": "image",
@@ -113,14 +113,14 @@ export const CASE_STUDIES: Record<string, any> = {
         "title": "Removing Fear: Designing a Stress-Free Payment Experience",
         "type": "section",
         "items": [
-         
+
           {
             "type": "paragraph",
-            "text": "**Learning from Mistakes**: Our first test designs used standard spinning loading wheels while processing payments. However, when we watched real people use the app, we realized these empty animations actually made them more anxious. They assumed the app had crashed."
+            "text": "**A mistake worth naming**: Our first payment screens used a standard spinning loader. Watching real people use it, the opposite of calm happened; a blank spinner made them anxious. Most assumed the app had frozen and backed out mid-transfer."
           },
           {
             "type": "paragraph",
-            "text": "**The Asynchronous Trade-Off & Progress Tracker**: We completely changed our approach. We built a step-by-step progress tracker that explicitly shows users exactly what the system is doing in real time. The final layout isolates the PIN boxes clearly, uses gentle vibration feedback when buttons are tapped, and summarizes all the transfer details right before you hit send."
+            "text": "**The fix**: We threw the spinner out and built a step-by-step progress tracker that names exactly what's happening, in real time. PIN entry sits in its own clear space, a light vibration confirms every tap, and the transfer summary shows up right before you hit send, not after."
           },
 
         ]
@@ -131,7 +131,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Unified Design Foundation**: To scale Moore efficiently across iOS, Android, and web screens, I transformed the initial layouts into an established component library. The system ensures that visual details remain uniform and easily updatable."
+            "text": "**One system, three platforms**: To scale Moore across iOS, Android, and web without three separate visual languages, I turned the early layouts into a proper component library, one that stayed consistent and was easy to update without touching every screen by hand."
           },
           {
             "type": "cta",
@@ -140,19 +140,19 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Figma Variables Integration**: By linking design tokens to developer components, we streamlined handoffs and drastically reduced software iteration cycles, maintaining layout parity across all platforms."
+            "text": "**Figma variables in, iteration time down**: Linking design tokens directly to developer components tightened handoff and cut iteration cycles, so layout stayed identical across platforms without anyone manually re-checking spacing."
           },
           {
             "type": "paragraph",
-            "text": "**Simulating Worst-Case Scenarios**: We didn't just design for perfect conditions. We built highly realistic digital models to test how our screens behaved under terrible internet conditions. We even tested how the screen looked when displaying massive account balances like ₦2,905,215.23 to ensure the numbers never cut off or looked messy."
+            "text": "**Testing the worst case, not the best one**: We built realistic models of terrible network conditions rather than assuming good ones. We even tested what a balance like ₦2,905,215.23 looked like on screen, because the moment a number clips or wraps badly, trust drops with it."
           },
           {
             "type": "paragraph",
-            "text": "**Accessibility & Inclusive Design**: Because Moore serves users across diverse economic backgrounds, many on older, lower-end Android devices, accessibility was non-negotiable. We ensured all interactive elements met WCAG 2.1 AA contrast ratios, tested legibility at minimum font sizes, and verified the payment flow was fully navigable with screen reader tools. High-contrast text, haptic feedback patterns, and clear error states were designed in from the first iteration, not added as an afterthought."
+            "text": "**Accessibility, not as an afterthought**: Moore's users span a wide range of devices, many older and lower-end Android phones. Every interactive element hit WCAG 2.1 AA contrast, we checked legibility at minimum font sizes, and we walked the payment flow with a screen reader before calling it done. High-contrast text, haptic patterns, and clear error states were in the first iteration, not bolted on later."
           },
           {
             "type": "paragraph",
-            "text": "**Partnering with Engineers**: I worked hand-in-hand with our developers to make sure our designs translated perfectly to live code. By aligning our Figma library directly with their design tokens, developers could build identical, beautiful screens across mobile and web at lightning speed."
+            "text": "**Working with engineers, not around them**: I worked directly with our developers so the design translated into code without drift. Aligning the Figma library to their tokens meant they could build identical, polished screens across mobile and web fast."
           },
           {
             "type": "image",
@@ -167,19 +167,19 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Setting Quality Gates**: To maintain this quality as the company grew, I introduced Design Gates. These are quick review checkpoints ensuring no feature gets sent to developers without being checked for errors, edge cases, and visual polish. This gave our junior designers a clear blueprint to work independently."
+            "text": "**Design gates**: As the team grew, I introduced Design Gates, short review checkpoints so nothing shipped without a check for errors, edge cases, and visual polish. It also gave junior designers a clear standard to work against without needing me in every review."
           },
           {
             "type": "paragraph",
-            "text": "**Organic Scale**: Because we built a highly usable, accessible product from day one, Moore successfully scaled to over **8,000 user downloads** organically without any prior marketing initiatives."
+            "text": "**Growth without a marketing budget**: Because the product was usable and accessible from day one, Moore reached over **8,000 downloads** organically, with no paid marketing behind it."
           },
           {
             "type": "paragraph",
-            "text": "**Efficiency & Conversion**: Re-architecting the sign-up process slashed our onboarding abandonment rate from 48% to 14%. Overhauling the payment verification flow cut accidental double-tap payment errors down to 0.2%, while shipping a component-driven token system cut our software development and engineering handoff times by 50%."
+            "text": "**The numbers that mattered**: Re-architecting sign-up dropped onboarding abandonment from 48% to 14%. Fixing the payment verification flow cut accidental double-tap errors to 0.2%. Shipping the token system cut engineering handoff time by half."
           },
           {
             "type": "paragraph",
-            "text": "**Seed Funding Validation**: The combination of organic growth, a measurably usable product, and a complete design system foundation contributed directly to Moore securing a Friends & Family seed round. For the founding team, the design wasn't just a visual layer, it was a core product proof point demonstrating user traction and engineering readiness to early investors."
+            "text": "**What it meant for funding**: Organic growth, a measurably usable product, and a real design system together helped Moore close a Friends & Family seed round. For the founding team, design wasn't decoration, it was proof to early investors that the product actually worked."
           },
           {
             "type": "image",
@@ -193,15 +193,15 @@ export const CASE_STUDIES: Record<string, any> = {
 
   "project5": {
     "id": "project5",
-    "title": "UNDP: Rebuilding Security and Alert Systems in Crisis Zones",
+    "title": "UNDP: The Panic Button That Had to Work in Four Seconds",
     "metadata": {
       "Client": "United Nations Development Programme (UNDP)",
       "Role": "Lead UX / UI Designer",
       "Project Type": "Web & Mobile",
       "Timeline": "3 Months"
     },
-    "problem": "Vulnerable communities in conflict-prone regions lack fast, safe, and reliable infrastructure to report emergencies and coordinate response initiatives.",
-    "solution": "We engineered CEWERS, a highly optimized mobile early-warning system that supports rapid alert dispatch, geo-location logging, and secure responder synchronization.",
+    "problem": "People in conflict-prone parts of Northern Nigeria had no fast, safe way to report an emergency, and 42% had simply stopped trying.",
+    "solution": "We built CEWERS, a voice-first early-warning app that sends a location-tagged alert without a login, a form, or a stable signal.",
     "heroImage": project5_hero,
     "sections": [
       {
@@ -210,15 +210,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Project**: During a fast-paced three-month project for the United Nations Development Programme (UNDP), I led the design strategy for the Conflict Early Warning Response System (CEWERS). The goal was to build a web and mobile app to broadcast real-time safety threats across volatile regions in Northern Nigeria (specifically Taraba, Benue, and Nasarawa)."
+            "text": "**The project**: Over a fast three months for UNDP, I led the design of the Conflict Early Warning Response System, CEWERS, a web and mobile tool built to broadcast real-time safety threats across Taraba, Benue, and Nasarawa states in Northern Nigeria."
           },
           {
             "type": "paragraph",
-            "text": "**The Challenge**: We faced a sensitive human problem: security teams needed highly detailed information to deploy help, but the local citizens reporting these emergencies were under extreme stress, physical danger, and had terrible cellular network connections."
+            "text": "**The problem underneath the problem**: Security teams needed detailed, accurate information to deploy help. The people reporting were under extreme stress, in physical danger, on phones with barely any signal. Those two needs pull against each other."
           },
           {
             "type": "paragraph",
-            "text": "To solve this, I stripped away traditional barriers like mandatory account registration and long text forms. Instead, I designed a voice-first, local system that safely funnels urgent safety alerts directly to emergency teams."
+            "text": "So I stripped out the things that normally slow an app down, account registration, long forms, and built a voice-first system that gets an alert to responders without asking someone in danger to type."
           },
           {
             "type": "image",
@@ -233,19 +233,19 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Reality on the Ground**: Before this platform, 42% of local citizens had never reported active emergencies due to a lack of working systems, fear of retaliation, or slow response times from authorities. Communities were highly exposed to seasonal farm and land conflicts."
+            "text": "**The reality on the ground**: 42% of local citizens had never reported an active emergency, not because nothing happened, but because the system didn't work, retaliation was a real fear, and responses were slow. Seasonal farm and land conflicts kept these communities exposed."
           },
           {
             "type": "paragraph",
-            "text": "To turn this broken communication channel into a reliable safety net, I focused on three approaches:"
+            "text": "To turn that into a working safety net, I focused on three things:"
           },
           {
             "type": "paragraph",
-            "text": "**1. Familiar Visual Landmarks**: Instead of a generic app, we built a layout that changes its look based on the user's specific state. Working with local regional governments, we used custom local photos and state-specific colors (Red for Taraba, Black for Benue, and Blue for Nasarawa) on onboarding screens. This built immediate comfort and safety for people in high-tension environments."
+            "text": "**1. Familiar landmarks, not a generic app**: Working with local governments, the app's look changes by state, custom local photos and state colours (red for Taraba, black for Benue, blue for Nasarawa) on the onboarding screens. In a high-tension environment, that recognisability builds comfort you can't fake with generic UI."
           },
           {
             "type": "paragraph",
-            "text": "**2. Streamlined Roles**: The system accommodates five types of users: Citizens, Monitors, Security, Observers, and Admins. I focused on the connection between the Citizen sending the alert and the local Monitor validating it on the ground, cutting out unnecessary middle-management steps to save time."
+            "text": "**2. Fewer roles, faster action**: The system supports five user types, Citizens, Monitors, Security, Observers, Admins. I focused the design on the one connection that mattered most, a Citizen sending an alert and a local Monitor validating it, and cut the middle-management steps that didn't need to be there."
           },
           {
             "type": "image",
@@ -254,7 +254,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**3. Engineering Trade-offs for Poor Signal**: To beat the lack of consistent internet in remote farming regions, I made a deal with our engineering team. We dropped mandatory sign-ups and typing requirements. Instead, we prioritized background GPS tracking and offline data saving. This lets citizens send a location-verified alert instantly without logging in; the app holds the data packet and sends it automatically the second a phone signal is found."
+            "text": "**3. Designing around bad signal, not against it**: I made a deal with engineering: drop mandatory sign-up and typing entirely. Instead, the app leans on background GPS and offline storage. A citizen can send a location-verified alert with no login at all, the app holds the data and fires it off the second a signal reappears."
           }
         ]
       },
@@ -264,7 +264,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Flawed First Try**: The turning point of this project happened when we stress-tested our early ideas. Initially, we used a swipable card layout to let users choose the type of emergency (like a land dispute, robbery, or clash)."
+            "text": "**The flawed first try**: The real turning point came from stress-testing an early idea. We'd built a swipeable card layout for choosing the type of emergency, land dispute, robbery, clash."
           },
           {
             "type": "image",
@@ -273,15 +273,15 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**The Pivot**: During high-pressure simulations, this design failed completely. People facing danger experience tunnel vision. Swiping through hidden choices made them confused, slowed them down, and increased their panic."
+            "text": "**The pivot**: Under simulated pressure, it fell apart. People in danger get tunnel vision. Swiping through hidden options confused them, slowed them down, and made the panic worse, exactly what the app was meant to prevent."
           },
           {
             "type": "paragraph",
-            "text": "I threw out the swipable layout and built a highly visible, single-screen grid layout showing all major alert types with simple black icons. Users can see every option immediately without scrolling."
+            "text": "I dropped the swipe entirely and built a single-screen grid showing every alert type at once, in plain black icons. Nothing hidden, nothing to scroll for."
           },
           {
             "type": "paragraph",
-            "text": "**Voice Over Text & Handoff Pipeline**: Field data proved that typing details was impossible when running from danger or for users who struggled with reading. To fix this, I put a large, one-tap voice recorder directly into the alert screen. Citizens simply tap, speak, and send."
+            "text": "**Voice over text**: Field data confirmed what we suspected, typing was impossible for someone running from danger, or for anyone who struggled with reading. So I put a large, one-tap voice recorder directly on the alert screen. Tap, speak, send."
           },
           {
             "type": "image",
@@ -290,19 +290,19 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "To guarantee this complex engine didn't crash on standard local hardware, I used Zeplin to bridge design to development. I built out global style tokens mapped directly to a lightweight Tailwind CSS framework used by the front-end engineers. This guaranteed that layout grids remained rock-solid across various budget Android phones."
+            "text": "To keep the engine from crashing on cheap local hardware, I used Zeplin to bridge design and code, mapping global style tokens onto a lightweight Tailwind setup the front-end engineers already used. That kept the grid solid across a wide range of budget Android phones."
           },
           {
             "type": "paragraph",
-            "text": "**Real-World Trade-Off**: The project stakeholders initially requested that the voice notes be automatically translated to text on the device using AI before sending. However, the processing delay on low-tier smartphones took up to 12 secondsa dangerous gap in a crisis. I fought to remove on-device translation entirely, trading automated text strings for raw audio file streaming, which dropped the transmission time down to under 2 seconds."
+            "text": "**A trade-off worth fighting for**: Stakeholders originally wanted voice notes translated to text on-device before sending. On low-tier phones that processing took up to 12 seconds, a dangerous gap mid-crisis. I argued to drop on-device translation entirely and stream raw audio instead, which brought transmission down to under 2 seconds."
           },
           {
             "type": "paragraph",
-            "text": "**Simulating Emergencies**: Validating an app that saves lives requires going far beyond office testing. Alongside the UNDP and local leaders, we took an Android test app to rural impact zones to run live trials with 12 to 15 community leaders, farmers, and security workers."
+            "text": "**Testing beyond the office**: Validating an app meant to save lives can't stop at a usability lab. Alongside UNDP and local leaders, we took an Android test build into rural impact zones and ran live trials with 12 to 15 community leaders, farmers, and security workers."
           },
           {
             "type": "paragraph",
-            "text": "**Field Testing Outcomes**: Across 12 to 15 live simulations with community leaders, farmers, and security workers, three critical insights shaped the final design. First, our initial alert labels were too ambiguous under pressure, we replaced vague text with bold, high-contrast warning banners that guide users step by step. Second, swiping between hidden categories caused significant confusion during stress drills, validating our pivot to the always-visible grid layout. Third, adding the one-tap voice recorder eliminated the primary failure mode: participants who struggled to type under duress could now file a complete, location-tagged report in under four seconds."
+            "text": "**What the field tests told us**: Three things shaped the final design. Our alert labels were too vague under pressure, so we replaced them with bold, high-contrast warning banners that guide people step by step. Swiping between hidden categories caused real confusion during stress drills, confirming the grid pivot. And the one-tap voice recorder solved the biggest failure mode outright: people who couldn't type under duress could now file a complete, location-tagged report in under four seconds."
           }
         ]
       },
@@ -312,7 +312,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "To make sure this became a permanent tool rather than a short-lived project, I designed the components to be completely reusable. If the UNDP expands these peace-keeping efforts to new regions, teams can onboard them simply by changing the color settings and local photos, without rewriting the core software code."
+            "text": "To make this a permanent tool rather than a one-off project, I built the components to be fully reusable. If UNDP expands this to new regions, teams onboard by swapping colours and local photos, no rewriting the underlying software."
           },
           {
             "type": "image",
@@ -321,11 +321,11 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "We also designed easy-to-read print guides and documentation, with deliberate attention to literacy-level language and visual clarity. This helped local governments launch community training programs to ensure communities were fully prepared to use the tool in real life. Across all interface decisions, WCAG-compliant contrast ratios, large tap targets, and a voice-first primary flow ensured the app remained accessible regardless of literacy level, cognitive load, or physical environment."
+            "text": "We also produced print guides written in plain, literacy-conscious language, so local governments could run community training without needing us in the room. Across every screen, WCAG-compliant contrast, large tap targets, and a voice-first primary flow kept the app usable regardless of literacy level, cognitive load, or physical environment."
           },
           {
             "type": "paragraph",
-            "text": "**Real, Proven Impact**: By designing the system around real human behavior under pressure, the final app was officially approved by the UNDP and embraced by local Nigerian state governments. As saved in our official project records, the design successfully turned a tense security issue into a smooth, practical tool."
+            "text": "**Proven, not theoretical**: Built around how people actually behave under pressure, CEWERS was officially approved by UNDP and adopted by local Nigerian state governments, turning a tense security issue into a practical, working tool."
           },
           {
             "type": "image",
@@ -334,15 +334,15 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "100% Success Rate: In final field trials, every single participant successfully sent a crisis alert using our simplified grid layout."
+            "text": "In final field trials, every single participant successfully sent a crisis alert through the simplified grid layout. 100%."
           },
           {
             "type": "paragraph",
-            "text": "Direct Access for the Silent: Removing the login requirement completely eliminated registration drop-off, capturing reports from the 42% of citizens who previously remained silent."
+            "text": "Removing the login requirement eliminated registration drop-off outright, reaching the 42% of citizens who'd previously stayed silent."
           },
           {
             "type": "paragraph",
-            "text": "Dramatic Drop in Response Time: Shifting from text entry to one-tap voice reporting reduced emergency report generation times from an average of 95 seconds down to just 4 seconds, saving critical response time for security personnel on the ground."
+            "text": "Shifting from text entry to one-tap voice reporting cut emergency report generation from an average of 95 seconds down to 4, time that matters when someone's waiting on responders."
           }
         ]
       }
@@ -351,15 +351,15 @@ export const CASE_STUDIES: Record<string, any> = {
 
   "project1": {
     "id": "project1",
-    "title": "HYDRA: Bringing Order to Fragmented Banking Code",
+    "title": "Hydra: When Banks Speak Five Different Languages",
     "metadata": {
       "Client": "Qore Technologies",
       "Role": "Sole Product Designer",
       "Project Type": "Web",
       "Timeline": "2 Months"
     },
-    "problem": "Fintech developers and bank partners struggle to orchestrate multiple fragmented B2B APIs, leading to visual incongruity, configuration errors, separate billing systems, and delayed integration timelines.",
-    "solution": "We architected Hydra, a unified B2B API gateway dashboard that standardizes payload visualization, streamlines credentials configuration, and consolidates multi-provider billing.",
+    "problem": "Fintech developers and bank partners had to stitch together fragmented B2B APIs by hand, separate bills, separate dashboards, and configuration errors that showed up only after launch.",
+    "solution": "We built Hydra, a single B2B API gateway dashboard that shows payload structure clearly, streamlines credential setup, and puts every provider's billing in one place.",
     "heroImage": img_project1_payload_structure,
     "sections": [
       {
@@ -368,15 +368,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Project**: Over a fast-paced two-month timeline, I looked after the end-to-end design for Hydraa business software platform built by Qore Technologies to combine messy, scattered financial software links (APIs) for banks and financial tech platforms."
+            "text": "**The project**: Over a fast two-month timeline, I owned the end-to-end design for Hydra, a platform Qore Technologies built to pull together scattered financial APIs for banks and fintechs into one place."
           },
           {
             "type": "paragraph",
-            "text": "**The Big Dilemma**: The design had to balance two completely different worlds: it needed to be deeply technical for software engineers who read raw data logs, yet clean and simple enough for bank office staff who manage company bills and view transaction histories."
+            "text": "**The dilemma**: The tool had to work for two very different people at once, engineers reading raw data logs, and bank office staff checking bills and transaction histories. Neither could feel like an afterthought."
           },
           {
             "type": "paragraph",
-            "text": "**The Solution**: By replacing confusing data charts with a clean, filter-driven system and moving technical guides directly into the workspace, I removed the constant friction between teams. This allowed engineers and business managers to work comfortably inside the exact same tool."
+            "text": "**What we did**: I replaced confusing charts with a clean, filter-driven view and moved technical documentation directly into the workspace. Engineers and business managers could finally use the same tool without stepping on each other."
           },
         ]
       },
@@ -386,11 +386,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Chaos**: Before Hydra, financial institutions had to buy digital serviceslike payment processing, balance checks, and transaction trackingfrom completely separate external companies. For teams on the ground, this was an operational nightmare. Developers had to read completely different code styles, office admins had to pay separate bills for every tool, and reporting required manually downloading endless, messy spreadsheets."
+            "text": "**The chaos before Hydra**: Financial institutions bought payment processing, balance checks, and transaction tracking from separate vendors, each with its own code style, its own bill, its own messy spreadsheet export. For the people using it daily, that was three jobs pretending to be one."
           },
           {
             "type": "paragraph",
-            "text": "**Designing the Map**: To fix this, I ran an interactive card-sorting exercise with real users to understand how they naturally group information. This research shaped a clean, easy-to-scan navigation system:"
+            "text": "**Mapping it out**: I ran a card-sorting exercise with real users to see how they actually grouped information, which shaped a navigation system built on how people think, not how the APIs happened to be structured."
           },
           {
             "type": "image",
@@ -399,7 +399,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Collaboration and Alignment**: As the lone designer working alongside a project manager, a product manager, and three engineers, managing system constraints was a daily focus. We created a low-fidelity wireframe in a workshop led by me for the Hydra dashboard web app to outline the basic layout and functionality. This simplified representation aids in rapid design iteration and facilitates early feedback, ensuring that the final design aligns with user needs and project objectives."
+            "text": "**Working the constraints**: I was the only designer on a team with a project manager, a product manager, and three engineers, which meant daily trade-offs. I led a workshop to build a low-fidelity wireframe for the Hydra dashboard, quick enough to iterate on and honest enough to get real feedback before we committed to anything."
           },
 
           {
@@ -415,11 +415,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Problem Point**: During initial testing, we noticed a major drop-off point where developers kept making mistakes. The original system let users manage security keys, but it didn't show them the actual structure of the data they were sending. Engineers had to constantly leave the app to read external code documents, breaking their focus."
+            "text": "**Where developers kept tripping**: In testing, developers could manage security keys but couldn't see the actual structure of the data those keys unlocked. They kept leaving the app to check external docs, which broke their focus every time."
           },
           {
             "type": "paragraph",
-            "text": "**The Pivot**: Our earliest designs used complex, multi-colored circle charts to show product performance. However, feedback from users showed these charts were confusing and exhausting for daily office work. We stripped out the circular charts and replaced them with clean line graphs and simple dropdown filters, making it effortless to isolate specific dates or transaction problems."
+            "text": "**The pivot**: Our first analytics screens used multi-coloured circle charts. Users found them confusing and tiring for daily work. We stripped them out for plain line graphs and simple dropdown filters, so isolating a date range or a transaction problem took seconds, not guesswork."
           },
           {
             "type": "image",
@@ -428,11 +428,11 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**The Code Panel & The Technical Token Pipeline**: To solve the developer problem, I built an interactive slide-out side drawer right into the key configuration screen. Now, when an engineer clicks a security key, the exact code structure slides open directly on the screen."
+            "text": "**The code panel**: I built a slide-out drawer directly into the key configuration screen. Click a security key, and the exact code structure slides open on the same screen, no tab-switching required."
           },
           {
             "type": "paragraph",
-            "text": "Real-World Trade-Off: The engineering team initially stated that a real-time payload preview would require an expensive API call every time a drawer opened, slowing down dashboard performance. I compromised by designing a local JSON schema caching system. It showed developers structural mock payloads instantly on the client side, saving live data calls only for final validation checks."
+            "text": "**A trade-off worth naming**: Engineering flagged that a live payload preview would mean an expensive API call every time the drawer opened, slowing the whole dashboard down. I compromised with local JSON schema caching, showing structural mock payloads instantly client-side and saving live calls for final validation only."
           },
           {
             "type": "image",
@@ -441,19 +441,15 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Heavy-Duty Prototyping**: Financial dashboards live and die by how they handle massive amounts of text and numbers. I built highly realistic interactive prototypes in Figma to simulate extreme situationslike displaying tables holding thousands of row entries. This helped us polish spacing, row layouts, and how long numbers cut off before writing any live code."
+            "text": "**Stress-testing the interface**: Financial dashboards live or die on how they handle volume. I built interactive Figma prototypes simulating extreme cases, tables with thousands of rows, to polish spacing and row layout, and to catch where long numbers would cut off, before a single line of code was written."
           },
           {
             "type": "paragraph",
-            "text": "**Feedback from Real Users**: Over a focused week, I ran usability tests using Figma and Microsoft Teams with enterprise administrators and developers:"
+            "text": "**Talking to the people who'd use it**: Over a focused week, I ran usability tests over Figma and Microsoft Teams with enterprise admins and developers. Admins consistently said the same thing, watched: the unified billing view was clear, but seeing projected costs based on current usage would make monthly planning much easier."
           },
           {
             "type": "paragraph",
-            "text": "Alex (IT Admin): \"The unified bill gives me incredibly clear tracking. However, seeing projected costs based on our current weekly patterns would make our monthly planning much easier.\""
-          },
-          {
-            "type": "paragraph",
-            "text": "I immediately turned those direct insights into layout improvements, embedding help documentation directly inside the dashboard sidebars, standardizing status badges, and building out a predictive monthly cost projection view."
+            "text": "I turned that feedback directly into the layout: help documentation embedded in the sidebars, standardised status badges, and a predictive monthly cost projection view."
           },
           {
             "type": "image",
@@ -468,23 +464,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Accessibility & WCAG Compliance**: All financial data tables, status badges, and billing displays were designed and validated against WCAG 2.1 AA standards, ensuring that high-density content like transaction histories, API key configurations, and billing records remained fully legible and navigable for enterprise users with visual impairments or assistive technology dependencies."
+            "text": "**Accessibility**: Every financial data table, status badge, and billing display was checked against WCAG 2.1 AA, so dense content, transaction histories, API configurations, billing records, stayed legible and navigable for users relying on assistive technology."
           },
           {
             "type": "paragraph",
-            "text": "Faster Integration Timelines: Providing step-by-step setup guides and side-drawer code panels slashed developer integration times by 46%."
+            "text": "Step-by-step setup guides and the side-drawer code panel cut developer integration times by 46%."
           },
           {
             "type": "paragraph",
-            "text": "Reduced Human Errors: Simplifying dense tables and status badges cut administrative billing entry errors by 38%."
+            "text": "Simplifying the dense tables and status badges cut administrative billing entry errors by 38%."
           },
           {
             "type": "paragraph",
-            "text": "Rapid Adoption: The initial launch was an immediate commercial success, onboarding over 45 partner fintech companies and traditional banks into the ecosystem."
+            "text": "The launch onboarded over 45 partner fintechs and traditional banks into the ecosystem."
           },
           {
             "type": "paragraph",
-            "text": "Instant Scale: The platform successfully handled heavy transaction volumes right out of the gate, securely processing over 60 Million Naira since its launch, establishing itself as a powerful tool in modern financial technology."
+            "text": "The platform handled real volume from day one, securely processing over 60 million naira since launch."
           }
         ]
       }
@@ -493,15 +489,15 @@ export const CASE_STUDIES: Record<string, any> = {
 
   "project2": {
     "id": "project2",
-    "title": "QORE: Launching Banking Apps Instantly",
+    "title": "Qore: 500 Banks, One Afternoon Each",
     "metadata": {
       "Client": "Qore Technologies",
       "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile",
       "Timeline": "5 Months"
     },
-    "problem": "Microfinance banks across Africa faced months of manual development cycles to launch digital apps, resulting in fragmented interfaces, accessibility failures from unconstrained client styling, and high sign-up drop-offs.",
-    "solution": "We architected an administrative no-code setup wizard allowing bank operators to dynamically configure brand identities within a resilient token system, alongside an optimized, 2-minute consumer onboarding flow.",
+    "problem": "Microfinance banks across Africa faced months of manual development just to launch a digital app, and what came out the other end was often visually broken, inaccessible, and shed customers at sign-up.",
+    "solution": "We built a no-code setup wizard that lets a bank operator configure their brand inside a locked-down token system, paired with a 2-minute customer onboarding flow.",
     "heroImage": project2_hero,
     "sections": [
       {
@@ -510,15 +506,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: I took charge of the complete product design for a multi-tenant software system. This platform allows small and large scale banks across Africa to launch fully functional, custom-branded web and mobile banking apps instantly, completely bypassing months of traditional coding."
+            "text": "**The big picture**: I owned the complete product design for a multi-tenant platform letting banks across Africa, large and small, launch a fully branded web and mobile banking app without months of custom code."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: We had to solve a difficult design puzzle: providing total styling flexibility to bank stakeholders who wanted their apps to look unique, while maintaining strict layout limits so the apps remained secure, accessible, and completely bug-free for everyday consumers."
+            "text": "**The balancing act**: Bank stakeholders wanted total styling freedom to make their app look distinct. We needed strict layout limits to keep every one of those apps accessible, secure, and bug-free for everyday consumers. Those two goals fight each other by default."
           },
           {
             "type": "paragraph",
-            "text": "**My Role**: My core strategy was building a linear, step-by-step setup engine. This desktop wizard allowed non-technical bank operators to select themes, map corporate colors, and immediately generate a downloadable, testable preview version of their custom application."
+            "text": "**My approach**: I built a linear, step-by-step setup wizard. A non-technical bank operator could pick a theme, map their corporate colours, and generate a downloadable, testable preview of their app without touching a developer."
           }
         ]
       },
@@ -528,23 +524,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Problems We Inherited**: Historically, every new bank that required an app triggered a long, manual development cycle. This created massive engineering delays, pushing product launch times out to several months. The resulting apps were slow and cluttered, leading to an onboarding drop-off rate of 45% and failing to build user trust."
+            "text": "**What we inherited**: Every new bank used to trigger a manual build cycle, months of engineering delay for each one. The resulting apps were slow and cluttered, with onboarding drop-off at 45% and little user trust to show for the wait."
           },
           {
             "type": "paragraph",
-            "text": "**Research & Discovery**: I structured our discovery around two distinct user groups with very different mental models. Bank administrators participated in expert interviews and stakeholder mapping sessions, exposing the friction in their existing brand customization workflows. End consumers joined benchmarking usability tests on competing white-label apps to identify precise drop-off moments. Card sorting workshops with both groups validated our navigation taxonomy and revealed a key insight: bank operators prioritized configuration control, while consumers prioritized speed and reassurance during onboarding."
+            "text": "**Two very different users**: I structured discovery around two groups with genuinely different mental models. Bank administrators went through expert interviews and stakeholder mapping, which surfaced the friction in their existing branding workflow. Consumers went through usability tests against competing white-label apps to find precise drop-off moments. Card sorting with both groups validated our navigation and revealed the real split: operators wanted control, consumers wanted speed and reassurance."
           },
           {
             "type": "paragraph",
-            "text": "**Splitting the System**: To organize this complex ecosystem, I broke the platform architecture into two distinct spaces:"
+            "text": "**Splitting the system in two**: I broke the platform into two distinct spaces:"
           },
           {
             "type": "paragraph",
-            "text": "The Management Layer: A clear dashboard interface for bank administrators to handle their branding setup, user permissions, and configurations."
+            "text": "The Management Layer, a dashboard for bank admins to handle branding, permissions, and configuration."
           },
           {
             "type": "paragraph",
-            "text": "The Customer Application Core: A standardized user flow covering money transfers, bill payments, and expense tracking optimized for everyday banking clients."
+            "text": "The Customer Application Core, a standardised flow for transfers, bill payments, and expense tracking, built for everyday banking clients."
           }
         ]
       },
@@ -554,11 +550,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Admin Control Center**: The Management Layer provides a clear dashboard interface for bank administrators to handle their branding setup, user permissions, dynamic styling variables, and live configurations."
+            "text": "**Admin control center**: The Management Layer gives bank administrators one clear dashboard for branding setup, user permissions, styling variables, and live configuration."
           },
           {
             "type": "paragraph",
-            "text": "**No-Code Branding Setup**: Bank operators can utilize this interface to customize and test their color choices, manage logo placements, adjust corner radii options, and select typography systems live before deployment."
+            "text": "**No-code branding**: Operators test colour choices, manage logo placement, adjust corner radius, and pick typography live, before anything deploys."
           },
           {
             "type": "image",
@@ -573,15 +569,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Everyday Banking Optimized**: The Customer Application Core provides a standardized, high-performance user flow covering money transfers, bill payments, and expense tracking optimized for everyday banking clients."
+            "text": "**Built for everyday banking**: The Customer Application Core is a standardised, fast flow for transfers, bill payments, and expense tracking."
           },
           {
             "type": "paragraph",
-            "text": "**Redefining the Onboarding Flow**: Our product design work on the white-labeled consumer app focused heavily on redefining the onboarding flow to significantly reduce sign-up steps and drop-off friction."
+            "text": "**Rebuilding onboarding**: Our work on the consumer app centred on cutting sign-up steps and the friction that came with them."
           },
           {
             "type": "paragraph",
-            "text": "**Fast Identity Verification**: Account opening now takes under two minutes. We’ve cut the onboarding flow down to the fields that actually matter, so there’s less standing between your customer and their new account number. They start transacting sooner, and a quick, easy start tells them they picked the right bank."
+            "text": "**Under two minutes**: Account opening now takes under two minutes. We kept only the fields that actually matter, so customers start transacting sooner, and a fast, easy start tells them they picked the right bank."
           },
           {
             "type": "image",
@@ -596,15 +592,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Strict Design System Boundaries**: I negotiated an alignment between our product managers and engineers based on a strict design rule: the structural layouts remained locked to prevent code bugs, while visual properties were treated as dynamic variables."
+            "text": "**A strict rule, agreed with engineering**: Structural layouts stayed locked to prevent bugs. Visual properties were treated as dynamic variables. Getting product and engineering to agree on that split up front saved months of arguments later."
           },
           {
             "type": "paragraph",
-            "text": "**Dynamic Tokens**: To bridge design to code seamlessly, we used Figma Variables (Design Tokens) exported directly via Style Dictionary into a shared configuration file that engineers could instantly plug into their codebase."
+            "text": "**Dynamic tokens**: We used Figma Variables, exported through Style Dictionary into a shared config file engineers could plug straight into their codebase."
           },
           {
             "type": "paragraph",
-            "text": "**Scalable Foundations**: By establishing this variable-driven token ecosystem, we ensured that changes to color values, spacing parameters, and component styles could be automatically updated and compiled across all micro-sites and white-labeled modules without manual developer intervention."
+            "text": "**Built to scale**: With that token ecosystem in place, a change to a colour value, spacing parameter, or component style compiled automatically across every micro-site and white-labeled module, no manual developer touch needed."
           },
           {
             "type": "image",
@@ -619,15 +615,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Design Dilemma**: When you give business clients total control over their application styling, they often choose vibrant, clashing color combinations. During initial testing, these custom color sets frequently broke basic accessibility rules (WCAG 2.1 AA), making critical text layouts and financial figures completely unreadable for end-users."
+            "text": "**The dilemma**: Give business clients full control over styling, and they'll often pick vibrant, clashing colour combinations. In early testing, those custom palettes broke WCAG 2.1 AA outright, making financial figures unreadable for end-users."
           },
           {
             "type": "paragraph",
-            "text": "**Learning from Mistakes**: Our initial approach allowed bank admins to apply colors to any button or background text. Testing showed this caused immediate layout failures and visual bugs. We realized that giving users unstructured design freedom compromised the safety and integrity of the banking product."
+            "text": "**What went wrong first**: Our first pass let admins apply any colour to any button or background text. It broke layouts and created real visual bugs. Unstructured freedom, it turned out, compromised the safety of the product itself."
           },
           {
             "type": "paragraph",
-            "text": "**The Monochrome Base Pattern**: I pivoted the interface to a monochrome-base scaling pattern. The foundational application layout was permanently anchored to a safe gray, white, and black palette. The bank’s custom brand colors were then dynamically injected only into highly specific, safe surfacessuch as action buttons, active tabs, and success screens. This maintained perfect accessibility compliance while safely accommodating any corporate identity."
+            "text": "**The fix**: I pivoted to a monochrome-base scaling pattern. The foundational layout stayed anchored to grey, white, and black. A bank's brand colours were injected only into specific, safe surfaces, action buttons, active tabs, success screens. Full accessibility, any corporate identity."
           },
           {
             "type": "image",
@@ -642,19 +638,19 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "By replacing manual software engineering workflows with an automated configuration tool, the design overhaul delivered immediate commercial results:"
+            "text": "Replacing manual engineering with an automated config tool delivered results fast:"
           },
           {
             "type": "paragraph",
-            "text": "**Drastic Launch Acceleration:** Reduced the time required for microfinance institutions to customize, preview, and deploy their digital banking applications from 4 months down to a single afternoon."
+            "text": "**From four months to an afternoon**: Microfinance institutions went from months of custom build to customising, previewing, and deploying their app in a single afternoon."
           },
           {
             "type": "paragraph",
-            "text": "**Reduce Onboarding Drop-off:** Locking accessibility layers reduced customer onboarding failure rates from 45% to under 8%, regardless of the clashing color themes chosen by bank managers."
+            "text": "**Onboarding failure, cut**: Locking accessibility at the platform level dropped customer onboarding failure from 45% to under 8%, regardless of which clashing theme a bank manager picked."
           },
           {
             "type": "paragraph",
-            "text": "**Massive Market Scale:** The platform's highly flexible design architecture successfully scaled to power digital banking applications for over 500 Microfinance Banks across Africa."
+            "text": "**Scale**: The architecture scaled to power digital banking apps for over 500 microfinance banks across Africa."
           },
         ]
       }
@@ -662,15 +658,15 @@ export const CASE_STUDIES: Record<string, any> = {
   },
   "project3": {
     "id": "project3",
-    "title": "MAMVest: Digitizing Traditional Wealth Management",
+    "title": "MAMVest: From a Three-Day Wire Transfer to Under Four Minutes",
     "metadata": {
       "Client": "Mango Asset Management",
       "Role": "Lead Product Designer",
       "Project Type": "Web & Mobile",
       "Timeline": "4 Months"
     },
-    "problem": "Mango Asset Management operated strictly as a traditional financial institution, managing portfolios through manual paperwork. The operational workflow spanned 3 to 5 business days, requiring physical prospectus distribution and manual KYC/wire checks.",
-    "solution": "We designed MAMVest, an SEC-approved digital wealth platform that democratizes access to Mutual Funds, Bonds, Treasury Bills, and Commercial Papers with a minimum entry point of ₦1,000, reducing transaction times to under 4 minutes.",
+    "problem": "Mango Asset Management ran on paperwork, physical prospectuses, manual KYC checks, wire verification by hand, a workflow that took 3 to 5 business days for a single transaction.",
+    "solution": "We built MAMVest, an SEC-approved digital wealth platform that opens Mutual Funds, Bonds, Treasury Bills, and Commercial Papers to retail investors from as little as ₦1,000, and cut transaction time to under 4 minutes.",
     "heroImage": project3_hero,
     "sections": [
       {
@@ -679,23 +675,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The Big Picture**: For decades, Mango Asset Management operated strictly as a traditional financial institution, managing premium portfolios for corporate entities and high-net-worth individuals through manual paperwork, relationship managers, and bespoke offline operations. To expand market share and tap into emerging retail capital channels, the firm launched a comprehensive 4-month digitization initiative to build MAMVesttheir foundational customer-facing digital product ecosystem."
+            "text": "**The big picture**: For decades, Mango Asset Management managed premium portfolios for corporate clients and high-net-worth individuals through paperwork, relationship managers, and offline operations. To reach retail investors, the firm committed to a 4-month push to build MAMVest, their first customer-facing digital product."
           },
           {
             "type": "paragraph",
-            "text": "Approved by the SEC (Securities and Exchange Commission, Nigeria), the platform democratizes access to institutional-grade financial instruments, enabling retail users to deploy capital into Mutual Funds, Bonds, Treasury Bills, Commercial Papers, and Liquidity Management tools with a barrier-breaking minimum entry point of ₦1,000."
+            "text": "Approved by Nigeria's SEC, the platform opens up Mutual Funds, Bonds, Treasury Bills, Commercial Papers, and liquidity tools to retail investors, with an entry point as low as ₦1,000."
           },
           {
             "type": "paragraph",
-            "text": "**The Balancing Act**: The core architectural challenge lay in an intense operational transition: transforming highly complex, compliance-heavy offline investment mechanisms into a unified, lightweight, multi-platform digital software system. We had to reconcile the strict regulatory demands of an SEC-regulated entity with the friction-free interaction patterns expected by a mobile-first generation, all while ensuring that decades of institutional trust and brand equity were preserved across modern user interfaces."
+            "text": "**The tension**: We had to take compliance-heavy, paper-bound investment processes and turn them into something light enough for a mobile-first generation, without losing the decades of institutional trust the brand had built."
           },
           {
             "type": "paragraph",
-            "text": "**My Role & Strategic Mandate**: As Lead Product Designer, I owned the end-to-end design strategy, visual system governance, and cross-platform architecture across three interconnected endpoints: the customer Mobile Application (React Native), the responsive customer Web Portal, and the internal operational Admin Control Desk."
+            "text": "**My role**: As Lead Product Designer, I owned design strategy, visual governance, and cross-platform architecture across three products, the customer mobile app (React Native), the web portal, and the internal Admin Control Desk."
           },
           {
             "type": "paragraph",
-            "text": "Directing a team of 3 product designers, my mandate extended far beyond interface layouts; I was responsible for cross-departmental stakeholder management, mapping the end-to-end service blueprint, orchestrating our research and testing frameworks, and engineering a resilient design-to-code component pipeline capable of scaling without generating technical debt."
+            "text": "Leading a team of three designers, my job went beyond screens: managing stakeholders across departments, mapping the end-to-end service blueprint, running research and testing, and building a design-to-code pipeline that wouldn't rack up technical debt as we scaled."
           },
           {
             "type": "image",
@@ -710,15 +706,15 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Deconstructing Legacy Operational Friction**: Our initial discovery and diagnostic phase revealed profound operational inefficiencies. Traditionally, when an investor wanted to allocate capital into an instrument like a Commercial Paper or a Bond, the workflow spanned 3 to 5 business days. It required physical prospectus distribution, manual KYC document signing via post or courier, bank wire verifications, and manual data logging onto internal spreadsheets by account officers."
+            "text": "**What was actually broken**: When someone wanted to put money into a Commercial Paper or a Bond, the process took 3 to 5 business days: a physical prospectus, KYC signed by post or courier, bank wire verification, and an account officer logging it all by hand into a spreadsheet."
           },
           {
             "type": "paragraph",
-            "text": "**The Service Blueprinting Approach**: To dissolve these departmental silos, I mapped out a comprehensive Service Blueprint. This document aligned the customer's visible digital journey (Frontstage Actions) directly with Mango’s backend operations (Backstage Actions), compliance checks, clearinghouse timeframes, and banking settlement rails."
+            "text": "**Mapping it end to end**: To break down the silos causing that delay, I built a Service Blueprint that lined up what the customer saw (frontstage) against what Mango's teams actually did behind it (backstage), compliance checks, clearinghouse timing, banking settlement rails."
           },
           {
             "type": "paragraph",
-            "text": "By visualizing the manual dependencies, we isolated exactly where technology could automate the sequence, transforming a fragmented operational web into an immediate, linear software pipeline."
+            "text": "Once that dependency chain was visible, it was obvious where automation belonged, and where it would just break something."
           },
           {
             "type": "image",
@@ -733,11 +729,11 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**The 5-Day Executive Alignment Sprint**: To build organization-wide buy-in for this radical workflow shift, I facilitated a 5-day rapid product alignment sprint with the firm’s executive leadership, including the Product Management Director, Head of Engineering, Compliance Directors, and senior Traditional Portfolio Managers."
+            "text": "**Getting the whole company aligned**: I ran a 5-day alignment sprint with the firm's leadership, the Product Management Director, Head of Engineering, Compliance Directors, and senior portfolio managers who'd run the paper-based version for years."
           },
           {
             "type": "paragraph",
-            "text": "Using a Lean Canvas framework, I successfully anchored the design trajectory to critical business performance metrics rather than subjective aesthetic preferences. We achieved hard consensus on a vital product rule: legal disclosure parameters remained structurally locked to protect institutional compliance, while data-entry paths were optimized to reduce friction."
+            "text": "Using a Lean Canvas, I anchored the direction to actual business metrics rather than opinions about what looked good. We landed on one rule that held the whole project together: legal disclosure stayed locked for compliance, but the data-entry path around it got optimised hard."
           },
           {
             "type": "image",
@@ -752,11 +748,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Engineering a Multi-Platform Single Source of Truth**: Because we were designing for three distinct tech stacks simultaneously (Flutter for iOS and Android, and Tailwind CSS for web platforms), I architected a 3-Tier Design System Foundation to eliminate engineering handoff lag and prevent UI drift."
+            "text": "**One source of truth, three tech stacks**: Building for Flutter (iOS and Android) and Tailwind (web) at the same time, I set up a 3-tier design system so engineering handoff didn't lag and the UI didn't drift apart across platforms."
           },
           {
             "type": "paragraph",
-            "text": "We maintained this token repository as a single source of truth within a centralized JSON layout file, distributed via Style Dictionary directly into our developers' production environments."
+            "text": "We kept the token repository in a single JSON file, distributed via Style Dictionary straight into production."
           },
           {
             "type": "image",
@@ -765,7 +761,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Resolving the Universal Product Catalog**: To ensure retail investors could intuitively browse high-yield assets without suffering from cognitive overload or jargon confusion, my design team restructured Mango's institutional offerings into a clean, unified market taxonomy framework:"
+            "text": "**Making the catalogue make sense**: To stop retail investors drowning in institutional jargon, my team restructured Mango's product offering into a clean, unified taxonomy:"
           },
           {
             "type": "image",
@@ -780,11 +776,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Simulating Extreme Financial Edge Cases**: Financial systems operate under chaotic real-world conditions. Over our 4-month lifecycle, I led our design team through rigorous programmatic stress testing. We flooded our interactive Figma prototypes with extreme data loadspopulating dashboards with astronomical account balances (₦180,500,750.22), deeply stacked multi-asset histories, fractional interest values, and localized network errors."
+            "text": "**Testing for the worst day, not the best one**: Over the four months, I put our Figma prototypes through deliberate stress testing, astronomical balances (₦180,500,750.22), deep multi-asset histories, fractional interest values, dropped network calls."
           },
           {
             "type": "paragraph",
-            "text": "This validation ensured that layout containers expanded dynamically, typography scaling remained visually pristine, and critical numeric values never clipped or overflowed across budget or low-resolution mobile devices."
+            "text": "That work made sure layout containers expanded properly, typography scaled cleanly, and no number ever clipped, even on a budget phone with a low-resolution screen."
           }
         ]
       },
@@ -794,19 +790,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "By replacing manual, paper-bound workflows with a multi-platform digital architecture, the 4-month initiative transformed Mango Asset Management's position in the market:"
+            "text": "Replacing paper-bound workflows with a proper digital architecture changed Mango's position in the market, in four months:"
           },
           {
             "type": "paragraph",
-            "text": "**Velocity & Acquisition Drivers**\n\n **Slashed Time-to-Investment**: The total timeline required to discover an asset, successfully clear onboarding compliance, and fund a portfolio plummeted from 3 to 5 business days down to a friction-free 3 minutes and 42 seconds.\n **Lowered Acquisition Barriers**: Streamlining regulatory sign-up screens into a chunked, progressive verification wizard reduced consumer onboarding abandonment from 54% down to 11%, significantly lowering the Customer Acquisition Cost (CAC)."
+            "text": "**Time to invest, gone from days to minutes**: Discovering an asset, clearing compliance, and funding a portfolio dropped from 3 to 5 business days down to 3 minutes and 42 seconds."
           },
           {
             "type": "paragraph",
-            "text": "**Multiplied Team Capabilities**: Formalizing our assets into a unified design system framework allowed Mango's internal teams to build secondary features up to 40% faster, completely eliminating technical debt and proving design as a core driver of business growth."
+            "text": "**Lower acquisition cost**: Turning regulatory sign-up into a chunked, progressive verification flow cut onboarding abandonment from 54% down to 11%, which brought acquisition cost down with it."
           },
           {
             "type": "paragraph",
-            "text": "**The Admin Control Desk**: The internal operational portal was designed for Mango's relationship managers and compliance officers, providing real-time visibility into investor KYC verification status, portfolio subscription activity, and regulatory audit trails. Centralizing these operations into a single dashboard eliminated the manual spreadsheet workflows that previously required 3 to 5 business days to reconcile, empowering account officers to service multiple clients simultaneously."
+            "text": "**Faster for the whole team**: A unified design system let Mango's internal teams build secondary features up to 40% faster, with far less technical debt accumulating behind them."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The Admin Control Desk**: Built for Mango's relationship managers and compliance officers, this gives real-time visibility into KYC status, subscription activity, and audit trails. Centralising that work replaced a manual spreadsheet process that used to take 3 to 5 business days to reconcile, freeing account officers to service more clients at once."
           },
           {
             "type": "image",
