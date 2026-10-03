@@ -128,20 +128,17 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               />
             </div>
             <div className="text-center relative px-6">
-              <h1
-                className="text-3xl font-bold text-gray-900 mb-2"
-                style={{ fontFamily: 'Syne, sans-serif' }}
-              >
-                Hi, I'm Tobi Olowu
-              </h1>
-              <p
-                className="text-xs font-semibold text-gray-700 mb-3 uppercase tracking-wide"
-                style={{ fontFamily: 'Syne, sans-serif' }}
-              >
-                Product Design Lead — 10+ Years Across Fintech, Investment, Government & Energy
+              <p className="text-[10px] font-bold text-gray-500 mb-3 uppercase tracking-widest">
+                Tobi Olowu · Product Design Lead, London
               </p>
+              <h1
+                className="text-[34px] font-bold text-gray-900 mb-4 leading-[1.05] tracking-tight"
+                style={{ fontFamily: 'Syne, sans-serif' }}
+              >
+                I make complicated things usable.
+              </h1>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                A decade leading product design across fintech, energy, and government — currently leading platform and AI direction for Wood Mackenzie's flagship product line. I've grown a consumer app from 11th to 3rd most-used in its market in three months, and coached 10+ designers into leadership roles of their own.
+                Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.
               </p>
             </div>
             <div className="flex items-center gap-3">

@@ -521,28 +521,27 @@ function FigmaCanvas() {
             <div className="h-full flex items-center justify-between px-12 gap-8 relative">
               {/* Text on the left */}
               <div className="flex-1">
-                <motion.h1
-                  className="font-bold text-gray-900 mb-4 text-[36px]"
-                  style={{ fontFamily: 'Syne, sans-serif' }}
+                <motion.p
+                  className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                >Hi, I'm Tobi Olowu</motion.h1>
+                >Tobi Olowu · Product Design Lead, London</motion.p>
 
-                <motion.p
-                  className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide"
+                <motion.h1
+                  className="font-bold text-gray-900 mb-5 text-[48px] leading-[1.05] tracking-tight"
+                  style={{ fontFamily: 'Syne, sans-serif' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  style={{ fontFamily: 'Syne, sans-serif' }}
-                >Product Design Lead — 10+ Years Across Fintech, Investment, Government & Energy</motion.p>
+                >I make complicated things usable.</motion.h1>
 
                 <motion.p
                   className="text-gray-500 max-w-md font-[Architects_Daughter]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                >A decade leading product design across fintech, energy, and government — currently leading platform and AI direction for Wood Mackenzie's flagship product line. I've grown a consumer app from 11th to 3rd most-used in its market in three months, and coached 10+ designers into leadership roles of their own.</motion.p>
+                >Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.</motion.p>
 
                 <motion.a
                   href={RESUME_URL}
