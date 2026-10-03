@@ -1,4 +1,9 @@
 /* Auto-generated case studies data */
+import project8_hero from '../../assets/case-studies/project8/lens-hero.png';
+import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
+import img_project8_overview from '../../assets/case-studies/project8/lens-ai-overview.png';
+import img_project8_search from '../../assets/case-studies/project8/lens-unified-search.png';
+import img_project8_platform from '../../assets/case-studies/project8/lens-platform.png';
 import project6_hero from '../../assets/case-studies/project6/bespoka-landing.png';
 import img_project6_marketplace from '../../assets/case-studies/project6/bespoka-marketplace-home.webp';
 import img_project6_signup from '../../assets/case-studies/project6/bespoka-signup-selection.webp';
@@ -824,6 +829,119 @@ export const CASE_STUDIES: Record<string, any> = {
     ]
   },
 
+  "project8": {
+    "id": "project8",
+    "title": "Wood Mackenzie Lens 2.0: One Place to Ask, Search and See",
+    "metadata": {
+      "Client": "Wood Mackenzie",
+      "Role": "Lead Product Designer, Platform & AI",
+      "Project Type": "Web, Enterprise AI",
+      "Timeline": "Ongoing"
+    },
+    "problem": "Energy analysts were bouncing between search, chat, dashboards and AI agents that didn't talk to each other. Every switch cost them context, and finding an answer they could actually trust took far too long.",
+    "solution": "A single platform where search, WoodMac Chat, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
+    "heroImage": project8_hero,
+    "sections": [
+      {
+        "title": "Four Tools Pretending to Be One Product",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The problem**: Lens is where Wood Mackenzie's clients go to make sense of complex energy data. But search, chat, dashboards and AI agents had grown up as separate tools. An analyst would search, open a report, jump to chat to ask a follow-up, then rebuild the same context in a dashboard. Every hop meant starting again."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The real cost**: It wasn't the clicks. It was trust. When an answer arrives without its sources, an analyst has to go and verify it themselves, which defeats the point of asking."
+          }
+        ]
+      },
+      {
+        "title": "Listening Before Designing",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**How we got there**: Cross-functional workshops to agree an AI strategy, user interviews, and testing sessions with customers, analysts and decision-makers."
+          },
+          {
+            "type": "paragraph",
+            "text": "A few lines from those sessions shaped everything after. A principal analyst: \"It can be time consuming how everything is not integrated! Searching for data, and refining filters to get results complicates my work.\" A GIS expert: \"If I draw a polygon around it, can I get commentary on this area?\" An investor: \"I just want to come in and see the latest relevant stuff.\""
+          }
+        ]
+      },
+      {
+        "title": "Deciding What AI Should and Shouldn't Do",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Consequence scanning first**: Before drawing a single screen, we asked three questions. What are the intended and unintended consequences? Which positive ones do we want to amplify? Which do we need to mitigate? The answers became five AI principles for Lens."
+          },
+          {
+            "type": "image",
+            "src": img_project8_principles,
+            "alt": "AI principles in Lens: brand identity, trust and transparency, human-AI collaboration, privacy and ethics, inclusive and unified UX"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Four design goals came out of it**: unify interaction so search, chat and dashboards feel like one system; preserve trust by always showing data provenance and reasoning; maintain context so the AI understands what the user is looking at; and scale intelligence so agents perform meaningful actions, not just respond."
+          },
+          {
+            "type": "image",
+            "src": img_project8_overview,
+            "alt": "Overview of AI features in Lens mapped to touchpoints and display styles"
+          }
+        ]
+      },
+      {
+        "title": "Unified Search & Chat",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**One entry point**: Natural language queries became the front door. Type a question, and the results page leads with an AI-generated answer in context."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Trust built in**: Every answer carries clickable source cards with direct links to the underlying reports and datasets, so the data lineage is never hidden. Below that, an AI agent offers to generate a dashboard from the search, and a clear call to action hands the conversation over to WoodMac Chat when the user wants to dig deeper."
+          },
+          {
+            "type": "image",
+            "src": img_project8_search,
+            "alt": "Unified search results with AI-generated answer, source attribution cards, AI dashboard agent and WoodMac Chat call to action"
+          }
+        ]
+      },
+      {
+        "title": "Beyond Search: AI That Understands Where You Are",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**AI dashboard generation**: The AI builds a dashboard with relevant widgets, and it opens in Discovery looking and behaving like every other Lens dashboard, not a bolt-on."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Charts inside the conversation**: Charts, tables and images render directly in chat, follow Lens chart standards, and open into full-screen chart mode to keep exploring."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Context-aware summaries**: One click on the AI icon summarises a chart in plain language. Draw a polygon on the map and the AI summarises that area, which answered the GIS expert's question almost word for word. Chat keeps its history and knows where in the product the user is."
+          },
+          {
+            "type": "image",
+            "src": img_project8_platform,
+            "alt": "Lens enterprise platform with dashboards, map layers and WoodMac Chat"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Where it landed**: The redesign improved navigation, interaction patterns and visual hierarchy across the flagship Lens platform, with measurable gains in usability scores and client engagement, and the AI knowledge assistant cut the time analysts spend on research."
+          }
+        ]
+      }
+    ]
+  },
   "project7": {
     "id": "project7",
     "title": "Bespoka: Building an Operating System for an Industry Nobody Digitised",
