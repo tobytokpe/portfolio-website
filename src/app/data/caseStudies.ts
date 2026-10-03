@@ -1,4 +1,14 @@
 /* Auto-generated case studies data */
+import img_project8_dashboard from '../../assets/case-studies/project8/lens-dashboard-generation.png';
+import img_project8_context from '../../assets/case-studies/project8/lens-context-summary.png';
+import img_project8_showcase from '../../assets/case-studies/project8/lens-showcase.png';
+import project9_hero from '../../assets/case-studies/project9/platform-1-2.png';
+import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
+import img_project9_charts from '../../assets/case-studies/project9/platform-12-1.png';
+import img_project9_map from '../../assets/case-studies/project9/platform-13-1.png';
+import img_project9_nav from '../../assets/case-studies/project9/platform-15-1.png';
+import img_project9_validation from '../../assets/case-studies/project9/platform-17-1.png';
+import project10_hero from '../../assets/case-studies/project10/strata-hero.png';
 import project8_hero from '../../assets/case-studies/project8/lens-hero.png';
 import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
 import img_project8_overview from '../../assets/case-studies/project8/lens-ai-overview.png';
@@ -829,6 +839,194 @@ export const CASE_STUDIES: Record<string, any> = {
     ]
   },
 
+  "project9": {
+    "id": "project9",
+    "title": "Lens Platform: Analytics That Hold Up at a Million Rows",
+    "metadata": {
+      "Client": "Wood Mackenzie",
+      "Role": "Lead Product Designer, Platform",
+      "Project Type": "Web, Enterprise Analytics",
+      "Timeline": "Ongoing"
+    },
+    "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
+    "solution": "Turning Lens into a cohesive, user-centred analytics platform: data tables analysts can shape without leaving for Excel, charts with a proper focus mode, a map that explains itself, and a navigation header with room to grow.",
+    "heroImage": project9_hero,
+    "passwordHash": "23ce378002ff959e0002aada708dce18ae39827e0a76a1c53230fd21ad98eb35",
+    "sections": [
+      {
+        "title": "Who Lens Is For",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Lens serves energy professionals, analysts, investors and decision-makers who need fast access to data and reports they can rely on. They don't share one workflow, and the platform had to stop pretending they did."
+          },
+          {
+            "type": "image",
+            "src": img_project9_users,
+            "alt": "Lens user groups: energy professionals, analysts, investors and decision-makers"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Research**: User interviews, a review of past session recordings, and competitor analysis. Three themes kept coming up: difficult navigation and a need for more control, confusion between different workflows, and users missing chart refinement entirely because they didn't know it existed."
+          }
+        ]
+      },
+      {
+        "title": "Design Goals",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Orientation first**: users always know where they are and what they can do next. **Progressive power**: simple defaults, deep control when needed. **Analyst-grade focus**: less noise during deep analysis. **Scalability**: patterns that work across datasets and domains."
+          }
+        ]
+      },
+      {
+        "title": "Data Tables Analysts Don't Need to Export",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Built on AG-Grid**: Filtering, grouping and custom formatting became the backbone of data exploration. On top of the base library I designed custom rules for decimal consistency and alignment, because in finance and energy data a misaligned decimal is a misread number."
+          },
+          {
+            "type": "paragraph",
+            "text": "Analysts stopped exporting to Excel before they could get to an insight, and repetitive slicing and filtering took far less manual effort."
+          }
+        ]
+      },
+      {
+        "title": "Charts With a Focus Mode",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Charts needed two modes: an embedded overview for quick insight, and a focus mode for deep, uninterrupted analysis. One click takes a chart full screen, with a persistent settings panel instead of buried controls, plus better axis controls, legends and comparison toggles."
+          },
+          {
+            "type": "image",
+            "src": img_project9_charts,
+            "alt": "Full-screen chart analysis mode with persistent settings panel"
+          }
+        ]
+      },
+      {
+        "title": "A Map That Explains Itself",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Layers and legends were simplified and grouped into logical categories by industry, with thumbnails, descriptions and a clear place to add new layers. Dashboard layers sit in their own section with a single toggle, and legends live under each layer with options to recolour or hide. Progressive disclosure keeps dense spatial context readable."
+          },
+          {
+            "type": "image",
+            "src": img_project9_map,
+            "alt": "Lens map with grouped layer controls and legends"
+          }
+        ]
+      },
+      {
+        "title": "A Navigation Header With Room to Grow",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "New products like hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live in the old navigation. A new global header gave them clear categories and a streamlined hierarchy, kept search where users expect it, and added a single entry point into AI chat."
+          },
+          {
+            "type": "image",
+            "src": img_project9_nav,
+            "alt": "New Lens global navigation header"
+          }
+        ]
+      },
+      {
+        "title": "Validation & Outcome",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Task-based testing on tables and maps surfaced real friction: unclear drag instructions in tables, legends that were hard to see on maps. Each one was iterated on with clearer visuals, interaction cues and better defaults."
+          },
+          {
+            "type": "image",
+            "src": img_project9_validation,
+            "alt": "Validation and iteration on table and map interactions"
+          },
+          {
+            "type": "paragraph",
+            "text": "**The result**: a unified Lens with consistent UX across tables, maps and dashboards. Users and stakeholders reported more confidence in the platform, less training time and support overhead, and higher engagement with the advanced data tools."
+          }
+        ]
+      }
+    ]
+  },
+
+  "project10": {
+    "id": "project10",
+    "title": "Strata: A Lego Set for Seven Products",
+    "metadata": {
+      "Client": "Qore Technologies",
+      "Role": "Design System Lead",
+      "Project Type": "Design System",
+      "Timeline": "Ongoing"
+    },
+    "problem": "Design and squads were rebuilding the same things in silos: five versions of an input field, three different modal styles, and 30–40% of every sprint spent reinventing what already existed. Users noticed.",
+    "solution": "Strata, one design system for Qore's multi-product ecosystem: a shared box of certified pieces, identical in Figma and in code, with every state covered and a syntax AI can build from.",
+    "heroImage": project10_hero,
+    "passwordHash": "102bd23bb6b004c0bb89fb10fe31dc19103674064f2eb552a54f839d3a4135e7",
+    "sections": [
+      {
+        "title": "Not a Figma File of Buttons",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "A design system isn't a colour palette and some button variants. Strata is a shared box of standard, certified pieces, so nobody hand-carves the same bricks every sprint. Figma is how things look, code is how things ship, and Strata is the single source of truth between them."
+          }
+        ]
+      },
+      {
+        "title": "Built in the Trenches",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Strata started inside real products, Recova, BankOne and Self-Service: high-stakes, user-facing interfaces with strict financial data and dense screens. That's why every component covers every state, loading, empty, error and success, from day one."
+          },
+          {
+            "type": "paragraph",
+            "text": "What a designer sees in the Figma component is identical to what a developer imports in code. One repository, one shared truth."
+          }
+        ]
+      },
+      {
+        "title": "From Product Suite to AI",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "AI shouldn't have to guess what an interface looks like. Strata gives it a deterministic syntax and an exact description of every component, so AI-built features come out on-system instead of approximately right."
+          }
+        ]
+      },
+      {
+        "title": "Keeping It Alive",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "A design system dies if it becomes a bottleneck or an ivory tower. Two pieces keep Strata from either: a clear contribution model, so any team that needs a new pattern can add it back to the core, and automated token pipelines, so design changes in Figma sync straight into code."
+          },
+          {
+            "type": "paragraph",
+            "text": "**What it frees design to do**: less time tweaking buttons and form fields, because that baseline is done. More time on user journeys, complex logic, edge cases, and orchestrating AI interactions."
+          }
+        ]
+      }
+    ]
+  },
   "project8": {
     "id": "project8",
     "title": "Wood Mackenzie Lens 2.0: One Place to Ask, Search and See",
@@ -841,6 +1039,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "Energy analysts were bouncing between search, chat, dashboards and AI agents that didn't talk to each other. Every switch cost them context, and finding an answer they could actually trust took far too long.",
     "solution": "A single platform where search, WoodMac Chat, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
     "heroImage": project8_hero,
+    "passwordHash": "191966c670ae232f5ff7a3ed2f4c8f13b04e277b5b020202c7072039d0230cc4",
     "sections": [
       {
         "title": "Four Tools Pretending to Be One Product",
@@ -919,24 +1118,48 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**AI dashboard generation**: The AI builds a dashboard with relevant widgets, and it opens in Discovery looking and behaving like every other Lens dashboard, not a bolt-on."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Charts inside the conversation**: Charts, tables and images render directly in chat, follow Lens chart standards, and open into full-screen chart mode to keep exploring."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Context-aware summaries**: One click on the AI icon summarises a chart in plain language. Draw a polygon on the map and the AI summarises that area, which answered the GIS expert's question almost word for word. Chat keeps its history and knows where in the product the user is."
+            "text": "**AI dashboard generation**: Generic AI answers weren't actionable. Now the AI builds a dashboard with relevant widgets, and it opens in Discovery looking and behaving like every other Lens dashboard, not a bolt-on. Chat stays alongside, keeping its history and knowing where the user is."
           },
           {
             "type": "image",
-            "src": img_project8_platform,
-            "alt": "Lens enterprise platform with dashboards, map layers and WoodMac Chat"
+            "src": img_project8_dashboard,
+            "alt": "AI-generated dashboard opened in Discovery with WoodMac Chat alongside"
           },
           {
             "type": "paragraph",
-            "text": "**Where it landed**: The redesign improved navigation, interaction patterns and visual hierarchy across the flagship Lens platform, with measurable gains in usability scores and client engagement, and the AI knowledge assistant cut the time analysts spend on research."
+            "text": "**Charts inside the conversation**: Users wanted to see the data without leaving the conversation. Charts, tables and images now render directly in chat, follow Lens chart standards, and open into full-screen chart mode to keep exploring."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Context-aware summaries**: One click on the AI icon summarises a chart in plain language. Draw a polygon on the map and the AI summarises that area, which answered the GIS expert's question almost word for word."
+          },
+          {
+            "type": "image",
+            "src": img_project8_context,
+            "alt": "AI context summary of a map area drawn with the polygon tool"
+          }
+        ]
+      },
+      {
+        "title": "Outcome & Impact",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Helped win a five-year strategic deal**: Early interactive prototypes of the AI interaction model were used in customer demos with a strategic prospect."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Shaped the brand**: The AI interaction framework directly influenced the rebrand and the business's new strategic narrative, \"Business Interconnect Intelligence\"."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Faster alignment, room to scale**: The prototypes became alignment artefacts that cut ambiguity across teams, and the framework set up patterns the platform can keep building AI features on."
+          },
+          {
+            "type": "image",
+            "src": img_project8_showcase,
+            "alt": "Lens 2.0 AI experience showcase"
           }
         ]
       }
