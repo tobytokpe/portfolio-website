@@ -12,5 +12,5 @@ export const STATS: Stat[] = [
   { id: 'investnow', value: '11th → 3rd', label: 'in its market, in three months', category: 'Growth' },
   { id: 'dropoff', value: '48% → 14%', label: 'onboarding drop-off', category: 'Conversion', slug: 'Moore' },
   { id: 'cewers', value: '95s → 4s', label: 'emergency report time, UNDP', category: 'Life', slug: 'UNDP' },
-  { id: 'teams', value: '10+ teams', label: 'building on one design system', category: 'Adoption' },
+  { id: 'downloads', value: '8,000+', label: 'organic downloads, no paid marketing', category: 'Adoption', slug: 'Moore' },
 ];
