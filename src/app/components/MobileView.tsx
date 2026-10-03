@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Mail, Linkedin, Check, Copy } from 'lucide-react';
+import { Mail, Linkedin, Check, Copy, Download } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Navigation } from './Navigation';
 import { ProjectGrid } from './ProjectGrid';
 import { LeadershipGrid } from './LeadershipGrid';
-import aboutMeSvg from '../../assets/about-me.svg';
 import starSticker from '../../assets/stickers/star.png';
 import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
+import { StatStrip } from './StatStrip';
+import { ExperienceTimeline } from './ExperienceTimeline';
+import { RecognitionLists } from './RecognitionLists';
+
+const RESUME_URL = '/resume/Tobi-Olowu-CV.pdf';
 
 interface Project {
   id: string;
@@ -128,21 +132,37 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
             </div>
             <div className="text-center relative px-6">
               <h1
-                className="text-3xl font-bold text-gray-900 mb-3"
+                className="text-3xl font-bold text-gray-900 mb-2"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
                 Hi, I'm Tobi Olowu
               </h1>
+              <p
+                className="text-xs font-semibold text-gray-700 mb-3 uppercase tracking-wide"
+                style={{ fontFamily: 'Syne, sans-serif' }}
+              >
+                Product Design Lead — 10+ Years Across Fintech, Investment, Government & Energy
+              </p>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                A product designer with a decade of fixing broken flows across fintech, SaaS, and energy, all in the name of building things people actually want to use.
+                A decade leading product design across fintech, energy, and government — currently leading platform and AI direction for Wood Mackenzie's flagship product line. I've grown a consumer app from 11th to 3rd most-used in its market in three months, and coached 10+ designers into leadership roles of their own.
               </p>
             </div>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
-            >
-              Get in touch
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollTo('contact')}
+                className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
+              >
+                Get in touch
+              </button>
+              <a
+                href={RESUME_URL}
+                download
+                className="inline-flex items-center gap-2 px-5 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium"
+              >
+                <Download size={16} />
+                CV
+              </a>
+            </div>
           </div>
         </SectionCard>
 
@@ -156,16 +176,29 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           </h2>
           <div className="space-y-6 text-[#5d6c7c] text-sm leading-[1.7]">
             <p className="font-[Architects_Daughter]">
-              A designer who believes usable beats clever, with close to a decade building B2C and B2B SaaS products across mobile and web. I've led design across Finance, Energy, and Technology, delivering solutions that drive real business impact, not just better-looking screens. I was recently endorsed as an Exceptional Talent by the UK Government's Global Talent scheme, recognition for the work, not the title.
+              A decade into product design, the thread running through my work isn't one industry or one kind of interface — it's a habit of taking something genuinely complicated and making it usable without flattening the complexity that actually matters. I've designed the interface for a voice-first emergency alert system used across conflict-affected regions, where a delay or a confusing screen has real consequences. I've built banking apps trusted with people's savings, an investment platform that climbed from 11th to 3rd most-used in its market within three months, a currency exchange product, an API management system now used by dozens of financial institutions, a white-label engine that took banks from a four-month app launch down to a single afternoon, and most recently the AI and analytics platforms that energy sector analysts rely on to make decisions under time pressure.
             </p>
-            
-            <div className="pt-6">
-              <img
-                src={aboutMeSvg}
-                alt="Skills and Expertise Overview"
-                className="w-full h-auto object-contain rounded-2xl"
-              />
+            <p className="font-[Architects_Daughter]">
+              What carries across all of it is the same set of habits: building design systems that hold up once ten teams are using them rather than just the one that built them, running real research instead of assuming I know the answer, making the trade-off calls between what's technically possible and what actually works on a low-end phone with a bad connection, and coaching designers moving into leadership roles of their own. I'm a strong believer in Kaizen — continuous, deliberate improvement — and I'd rather ship something slightly rough and fix it in the open than wait for a version that never ships at all.
+            </p>
+
+            <div className="pt-2">
+              <StatStrip />
             </div>
+
+            <div className="pt-4">
+              <h3 className="text-xl font-bold text-gray-900 mb-5" style={{ fontFamily: 'Syne, sans-serif' }}>Experience</h3>
+              <ExperienceTimeline />
+            </div>
+
+            <a
+              href={RESUME_URL}
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
+            >
+              <Download size={18} />
+              Download CV
+            </a>
           </div>
         </SectionCard>
 
@@ -207,6 +240,9 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               if (leader) window.open(leader.iframeUrl, '_blank');
             }}
           />
+          <div className="mt-10 pt-10 border-t border-gray-200">
+            <RecognitionLists />
+          </div>
         </SectionCard>
 
         {/* Contact */}
@@ -233,6 +269,14 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                   {emailCopied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                 </button>
               </div>
+              <a
+                href={RESUME_URL}
+                download
+                className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
+              >
+                <Download size={20} />
+                <span>Download CV</span>
+              </a>
               <a
                 href="https://www.linkedin.com/in/olowutobi/"
                 target="_blank"

@@ -9,9 +9,13 @@ import { ProjectGrid } from './components/ProjectGrid';
 import { LeadershipGrid } from './components/LeadershipGrid';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import { MobileView } from './components/MobileView';
-import Frame1984078061 from '../imports/Frame1984078061';
-import { Mail, Linkedin, Copy, Check } from 'lucide-react';
+import { Mail, Linkedin, Copy, Check, Download } from 'lucide-react';
 import { InteractiveGridBackground } from './components/ui/InteractiveGridBackground';
+import { StatStrip } from './components/StatStrip';
+import { ExperienceTimeline } from './components/ExperienceTimeline';
+import { RecognitionLists } from './components/RecognitionLists';
+
+const RESUME_URL = '/resume/Tobi-Olowu-CV.pdf';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -32,7 +36,6 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 
 // Hero image
 import tobiGif from '../assets/Tobi video.gif';
-import aboutMeSvg from '../assets/about-me.svg';
 import techNationLogo from '../assets/tech-nation-logo.png';
 
 // Stickers
@@ -168,23 +171,35 @@ function FigmaCanvas() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // The "Selected Work" frame sizes itself to its content instead of a fixed
-  // height, so adding/removing project cards never clips the grid again.
+  // These frames size themselves to their content instead of a fixed height,
+  // so adding/removing cards or copy never clips the frame again.
   const workContentRef = useRef<HTMLDivElement>(null);
   const [workFrameHeight, setWorkFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+  const aboutContentRef = useRef<HTMLDivElement>(null);
+  const [aboutFrameHeight, setAboutFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+  const leadershipContentRef = useRef<HTMLDivElement>(null);
+  const [leadershipFrameHeight, setLeadershipFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
 
   useEffect(() => {
-    const el = workContentRef.current;
-    if (!el) return;
+    const targets: [React.RefObject<HTMLDivElement>, (h: number) => void][] = [
+      [workContentRef, setWorkFrameHeight],
+      [aboutContentRef, setAboutFrameHeight],
+      [leadershipContentRef, setLeadershipFrameHeight],
+    ];
 
-    const updateHeight = () => {
-      setWorkFrameHeight(Math.max(el.scrollHeight, WORK_FRAME_MIN_HEIGHT));
-    };
+    const observers = targets.map(([ref, setHeight]) => {
+      const el = ref.current;
+      if (!el) return null;
 
-    updateHeight();
-    const observer = new ResizeObserver(updateHeight);
-    observer.observe(el);
-    return () => observer.disconnect();
+      const update = () => setHeight(Math.max(el.scrollHeight, WORK_FRAME_MIN_HEIGHT));
+      update();
+
+      const observer = new ResizeObserver(update);
+      observer.observe(el);
+      return observer;
+    });
+
+    return () => observers.forEach((o) => o?.disconnect());
   }, []);
 
   // Email copy state
@@ -193,7 +208,7 @@ function FigmaCanvas() {
   
   // Calculate initial transform to match hero navigation
   const getInitialTransform = () => {
-    const frame = { x: 50, y: 200, width: 800, height: 500 };
+    const frame = { x: 50, y: 200, width: 800, height: 580 };
     const frameCenterX = frame.x + frame.width / 2;
     const frameCenterY = frame.y + frame.height / 2;
     const viewportCenterX = typeof window !== 'undefined' ? window.innerWidth / 2 : 960;
@@ -372,11 +387,11 @@ function FigmaCanvas() {
     // Frame coordinates: [x, y, width, height]
     // Calculate center position for each frame at 1.56 zoom
     const frames: Record<string, { x: number; y: number; width: number; height: number }> = {
-      hero: { x: 50, y: 200, width: 800, height: 500 },
+      hero: { x: 50, y: 200, width: 800, height: 580 },
       about: { x: 950, y: 200, width: 800, height: 900 },
       work: { x: 1850, y: 200, width: 800, height: 1600 },
       leadership: { x: 2750, y: 200, width: 800, height: 1600 },
-      contact: { x: 3650, y: 200, width: 800, height: 500 },
+      contact: { x: 3650, y: 200, width: 800, height: 560 },
     };
 
     const frame = frames[id];
@@ -415,7 +430,7 @@ function FigmaCanvas() {
 
   const handleReset = useCallback(() => {
     // Use same centering logic as navigation for Hero card
-    const frame = { x: 50, y: 200, width: 800, height: 500 };
+    const frame = { x: 50, y: 200, width: 800, height: 580 };
     const frameCenterX = frame.x + frame.width / 2;
     const frameCenterY = frame.y + frame.height / 2;
     const viewportCenterX = window.innerWidth / 2;
@@ -473,11 +488,11 @@ function FigmaCanvas() {
         <InteractiveGridBackground
           transform={transform}
           cards={[
-            { x: 50, y: 200, width: 800, height: 500 },
+            { x: 50, y: 200, width: 800, height: 580 },
             { x: 950, y: 200, width: 800, height: 900 },
             { x: 1850, y: 200, width: 800, height: 1600 },
             { x: 2750, y: 200, width: 800, height: 1600 },
-            { x: 3650, y: 200, width: 800, height: 500 },
+            { x: 3650, y: 200, width: 800, height: 560 },
           ]}
         />
 
@@ -505,7 +520,7 @@ function FigmaCanvas() {
             x={50}
             y={200}
             width={800}
-            height={500}
+            height={580}
           >
             <div className="h-full flex items-center justify-between px-12 gap-8 relative">
               {/* Text on the left */}
@@ -517,13 +532,33 @@ function FigmaCanvas() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >Hi, I'm Tobi Olowu</motion.h1>
-                
+
+                <motion.p
+                  className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  style={{ fontFamily: 'Syne, sans-serif' }}
+                >Product Design Lead — 10+ Years Across Fintech, Investment, Government & Energy</motion.p>
+
                 <motion.p
                   className="text-gray-500 max-w-md font-[Architects_Daughter]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                >A product designer with a decade of untangling complex systems and fixing broken flows across fintech, SaaS, and energy. I've built dashboards for 500+ banks and a panic button for the United Nations, all in the name of things people actually want to use.</motion.p>
+                >A decade leading product design across fintech, energy, and government — currently leading platform and AI direction for Wood Mackenzie's flagship product line. I've grown a consumer app from 11th to 3rd most-used in its market in three months, and coached 10+ designers into leadership roles of their own.</motion.p>
+
+                <motion.a
+                  href={RESUME_URL}
+                  download
+                  className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <Download size={16} />
+                  Download CV
+                </motion.a>
               </div>
 
               {/* Image on the right */}
@@ -561,12 +596,13 @@ function FigmaCanvas() {
             x={950}
             y={200}
             width={800}
-            height={1400}
+            height={aboutFrameHeight}
           >
-            <div className="p-12">
+            <div ref={aboutContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>About Me</h2>
               <div className="space-y-4 text-gray-600">
-                <p className="font-[Architects_Daughter]">A product designer with over a decade building B2C and B2B SaaS products across mobile and web. I've led design across Finance, Wealth Management, Energy, and Humanitarian tech, directing teams of designers and aligning stakeholders across departments to ship things that move the business, not just the mockups. I was recently endorsed as an Exceptional Talent in Digital Technology by the UK Government, recognition for the work, not the title.</p>
+                <p className="font-[Architects_Daughter]">A decade into product design, the thread running through my work isn't one industry or one kind of interface — it's a habit of taking something genuinely complicated and making it usable without flattening the complexity that actually matters. I've designed the interface for a voice-first emergency alert system used across conflict-affected regions, where a delay or a confusing screen has real consequences. I've built banking apps trusted with people's savings, an investment platform that climbed from 11th to 3rd most-used in its market within three months, a currency exchange product, an API management system now used by dozens of financial institutions, a white-label engine that took banks from a four-month app launch down to a single afternoon, and most recently the AI and analytics platforms that energy sector analysts rely on to make decisions under time pressure.</p>
+                <p className="font-[Architects_Daughter]">What carries across all of it is the same set of habits: building design systems that hold up once ten teams are using them rather than just the one that built them, running real research instead of assuming I know the answer, making the trade-off calls between what's technically possible and what actually works on a low-end phone with a bad connection, and coaching designers moving into leadership roles of their own. I'm a strong believer in Kaizen — continuous, deliberate improvement — and I'd rather ship something slightly rough and fix it in the open than wait for a version that never ships at all.</p>
 
                 <div className="mt-2 bg-white border border-gray-900 rounded-2xl p-4 flex items-start gap-3">
                   <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
@@ -577,20 +613,26 @@ function FigmaCanvas() {
                     <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">Recognised as an Exceptional Talent in Digital Technology by the UK Government, a selective credential given to people making a real contribution to tech and design.</p>
                   </div>
                 </div>
-                
-                <div className="pt-6">
-                  <img
-                    src={aboutMeSvg}
-                    alt="Skills and Expertise Overview"
-                    className="w-full h-auto object-contain rounded-2xl"
-                  />
+
+                <div className="pt-4">
+                  <StatStrip />
                 </div>
 
-                {/* My Design Process section hidden as requested */}
-                {/* <div className="pt-6">
-                  <h3 className="font-semibold text-gray-900 mb-4 font-[Syne] font-bold">My Design Process</h3>
-                  <Frame1984078061 />
-                </div> */}
+                <div className="pt-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>Experience</h3>
+                  <ExperienceTimeline />
+                </div>
+
+                <div className="pt-6">
+                  <a
+                    href={RESUME_URL}
+                    download
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
+                  >
+                    <Download size={18} />
+                    Download CV
+                  </a>
+                </div>
               </div>
             </div>
           </Frame>
@@ -629,17 +671,20 @@ function FigmaCanvas() {
             x={2750}
             y={200}
             width={800}
-            height={1600}
+            height={leadershipFrameHeight}
           >
-            <div className="h-auto p-12">
+            <div ref={leadershipContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>Leadership</h2>
-              <LeadershipGrid 
+              <LeadershipGrid
                 leaders={LEADERSHIP}
                 onLeadershipClick={(leadershipId) => {
                   const leader = LEADERSHIP.find(l => l.id === leadershipId);
                   if (leader) window.open(leader.iframeUrl, '_blank');
                 }}
               />
+              <div className="mt-12 pt-12 border-t border-gray-200">
+                <RecognitionLists />
+              </div>
             </div>
           </Frame>
 
@@ -650,7 +695,7 @@ function FigmaCanvas() {
             x={3650}
             y={200}
             width={800}
-            height={500}
+            height={560}
           >
             <div className="h-full flex flex-col items-center justify-center p-12 text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
@@ -707,6 +752,14 @@ function FigmaCanvas() {
                 >
                   <Linkedin size={20} />
                   <span>LinkedIn</span>
+                </a>
+                <a
+                  href={RESUME_URL}
+                  download
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                >
+                  <Download size={20} />
+                  <span>Download CV</span>
                 </a>
                 <div className="flex gap-3">
                   <a
