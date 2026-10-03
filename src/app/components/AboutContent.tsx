@@ -31,7 +31,7 @@ export function AboutContent() {
       </div>
 
       <div>
-        <SubHeading>How I work</SubHeading>
+        <SubHeading>Design philosophy</SubHeading>
         <PrincipleCards />
       </div>
 

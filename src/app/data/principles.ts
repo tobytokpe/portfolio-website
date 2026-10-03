@@ -1,6 +1,6 @@
 export const PRINCIPLES: { id: string; title: string; body: string }[] = [
-  { id: 'systems', title: 'Systems that survive ten teams', body: "A design system isn't done when it works for the team that built it. It's done when ten teams use it and it still holds." },
-  { id: 'research', title: 'Research over assumption', body: "Real research instead of assuming I already know the answer. The flawed first try is usually where the design gets good." },
-  { id: 'constraints', title: 'Design for the worst connection', body: 'The real test is a low-end phone on a bad network. Trade-offs get made there, not in Figma.' },
-  { id: 'coaching', title: 'Grow the next leads', body: "I've coached 10+ designers into leadership roles. The team you leave behind is part of the work." },
+  { id: 'kaizen', title: 'Kaizen', body: 'Ship it slightly rough, watch real people use it, fix it in the open. Every project I’m proud of had a flawed first try — the swipe cards that failed in a crisis drill became the grid that worked.' },
+  { id: 'advocacy', title: 'Advocate for the person not in the room', body: 'Someone has to speak for the user who isn’t in the meeting. I fought to remove AI translation from the UNDP app because it cost 12 seconds in an emergency. Accessibility goes in from the first iteration, not after an audit.' },
+  { id: 'systems', title: 'Systems that outlast you', body: "A design system isn't done when it works for the team that built it. It's done when ten teams use it and it still holds without me in the room." },
+  { id: 'people', title: 'Leave people better than you found them', body: "I've coached 10+ designers into leadership roles of their own. The team you leave behind is part of the work." },
 ];
