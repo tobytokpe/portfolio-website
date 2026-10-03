@@ -13,6 +13,7 @@ import { Mail, Linkedin, Copy, Check, Download } from 'lucide-react';
 import { InteractiveGridBackground } from './components/ui/InteractiveGridBackground';
 import { AboutContent, RESUME_URL } from './components/AboutContent';
 import { AchievementBadges } from './components/AchievementBadges';
+import { MaybePasswordGate } from './components/PasswordGate';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -21,6 +22,9 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
+import projectImg9 from '../assets/case-studies/project9/platform-1-2.png';
+import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
+import projectImg8 from '../assets/case-studies/project8/lens-hero.png';
 import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
@@ -49,6 +53,33 @@ const CANVAS_HEIGHT = 2200;
 
 // Case study projects data
 const PROJECTS = [
+  {
+    id: 'project8',
+    slug: 'Lens',
+    title: 'Wood Mackenzie Lens 2.0: One Place to Ask, Search and See',
+    description: 'Unifying search, chat, dashboards and AI agents on an enterprise energy analytics platform, with sources shown on every AI answer.',
+    tag: 'Enterprise AI',
+    iframeUrl: '',
+    imageSrc: projectImg8
+  },
+  {
+    id: 'project9',
+    slug: 'Lens-Platform',
+    title: 'Lens Platform: Analytics That Hold Up at a Million Rows',
+    description: 'Data tables, charts, maps and navigation redesigned so enterprise analysts can work at scale without leaving for Excel.',
+    tag: 'Enterprise Analytics',
+    iframeUrl: '',
+    imageSrc: projectImg9
+  },
+  {
+    id: 'project10',
+    slug: 'Strata',
+    title: 'Strata: A Lego Set for Seven Products',
+    description: "One design system for Qore's seven products: identical in Figma and code, every state covered, and readable by AI.",
+    tag: 'Design System',
+    iframeUrl: '',
+    imageSrc: projectImg10
+  },
   { 
     id: 'project1',
     slug: 'Hydra',
@@ -797,7 +828,7 @@ function ProjectPage() {
     }
     
     return () => {
-      document.title = 'Tobi | Designer | Product Innovator |';
+      document.title = 'Tobi Olowu — Product Design Lead';
     };
   }, [data]);
 
@@ -912,6 +943,7 @@ function ProjectPage() {
         )}
 
         {/* Custom Dynamic Sections */}
+        <MaybePasswordGate key={slug} storageKey={slug!} passwordHash={data.passwordHash} onBack={() => navigate('/')}>
         <div className="space-y-16">
           {data.sections.map((section: any, idx: number) => (
             <section key={idx} className="space-y-6">
@@ -1015,6 +1047,7 @@ function ProjectPage() {
             </section>
           ))}
         </div>
+        </MaybePasswordGate>
 
         {/* Project Pagination (Prev / Next) */}
         {(() => {
