@@ -11,11 +11,8 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import { MobileView } from './components/MobileView';
 import { Mail, Linkedin, Copy, Check, Download } from 'lucide-react';
 import { InteractiveGridBackground } from './components/ui/InteractiveGridBackground';
-import { StatStrip } from './components/StatStrip';
-import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { RecognitionLists } from './components/RecognitionLists';
-
-const RESUME_URL = '/resume/Tobi-Olowu-CV.pdf';
+import { AboutContent, RESUME_URL } from './components/AboutContent';
+import { AchievementBadges } from './components/AchievementBadges';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -36,7 +33,6 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 
 // Hero image
 import tobiGif from '../assets/Tobi video.gif';
-import techNationLogo from '../assets/tech-nation-logo.png';
 
 // Stickers
 import starSticker from '../assets/stickers/star.png';
@@ -600,40 +596,7 @@ function FigmaCanvas() {
           >
             <div ref={aboutContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>About Me</h2>
-              <div className="space-y-4 text-gray-600">
-                <p className="font-[Architects_Daughter]">A decade into product design, the thread running through my work isn't one industry or one kind of interface — it's a habit of taking something genuinely complicated and making it usable without flattening the complexity that actually matters. I've designed the interface for a voice-first emergency alert system used across conflict-affected regions, where a delay or a confusing screen has real consequences. I've built banking apps trusted with people's savings, an investment platform that climbed from 11th to 3rd most-used in its market within three months, a currency exchange product, an API management system now used by dozens of financial institutions, a white-label engine that took banks from a four-month app launch down to a single afternoon, and most recently the AI and analytics platforms that energy sector analysts rely on to make decisions under time pressure.</p>
-                <p className="font-[Architects_Daughter]">What carries across all of it is the same set of habits: building design systems that hold up once ten teams are using them rather than just the one that built them, running real research instead of assuming I know the answer, making the trade-off calls between what's technically possible and what actually works on a low-end phone with a bad connection, and coaching designers moving into leadership roles of their own. I'm a strong believer in Kaizen — continuous, deliberate improvement — and I'd rather ship something slightly rough and fix it in the open than wait for a version that never ships at all.</p>
-
-                <div className="mt-2 bg-white border border-gray-900 rounded-2xl p-4 flex items-start gap-3">
-                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
-                    <img src={techNationLogo} alt="Tech Nation" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-900 uppercase tracking-widest font-['Syne']">UK Global Talent Endorsement</p>
-                    <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">Recognised as an Exceptional Talent in Digital Technology by the UK Government, a selective credential given to people making a real contribution to tech and design.</p>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <StatStrip />
-                </div>
-
-                <div className="pt-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>Experience</h3>
-                  <ExperienceTimeline />
-                </div>
-
-                <div className="pt-6">
-                  <a
-                    href={RESUME_URL}
-                    download
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
-                  >
-                    <Download size={18} />
-                    Download CV
-                  </a>
-                </div>
-              </div>
+              <AboutContent />
             </div>
           </Frame>
 
@@ -683,7 +646,8 @@ function FigmaCanvas() {
                 }}
               />
               <div className="mt-12 pt-12 border-t border-gray-200">
-                <RecognitionLists />
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
+                <AchievementBadges />
               </div>
             </div>
           </Frame>
