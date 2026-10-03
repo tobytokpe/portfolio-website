@@ -20,6 +20,7 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
+import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
 import leadershipImg1 from 'figma:asset/c155cac86dd8ff90a2a85cab8016320721e754d1.png';
@@ -50,55 +51,64 @@ const CANVAS_HEIGHT = 2200;
 // Case study projects data
 const PROJECTS = [
   { 
-    id: 'project1', 
+    id: 'project1',
     slug: 'Hydra',
-    title: 'HYDRA: Bringing Order to Fragmented Banking Code',
-    description: 'User-centric SaaS B2B platform for financial industries, streamlining API integration, reducing costs, and driving fintech innovation.',
+    title: 'Hydra: When Banks Speak Five Different Languages',
+    description: 'A B2B API gateway that pulls fragmented banking integrations into one dashboard, cutting integration time and giving fintechs one bill instead of five.',
     tag: 'Fintech', 
     iframeUrl: 'https://oolowu.com/select-projects/hydra-project-cc/',
     imageSrc: projectImg1
   },
   { 
-    id: 'project2', 
+    id: 'project2',
     slug: 'Qore',
-    title: 'QORE: Launching Banking Apps Instantly',
-    description: 'White-label B2B platform enabling African microfinance banks to launch fully branded digital banking apps instantly, scaling to 500+ institutions and cutting deployment from months to a single afternoon.',
+    title: 'Qore: 500 Banks, One Afternoon Each',
+    description: 'A no-code setup wizard that lets African microfinance banks configure and launch a fully branded banking app, cutting deployment from months to a single afternoon across 500+ institutions.',
     tag: 'Banking', 
     iframeUrl: 'https://oolowu.com/select-projects/qore-cc/',
     imageSrc: projectImg2
   },
   { 
-    id: 'project3', 
+    id: 'project3',
     slug: 'MAMVest',
-    title: 'MAMVest: Digitizing Traditional Wealth Management',
-    description: 'Digital wealth management platform democratizing access to institutional-grade instruments like Mutual Funds, Bonds, and Bills.',
+    title: 'MAMVest: From a Three-Day Wire Transfer to Under Four Minutes',
+    description: 'A digital wealth platform that opens Mutual Funds, Bonds, and Treasury Bills to retail investors, replacing a paper-bound process that used to take days.',
     tag: 'Wealth Management', 
     iframeUrl: 'https://oolowu.com/select-projects/mamvest-cc/',
     imageSrc: projectImg3
   },
   { 
-    id: 'project4', 
+    id: 'project4',
     slug: 'Moore',
-    title: 'Moore: Making Digital Banking Simple for New Markets',
-    description: 'Digital banking app offering comprehensive financial management tools, from budgeting to secure transactions, in one user-friendly platform.',
+    title: "Moore: Banking That Doesn't Feel Like Banking",
+    description: 'A digital banking app that cut onboarding drop-off from 48% to 14% and turned a heavy banking backend into something that feels warm and fast, even on a slow connection.',
     tag: 'Banking', 
     iframeUrl: 'https://oolowu.com/select-projects/moore-cc/',
     imageSrc: projectImg4
   },
   { 
-    id: 'project5', 
+    id: 'project5',
     slug: 'UNDP',
-    title: 'UNDP: Rebuilding Security and Alert Systems in Crisis Zones',
-    description: 'Mobile app empowering users in conflict-prone areas with incident reporting, real-time updates, and authority connections for better safety.',
+    title: 'UNDP: The Panic Button That Had to Work in Four Seconds',
+    description: 'A voice-first early-warning app for conflict zones in Northern Nigeria, letting people send a location-tagged alert with no login and no signal, in seconds.',
     tag: 'Social Impact', 
     iframeUrl: 'https://oolowu.com/select-projects/cewers-cc/',
     imageSrc: projectImg5
   },
-  { 
-    id: 'project6', 
+  {
+    id: 'project7',
+    slug: 'Bespoka',
+    title: 'Bespoka: Building an Operating System for an Industry Nobody Digitised',
+    description: 'A marketplace and full operating system for bespoke tailors, designed and built solo end to end, from client booking to order tracking to split-deposit invoicing.',
+    tag: 'Marketplace',
+    iframeUrl: '',
+    imageSrc: projectImg7
+  },
+  {
+    id: 'project6',
     slug: 'Signature-Bank',
     title: 'Signature Bank',
-    description: 'A website for a tier 1 bank delivering a seamless digital banking experience for customers across Nigeria.',
+    description: 'A public website for a tier 1 bank, built to make digital banking feel straightforward for customers across Nigeria.',
     tag: 'Banking', 
     iframeUrl: 'https://www.signaturebankng.com/',
     imageSrc: projectImg6
@@ -109,53 +119,74 @@ const PROJECTS = [
 const LEADERSHIP = [
   {
     id: 'leader1',
-    title: 'Talk: Leveraging AI for Accessible Design Systems with Variables',
-    description: 'Diving into how I harnessed AI to build more inclusive, scalable, and flexible design systems.',
+    title: 'Talk: AI for Accessible Design Systems with Variables',
+    description: 'A UX Scotland talk on how I used AI and Figma variables to build design systems that are accessible by default, not by a later audit.',
     imageSrc: leadershipImg1,
     iframeUrl: 'https://uxscotland.net/programme/leveraging-ai-accessible-design-systems-variables'
   },
   {
     id: 'leader2',
     title: 'Article: AI & Variables, Accessible Design Systems at Scale (Zeroheight)',
-    description: 'Published on Zeroheight: a strategic exploration of how AI accelerates the development of accessible, scalable design systems using variables.',
+    description: 'Published on Zeroheight: how AI and variables together got us to an accessible, scalable design system faster than doing it by hand.',
     imageSrc: leadershipImg2,
     iframeUrl: 'https://zeroheight.com/blog/ai-and-variables-building-more-accessible-design-systems-faster/'
   },
   {
     id: 'leader3',
     title: 'Article: Mastering AG-Grid, Efficient Data Tables at Scale (Woodmac)',
-    description: 'Published in Woodmac\'s design practice on Medium: a practical deep-dive into designing user-centred, high-performance data tables for enterprise-grade products.',
+    description: 'Published on Medium for Woodmac\'s design practice: what it actually takes to design a data table that stays usable at enterprise scale.',
     imageSrc: leadershipImg3,
     iframeUrl: 'https://medium.com/woodmac/mastering-ag-grid-designing-efficient-and-user-centered-data-tables-8fa35580f4f7'
   },
   {
     id: 'leader4',
     title: 'CVSpan Product Design Learning Course',
-    description: 'Designed and facilitated a hands-on product design curriculum, covering UX research, interaction design, systems thinking, and cross-platform development, to equip the next generation of African designers.',
+    description: 'A hands-on curriculum I designed and taught, covering UX research, interaction design, systems thinking, and cross-platform development, for the next generation of African designers.',
     imageSrc: leadershipImg4,
     iframeUrl: 'https://learn.cvspan.com/'
   },
   {
     id: 'leader5',
     title: 'CVSpan Design Jam Competition',
-    description: 'Organized and led collaborative design sprints, fostering innovation and teamwork within a vibrant community of designers and developers.',
+    description: 'Organised and led collaborative design sprints, building real teamwork and momentum inside a growing community of designers and developers.',
     imageSrc: leadershipImg5,
     iframeUrl: 'https://community.cvspan.com/designjam-2025/'
   },
   {
     id: 'leader6',
     title: 'Article: Design Thinking in Fintech, Crafting User-Centric Experiences (Qore)',
-    description: 'Published on the Qore blog: how design thinking and systems-level creativity can reshape traditional banking into engaging, trust-building digital experiences.',
+    description: 'Published on the Qore blog: how systems-level design thinking turned traditional banking processes into digital experiences people actually trust.',
     imageSrc: leadershipImg6,
     iframeUrl: 'https://qore.inc/design-thinking-in-crafting-user-centric-experiences/'
   },
 ];
 
+const WORK_FRAME_MIN_HEIGHT = 1600;
+
 function FigmaCanvas() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
+  // The "Selected Work" frame sizes itself to its content instead of a fixed
+  // height, so adding/removing project cards never clips the grid again.
+  const workContentRef = useRef<HTMLDivElement>(null);
+  const [workFrameHeight, setWorkFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+
+  useEffect(() => {
+    const el = workContentRef.current;
+    if (!el) return;
+
+    const updateHeight = () => {
+      setWorkFrameHeight(Math.max(el.scrollHeight, WORK_FRAME_MIN_HEIGHT));
+    };
+
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Email copy state
   const [emailCopied, setEmailCopied] = useState(false);
   const [hoveredCopyButton, setHoveredCopyButton] = useState(false);
@@ -492,7 +523,7 @@ function FigmaCanvas() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                >A product designer with a decade of untangling complex systems, fixing broken flows, and making sense of chaos across fintech, SaaS, and energy, from platforms serving 500+ banks to life-critical tools for the United Nations, all in the name of building things people actually want to use.</motion.p>
+                >A product designer with a decade of untangling complex systems and fixing broken flows across fintech, SaaS, and energy. I've built dashboards for 500+ banks and a panic button for the United Nations, all in the name of things people actually want to use.</motion.p>
               </div>
 
               {/* Image on the right */}
@@ -535,7 +566,7 @@ function FigmaCanvas() {
             <div className="p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>About Me</h2>
               <div className="space-y-4 text-gray-600">
-                <p className="font-[Architects_Daughter]">A product designer with over a decade of experience building B2C and B2B SaaS products across mobile and web platforms. I've led design initiatives across Finance, Wealth Management, Energy, and Humanitarian technology, directing teams of designers, aligning stakeholders across departments, and delivering user-centric solutions that drive significant business impact. Recently, I received the prestigious endorsement as an Exceptional Talent in Digital Technology by the UK Government, an acknowledgement of my dedication to the world of Design and Technology.</p>
+                <p className="font-[Architects_Daughter]">A product designer with over a decade building B2C and B2B SaaS products across mobile and web. I've led design across Finance, Wealth Management, Energy, and Humanitarian tech, directing teams of designers and aligning stakeholders across departments to ship things that move the business, not just the mockups. I was recently endorsed as an Exceptional Talent in Digital Technology by the UK Government, recognition for the work, not the title.</p>
 
                 <div className="mt-2 bg-white border border-gray-900 rounded-2xl p-4 flex items-start gap-3">
                   <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
@@ -543,7 +574,7 @@ function FigmaCanvas() {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-gray-900 uppercase tracking-widest font-['Syne']">UK Global Talent Endorsement</p>
-                    <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">Recognised as an Exceptional Talent in Digital Technology by the UK Government, a highly selective credential for those making outstanding contributions to tech and design.</p>
+                    <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">Recognised as an Exceptional Talent in Digital Technology by the UK Government, a selective credential given to people making a real contribution to tech and design.</p>
                   </div>
                 </div>
                 
@@ -571,9 +602,9 @@ function FigmaCanvas() {
             x={1850}
             y={200}
             width={800}
-            height={1600}
+            height={workFrameHeight}
           >
-            <div className="h-full w-full overflow-hidden p-12">
+            <div ref={workContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>Selected Work</h2>
               <ProjectGrid
                 projects={PROJECTS}
@@ -624,7 +655,7 @@ function FigmaCanvas() {
             <div className="h-full flex flex-col items-center justify-center p-12 text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
               <p className="text-gray-600 mb-8 max-w-sm">
-                Interested in working together? Feel free to reach out through any of these channels.
+                Got a project, a question, or just want to talk shop? Reach out through any of these.
               </p>
               <div className="space-y-3 w-full max-w-xs">
                 <div className="flex gap-3">
