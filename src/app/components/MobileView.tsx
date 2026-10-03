@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Mail, Linkedin, Check, Copy } from 'lucide-react';
+import { Mail, Linkedin, Check, Copy, Download } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Navigation } from './Navigation';
 import { ProjectGrid } from './ProjectGrid';
 import { LeadershipGrid } from './LeadershipGrid';
-import aboutMeSvg from '../../assets/about-me.svg';
 import starSticker from '../../assets/stickers/star.png';
 import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
+import { AboutContent, RESUME_URL } from './AboutContent';
+import { AchievementBadges } from './AchievementBadges';
 
 interface Project {
   id: string;
@@ -127,22 +128,35 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               />
             </div>
             <div className="text-center relative px-6">
+              <p className="text-[10px] font-bold text-gray-500 mb-3 uppercase tracking-widest">
+                Tobi Olowu · Product Design Lead, London
+              </p>
               <h1
-                className="text-3xl font-bold text-gray-900 mb-3"
+                className="text-[34px] font-bold text-gray-900 mb-4 leading-[1.05] tracking-tight"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
-                Hi, I'm Tobi Olowu
+                I make complicated things usable.
               </h1>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                A product designer with a decade of fixing broken flows across fintech, SaaS, and energy, all in the name of building things people actually want to use.
+                Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.
               </p>
             </div>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
-            >
-              Get in touch
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollTo('contact')}
+                className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
+              >
+                Get in touch
+              </button>
+              <a
+                href={RESUME_URL}
+                download
+                className="inline-flex items-center gap-2 px-5 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium"
+              >
+                <Download size={16} />
+                CV
+              </a>
+            </div>
           </div>
         </SectionCard>
 
@@ -154,19 +168,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           >
             About Me
           </h2>
-          <div className="space-y-6 text-[#5d6c7c] text-sm leading-[1.7]">
-            <p className="font-[Architects_Daughter]">
-              A designer who believes usable beats clever, with close to a decade building B2C and B2B SaaS products across mobile and web. I've led design across Finance, Energy, and Technology, delivering solutions that drive real business impact, not just better-looking screens. I was recently endorsed as an Exceptional Talent by the UK Government's Global Talent scheme, recognition for the work, not the title.
-            </p>
-            
-            <div className="pt-6">
-              <img
-                src={aboutMeSvg}
-                alt="Skills and Expertise Overview"
-                className="w-full h-auto object-contain rounded-2xl"
-              />
-            </div>
-          </div>
+          <AboutContent />
         </SectionCard>
 
         {/* Selected Work */}
@@ -207,6 +209,10 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               if (leader) window.open(leader.iframeUrl, '_blank');
             }}
           />
+          <div className="mt-10 pt-10 border-t border-gray-200">
+            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
+            <AchievementBadges />
+          </div>
         </SectionCard>
 
         {/* Contact */}
@@ -233,6 +239,14 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                   {emailCopied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                 </button>
               </div>
+              <a
+                href={RESUME_URL}
+                download
+                className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
+              >
+                <Download size={20} />
+                <span>Download CV</span>
+              </a>
               <a
                 href="https://www.linkedin.com/in/olowutobi/"
                 target="_blank"
