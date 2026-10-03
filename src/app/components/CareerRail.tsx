@@ -6,7 +6,7 @@ export function CareerRail() {
     <div className="bg-white border border-gray-200 rounded-2xl divide-y divide-gray-100">
       {EXPERIENCE.map((e) => (
         <div key={e.id} className="flex items-center gap-4 p-4">
-          <LogoTile logoKey={e.logoKey} name={e.company} width={80} />
+          <LogoTile logoKey={e.logoKey} name={e.company} />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-bold text-gray-900" style={{ fontFamily: 'Syne, sans-serif' }}>
               {e.company}
