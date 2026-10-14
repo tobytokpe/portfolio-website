@@ -1,12 +1,14 @@
+import { AutoplayVideo } from './AutoplayVideo';
 interface ProjectCardProps {
   title: string;
   description: string;
   imageSrc?: string;
+  imageWebm?: string;
   isProtected?: boolean;
   onClick: () => void;
 }
 
-function ProjectCard({ title, description, imageSrc, isProtected, onClick }: ProjectCardProps) {
+function ProjectCard({ title, description, imageSrc, imageWebm, isProtected, onClick }: ProjectCardProps) {
   return (
     <button
       onClick={onClick}
@@ -15,16 +17,7 @@ function ProjectCard({ title, description, imageSrc, isProtected, onClick }: Pro
       {/* Image placeholder */}
       <div className="w-full h-[230px] bg-gray-100 relative overflow-hidden flex-shrink-0">
         {imageSrc?.endsWith('.mp4') ? (
-          <video
-            src={imageSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-label={title}
-            className="w-full h-full object-cover"
-          />
+          <AutoplayVideo src={imageSrc} webm={imageWebm} label={title} className="w-full h-full object-cover" />
         ) : imageSrc ? (
           <img
             src={imageSrc}
@@ -60,6 +53,7 @@ interface ProjectGridProps {
     title: string;
     description: string;
     imageSrc?: string;
+    imageWebm?: string;
     isProtected?: boolean;
   }>;
   onProjectClick: (projectId: string) => void;
@@ -74,6 +68,7 @@ export function ProjectGrid({ projects, onProjectClick }: ProjectGridProps) {
           title={project.title}
           description={project.description}
           imageSrc={project.imageSrc}
+          imageWebm={project.imageWebm}
           isProtected={project.isProtected}
           onClick={() => onProjectClick(project.id)}
         />

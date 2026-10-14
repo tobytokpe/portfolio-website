@@ -15,6 +15,7 @@ import { AboutContent, RESUME_URL } from './components/AboutContent';
 import { AchievementBadges } from './components/AchievementBadges';
 import { MaybePasswordGate } from './components/PasswordGate';
 import { CaseGraphic } from './components/CaseGraphic';
+import { AutoplayVideo } from './components/AutoplayVideo';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -26,6 +27,7 @@ import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.pn
 import projectImg9 from '../assets/case-studies/project9/platform-hero.webp';
 import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
 import projectImg8 from '../assets/case-studies/project8/lens-hero.mp4';
+import projectImg8Webm from '../assets/case-studies/project8/lens-hero.webm';
 import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
@@ -61,7 +63,8 @@ const PROJECTS_BASE = [
     description: 'Using AI to get analysts to data and insight faster, across every Wood Mackenzie source, with one assistant across every touchpoint.',
     tag: 'Enterprise AI',
     iframeUrl: '',
-    imageSrc: projectImg8
+    imageSrc: projectImg8,
+    imageWebm: projectImg8Webm
   },
   {
     id: 'project9',
@@ -932,14 +935,10 @@ function ProjectPage() {
         {data.heroImage && (
           <div className="mb-16">
             {data.heroImage.endsWith('.mp4') && data.heroWide ? (
-              <video
+              <AutoplayVideo
                 src={data.heroImage}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                aria-label={`${data.title} preview`}
+                webm={data.heroWebm}
+                label={`${data.title} preview`}
                 className="w-full h-auto rounded-[32px] shadow-[0px_16px_40px_rgba(0,0,0,0.06)] border border-[#E5E5E5] block"
               />
             ) : data.heroImage.endsWith('.mp4') ? (
