@@ -14,7 +14,7 @@ import img_project9_map2 from '../../assets/case-studies/project9/platform-map-2
 import img_project9_nav from '../../assets/case-studies/project9/platform-nav-1.png';
 import img_project9_nav2 from '../../assets/case-studies/project9/platform-nav-2.png';
 import project10_hero from '../../assets/case-studies/project10/strata-hero.png';
-import project8_hero from '../../assets/case-studies/project8/lens-hero.png';
+import project8_hero from '../../assets/case-studies/project8/lens-hero.mp4';
 import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
 import img_project8_overview from '../../assets/case-studies/project8/lens-ai-overview.png';
 import img_project8_search from '../../assets/case-studies/project8/lens-unified-search.png';
@@ -1899,6 +1899,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "How could we use AI to solve problems Lens had lived with for years? Help users get to data fast, help them reach insights from our sources across the whole Wood Mackenzie ecosystem, and bring every touchpoint to data together through one AI experience.",
     "solution": "A new Lens structure (Home, Solutions, Reports & Analysis and Workstream) with Insight Assistant running through all of it: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
     "heroImage": project8_hero,
+    "heroWide": true,
     "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {

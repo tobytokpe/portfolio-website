@@ -921,7 +921,18 @@ function ProjectPage() {
         {/* Hero Image / Header Display */}
         {data.heroImage && (
           <div className="mb-16">
-            {data.heroImage.endsWith('.mp4') ? (
+            {data.heroImage.endsWith('.mp4') && data.heroWide ? (
+              <video
+                src={data.heroImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-label={`${data.title} preview`}
+                className="w-full h-auto rounded-[32px] shadow-[0px_16px_40px_rgba(0,0,0,0.06)] border border-[#E5E5E5] block"
+              />
+            ) : data.heroImage.endsWith('.mp4') ? (
               <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
                 <video
                   src={data.heroImage}
