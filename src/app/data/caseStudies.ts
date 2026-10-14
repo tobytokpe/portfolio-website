@@ -852,10 +852,10 @@ export const CASE_STUDIES: Record<string, any> = {
       "Client": "Wood Mackenzie",
       "Role": "Lead Product Designer, Platform",
       "Project Type": "Web, Enterprise Analytics",
-      "Timeline": "Ongoing"
+      "Timeline": "Dec 2023 – Present"
     },
     "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
-    "solution": "Turning Lens into a cohesive, user-centred analytics platform: data tables analysts can shape without leaving for Excel, charts with a proper focus mode, a map that explains itself, and a navigation header with room to grow.",
+    "solution": "Re-platforming Wood Mackenzie's research and data into one analytics product. Users moved over from the old Portal, grew from 3,500 to 15,000 in three months, and landed in a platform with a navigation built around how they search, data tables analysts can shape without leaving for Excel, charts with a proper focus mode, and a map that explains itself.",
     "heroImage": project9_hero,
     "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
@@ -889,6 +889,24 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Orientation first**: users always know where they are and what they can do next. **Progressive power**: simple defaults, deep control when needed. **Analyst-grade focus**: less noise during deep analysis. **Scalability**: patterns that work across datasets and domains."
+          }
+        ]
+      },
+      {
+        "title": "Moving Everyone Off Portal",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The starting point**: Wood Mackenzie's content lived on an older platform called Portal. Reports, datasets and tools had piled up there over years, and the structure reflected how the business was organised, not how a client looks for an answer. Moving to Lens wasn't a lift and shift. Every piece of content needed a new home that made sense to the person searching for it."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Getting close to the data**: The same problem showed up a level lower. When the North America Power Supply (NAPS) platform came into Lens, I mapped its power and renewables data onto what already existed in Lens, working with the data team so the two data models lined up instead of sitting side by side with different names for the same thing. The catch? A screen can look finished while the data underneath it still disagrees with itself. Most of the real design work happened in that mapping."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The result**: Active users grew from 3,500 to 15,000 in the three months after the move. Findability and searchability improved too, because content now lived where people expected it to be."
           }
         ]
       },
@@ -942,7 +960,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "Layers and legends were simplified and grouped into logical categories by industry, with thumbnails, descriptions and a clear place to add new layers. Dashboard layers sit in their own section with a single toggle, and legends live under each layer with options to recolour or hide. Progressive disclosure keeps dense spatial context readable."
+            "text": "**The overhaul, built in Mapbox**: Layers and legends were simplified and grouped into logical categories by industry, with thumbnails, descriptions and a clear place to add new layers. Dashboard layers sit in their own section with a single toggle, and legends live under each layer with options to recolour or hide. Progressive disclosure keeps dense spatial context readable."
           },
           {
             "type": "image",
@@ -953,6 +971,10 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project9_map2,
             "alt": "Annotated map interactions: layer groups, legends and dashboard layers"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Making it reusable**: I also standardised the mapping documentation (layer naming, legend rules and interaction patterns) so other teams building map features in Lens start from the same rules rather than reinventing them. That fixed the \"block\" problem at the source: names now describe what a layer is, not what an internal team called it."
           }
         ]
       },
@@ -962,7 +984,11 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "New products like hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live in the old navigation. A new global header gave them clear categories and a streamlined hierarchy, kept search where users expect it, and added a single entry point into AI chat."
+            "text": "New products like hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live in the old navigation. Each new launch got squeezed in wherever there was space, and the menu grew sideways until nobody could predict where anything was.",
+          },
+          {
+            "type": "paragraph",
+            "text": "**Structure before screens**: I restructured the hierarchy around the questions clients actually bring, grouping products into clear categories with room for the next ones, instead of mirroring internal teams. The new global header kept search where users expect it, and added a single entry point into AI chat. Think of it like a library adding a new wing: if the catalogue is built properly, the new books just slot in."
           },
           {
             "type": "image",
@@ -973,6 +999,34 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project9_nav2,
             "alt": "Annotated global navigation header"
+          }
+        ]
+      },
+      {
+        "title": "A Design System That Keeps Up",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Hydrocarbon**: A platform this size drifts fast if every team builds its own version of a table or a filter. I extended Hydrocarbon, Wood Mackenzie's design system, with components, templates and page-level patterns for the new tables, charts and map controls, so the next team picks up a working pattern instead of a blank file."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Design clinics**: I ran regular clinics with developers and sat with them during build. Honestly, that did more for implementation accuracy than any spec. Small decisions, like a decimal alignment rule or a legend's empty state, got settled in ten minutes instead of turning into bugs a sprint later."
+          }
+        ]
+      },
+      {
+        "title": "How I Used AI to Work Faster",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Prototypes, not just pictures**: For interactions that are hard to judge in a static frame, I built working prototypes with Claude Code, Cursor and Figma Make. Engineers could click through the real behaviour before estimating it, and a lot of \"what happens when…\" questions got answered before handoff instead of during QA."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The unglamorous part**: AI didn't design the platform. It took the slow parts out of trying ideas, so I could test three directions in the time one used to take, and spend the saved time with users and the data team."
           }
         ]
       },
@@ -1129,6 +1183,28 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "A New Structure: Four Places and One Assistant",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**The question I kept asking**: if a client opens Lens with a question, where do they go first? The old answer depended on which tool they happened to know. So before designing any AI feature, I fixed the structure it would live in."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Where we landed**: four top-level areas. **Home** for what's new and relevant to you. **Solutions** for Wood Mackenzie's products and tools by industry. **Reports & Analysis** for research you read and trust. **Workstream** for the agentic experience powered by Synoptic, where AI agents carry a task through from question to dashboard."
+          },
+          {
+            "type": "paragraph",
+            "text": "**One assistant across all of it**: Insight Assistant is a persistent chat that follows the user through every area, and it knows which page and data they're looking at. Users can move between Workstream and the traditional pages and back again without losing their thread. That was a deliberate choice: analysts who trust the classic report flow shouldn't be pushed into an agent, and analysts who want the agent shouldn't have to give up the reports."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Why this mattered more than the AI**: The features below only work because the structure made room for them. Without it, AI would have been a fifth tool bolted onto four that already didn't talk to each other."
+          }
+        ]
+      },
+      {
         "title": "Unified Search & Chat",
         "type": "section",
         "items": [
@@ -1177,6 +1253,16 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project8_context,
             "alt": "AI context summary of a map area drawn with the polygon tool"
+          }
+        ]
+      },
+      {
+        "title": "How I Worked: AI in the Process, Not Just the Product",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Prototyping the conversation**: Chat and agent flows are hard to judge in Figma. A static frame can't show a streamed answer, a source card appearing, or an agent asking a follow-up question. I prototyped those flows with Claude Code, Cursor and Figma Make, so stakeholders and customers reacted to behaviour, not mock-ups. Those same prototypes became the demos in the outcomes below."
           }
         ]
       },
