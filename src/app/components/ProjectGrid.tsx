@@ -2,10 +2,11 @@ interface ProjectCardProps {
   title: string;
   description: string;
   imageSrc?: string;
+  isProtected?: boolean;
   onClick: () => void;
 }
 
-function ProjectCard({ title, description, imageSrc, onClick }: ProjectCardProps) {
+function ProjectCard({ title, description, imageSrc, isProtected, onClick }: ProjectCardProps) {
   return (
     <button
       onClick={onClick}
@@ -38,7 +39,7 @@ function ProjectCard({ title, description, imageSrc, onClick }: ProjectCardProps
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-2 flex-grow flex flex-col">
+      <div className="p-6 space-y-2 flex-grow flex flex-col" {...(isProtected ? { 'data-nosnippet': '' } : {})}>
         <h3
           className="text-[18px] font-bold text-[#16171B] leading-tight group-hover:text-blue-600 transition-colors"
           style={{ fontFamily: 'Syne, sans-serif' }}
@@ -59,6 +60,7 @@ interface ProjectGridProps {
     title: string;
     description: string;
     imageSrc?: string;
+    isProtected?: boolean;
   }>;
   onProjectClick: (projectId: string) => void;
 }
@@ -72,6 +74,7 @@ export function ProjectGrid({ projects, onProjectClick }: ProjectGridProps) {
           title={project.title}
           description={project.description}
           imageSrc={project.imageSrc}
+          isProtected={project.isProtected}
           onClick={() => onProjectClick(project.id)}
         />
       ))}

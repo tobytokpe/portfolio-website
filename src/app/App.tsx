@@ -53,7 +53,7 @@ const CANVAS_WIDTH = 8000;
 const CANVAS_HEIGHT = 2200;
 
 // Case study projects data
-const PROJECTS = [
+const PROJECTS_BASE = [
   {
     id: 'project8',
     slug: 'Lens',
@@ -145,6 +145,7 @@ const PROJECTS = [
     imageSrc: projectImg6
   },
 ];
+const PROJECTS = PROJECTS_BASE.map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
 
 // Leadership experience data
 const LEADERSHIP = [
@@ -825,11 +826,20 @@ function ProjectPage() {
         metaDescription.setAttribute('name', 'description');
         document.head.appendChild(metaDescription);
       }
-      metaDescription.setAttribute('content', data.problem || data.title);
+      // Protected (NDA) case studies: generic description, and tell crawlers and AI bots to keep out
+      metaDescription.setAttribute('content', data.passwordHash ? 'Protected case study.' : (data.problem || data.title));
+      if (data.passwordHash) {
+        const robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        robots.setAttribute('content', 'noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai');
+        robots.setAttribute('data-protected', '');
+        document.head.appendChild(robots);
+      }
     }
     
     return () => {
       document.title = 'Tobi Olowu — Product Design Lead';
+      document.querySelectorAll('meta[data-protected]').forEach((m) => m.remove());
     };
   }, [data]);
 
