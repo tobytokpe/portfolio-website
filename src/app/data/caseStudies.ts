@@ -948,6 +948,10 @@ export const CASE_STUDIES: Record<string, any> = {
             "alt": "Full-screen chart analysis mode with persistent settings panel"
           },
           {
+            "type": "paragraph",
+            "text": "**Picking the right chart for energy data**: The harder question wasn't how a chart looks, it was which chart a dataset deserves. A capacity forecast, a generation mix and a price series each tell a different story, and the wrong chart type hides it. I worked out which chart types suit which kinds of energy data in dashboards, then designed how filters and chart settings combine, so an analyst can narrow by region, technology or time period and the chart still reads correctly instead of collapsing into noise."
+          },
+          {
             "type": "image",
             "src": img_project9_charts2,
             "alt": "Key enhancements in full-screen chart mode"
@@ -1027,6 +1031,10 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**The unglamorous part**: AI didn't design the platform. It took the slow parts out of trying ideas, so I could test three directions in the time one used to take, and spend the saved time with users and the data team."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Research on tap**: Connecting Dovetail to Claude meant I could check a design idea against years of customer conversations in minutes, rather than waiting for a new round of interviews to confirm something customers had already told us."
           }
         ]
       },
@@ -1036,7 +1044,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "Task-based testing on tables and maps surfaced real friction: unclear drag instructions in tables, legends that were hard to see on maps. Each one was iterated on with clearer visuals, interaction cues and better defaults."
+            "text": "**How we measured it**: Task-based testing on tables and maps, tracked against three usability metrics: time on task (average time per task, per participant), error rate (errors per task, grouped into common issues) and satisfaction (a post-task Likert questionnaire on ease of use). The testing surfaced real friction: unclear drag instructions in tables, legends that were hard to see on maps. Each one was iterated on with clearer visuals, interaction cues and better defaults."
           },
           {
             "type": "image",
@@ -1123,10 +1131,11 @@ export const CASE_STUDIES: Record<string, any> = {
       "Client": "Wood Mackenzie",
       "Role": "Lead Product Designer, Platform & AI",
       "Project Type": "Web, Enterprise AI",
-      "Timeline": "Ongoing"
+      "Team": "12 engineers, 2 lead designers, 1 segment designer",
+      "Timeline": "Phase 1 shipped, agentic phase in progress"
     },
     "problem": "Energy analysts were bouncing between search, chat, dashboards and AI agents that didn't talk to each other. Every switch cost them context, and finding an answer they could actually trust took far too long.",
-    "solution": "A single platform where search, WoodMac Chat, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
+    "solution": "A single platform where search, Insight Assistant, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
     "heroImage": project8_hero,
     "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
@@ -1201,6 +1210,17 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Why this mattered more than the AI**: The features below only work because the structure made room for them. Without it, AI would have been a fifth tool bolted onto four that already didn't talk to each other."
+          },
+          {
+            "type": "paragraph",
+            "text": "**What's shipped**: Phase one is live: Insight Assistant, the persistent chat, available across Lens. The full agentic experience in Workstream is still being built, and the rest of this case study shows where it's heading."
+          },
+          {
+            "type": "video",
+            "src": "https://www.dropbox.com/scl/fi/zyc50tx6c6il4i6tcxb8n/Lens_Insight-Assistant_BC-11128_CAPTIONS_Export4.mp4?rlkey=cuo3ysm5nteb9fjzyuj8y5rou&raw=1",
+            "alt": "Insight Assistant launch video",
+            "fullWidth": true,
+            "controls": true
           }
         ]
       },
@@ -1214,12 +1234,12 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Trust built in**: Every answer carries clickable source cards with direct links to the underlying reports and datasets, so the data lineage is never hidden. Below that, an AI agent offers to generate a dashboard from the search, and a clear call to action hands the conversation over to WoodMac Chat when the user wants to dig deeper."
+            "text": "**Trust built in**: Every answer carries clickable source cards with direct links to the underlying reports and datasets, so the data lineage is never hidden. Below that, an AI agent offers to generate a dashboard from the search, and a clear call to action hands the conversation over to Insight Assistant when the user wants to dig deeper."
           },
           {
             "type": "image",
             "src": img_project8_search,
-            "alt": "Unified search results with AI-generated answer, source attribution cards, AI dashboard agent and WoodMac Chat call to action"
+            "alt": "Unified search results with AI-generated answer, source attribution cards, AI dashboard agent and Insight Assistant call to action"
           }
         ]
       },
@@ -1234,7 +1254,7 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "image",
             "src": img_project8_dashboard,
-            "alt": "AI-generated dashboard opened in Discovery with WoodMac Chat alongside"
+            "alt": "AI-generated dashboard opened in Discovery with Insight Assistant alongside"
           },
           {
             "type": "paragraph",
@@ -1243,7 +1263,7 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "image",
             "src": img_project8_inchat,
-            "alt": "Charts and AI dashboard cards rendered directly inside WoodMac Chat"
+            "alt": "Charts and AI dashboard cards rendered directly inside Insight Assistant"
           },
           {
             "type": "paragraph",
@@ -1263,6 +1283,10 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Prototyping the conversation**: Chat and agent flows are hard to judge in Figma. A static frame can't show a streamed answer, a source card appearing, or an agent asking a follow-up question. I prototyped those flows with Claude Code, Cursor and Figma Make, so stakeholders and customers reacted to behaviour, not mock-ups. Those same prototypes became the demos in the outcomes below."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Validating ideas against what customers already told us**: I connected Dovetail to Claude so I could query years of customer conversations in our research knowledge base. Before an idea went further, I'd ask whether customers had raised the problem before, in their words, and how often. Some ideas got stronger. A few got dropped early, which is cheaper than dropping them after a sprint."
           }
         ]
       },

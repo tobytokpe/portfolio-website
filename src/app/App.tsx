@@ -1002,6 +1002,13 @@ function ProjectPage() {
                     );
                   }
                   if (item.type === 'video') {
+                    if (item.controls) {
+                      return (
+                        <div key={itemIdx} style={{ margin: '2rem 0' }}>
+                          <video src={item.src} controls playsInline preload="metadata" aria-label={item.alt} style={{ width: '100%', borderRadius: '24px', display: 'block', background: '#000' }} />
+                        </div>
+                      );
+                    }
                     if (item.fullWidth) {
                       return (
                         <div key={itemIdx} style={{ margin: '2rem 0' }}>
