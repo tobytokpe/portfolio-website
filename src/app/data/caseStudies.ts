@@ -2,6 +2,9 @@
 import img_project8_dashboard from '../../assets/case-studies/project8/lens-dashboard-generation.png';
 import img_project8_context from '../../assets/case-studies/project8/lens-context-summary.png';
 import img_project8_showcase from '../../assets/case-studies/project8/lens-showcase.png';
+import img_project8_inchat from '../../assets/case-studies/project8/lens-in-chat.png';
+import img_project9_tables from '../../assets/case-studies/project9/platform-tables.png';
+import img_project9_tables2 from '../../assets/case-studies/project9/platform-tables-improvements.png';
 import project9_hero from '../../assets/case-studies/project9/platform-1-2.png';
 import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
 import img_project9_charts from '../../assets/case-studies/project9/platform-12-1.png';
@@ -891,8 +894,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Built on AG-Grid**: Filtering, grouping and custom formatting became the backbone of data exploration. On top of the base library I designed custom rules for decimal consistency and alignment, because in finance and energy data a misaligned decimal is a misread number."
           },
           {
+            "type": "image",
+            "src": img_project9_tables,
+            "alt": "AG-Grid data tables with column filtering and cell range selection"
+          },
+          {
             "type": "paragraph",
             "text": "Analysts stopped exporting to Excel before they could get to an insight, and repetitive slicing and filtering took far less manual effort."
+          },
+          {
+            "type": "image",
+            "src": img_project9_tables2,
+            "alt": "Custom decimal-place control and grouped row hierarchy in the data table"
           }
         ]
       },
@@ -1128,6 +1141,11 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Charts inside the conversation**: Users wanted to see the data without leaving the conversation. Charts, tables and images now render directly in chat, follow Lens chart standards, and open into full-screen chart mode to keep exploring."
+          },
+          {
+            "type": "image",
+            "src": img_project8_inchat,
+            "alt": "Charts and AI dashboard cards rendered directly inside WoodMac Chat"
           },
           {
             "type": "paragraph",
