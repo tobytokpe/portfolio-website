@@ -13,7 +13,18 @@ function ProjectCard({ title, description, imageSrc, onClick }: ProjectCardProps
     >
       {/* Image placeholder */}
       <div className="w-full h-[230px] bg-gray-100 relative overflow-hidden flex-shrink-0">
-        {imageSrc ? (
+        {imageSrc?.endsWith('.mp4') ? (
+          <video
+            src={imageSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={title}
+            className="w-full h-full object-cover"
+          />
+        ) : imageSrc ? (
           <img
             src={imageSrc}
             alt={title}

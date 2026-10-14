@@ -25,7 +25,7 @@ import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.pn
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
 import projectImg9 from '../assets/case-studies/project9/platform-1-2.png';
 import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
-import projectImg8 from '../assets/case-studies/project8/lens-hero.png';
+import projectImg8 from '../assets/case-studies/project8/lens-hero.mp4';
 import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
