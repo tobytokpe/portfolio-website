@@ -902,11 +902,41 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Getting close to the data**: The same problem showed up a level lower. When the North America Power Supply (NAPS) platform came into Lens, I mapped its power and renewables data onto what already existed in Lens, working with the data team so the two data models lined up instead of sitting side by side with different names for the same thing. The catch? A screen can look finished while the data underneath it still disagrees with itself. Most of the real design work happened in that mapping."
+            "text": "**The result**: Active users grew from 3,500 to 15,000 in the three months after the move. Findability and searchability improved too, because content now lived where people expected it to be."
+          }
+        ]
+      },
+      {
+        "title": "Bringing NAPS Into Lens",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**A lift and shift that wasn't**: NAPS (North America Power Supply) is the standalone tool North American power clients use for demand, supply and price data. They know it well. Moving its content into Lens sounded simple until we put the two side by side. NAPS lets you split one chart into many with a \"view by\" control. Lens leans on filters and custom dashboards. NAPS says “energy price” where Lens says “power price”, uses a different list of demand types, and its \"Country\" means Canada, Mexico and the USA, while Lens's North America region holds other countries."
           },
           {
             "type": "paragraph",
-            "text": "**The result**: Active users grew from 3,500 to 15,000 in the three months after the move. Findability and searchability improved too, because content now lived where people expected it to be."
+            "text": "**The question that reframed it**: Could a NAPS user still find their chart once we'd moved it? Drawing the charts was never the risk. Losing people in the move was."
+          },
+          {
+            "type": "paragraph",
+            "text": "**A chart-by-chart audit**: I audited every NAPS chart across five areas (demand, supply, prices, power plant economics and fuels) against what Lens already had, and tagged each one. Adapt where a Lens chart mostly covered it, New where Lens had nothing, and Decide where placement or naming needed users or the business to weigh in. Capacity price by auction detail is a good example: Lens had capacity price by zone but not by auction, priced in $/MW-month or $/MW-day (UCAP), so we had three options on the table: colour by auction detail, change the unit, or build a new chart."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Settings instead of \"view by\"**: NAPS's \"view by\" can create hundreds of versions of the same chart, and it even split each colour option into its own chart. Instead, I designed a compact settings panel for each Lens chart, built from one small vocabulary of controls: data to visualise, x-axis, y-axis, units, year, hour type (average, on peak, off peak) and colour by. That's 10+ panels, each with its own chart-specific logic, from standard versus clean (carbon) implied heat rate to capture price by country, NERC sub-region, market or zone."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Entitlements decide what you see**: Clients buy regions separately, so I mapped 15 scenarios across entitlements and market filters. If a user has more than one power entitlement, say America and EMEA, they land on a normalised view by default and can switch to a regional view from dashboard settings. Otherwise they only see the regional view. Filtering to ERCOT alone, ERCOT and Alberta, or ERCOT plus Belgium each got its own frame, so every dashboard follows the same rules."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Testing with people who already use NAPS**: I built 12 think-aloud tasks in Lyssna across the Demand, Supply, Supply Detail and Price dashboards. They checked whether people could find the switch between normalised and regional views, and whether \"Peak Power Demand\" and \"Power Demand\" read as different things. Most tasks ended with the same question: how would you use this chart in your own reports? Whether someone could click the right thing mattered less than whether the Lens version earned a place in their work. One finding landed straight away: NAPS users love the quick filters on the page, which turned into a design question about signposting filters in Lens, where they're less visible."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Built in the Lens shell, not beside it**: The prototype used the standard Lens dashboard structure (dashboard selector, global header, workflow header, a statistic card, then chart cards with the map alongside), so NAPS charts arrived as part of Lens, with chart settings and full-screen behaviour built in. Fuels was deliberately held for release 2."
           }
         ]
       },
