@@ -14,6 +14,7 @@ import { InteractiveGridBackground } from './components/ui/InteractiveGridBackgr
 import { AboutContent, RESUME_URL } from './components/AboutContent';
 import { AchievementBadges } from './components/AchievementBadges';
 import { MaybePasswordGate } from './components/PasswordGate';
+import { CaseGraphic } from './components/CaseGraphic';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -1037,6 +1038,9 @@ function ProjectPage() {
                         />
                       </div>
                     );
+                  }
+                  if (item.type === 'graphic') {
+                    return <CaseGraphic key={itemIdx} item={item} />;
                   }
                   if (item.type === 'image') {
                     return (

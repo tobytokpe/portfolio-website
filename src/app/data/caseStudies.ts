@@ -13,7 +13,6 @@ import img_project9_map from '../../assets/case-studies/project9/platform-map-1.
 import img_project9_map2 from '../../assets/case-studies/project9/platform-map-2.png';
 import img_project9_nav from '../../assets/case-studies/project9/platform-nav-1.png';
 import img_project9_nav2 from '../../assets/case-studies/project9/platform-nav-2.png';
-import img_project9_validation from '../../assets/case-studies/project9/platform-validation.png';
 import project10_hero from '../../assets/case-studies/project10/strata-hero.png';
 import project8_hero from '../../assets/case-studies/project8/lens-hero.png';
 import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
@@ -865,7 +864,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "Lens serves energy professionals, analysts, investors and decision-makers who need fast access to data and reports they can rely on. They don't share one workflow, and the platform had to stop pretending they did."
+            "text": "Energy professionals, analysts, investors and decision-makers who need fast access to data and reports they can rely on. They don't share one workflow, and the platform had to stop pretending they did."
           },
           {
             "type": "image",
@@ -874,11 +873,32 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Research**: User interviews, a review of past session recordings, and competitor analysis. Three themes kept coming up: difficult navigation and a need for more control, confusion between different workflows, and users missing chart refinement entirely because they didn't know it existed."
+            "text": "**What research told us**: user interviews, past session recordings and competitor analysis kept pointing to the same three problems."
           },
           {
-            "type": "paragraph",
-            "text": "**On the map specifically**: users wanted to see several layer types at once to understand surrounding infrastructure. Many of the layers clients asked for already existed, but nobody knew where to add them. And layer names were confusing, with different layers sharing names like \"block\"."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Hard to navigate",
+                "text": "Users wanted more control and kept losing their place.",
+                "tag": "Theme 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Workflows blur together",
+                "text": "Different jobs looked the same, so people mixed them up.",
+                "tag": "Theme 2",
+                "tone": "neutral"
+              },
+              {
+                "title": "Features go unnoticed",
+                "text": "Many users never found chart refinement at all.",
+                "tag": "Theme 3",
+                "tone": "neutral"
+              }
+            ]
           }
         ]
       },
@@ -887,8 +907,27 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**Orientation first**: users always know where they are and what they can do next. **Progressive power**: simple defaults, deep control when needed. **Analyst-grade focus**: less noise during deep analysis. **Scalability**: patterns that work across datasets and domains."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Orientation first",
+                "text": "Always know where you are and what you can do next."
+              },
+              {
+                "title": "Progressive power",
+                "text": "Simple defaults, deep control when needed."
+              },
+              {
+                "title": "Analyst-grade focus",
+                "text": "Less noise during deep analysis."
+              },
+              {
+                "title": "Scalability",
+                "text": "Patterns that work across datasets and domains."
+              }
+            ]
           }
         ]
       },
@@ -898,11 +937,30 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The starting point**: Wood Mackenzie's content lived on an older platform called Portal. Reports, datasets and tools had piled up there over years, and the structure reflected how the business was organised, not how a client looks for an answer. Moving to Lens wasn't a lift and shift. Every piece of content needed a new home that made sense to the person searching for it."
+            "text": "Wood Mackenzie's content lived on an older platform called Portal, organised around how the business was structured rather than how a client looks for an answer. Every report, dataset and tool needed a new home that made sense to the person searching for it."
           },
           {
-            "type": "paragraph",
-            "text": "**The result**: Active users grew from 3,500 to 15,000 in the three months after the move. Findability and searchability improved too, because content now lived where people expected it to be."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "3,500",
+                "label": "active users on Portal"
+              },
+              {
+                "value": "15,000",
+                "label": "active users three months after the move to Lens"
+              },
+              {
+                "value": "4×",
+                "label": "growth in active users"
+              },
+              {
+                "value": "3 mo",
+                "label": "to get there"
+              }
+            ],
+            "caption": "Findability and searchability improved too, because content now lives where people expect it."
           }
         ]
       },
@@ -912,31 +970,202 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**A lift and shift that wasn't**: NAPS (North America Power Supply) is the standalone tool North American power clients use for demand, supply and price data. They know it well. Moving its content into Lens sounded simple until we put the two side by side. NAPS lets you split one chart into many with a \"view by\" control. Lens leans on filters and custom dashboards. NAPS says “energy price” where Lens says “power price”, uses a different list of demand types, and its \"Country\" means Canada, Mexico and the USA, while Lens's North America region holds other countries."
+            "text": "NAPS (North America Power Supply) is the standalone tool North American power clients use for demand, supply and price data. Moving it into Lens sounded like a lift and shift. Then we put the two side by side."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "NAPS",
+            "right": "Lens",
+            "rows": [
+              [
+                "“View by” splits one chart into hundreds of variants",
+                "Filters and custom dashboards"
+              ],
+              [
+                "Energy price",
+                "Power price"
+              ],
+              [
+                "Its own list of demand types",
+                "A different list of demand types"
+              ],
+              [
+                "“Country” = Canada, Mexico, USA",
+                "North America region holds other countries"
+              ]
+            ],
+            "caption": "Same market, different ideas about how to show it."
           },
           {
             "type": "paragraph",
-            "text": "**The question that reframed it**: Could a NAPS user still find their chart once we'd moved it? Drawing the charts was never the risk. Losing people in the move was."
+            "text": "**The question that reframed it**: could a NAPS user still find their chart once we'd moved it? Drawing the charts was never the risk. Losing people in the move was."
+          },
+          {
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "5",
+                "label": "NAPS areas audited chart by chart"
+              },
+              {
+                "value": "10+",
+                "label": "chart-settings panels designed"
+              },
+              {
+                "value": "15",
+                "label": "entitlement and market-filter scenarios mapped"
+              },
+              {
+                "value": "12",
+                "label": "think-aloud test tasks built in Lyssna"
+              }
+            ]
           },
           {
             "type": "paragraph",
-            "text": "**A chart-by-chart audit**: I audited every NAPS chart across five areas (demand, supply, prices, power plant economics and fuels) against what Lens already had, and tagged each one. Adapt where a Lens chart mostly covered it, New where Lens had nothing, and Decide where placement or naming needed users or the business to weigh in. Capacity price by auction detail is a good example: Lens had capacity price by zone but not by auction, priced in $/MW-month or $/MW-day (UCAP), so we had three options on the table: colour by auction detail, change the unit, or build a new chart."
+            "text": "**A chart-by-chart audit**: every NAPS chart was compared with Lens and tagged."
+          },
+          {
+            "type": "graphic",
+            "graphic": "mapping",
+            "rows": [
+              {
+                "from": "Demand",
+                "to": "Demand dashboard",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Supply",
+                "to": "Supply dashboard",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Supply (plant detail)",
+                "to": "Supply detail",
+                "tag": "Decide",
+                "tone": "decide"
+              },
+              {
+                "from": "Prices",
+                "to": "Price dashboard",
+                "tag": "New",
+                "tone": "new"
+              },
+              {
+                "from": "Power plant economics",
+                "to": "Power plant economics",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Fuels (release 2)",
+                "to": "Home to be decided",
+                "tag": "Decide",
+                "tone": "decide",
+                "pending": true
+              }
+            ],
+            "legend": [
+              {
+                "tag": "Adapt",
+                "tone": "adapt",
+                "text": "a Lens chart mostly covers it"
+              },
+              {
+                "tag": "New",
+                "tone": "new",
+                "text": "Lens doesn't have it"
+              },
+              {
+                "tag": "Decide",
+                "tone": "decide",
+                "text": "placement or naming still open"
+              }
+            ],
+            "caption": "Example: Lens had capacity price by zone but not by auction, in $/MW-month or $/MW-day (UCAP). Options: colour by auction detail, change the unit, or build a new chart."
           },
           {
             "type": "paragraph",
-            "text": "**Settings instead of \"view by\"**: NAPS's \"view by\" can create hundreds of versions of the same chart, and it even split each colour option into its own chart. Instead, I designed a compact settings panel for each Lens chart, built from one small vocabulary of controls: data to visualise, x-axis, y-axis, units, year, hour type (average, on peak, off peak) and colour by. That's 10+ panels, each with its own chart-specific logic, from standard versus clean (carbon) implied heat rate to capture price by country, NERC sub-region, market or zone."
+            "text": "**Settings instead of “view by”**: rather than hundreds of near-identical charts, each Lens chart gets a compact settings panel built from one shared vocabulary."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "One vocabulary of chart controls",
+            "chips": [
+              "Data to visualise",
+              "X-axis",
+              "Y-axis",
+              "Units",
+              "Year",
+              "Hour type: average · on peak · off peak",
+              "Colour by",
+              "+ chart-specific options"
+            ],
+            "caption": "Chart-specific options range from standard vs clean (carbon) implied heat rate to capture price by country, NERC sub-region, market or zone."
           },
           {
             "type": "paragraph",
-            "text": "**Entitlements decide what you see**: Clients buy regions separately, so I mapped 15 scenarios across entitlements and market filters. If a user has more than one power entitlement, say America and EMEA, they land on a normalised view by default and can switch to a regional view from dashboard settings. Otherwise they only see the regional view. Filtering to ERCOT alone, ERCOT and Alberta, or ERCOT plus Belgium each got its own frame, so every dashboard follows the same rules."
+            "text": "**Entitlements decide what you see**: clients buy regions separately, so the view logic was settled once for every dashboard."
+          },
+          {
+            "type": "graphic",
+            "graphic": "branch",
+            "start": "Opens a dashboard",
+            "question": "More than one power entitlement? (e.g. America + EMEA)",
+            "outcomes": [
+              {
+                "label": "Yes",
+                "tone": "accent",
+                "title": "Normalised view by default",
+                "text": "Switch to a regional view from dashboard settings."
+              },
+              {
+                "label": "No",
+                "tone": "neutral",
+                "title": "Regional view only",
+                "text": "No normalised view to switch to."
+              }
+            ],
+            "caption": "Market filters (ERCOT alone, ERCOT + Alberta, ERCOT + Belgium) each got their own frame on top of this."
           },
           {
             "type": "paragraph",
-            "text": "**Testing with people who already use NAPS**: I built 12 think-aloud tasks in Lyssna across the Demand, Supply, Supply Detail and Price dashboards. They checked whether people could find the switch between normalised and regional views, and whether \"Peak Power Demand\" and \"Power Demand\" read as different things. Most tasks ended with the same question: how would you use this chart in your own reports? Whether someone could click the right thing mattered less than whether the Lens version earned a place in their work. One finding landed straight away: NAPS users love the quick filters on the page, which turned into a design question about signposting filters in Lens, where they're less visible."
+            "text": "**Testing with people who already use NAPS**: think-aloud tasks in Lyssna, each ending with the same question: how would you use this chart in your own reports?"
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Find the view switch",
+                "text": "Normalised vs regional: can they find it, and what do the terms mean?"
+              },
+              {
+                "title": "Explore supply settings",
+                "text": "Are chart settings useful for real analysis?"
+              },
+              {
+                "title": "Read demand terms",
+                "text": "Do “Peak Power Demand” and “Power Demand” read as different?"
+              },
+              {
+                "title": "Name and colour",
+                "text": "Does “Supply Details” make sense? Which default colour?"
+              },
+              {
+                "title": "Explain new charts",
+                "text": "Capacity price by auction, and implied heat rate."
+              }
+            ]
           },
           {
             "type": "paragraph",
-            "text": "**Built in the Lens shell, not beside it**: The prototype used the standard Lens dashboard structure (dashboard selector, global header, workflow header, a statistic card, then chart cards with the map alongside), so NAPS charts arrived as part of Lens, with chart settings and full-screen behaviour built in. Fuels was deliberately held for release 2."
+            "text": "One finding landed straight away: NAPS users love the quick filters on the page. That became a design question for Lens, where filters are less visible. The prototype then rebuilt the winning ideas inside the standard Lens dashboard shell, so NAPS arrived as part of Lens rather than beside it."
           }
         ]
       },
@@ -946,7 +1175,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Built on AG-Grid**: Filtering, grouping and custom formatting became the backbone of data exploration. On top of the base library I designed custom rules for decimal consistency and alignment, because in finance and energy data a misaligned decimal is a misread number."
+            "text": "**Built on AG-Grid**: filtering, grouping and custom formatting became the backbone of data exploration, with custom rules for decimal consistency and alignment. In energy and finance data, a misaligned decimal is a misread number."
           },
           {
             "type": "image",
@@ -954,13 +1183,13 @@ export const CASE_STUDIES: Record<string, any> = {
             "alt": "AG-Grid data tables with column filtering and cell range selection"
           },
           {
-            "type": "paragraph",
-            "text": "Analysts stopped exporting to Excel before they could get to an insight, and repetitive slicing and filtering took far less manual effort."
-          },
-          {
             "type": "image",
             "src": img_project9_tables2,
             "alt": "Custom decimal-place control and grouped row hierarchy in the data table"
+          },
+          {
+            "type": "paragraph",
+            "text": "Analysts stopped exporting to Excel before they could get to an insight."
           }
         ]
       },
@@ -969,8 +1198,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "Charts needed two modes: an embedded overview for quick insight, and a focus mode for deep, uninterrupted analysis. One click takes a chart full screen, with a persistent settings panel instead of buried controls, plus better axis controls, legends and comparison toggles."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Embedded overview",
+                "text": "Quick insight inside the dashboard.",
+                "tag": "Mode 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Focus mode",
+                "text": "One click to full screen, with a persistent settings panel, better axis controls, legends and comparison toggles.",
+                "tag": "Mode 2",
+                "tone": "accent"
+              }
+            ]
           },
           {
             "type": "image",
@@ -979,7 +1223,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Picking the right chart for energy data**: The harder question wasn't how a chart looks, it was which chart a dataset deserves. A capacity forecast, a generation mix and a price series each tell a different story, and the wrong chart type hides it. I worked out which chart types suit which kinds of energy data in dashboards, then designed how filters and chart settings combine, so an analyst can narrow by region, technology or time period and the chart still reads correctly instead of collapsing into noise."
+            "text": "**Picking the right chart for energy data**: a capacity forecast, a generation mix and a price series each tell a different story, and the wrong chart type hides it. I matched chart types to kinds of energy data, then designed how filters and settings combine so the chart still reads correctly when an analyst narrows by region, technology or time."
           },
           {
             "type": "image",
@@ -994,12 +1238,41 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The overhaul, built in Mapbox**: Layers and legends were simplified and grouped into logical categories by industry, with thumbnails, descriptions and a clear place to add new layers. Dashboard layers sit in their own section with a single toggle, and legends live under each layer with options to recolour or hide. Progressive disclosure keeps dense spatial context readable."
+            "text": "**What map users told us**:"
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Many layers at once",
+                "text": "They wanted several layer types together to understand surrounding infrastructure.",
+                "tag": "Insight",
+                "tone": "neutral"
+              },
+              {
+                "title": "Layers nobody could find",
+                "text": "Many layers clients asked for already existed.",
+                "tag": "Insight",
+                "tone": "neutral"
+              },
+              {
+                "title": "Confusing names",
+                "text": "Different layers shared names like “block”.",
+                "tag": "Insight",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**The overhaul, in Mapbox**: layers grouped by industry with thumbnails and descriptions, dashboard layers in their own section with one toggle, and legends under each layer with options to recolour or hide."
           },
           {
             "type": "image",
             "src": img_project9_map,
-            "alt": "Lens map with grouped layer controls and legends"
+            "alt": "Map interaction overview"
           },
           {
             "type": "image",
@@ -1008,7 +1281,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Making it reusable**: I also standardised the mapping documentation (layer naming, legend rules and interaction patterns) so other teams building map features in Lens start from the same rules rather than reinventing them. That fixed the \"block\" problem at the source: names now describe what a layer is, not what an internal team called it."
+            "text": "I also standardised the mapping documentation (layer naming, legend rules, interaction patterns) so other teams start from the same rules. That fixed the “block” problem at the source."
           }
         ]
       },
@@ -1018,16 +1291,12 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "New products like hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live in the old navigation. Each new launch got squeezed in wherever there was space, and the menu grew sideways until nobody could predict where anything was.",
-          },
-          {
-            "type": "paragraph",
-            "text": "**Structure before screens**: I restructured the hierarchy around the questions clients actually bring, grouping products into clear categories with room for the next ones, instead of mirroring internal teams. The new global header kept search where users expect it, and added a single entry point into AI chat. Think of it like a library adding a new wing: if the catalogue is built properly, the new books just slot in."
+            "text": "Hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live, so each launch got squeezed in wherever there was space. I restructured the hierarchy around the questions clients bring rather than internal teams, kept search where users expect it, and added a single entry point into AI chat. Think of a library adding a new wing: with a proper catalogue, the new books just slot in."
           },
           {
             "type": "image",
             "src": img_project9_nav,
-            "alt": "New Lens global navigation header"
+            "alt": "Global navigation: products with no home"
           },
           {
             "type": "image",
@@ -1041,12 +1310,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**Hydrocarbon**: A platform this size drifts fast if every team builds its own version of a table or a filter. I extended Hydrocarbon, Wood Mackenzie's design system, with components, templates and page-level patterns for the new tables, charts and map controls, so the next team picks up a working pattern instead of a blank file."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Design clinics**: I ran regular clinics with developers and sat with them during build. Honestly, that did more for implementation accuracy than any spec. Small decisions, like a decimal alignment rule or a legend's empty state, got settled in ten minutes instead of turning into bugs a sprint later."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Hydrocarbon",
+                "text": "Extended Wood Mackenzie's design system with components, templates and page patterns for the new tables, charts and map controls.",
+                "tag": "Design system",
+                "tone": "accent"
+              },
+              {
+                "title": "Design clinics",
+                "text": "Regular sessions with developers during build. Small calls, like a decimal rule or a legend's empty state, got settled in ten minutes instead of becoming bugs.",
+                "tag": "Practice",
+                "tone": "accent"
+              }
+            ]
           }
         ]
       },
@@ -1055,16 +1335,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**Prototypes, not just pictures**: For interactions that are hard to judge in a static frame, I built working prototypes with Claude Code, Cursor and Figma Make. Engineers could click through the real behaviour before estimating it, and a lot of \"what happens when…\" questions got answered before handoff instead of during QA."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The unglamorous part**: AI didn't design the platform. It took the slow parts out of trying ideas, so I could test three directions in the time one used to take, and spend the saved time with users and the data team."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Research on tap**: Connecting Dovetail to Claude meant I could check a design idea against years of customer conversations in minutes, rather than waiting for a new round of interviews to confirm something customers had already told us."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Prototypes in code",
+                "text": "Claude Code, Cursor and Figma Make for interactions a static frame can't show. Engineers clicked real behaviour before estimating it."
+              },
+              {
+                "title": "Research on tap",
+                "text": "Dovetail connected to Claude, so I could check an idea against years of customer conversations in minutes."
+              },
+              {
+                "title": "Time back for people",
+                "text": "AI didn't design the platform. It took the slow parts out, so I spent more time with users and the data team."
+              }
+            ]
           }
         ]
       },
@@ -1074,16 +1361,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**How we measured it**: Task-based testing on tables and maps, tracked against three usability metrics: time on task (average time per task, per participant), error rate (errors per task, grouped into common issues) and satisfaction (a post-task Likert questionnaire on ease of use). The testing surfaced real friction: unclear drag instructions in tables, legends that were hard to see on maps. Each one was iterated on with clearer visuals, interaction cues and better defaults."
+            "text": "Task-based testing on tables and maps, tracked against three usability metrics:"
           },
           {
-            "type": "image",
-            "src": img_project9_validation,
-            "alt": "Validation and iteration on table and map interactions"
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Time on task",
+                "text": "Average time per task, per participant."
+              },
+              {
+                "title": "Error rate",
+                "text": "Errors per task, grouped into common issues."
+              },
+              {
+                "title": "Satisfaction",
+                "text": "Post-task Likert questionnaire on ease of use."
+              }
+            ]
           },
           {
             "type": "paragraph",
-            "text": "**The result**: a unified Lens with consistent UX across tables, maps and dashboards. Users and stakeholders reported more confidence in the platform, less training time and support overhead, and higher engagement with the advanced data tools."
+            "text": "It surfaced real friction, like unclear drag instructions in tables and hard-to-see legends on maps, and each got clearer visuals, cues and better defaults."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The result**: one consistent Lens across tables, maps and dashboards. Users and stakeholders reported more confidence, less training time and support overhead, and more use of the advanced data tools."
           }
         ]
       }
@@ -1175,11 +1480,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The problem**: Lens is where Wood Mackenzie's clients go to make sense of complex energy data. But search, chat, dashboards and AI agents had grown up as separate tools. An analyst would search, open a report, jump to chat to ask a follow-up, then rebuild the same context in a dashboard. Every hop meant starting again."
+            "text": "Lens is where Wood Mackenzie's clients make sense of complex energy data. But search, chat, dashboards and AI agents had grown up separately. Every hop meant starting again."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Search",
+                "tag": "Separate"
+              },
+              {
+                "title": "Chat",
+                "tag": "Separate"
+              },
+              {
+                "title": "Dashboards",
+                "tag": "Separate"
+              },
+              {
+                "title": "AI agents",
+                "tag": "Separate"
+              }
+            ]
           },
           {
             "type": "paragraph",
-            "text": "**The real cost**: It wasn't the clicks. It was trust. When an answer arrives without its sources, an analyst has to go and verify it themselves, which defeats the point of asking."
+            "text": "**The real cost wasn't the clicks. It was trust.** When an answer arrives without its sources, an analyst has to verify it themselves, which defeats the point of asking."
           }
         ]
       },
@@ -1188,12 +1516,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**How we got there**: Cross-functional workshops to agree an AI strategy, user interviews, and testing sessions with customers, analysts and decision-makers."
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "How we got there",
+            "chips": [
+              "Cross-functional AI strategy workshops",
+              "User interviews",
+              "Testing with customers, analysts and decision-makers"
+            ]
           },
           {
-            "type": "paragraph",
-            "text": "A few lines from those sessions shaped everything after. A principal analyst: \"It can be time consuming how everything is not integrated! Searching for data, and refining filters to get results complicates my work.\" A GIS expert: \"If I draw a polygon around it, can I get commentary on this area?\" An investor: \"I just want to come in and see the latest relevant stuff.\""
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "“Searching for data, and refining filters to get results complicates my work.”",
+                "tag": "Principal analyst"
+              },
+              {
+                "title": "“If I draw a polygon around it, can I get commentary on this area?”",
+                "tag": "GIS expert",
+                "tone": "accent"
+              },
+              {
+                "title": "“I just want to come in and see the latest relevant stuff.”",
+                "tag": "Investor"
+              }
+            ]
           }
         ]
       },
@@ -1203,7 +1553,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**Consequence scanning first**: Before drawing a single screen, we asked three questions. What are the intended and unintended consequences? Which positive ones do we want to amplify? Which do we need to mitigate? The answers became five AI principles for Lens."
+            "text": "**Consequence scanning first**: what are the intended and unintended consequences, which do we amplify, which do we mitigate? The answers became five AI principles for Lens."
           },
           {
             "type": "image",
@@ -1211,8 +1561,35 @@ export const CASE_STUDIES: Record<string, any> = {
             "alt": "AI principles in Lens: brand identity, trust and transparency, human-AI collaboration, privacy and ethics, inclusive and unified UX"
           },
           {
-            "type": "paragraph",
-            "text": "**Four design goals came out of it**: unify interaction so search, chat and dashboards feel like one system; preserve trust by always showing data provenance and reasoning; maintain context so the AI understands what the user is looking at; and scale intelligence so agents perform meaningful actions, not just respond."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Unify interaction",
+                "text": "Search, chat and dashboards feel like one system.",
+                "tag": "Goal 1",
+                "tone": "accent"
+              },
+              {
+                "title": "Preserve trust",
+                "text": "Always show data provenance and reasoning.",
+                "tag": "Goal 2",
+                "tone": "accent"
+              },
+              {
+                "title": "Maintain context",
+                "text": "AI understands what the user is looking at.",
+                "tag": "Goal 3",
+                "tone": "accent"
+              },
+              {
+                "title": "Scale intelligence",
+                "text": "Agents perform meaningful actions, not just respond.",
+                "tag": "Goal 4",
+                "tone": "accent"
+              }
+            ]
           },
           {
             "type": "image",
@@ -1227,23 +1604,52 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**The question I kept asking**: if a client opens Lens with a question, where do they go first? The old answer depended on which tool they happened to know. So before designing any AI feature, I fixed the structure it would live in."
+            "text": "**If a client opens Lens with a question, where do they go first?** The old answer depended on which tool they happened to know. So before designing any AI feature, I fixed the structure it would live in."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Home",
+                "text": "What's new and relevant to you."
+              },
+              {
+                "title": "Solutions",
+                "text": "Products and tools by industry."
+              },
+              {
+                "title": "Reports & Analysis",
+                "text": "Research you read and trust."
+              },
+              {
+                "title": "Workstream",
+                "text": "The agentic experience, powered by Synoptic.",
+                "tag": "Agentic",
+                "tone": "new"
+              }
+            ]
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "items": [
+              {
+                "title": "Insight Assistant: one persistent chat across every area",
+                "text": "It knows which page and data you're looking at. Move between Workstream and the classic pages without losing your thread, so analysts who trust reports aren't pushed into an agent.",
+                "tag": "Everywhere",
+                "tone": "accent"
+              }
+            ]
           },
           {
             "type": "paragraph",
-            "text": "**Where we landed**: four top-level areas. **Home** for what's new and relevant to you. **Solutions** for Wood Mackenzie's products and tools by industry. **Reports & Analysis** for research you read and trust. **Workstream** for the agentic experience powered by Synoptic, where AI agents carry a task through from question to dashboard."
+            "text": "Without this structure, AI would have been a fifth tool bolted onto four that already didn't talk to each other."
           },
           {
             "type": "paragraph",
-            "text": "**One assistant across all of it**: Insight Assistant is a persistent chat that follows the user through every area, and it knows which page and data they're looking at. Users can move between Workstream and the traditional pages and back again without losing their thread. That was a deliberate choice: analysts who trust the classic report flow shouldn't be pushed into an agent, and analysts who want the agent shouldn't have to give up the reports."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Why this mattered more than the AI**: The features below only work because the structure made room for them. Without it, AI would have been a fifth tool bolted onto four that already didn't talk to each other."
-          },
-          {
-            "type": "paragraph",
-            "text": "**What's shipped**: Phase one is live: Insight Assistant, the persistent chat, available across Lens. The full agentic experience in Workstream is still being built, and the rest of this case study shows where it's heading."
+            "text": "**What's shipped**: phase one, Insight Assistant, is live across Lens. The full agentic Workstream is still being built, and the rest of this case study shows where it's heading."
           },
           {
             "type": "video",
@@ -1259,12 +1665,26 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**One entry point**: Natural language queries became the front door. Type a question, and the results page leads with an AI-generated answer in context."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Trust built in**: Every answer carries clickable source cards with direct links to the underlying reports and datasets, so the data lineage is never hidden. Below that, an AI agent offers to generate a dashboard from the search, and a clear call to action hands the conversation over to Insight Assistant when the user wants to dig deeper."
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Ask in plain language",
+                "text": "Natural language is the front door."
+              },
+              {
+                "title": "Get an answer with sources",
+                "text": "Clickable source cards link to the underlying reports and datasets."
+              },
+              {
+                "title": "Turn it into a dashboard",
+                "text": "An AI agent offers to build one from the search."
+              },
+              {
+                "title": "Go deeper in chat",
+                "text": "Hand over to Insight Assistant without starting again."
+              }
+            ]
           },
           {
             "type": "image",
@@ -1279,7 +1699,7 @@ export const CASE_STUDIES: Record<string, any> = {
         "items": [
           {
             "type": "paragraph",
-            "text": "**AI dashboard generation**: Generic AI answers weren't actionable. Now the AI builds a dashboard with relevant widgets, and it opens in Discovery looking and behaving like every other Lens dashboard, not a bolt-on. Chat stays alongside, keeping its history and knowing where the user is."
+            "text": "**AI dashboard generation**: the AI builds a dashboard with relevant widgets that opens in Discovery like any other Lens dashboard, with chat alongside."
           },
           {
             "type": "image",
@@ -1288,7 +1708,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Charts inside the conversation**: Users wanted to see the data without leaving the conversation. Charts, tables and images now render directly in chat, follow Lens chart standards, and open into full-screen chart mode to keep exploring."
+            "text": "**Charts inside the conversation**: charts, tables and images render in chat, follow Lens chart standards, and open into full-screen chart mode."
           },
           {
             "type": "image",
@@ -1297,7 +1717,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "**Context-aware summaries**: One click on the AI icon summarises a chart in plain language. Draw a polygon on the map and the AI summarises that area, which answered the GIS expert's question almost word for word."
+            "text": "**Context-aware summaries**: one click summarises a chart. Draw a polygon on the map and the AI summarises that area, answering the GIS expert's question almost word for word."
           },
           {
             "type": "image",
@@ -1311,12 +1731,23 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**Prototyping the conversation**: Chat and agent flows are hard to judge in Figma. A static frame can't show a streamed answer, a source card appearing, or an agent asking a follow-up question. I prototyped those flows with Claude Code, Cursor and Figma Make, so stakeholders and customers reacted to behaviour, not mock-ups. Those same prototypes became the demos in the outcomes below."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Validating ideas against what customers already told us**: I connected Dovetail to Claude so I could query years of customer conversations in our research knowledge base. Before an idea went further, I'd ask whether customers had raised the problem before, in their words, and how often. Some ideas got stronger. A few got dropped early, which is cheaper than dropping them after a sprint."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Prototyping the conversation",
+                "text": "Streamed answers, source cards and agent follow-ups can't be judged in a static frame. I prototyped them with Claude Code, Cursor and Figma Make, and those prototypes became the customer demos.",
+                "tag": "Build",
+                "tone": "accent"
+              },
+              {
+                "title": "Validating against what customers already said",
+                "text": "Dovetail connected to Claude let me check each idea against years of customer conversations. Some ideas got stronger; a few got dropped early, which is cheaper than after a sprint.",
+                "tag": "Research",
+                "tone": "accent"
+              }
+            ]
           }
         ]
       },
@@ -1325,21 +1756,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
-            "type": "paragraph",
-            "text": "**Helped win a five-year strategic deal**: Early interactive prototypes of the AI interaction model were used in customer demos with a strategic prospect."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Shaped the brand**: The AI interaction framework directly influenced the rebrand and the business's new strategic narrative, \"Business Interconnect Intelligence\"."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Faster alignment, room to scale**: The prototypes became alignment artefacts that cut ambiguity across teams, and the framework set up patterns the platform can keep building AI features on."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Helped win a five-year strategic deal",
+                "text": "Early prototypes were used in demos with a strategic prospect.",
+                "tag": "Commercial",
+                "tone": "accent"
+              },
+              {
+                "title": "Shaped the rebrand",
+                "text": "The framework fed the new narrative, “Business Interconnect Intelligence”.",
+                "tag": "Brand",
+                "tone": "accent"
+              },
+              {
+                "title": "Faster alignment, room to scale",
+                "text": "Prototypes cut ambiguity across teams and set patterns future AI features build on.",
+                "tag": "Delivery",
+                "tone": "accent"
+              }
+            ]
           },
           {
             "type": "image",
             "src": img_project8_showcase,
-            "alt": "Lens 2.0 AI experience showcase"
+            "alt": "Lens: get insights that connect everything"
           }
         ]
       }
