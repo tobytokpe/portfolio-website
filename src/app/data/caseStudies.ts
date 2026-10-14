@@ -120,6 +120,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Cutting eight stages to five**: I compressed the sign-up flow from eight stages to five, with real-time validation against standard input guidelines so an error got caught before submission, not after."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Before",
+            "right": "After",
+            "rows": [
+              [
+                "8 sign-up stages",
+                "5 sign-up stages"
+              ],
+              [
+                "Errors caught after submission",
+                "Real-time validation as you type"
+              ],
+              [
+                "48% drop-off",
+                "14% drop-off"
+              ]
+            ]
+          },
+          {
             "type": "image",
             "src": img_project4_onboarding,
             "alt": "Moore 5-step onboarding screens showing BVN/NIN verification, OTP, passcode and transaction PIN setup"
@@ -148,6 +168,28 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "paragraph",
             "text": "**The fix**: We threw the spinner out and built a step-by-step progress tracker that names exactly what's happening, in real time. PIN entry sits in its own clear space, a light vibration confirms every tap, and the transfer summary shows up right before you hit send, not after."
           },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Live progress tracker",
+                "text": "Names exactly what's happening, in real time."
+              },
+              {
+                "title": "PIN in its own space",
+                "text": "Clear, uncluttered entry."
+              },
+              {
+                "title": "Haptic confirmation",
+                "text": "A light vibration on every tap."
+              },
+              {
+                "title": "Summary before send",
+                "text": "See the transfer before it goes."
+              }
+            ]
+          },
 
         ]
       },
@@ -160,25 +202,32 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**One system, three platforms**: To scale Moore across iOS, Android, and web without three separate visual languages, I turned the early layouts into a proper component library, one that stayed consistent and was easy to update without touching every screen by hand."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Tokens linked to code",
+                "text": "Figma variables mapped to developer components; layout identical across iOS, Android and web."
+              },
+              {
+                "title": "Worst-case testing",
+                "text": "Bad networks and balances like ₦2,905,215.23, so nothing clips."
+              },
+              {
+                "title": "Accessibility built in",
+                "text": "WCAG 2.1 AA contrast, minimum font sizes, older Android phones."
+              },
+              {
+                "title": "Engineers, not around them",
+                "text": "One shared library and token set, so screens shipped without drift."
+              }
+            ]
+          },
+          {
             "type": "cta",
             "text": "Read about our post-design-system Figma variables & AI accessibility presentation at UX Scotland",
             "url": "https://www.figma.com/deck/dylqMGVCzMlD4XPwP1l4is/AI-for-Accessibility-with-Variables?node-id=2014-27&t=RfplUrqVv6K3hFya-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
-          },
-          {
-            "type": "paragraph",
-            "text": "**Figma variables in, iteration time down**: Linking design tokens directly to developer components tightened handoff and cut iteration cycles, so layout stayed identical across platforms without anyone manually re-checking spacing."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Testing the worst case, not the best one**: We built realistic models of terrible network conditions rather than assuming good ones. We even tested what a balance like ₦2,905,215.23 looked like on screen, because the moment a number clips or wraps badly, trust drops with it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Accessibility, not as an afterthought**: Moore's users span a wide range of devices, many older and lower-end Android phones. Every interactive element hit WCAG 2.1 AA contrast, we checked legibility at minimum font sizes, and we walked the payment flow with a screen reader before calling it done. High-contrast text, haptic patterns, and clear error states were in the first iteration, not bolted on later."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Working with engineers, not around them**: I worked directly with our developers so the design translated into code without drift. Aligning the Figma library to their tokens meant they could build identical, polished screens across mobile and web fast."
           },
           {
             "type": "image",
@@ -192,16 +241,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "48% → 14%",
+                "label": "onboarding abandonment"
+              },
+              {
+                "value": "0.2%",
+                "label": "accidental double-tap errors"
+              },
+              {
+                "value": "½",
+                "label": "engineering handoff time"
+              },
+              {
+                "value": "8,000+",
+                "label": "organic downloads, no paid marketing"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Design gates**: As the team grew, I introduced Design Gates, short review checkpoints so nothing shipped without a check for errors, edge cases, and visual polish. It also gave junior designers a clear standard to work against without needing me in every review."
           },
           {
             "type": "paragraph",
-            "text": "**Growth without a marketing budget**: Because the product was usable and accessible from day one, Moore reached over **8,000 downloads** organically, with no paid marketing behind it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The numbers that mattered**: Re-architecting sign-up dropped onboarding abandonment from 48% to 14%. Fixing the payment verification flow cut accidental double-tap errors to 0.2%. Shipping the token system cut engineering handoff time by half."
+            "text": "**Growth without a marketing budget**: Because the product was usable and accessible from day one, Moore reached over 8,000 downloads organically, with no paid marketing behind it."
           },
           {
             "type": "paragraph",
@@ -266,12 +333,50 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "To turn that into a working safety net, I focused on three things:"
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Familiar landmarks",
+                "text": "Local photos and state colours: Taraba red, Benue black, Nasarawa blue.",
+                "tag": "1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Fewer roles, faster action",
+                "text": "Five user types, designed around one link: Citizen → Monitor.",
+                "tag": "2",
+                "tone": "neutral"
+              },
+              {
+                "title": "Built for bad signal",
+                "text": "No login, no typing: background GPS and offline storage.",
+                "tag": "3",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**1. Familiar landmarks, not a generic app**: Working with local governments, the app's look changes by state, custom local photos and state colours (red for Taraba, black for Benue, blue for Nasarawa) on the onboarding screens. In a high-tension environment, that recognisability builds comfort you can't fake with generic UI."
           },
           {
             "type": "paragraph",
             "text": "**2. Fewer roles, faster action**: The system supports five user types, Citizens, Monitors, Security, Observers, Admins. I focused the design on the one connection that mattered most, a Citizen sending an alert and a local Monitor validating it, and cut the middle-management steps that didn't need to be there."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Five user types",
+            "chips": [
+              "Citizen ★",
+              "Monitor ★",
+              "Security",
+              "Observer",
+              "Admin"
+            ],
+            "caption": "★ The connection the design prioritised: a Citizen sends an alert, a local Monitor validates it."
           },
           {
             "type": "image",
@@ -306,6 +411,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "I dropped the swipe entirely and built a single-screen grid showing every alert type at once, in plain black icons. Nothing hidden, nothing to scroll for."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "First try: swipe cards",
+            "right": "Final: one-screen grid",
+            "rows": [
+              [
+                "Alert types hidden behind swipes",
+                "Every alert type visible at once"
+              ],
+              [
+                "Tunnel vision made it slower",
+                "Plain black icons, nothing to scroll"
+              ],
+              [
+                "Typing needed for details",
+                "One-tap voice recorder: tap, speak, send"
+              ]
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Voice over text**: Field data confirmed what we suspected, typing was impossible for someone running from danger, or for anyone who struggled with reading. So I put a large, one-tap voice recorder directly on the alert screen. Tap, speak, send."
           },
@@ -321,6 +446,22 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**A trade-off worth fighting for**: Stakeholders originally wanted voice notes translated to text on-device before sending. On low-tier phones that processing took up to 12 seconds, a dangerous gap mid-crisis. I argued to drop on-device translation entirely and stream raw audio instead, which brought transmission down to under 2 seconds."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "On-device translation",
+            "right": "What we shipped",
+            "rows": [
+              [
+                "Up to 12 seconds on low-tier phones",
+                "Raw audio sent immediately"
+              ],
+              [
+                "Dangerous gap mid-crisis",
+                "Translation handled after sending"
+              ]
+            ]
           },
           {
             "type": "paragraph",
@@ -359,16 +500,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "alt": "high-fidelity desktop and mobile app screens showing multilingual support and conflict maps"
           },
           {
-            "type": "paragraph",
-            "text": "In final field trials, every single participant successfully sent a crisis alert through the simplified grid layout. 100%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Removing the login requirement eliminated registration drop-off outright, reaching the 42% of citizens who'd previously stayed silent."
-          },
-          {
-            "type": "paragraph",
-            "text": "Shifting from text entry to one-tap voice reporting cut emergency report generation from an average of 95 seconds down to 4, time that matters when someone's waiting on responders."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "100%",
+                "label": "of field-trial participants sent an alert"
+              },
+              {
+                "value": "95s → 4s",
+                "label": "emergency report time"
+              },
+              {
+                "value": "42%",
+                "label": "of citizens who'd never reported, now reachable without login"
+              },
+              {
+                "value": "12–15",
+                "label": "community leaders, farmers and security staff in live trials"
+              }
+            ]
           }
         ]
       }
@@ -401,6 +552,25 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The dilemma**: The tool had to work for two very different people at once, engineers reading raw data logs, and bank office staff checking bills and transaction histories. Neither could feel like an afterthought."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Engineers",
+                "text": "Reading raw data logs and configuring keys.",
+                "tag": "Audience 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Bank office staff",
+                "text": "Checking bills and transaction histories.",
+                "tag": "Audience 2",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**What we did**: I replaced confusing charts with a clean, filter-driven view and moved technical documentation directly into the workspace. Engineers and business managers could finally use the same tool without stepping on each other."
           },
@@ -415,6 +585,32 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The chaos before Hydra**: Financial institutions bought payment processing, balance checks, and transaction tracking from separate vendors, each with its own code style, its own bill, its own messy spreadsheet export. For the people using it daily, that was three jobs pretending to be one."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Payment processing",
+                "text": "Own vendor, own code style, own bill.",
+                "tag": "Vendor A",
+                "tone": "neutral"
+              },
+              {
+                "title": "Balance checks",
+                "text": "Own vendor, own code style, own bill.",
+                "tag": "Vendor B",
+                "tone": "neutral"
+              },
+              {
+                "title": "Transaction tracking",
+                "text": "Own vendor, own spreadsheet export.",
+                "tag": "Vendor C",
+                "tone": "neutral"
+              }
+            ],
+            "caption": "Hydra pulled all of them into one place."
+          },
+          {
             "type": "paragraph",
             "text": "**Mapping it out**: I ran a card-sorting exercise with real users to see how they actually grouped information, which shaped a navigation system built on how people think, not how the APIs happened to be structured."
           },
@@ -422,6 +618,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project1_card_sorting,
             "alt": "Card sorting results and research grouping information mapping"
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "The team",
+            "chips": [
+              "1 designer (me)",
+              "1 project manager",
+              "1 product manager",
+              "3 engineers",
+              "2-month timeline"
+            ]
           },
           {
             "type": "paragraph",
@@ -448,6 +656,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The pivot**: Our first analytics screens used multi-coloured circle charts. Users found them confusing and tiring for daily work. We stripped them out for plain line graphs and simple dropdown filters, so isolating a date range or a transaction problem took seconds, not guesswork."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Before",
+            "right": "After",
+            "rows": [
+              [
+                "Multi-coloured circle charts",
+                "Plain line graphs"
+              ],
+              [
+                "Hard to read daily",
+                "Simple dropdown filters for date range and issues"
+              ],
+              [
+                "Docs in another tab",
+                "Code structure in a slide-out drawer on the same screen"
+              ]
+            ]
+          },
+          {
             "type": "image",
             "src": img_project1_dashboards,
             "alt": "Hydra analytics dashboard pivot showing line graphs and transaction filters"
@@ -459,6 +687,22 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**A trade-off worth naming**: Engineering flagged that a live payload preview would mean an expensive API call every time the drawer opened, slowing the whole dashboard down. I compromised with local JSON schema caching, showing structural mock payloads instantly client-side and saving live calls for final validation only."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Live payload preview",
+            "right": "What we shipped",
+            "rows": [
+              [
+                "Expensive API call every time the drawer opened",
+                "Local JSON schema caching"
+              ],
+              [
+                "Slower dashboard",
+                "Structural mock payloads, shown instantly"
+              ]
+            ]
           },
           {
             "type": "image",
@@ -493,20 +737,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Accessibility**: Every financial data table, status badge, and billing display was checked against WCAG 2.1 AA, so dense content, transaction histories, API configurations, billing records, stayed legible and navigable for users relying on assistive technology."
           },
           {
-            "type": "paragraph",
-            "text": "Step-by-step setup guides and the side-drawer code panel cut developer integration times by 46%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Simplifying the dense tables and status badges cut administrative billing entry errors by 38%."
-          },
-          {
-            "type": "paragraph",
-            "text": "The launch onboarded over 45 partner fintechs and traditional banks into the ecosystem."
-          },
-          {
-            "type": "paragraph",
-            "text": "The platform handled real volume from day one, securely processing over 60 million naira since launch."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "46%",
+                "label": "faster developer integration"
+              },
+              {
+                "value": "38%",
+                "label": "fewer billing entry errors"
+              },
+              {
+                "value": "45+",
+                "label": "partner fintechs and banks onboarded"
+              },
+              {
+                "value": "₦60M+",
+                "label": "processed securely since launch"
+              }
+            ]
           }
         ]
       }
@@ -541,6 +791,26 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**My approach**: I built a linear, step-by-step setup wizard. A non-technical bank operator could pick a theme, map their corporate colours, and generate a downloadable, testable preview of their app without touching a developer."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Pick a theme"
+              },
+              {
+                "title": "Map brand colours"
+              },
+              {
+                "title": "Preview the app",
+                "text": "Downloadable and testable."
+              },
+              {
+                "title": "Deploy",
+                "text": "No developer needed."
+              }
+            ]
           }
         ]
       },
@@ -561,12 +831,23 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Splitting the system in two**: I broke the platform into two distinct spaces:"
           },
           {
-            "type": "paragraph",
-            "text": "The Management Layer, a dashboard for bank admins to handle branding, permissions, and configuration."
-          },
-          {
-            "type": "paragraph",
-            "text": "The Customer Application Core, a standardised flow for transfers, bill payments, and expense tracking, built for everyday banking clients."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Management Layer",
+                "text": "Dashboard for bank admins: branding, permissions, configuration.",
+                "tag": "For admins",
+                "tone": "accent"
+              },
+              {
+                "title": "Customer Application Core",
+                "text": "Standardised flow for transfers, bill payments and expense tracking.",
+                "tag": "For customers",
+                "tone": "new"
+              }
+            ]
           }
         ]
       },
@@ -621,12 +902,51 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**A strict rule, agreed with engineering**: Structural layouts stayed locked to prevent bugs. Visual properties were treated as dynamic variables. Getting product and engineering to agree on that split up front saved months of arguments later."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Locked",
+            "right": "Flexible",
+            "rows": [
+              [
+                "Structural layout",
+                "Colours (on safe surfaces only)"
+              ],
+              [
+                "Spacing and hierarchy",
+                "Logo placement"
+              ],
+              [
+                "Base palette: grey, white, black",
+                "Corner radius and typography"
+              ]
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Dynamic tokens**: We used Figma Variables, exported through Style Dictionary into a shared config file engineers could plug straight into their codebase."
           },
           {
             "type": "paragraph",
             "text": "**Built to scale**: With that token ecosystem in place, a change to a colour value, spacing parameter, or component style compiled automatically across every micro-site and white-labeled module, no manual developer touch needed."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Figma Variables"
+              },
+              {
+                "title": "Style Dictionary"
+              },
+              {
+                "title": "Shared config file"
+              },
+              {
+                "title": "Every bank's app",
+                "text": "Updates compile automatically."
+              }
+            ]
           },
           {
             "type": "image",
@@ -667,16 +987,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Replacing manual engineering with an automated config tool delivered results fast:"
           },
           {
-            "type": "paragraph",
-            "text": "**From four months to an afternoon**: Microfinance institutions went from months of custom build to customising, previewing, and deploying their app in a single afternoon."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Onboarding failure, cut**: Locking accessibility at the platform level dropped customer onboarding failure from 45% to under 8%, regardless of which clashing theme a bank manager picked."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Scale**: The architecture scaled to power digital banking apps for over 500 microfinance banks across Africa."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "4 mo → 1 afternoon",
+                "label": "to launch a bank's app"
+              },
+              {
+                "value": "45% → <8%",
+                "label": "onboarding failure"
+              },
+              {
+                "value": "500+",
+                "label": "microfinance banks powered"
+              },
+              {
+                "value": "<2 min",
+                "label": "to open an account"
+              }
+            ]
           },
         ]
       }
@@ -708,6 +1038,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Approved by Nigeria's SEC, the platform opens up Mutual Funds, Bonds, Treasury Bills, Commercial Papers, and liquidity tools to retail investors, with an entry point as low as ₦1,000."
           },
           {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "What retail investors can now access, from ₦1,000",
+            "chips": [
+              "Mutual Funds",
+              "Bonds",
+              "Treasury Bills",
+              "Commercial Papers",
+              "Liquidity tools"
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**The tension**: We had to take compliance-heavy, paper-bound investment processes and turn them into something light enough for a mobile-first generation, without losing the decades of institutional trust the brand had built."
           },
@@ -718,6 +1060,16 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "Leading a team of three designers, my job went beyond screens: managing stakeholders across departments, mapping the end-to-end service blueprint, running research and testing, and building a design-to-code pipeline that wouldn't rack up technical debt as we scaled."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "chips": [
+              "3 products: app, web, Admin Control Desk",
+              "Team of 3 designers",
+              "4-month timeline",
+              "5-day alignment sprint"
+            ]
           },
           {
             "type": "image",
@@ -733,6 +1085,25 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**What was actually broken**: When someone wanted to put money into a Commercial Paper or a Bond, the process took 3 to 5 business days: a physical prospectus, KYC signed by post or courier, bank wire verification, and an account officer logging it all by hand into a spreadsheet."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Physical prospectus"
+              },
+              {
+                "title": "KYC by post or courier"
+              },
+              {
+                "title": "Bank wire verification"
+              },
+              {
+                "title": "Manual logging by an account officer"
+              }
+            ],
+            "caption": "Total: 3 to 5 business days to invest."
           },
           {
             "type": "paragraph",
@@ -781,6 +1152,24 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "We kept the token repository in a single JSON file, distributed via Style Dictionary straight into production."
           },
           {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Single JSON token file"
+              },
+              {
+                "title": "Style Dictionary"
+              },
+              {
+                "title": "Flutter (iOS + Android)"
+              },
+              {
+                "title": "Tailwind (web)"
+              }
+            ]
+          },
+          {
             "type": "image",
             "src": img_project3_design_system,
             "alt": "MAMVest design system snapshot showing color tokens and specifications"
@@ -819,16 +1208,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Replacing paper-bound workflows with a proper digital architecture changed Mango's position in the market, in four months:"
           },
           {
-            "type": "paragraph",
-            "text": "**Time to invest, gone from days to minutes**: Discovering an asset, clearing compliance, and funding a portfolio dropped from 3 to 5 business days down to 3 minutes and 42 seconds."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Lower acquisition cost**: Turning regulatory sign-up into a chunked, progressive verification flow cut onboarding abandonment from 54% down to 11%, which brought acquisition cost down with it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Faster for the whole team**: A unified design system let Mango's internal teams build secondary features up to 40% faster, with far less technical debt accumulating behind them."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "3–5 days → 3m 42s",
+                "label": "to discover, clear compliance and invest"
+              },
+              {
+                "value": "54% → 11%",
+                "label": "onboarding abandonment"
+              },
+              {
+                "value": "40%",
+                "label": "faster secondary feature builds"
+              },
+              {
+                "value": "₦1,000",
+                "label": "minimum entry point"
+              }
+            ]
           },
           {
             "type": "paragraph",
@@ -1428,6 +1827,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Strata started inside real products, Recova, BankOne and Self-Service: high-stakes, user-facing interfaces with strict financial data and dense screens. That's why every component covers every state, loading, empty, error and success, from day one."
           },
           {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Every component, every state",
+            "chips": [
+              "Loading",
+              "Empty",
+              "Error",
+              "Success"
+            ],
+            "caption": "Born in Recova, BankOne and Self-Service."
+          },
+          {
             "type": "paragraph",
             "text": "What a designer sees in the Figma component is identical to what a developer imports in code. One repository, one shared truth."
           }
@@ -1450,6 +1861,21 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "A design system dies if it becomes a bottleneck or an ivory tower. Two pieces keep Strata from either: a clear contribution model, so any team that needs a new pattern can add it back to the core, and automated token pipelines, so design changes in Figma sync straight into code."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Contribution model",
+                "text": "Any team that needs a new pattern can add it back to the core."
+              },
+              {
+                "title": "Automated token pipelines",
+                "text": "Design changes in Figma sync to code automatically."
+              }
+            ]
           },
           {
             "type": "paragraph",
@@ -1828,6 +2254,25 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Two very different jobs under one roof**: A buyer needs to trust a stranger with their body measurements and a deposit before they've seen a single stitch. A tailor needs a tool sophisticated enough to actually replace the notebook, not a simplified toy version of their real workflow. Building both into one coherent product meant neither side could compromise the other."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Buyer: needs trust",
+                "text": "Hand a stranger your measurements and a deposit before seeing a stitch.",
+                "tag": "Side 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Tailor: needs depth",
+                "text": "A tool real enough to replace the notebook, not a toy version.",
+                "tag": "Side 2",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**One design system, two audiences**: I built a single navy-and-white, border-led design system, shared design tokens synced by hand between the web and mobile codebases, so the marketplace felt calm and trustworthy for a first-time buyer while the same visual language held up under the density of a real business dashboard: revenue, active orders, staff permissions, invoices."
           },
@@ -1845,6 +2290,28 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Turning \"trust me\" into \"watch it happen\"**: The single feature I'd point to as the core of the product is the 6-stage order tracker, cutting, first fitting, sewing, quality check, and delivery. Every garment moves through it, and every stage change fires an automatic update to the client by SMS or email."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Cutting"
+              },
+              {
+                "title": "First fitting"
+              },
+              {
+                "title": "Sewing"
+              },
+              {
+                "title": "Quality check"
+              },
+              {
+                "title": "Delivery"
+              }
+            ],
+            "caption": "Every stage change sends the client an automatic SMS or email update."
           },
           {
             "type": "paragraph",
@@ -1874,6 +2341,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Where that discipline shows up**: subscription tiers (Free, Growth, Fashion House) are enforced server-side, not just hidden in the UI, and every tier-gated feature has to agree on both layers before I consider it done. A five-state rule runs across the whole interface, populated, empty, loading, error, and disabled, so nothing ships half-finished just because the happy path looks good in a demo."
           },
           {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Five states on every screen",
+            "chips": [
+              "Populated",
+              "Empty",
+              "Loading",
+              "Error",
+              "Disabled"
+            ]
+          },
+          {
             "type": "image",
             "src": img_project6_dashboard,
             "alt": "Bespoka tailor dashboard showing active workroom orders, revenue, upcoming timeline, and weekly capacity"
@@ -1891,6 +2370,31 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Pricing built for how the industry actually grows**: Free for a solo tailor with up to 5 clients, ₦5,000/month once a workshop needs unlimited clients and a small team, ₦15,000/month for a multi-tailor fashion house with staff permissions and marketing tools. The tiers map to how a workshop actually scales, not to arbitrary feature buckets."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Free",
+                "text": "Solo tailor, up to 5 clients.",
+                "tag": "Free",
+                "tone": "neutral"
+              },
+              {
+                "title": "Growth",
+                "text": "Unlimited clients and a small team.",
+                "tag": "₦5,000/mo",
+                "tone": "accent"
+              },
+              {
+                "title": "Fashion House",
+                "text": "Multi-tailor house with staff permissions and marketing tools.",
+                "tag": "₦15,000/mo",
+                "tone": "new"
+              }
+            ]
           },
           {
             "type": "image",
