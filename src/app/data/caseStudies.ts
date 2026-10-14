@@ -1652,11 +1652,9 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**What's shipped**: phase one, Insight Assistant, is live across Lens. The full agentic Workstream is still being built, and the rest of this case study shows where it's heading."
           },
           {
-            "type": "video",
-            "src": "https://www.dropbox.com/scl/fi/zyc50tx6c6il4i6tcxb8n/Lens_Insight-Assistant_BC-11128_CAPTIONS_Export4.mp4?rlkey=cuo3ysm5nteb9fjzyuj8y5rou&raw=1",
-            "alt": "Insight Assistant launch video",
-            "fullWidth": true,
-            "controls": true
+            "type": "youtube",
+            "id": "BkNPSuQazIk",
+            "alt": "Insight Assistant launch video"
           }
         ]
       },

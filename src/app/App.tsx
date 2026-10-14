@@ -1039,6 +1039,20 @@ function ProjectPage() {
                       </div>
                     );
                   }
+                  if (item.type === 'youtube') {
+                    return (
+                      <div key={itemIdx} className="my-8 w-full aspect-video rounded-2xl overflow-hidden bg-black">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${item.id}?rel=0`}
+                          title={item.alt}
+                          className="w-full h-full"
+                          loading="lazy"
+                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                          allowFullScreen
+                        />
+                      </div>
+                    );
+                  }
                   if (item.type === 'graphic') {
                     return <CaseGraphic key={itemIdx} item={item} />;
                   }
