@@ -57,8 +57,8 @@ const PROJECTS = [
   {
     id: 'project8',
     slug: 'Lens',
-    title: 'Wood Mackenzie Lens 2.0: One Place to Ask, Search and See',
-    description: 'Unifying search, chat, dashboards and AI agents on an enterprise energy analytics platform, with sources shown on every AI answer.',
+    title: 'Wood Mackenzie Lens 2.0: Using AI to Connect Every Route to Our Data',
+    description: 'Using AI to get analysts to data and insight faster, across every Wood Mackenzie source, with one assistant across every touchpoint.',
     tag: 'Enterprise AI',
     iframeUrl: '',
     imageSrc: projectImg8
@@ -898,7 +898,7 @@ function ProjectPage() {
             {data.problem && (
               <div className="bg-white rounded-3xl p-8 border border-[#E5E5E5] shadow-[0px_8px_30px_rgba(0,0,0,0.02)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
-                  The Challenge
+                  {data.problemLabel || 'The Challenge'}
                 </h3>
                 <p className="text-[#4A5568] text-[15px] leading-[1.7] whitespace-pre-line">
                   {data.problem}

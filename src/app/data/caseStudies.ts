@@ -1887,7 +1887,7 @@ export const CASE_STUDIES: Record<string, any> = {
   },
   "project8": {
     "id": "project8",
-    "title": "Wood Mackenzie Lens 2.0: One Place to Ask, Search and See",
+    "title": "Wood Mackenzie Lens 2.0: Using AI to Connect Every Route to Our Data",
     "metadata": {
       "Client": "Wood Mackenzie",
       "Role": "Lead Product Designer, Platform & AI",
@@ -1895,45 +1895,52 @@ export const CASE_STUDIES: Record<string, any> = {
       "Team": "12 engineers, 2 lead designers, 1 segment designer",
       "Timeline": "Phase 1 shipped, agentic phase in progress"
     },
-    "problem": "Energy analysts were bouncing between search, chat, dashboards and AI agents that didn't talk to each other. Every switch cost them context, and finding an answer they could actually trust took far too long.",
-    "solution": "A single platform where search, Insight Assistant, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
+    "problemLabel": "The Opportunity",
+    "problem": "How could we use AI to solve problems Lens had lived with for years? Help users get to data fast, help them reach insights from our sources across the whole Wood Mackenzie ecosystem, and bring every touchpoint to data together through one AI experience.",
+    "solution": "A new Lens structure (Home, Solutions, Reports & Analysis and Workstream) with Insight Assistant running through all of it: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
     "heroImage": project8_hero,
     "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {
-        "title": "Four Tools Pretending to Be One Product",
+        "title": "The Opportunity: AI Across Every Touchpoint",
         "type": "section",
         "items": [
           {
             "type": "paragraph",
-            "text": "Lens is where Wood Mackenzie's clients make sense of complex energy data. But search, chat, dashboards and AI agents had grown up separately. Every hop meant starting again."
+            "text": "Lens is where Wood Mackenzie's clients make sense of complex energy data. Some problems had been with it for years: data took too long to find, insights were spread across separate sources and tools, and search, chat and dashboards each worked on their own."
+          },
+          {
+            "type": "paragraph",
+            "text": "**AI gave us a chance to fix them together, not one by one.** The question became: how do we use AI to get people to the right data and insight faster, across everything Wood Mackenzie publishes?"
           },
           {
             "type": "graphic",
             "graphic": "cards",
-            "columns": 4,
+            "columns": 3,
             "items": [
               {
-                "title": "Search",
-                "tag": "Separate"
+                "title": "Get to data fast",
+                "text": "Ask in plain language instead of hunting through filters and menus.",
+                "tag": "Opportunity 1",
+                "tone": "accent"
               },
               {
-                "title": "Chat",
-                "tag": "Separate"
+                "title": "Insights from every source",
+                "text": "Reports, datasets and analysis from across the Wood Mackenzie ecosystem, in one answer.",
+                "tag": "Opportunity 2",
+                "tone": "accent"
               },
               {
-                "title": "Dashboards",
-                "tag": "Separate"
-              },
-              {
-                "title": "AI agents",
-                "tag": "Separate"
+                "title": "One AI across every touchpoint",
+                "text": "Search, chat and dashboards connected by the same assistant.",
+                "tag": "Opportunity 3",
+                "tone": "accent"
               }
             ]
           },
           {
             "type": "paragraph",
-            "text": "**The real cost wasn't the clicks. It was trust.** When an answer arrives without its sources, an analyst has to verify it themselves, which defeats the point of asking."
+            "text": "**Trust had to come with it.** An answer without its sources isn't useful to an analyst; they'd have to check it themselves. So every part of the design had to show where an answer came from."
           }
         ]
       },
@@ -2071,7 +2078,7 @@ export const CASE_STUDIES: Record<string, any> = {
           },
           {
             "type": "paragraph",
-            "text": "Without this structure, AI would have been a fifth tool bolted onto four that already didn't talk to each other."
+            "text": "This structure is what lets one AI experience reach every touchpoint, instead of becoming another separate tool."
           },
           {
             "type": "paragraph",
