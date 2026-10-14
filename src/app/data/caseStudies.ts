@@ -5,7 +5,7 @@ import img_project8_showcase from '../../assets/case-studies/project8/closing.pn
 import img_project8_inchat from '../../assets/case-studies/project8/lens-in-chat.png';
 import img_project9_tables from '../../assets/case-studies/project9/platform-tables.png';
 import img_project9_tables2 from '../../assets/case-studies/project9/platform-tables-improvements.png';
-import project9_hero from '../../assets/case-studies/project9/platform-1-2.png';
+import project9_hero from '../../assets/case-studies/project9/platform-hero.webp';
 import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
 import img_project9_charts from '../../assets/case-studies/project9/platform-charts-1.png';
 import img_project9_charts2 from '../../assets/case-studies/project9/platform-charts-2.png';
