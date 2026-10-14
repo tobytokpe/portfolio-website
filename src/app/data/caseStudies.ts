@@ -1,16 +1,19 @@
 /* Auto-generated case studies data */
 import img_project8_dashboard from '../../assets/case-studies/project8/lens-dashboard-generation.png';
 import img_project8_context from '../../assets/case-studies/project8/lens-context-summary.png';
-import img_project8_showcase from '../../assets/case-studies/project8/lens-showcase.png';
+import img_project8_showcase from '../../assets/case-studies/project8/closing.png';
 import img_project8_inchat from '../../assets/case-studies/project8/lens-in-chat.png';
 import img_project9_tables from '../../assets/case-studies/project9/platform-tables.png';
 import img_project9_tables2 from '../../assets/case-studies/project9/platform-tables-improvements.png';
 import project9_hero from '../../assets/case-studies/project9/platform-1-2.png';
 import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
-import img_project9_charts from '../../assets/case-studies/project9/platform-12-1.png';
-import img_project9_map from '../../assets/case-studies/project9/platform-13-1.png';
-import img_project9_nav from '../../assets/case-studies/project9/platform-15-1.png';
-import img_project9_validation from '../../assets/case-studies/project9/platform-17-1.png';
+import img_project9_charts from '../../assets/case-studies/project9/platform-charts-1.png';
+import img_project9_charts2 from '../../assets/case-studies/project9/platform-charts-2.png';
+import img_project9_map from '../../assets/case-studies/project9/platform-map-1.png';
+import img_project9_map2 from '../../assets/case-studies/project9/platform-map-2.png';
+import img_project9_nav from '../../assets/case-studies/project9/platform-nav-1.png';
+import img_project9_nav2 from '../../assets/case-studies/project9/platform-nav-2.png';
+import img_project9_validation from '../../assets/case-studies/project9/platform-validation.png';
 import project10_hero from '../../assets/case-studies/project10/strata-hero.png';
 import project8_hero from '../../assets/case-studies/project8/lens-hero.png';
 import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
@@ -872,6 +875,10 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Research**: User interviews, a review of past session recordings, and competitor analysis. Three themes kept coming up: difficult navigation and a need for more control, confusion between different workflows, and users missing chart refinement entirely because they didn't know it existed."
+          },
+          {
+            "type": "paragraph",
+            "text": "**On the map specifically**: users wanted to see several layer types at once to understand surrounding infrastructure. Many of the layers clients asked for already existed, but nobody knew where to add them. And layer names were confusing, with different layers sharing names like \"block\"."
           }
         ]
       },
@@ -921,6 +928,11 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project9_charts,
             "alt": "Full-screen chart analysis mode with persistent settings panel"
+          },
+          {
+            "type": "image",
+            "src": img_project9_charts2,
+            "alt": "Key enhancements in full-screen chart mode"
           }
         ]
       },
@@ -936,6 +948,11 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project9_map,
             "alt": "Lens map with grouped layer controls and legends"
+          },
+          {
+            "type": "image",
+            "src": img_project9_map2,
+            "alt": "Annotated map interactions: layer groups, legends and dashboard layers"
           }
         ]
       },
@@ -951,6 +968,11 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project9_nav,
             "alt": "New Lens global navigation header"
+          },
+          {
+            "type": "image",
+            "src": img_project9_nav2,
+            "alt": "Annotated global navigation header"
           }
         ]
       },
