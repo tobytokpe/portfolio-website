@@ -854,7 +854,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
     "solution": "Turning Lens into a cohesive, user-centred analytics platform: data tables analysts can shape without leaving for Excel, charts with a proper focus mode, a map that explains itself, and a navigation header with room to grow.",
     "heroImage": project9_hero,
-    "passwordHash": "23ce378002ff959e0002aada708dce18ae39827e0a76a1c53230fd21ad98eb35",
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {
         "title": "Who Lens Is For",
@@ -988,7 +988,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "Design and squads were rebuilding the same things in silos: five versions of an input field, three different modal styles, and 30–40% of every sprint spent reinventing what already existed. Users noticed.",
     "solution": "Strata, one design system for Qore's multi-product ecosystem: a shared box of certified pieces, identical in Figma and in code, with every state covered and a syntax AI can build from.",
     "heroImage": project10_hero,
-    "passwordHash": "102bd23bb6b004c0bb89fb10fe31dc19103674064f2eb552a54f839d3a4135e7",
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {
         "title": "Not a Figma File of Buttons",
@@ -1052,7 +1052,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "Energy analysts were bouncing between search, chat, dashboards and AI agents that didn't talk to each other. Every switch cost them context, and finding an answer they could actually trust took far too long.",
     "solution": "A single platform where search, WoodMac Chat, dashboards and AI agents work as one system: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
     "heroImage": project8_hero,
-    "passwordHash": "191966c670ae232f5ff7a3ed2f4c8f13b04e277b5b020202c7072039d0230cc4",
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {
         "title": "Four Tools Pretending to Be One Product",
