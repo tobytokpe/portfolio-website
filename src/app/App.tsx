@@ -24,7 +24,8 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
-import projectImg9 from '../assets/case-studies/project9/platform-hero.webp';
+import projectImg9 from '../assets/case-studies/project9/platform-hero.mp4';
+import projectImg9Webm from '../assets/case-studies/project9/platform-hero.webm';
 import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
 import projectImg8 from '../assets/case-studies/project8/lens-hero.mp4';
 import projectImg8Webm from '../assets/case-studies/project8/lens-hero.webm';
@@ -73,7 +74,8 @@ const PROJECTS_BASE = [
     description: 'Data tables, charts, maps and navigation redesigned so enterprise analysts can work at scale without leaving for Excel.',
     tag: 'Enterprise Analytics',
     iframeUrl: '',
-    imageSrc: projectImg9
+    imageSrc: projectImg9,
+    imageWebm: projectImg9Webm
   },
   {
     id: 'project10',

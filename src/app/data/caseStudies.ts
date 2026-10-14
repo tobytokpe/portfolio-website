@@ -5,7 +5,8 @@ import img_project8_showcase from '../../assets/case-studies/project8/closing.pn
 import img_project8_inchat from '../../assets/case-studies/project8/lens-in-chat.png';
 import img_project9_tables from '../../assets/case-studies/project9/platform-tables.png';
 import img_project9_tables2 from '../../assets/case-studies/project9/platform-tables-improvements.png';
-import project9_hero from '../../assets/case-studies/project9/platform-hero.webp';
+import project9_hero from '../../assets/case-studies/project9/platform-hero.mp4';
+import project9_hero_webm from '../../assets/case-studies/project9/platform-hero.webm';
 import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
 import img_project9_charts from '../../assets/case-studies/project9/platform-charts-1.png';
 import img_project9_charts2 from '../../assets/case-studies/project9/platform-charts-2.png';
@@ -1256,6 +1257,8 @@ export const CASE_STUDIES: Record<string, any> = {
     "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
     "solution": "Re-platforming Wood Mackenzie's research and data into one analytics product. Users moved over from the old Portal, grew from 3,500 to 15,000 in three months, and landed in a platform with a navigation built around how they search, data tables analysts can shape without leaving for Excel, charts with a proper focus mode, and a map that explains itself.",
     "heroImage": project9_hero,
+    "heroWide": true,
+    "heroWebm": project9_hero_webm,
     "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
     "sections": [
       {
