@@ -1,4 +1,18 @@
 {
+  "headers": [
+    {
+      "source": "/works/(Lens|Lens-Platform|Strata)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai" }
+      ]
+    },
+    {
+      "source": "/assets/(lens-|platform-|strata-|closing-)(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, noimageindex, noai, noimageai" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

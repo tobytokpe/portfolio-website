@@ -13,6 +13,9 @@ import { Mail, Linkedin, Copy, Check, Download } from 'lucide-react';
 import { InteractiveGridBackground } from './components/ui/InteractiveGridBackground';
 import { AboutContent, RESUME_URL } from './components/AboutContent';
 import { AchievementBadges } from './components/AchievementBadges';
+import { MaybePasswordGate } from './components/PasswordGate';
+import { CaseGraphic } from './components/CaseGraphic';
+import { AutoplayVideo } from './components/AutoplayVideo';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -21,6 +24,11 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
+import projectImg9 from '../assets/case-studies/project9/platform-hero.mp4';
+import projectImg9Webm from '../assets/case-studies/project9/platform-hero.webm';
+import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
+import projectImg8 from '../assets/case-studies/project8/lens-hero.mp4';
+import projectImg8Webm from '../assets/case-studies/project8/lens-hero.webm';
 import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
@@ -48,7 +56,36 @@ const CANVAS_WIDTH = 8000;
 const CANVAS_HEIGHT = 2200;
 
 // Case study projects data
-const PROJECTS = [
+const PROJECTS_BASE = [
+  {
+    id: 'project8',
+    slug: 'Lens',
+    title: 'Using AI to Connect Every Route to Our Data',
+    description: 'Using AI to get analysts to data and insight faster, across every Wood Mackenzie source, with one assistant across every touchpoint.',
+    tag: 'Enterprise AI',
+    iframeUrl: '',
+    imageSrc: projectImg8,
+    imageWebm: projectImg8Webm
+  },
+  {
+    id: 'project9',
+    slug: 'Lens-Platform',
+    title: 'Analytics That Hold Up at a Million Rows',
+    description: 'Data tables, charts, maps and navigation redesigned so enterprise analysts can work at scale without leaving for Excel.',
+    tag: 'Enterprise Analytics',
+    iframeUrl: '',
+    imageSrc: projectImg9,
+    imageWebm: projectImg9Webm
+  },
+  {
+    id: 'project10',
+    slug: 'Strata',
+    title: 'Strata: A Lego Set for Seven Products',
+    description: "One design system for Qore's seven products: identical in Figma and code, every state covered, and readable by AI.",
+    tag: 'Design System',
+    iframeUrl: '',
+    imageSrc: projectImg10
+  },
   { 
     id: 'project1',
     slug: 'Hydra',
@@ -113,6 +150,7 @@ const PROJECTS = [
     imageSrc: projectImg6
   },
 ];
+const PROJECTS = PROJECTS_BASE.map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
 
 // Leadership experience data
 const LEADERSHIP = [
@@ -793,11 +831,20 @@ function ProjectPage() {
         metaDescription.setAttribute('name', 'description');
         document.head.appendChild(metaDescription);
       }
-      metaDescription.setAttribute('content', data.problem || data.title);
+      // Protected (NDA) case studies: generic description, and tell crawlers and AI bots to keep out
+      metaDescription.setAttribute('content', data.passwordHash ? 'Protected case study.' : (data.problem || data.title));
+      if (data.passwordHash) {
+        const robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        robots.setAttribute('content', 'noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai');
+        robots.setAttribute('data-protected', '');
+        document.head.appendChild(robots);
+      }
     }
     
     return () => {
-      document.title = 'Tobi | Designer | Product Innovator |';
+      document.title = 'Tobi Olowu — Product Design Lead';
+      document.querySelectorAll('meta[data-protected]').forEach((m) => m.remove());
     };
   }, [data]);
 
@@ -866,7 +913,7 @@ function ProjectPage() {
             {data.problem && (
               <div className="bg-white rounded-3xl p-8 border border-[#E5E5E5] shadow-[0px_8px_30px_rgba(0,0,0,0.02)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
-                  The Challenge
+                  {data.problemLabel || 'The Challenge'}
                 </h3>
                 <p className="text-[#4A5568] text-[15px] leading-[1.7] whitespace-pre-line">
                   {data.problem}
@@ -889,7 +936,14 @@ function ProjectPage() {
         {/* Hero Image / Header Display */}
         {data.heroImage && (
           <div className="mb-16">
-            {data.heroImage.endsWith('.mp4') ? (
+            {data.heroImage.endsWith('.mp4') && data.heroWide ? (
+              <AutoplayVideo
+                src={data.heroImage}
+                webm={data.heroWebm}
+                label={`${data.title} preview`}
+                className="w-full h-auto rounded-[32px] shadow-[0px_16px_40px_rgba(0,0,0,0.06)] border border-[#E5E5E5] block"
+              />
+            ) : data.heroImage.endsWith('.mp4') ? (
               <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
                 <video
                   src={data.heroImage}
@@ -912,6 +966,7 @@ function ProjectPage() {
         )}
 
         {/* Custom Dynamic Sections */}
+        <MaybePasswordGate key={slug} storageKey={slug!} passwordHash={data.passwordHash} onBack={() => navigate('/')}>
         <div className="space-y-16">
           {data.sections.map((section: any, idx: number) => (
             <section key={idx} className="space-y-6">
@@ -970,6 +1025,13 @@ function ProjectPage() {
                     );
                   }
                   if (item.type === 'video') {
+                    if (item.controls) {
+                      return (
+                        <div key={itemIdx} style={{ margin: '2rem 0' }}>
+                          <video src={item.src} controls playsInline preload="metadata" aria-label={item.alt} style={{ width: '100%', borderRadius: '24px', display: 'block', background: '#000' }} />
+                        </div>
+                      );
+                    }
                     if (item.fullWidth) {
                       return (
                         <div key={itemIdx} style={{ margin: '2rem 0' }}>
@@ -999,6 +1061,23 @@ function ProjectPage() {
                       </div>
                     );
                   }
+                  if (item.type === 'youtube') {
+                    return (
+                      <div key={itemIdx} className="my-8 w-full aspect-video rounded-2xl overflow-hidden bg-black">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${item.id}?rel=0`}
+                          title={item.alt}
+                          className="w-full h-full"
+                          loading="lazy"
+                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                          allowFullScreen
+                        />
+                      </div>
+                    );
+                  }
+                  if (item.type === 'graphic') {
+                    return <CaseGraphic key={itemIdx} item={item} />;
+                  }
                   if (item.type === 'image') {
                     return (
                       <img
@@ -1015,6 +1094,7 @@ function ProjectPage() {
             </section>
           ))}
         </div>
+        </MaybePasswordGate>
 
         {/* Project Pagination (Prev / Next) */}
         {(() => {

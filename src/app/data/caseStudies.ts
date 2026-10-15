@@ -1,4 +1,26 @@
 /* Auto-generated case studies data */
+import img_project8_dashboard from '../../assets/case-studies/project8/lens-dashboard-generation.png';
+import img_project8_context from '../../assets/case-studies/project8/lens-context-summary.png';
+import img_project8_showcase from '../../assets/case-studies/project8/closing.png';
+import img_project8_inchat from '../../assets/case-studies/project8/lens-in-chat.png';
+import img_project9_tables from '../../assets/case-studies/project9/platform-tables.png';
+import img_project9_tables2 from '../../assets/case-studies/project9/platform-tables-improvements.png';
+import project9_hero from '../../assets/case-studies/project9/platform-hero.mp4';
+import project9_hero_webm from '../../assets/case-studies/project9/platform-hero.webm';
+import img_project9_users from '../../assets/case-studies/project9/platform-6-1.png';
+import img_project9_charts from '../../assets/case-studies/project9/platform-charts-1.png';
+import img_project9_charts2 from '../../assets/case-studies/project9/platform-charts-2.png';
+import img_project9_map from '../../assets/case-studies/project9/platform-map-1.png';
+import img_project9_map2 from '../../assets/case-studies/project9/platform-map-2.png';
+import img_project9_nav from '../../assets/case-studies/project9/platform-nav-1.png';
+import img_project9_nav2 from '../../assets/case-studies/project9/platform-nav-2.png';
+import project10_hero from '../../assets/case-studies/project10/strata-hero.png';
+import project8_hero from '../../assets/case-studies/project8/lens-hero.mp4';
+import project8_hero_webm from '../../assets/case-studies/project8/lens-hero.webm';
+import img_project8_principles from '../../assets/case-studies/project8/lens-ai-principles.png';
+import img_project8_overview from '../../assets/case-studies/project8/lens-ai-overview.png';
+import img_project8_search from '../../assets/case-studies/project8/lens-unified-search.png';
+import img_project8_platform from '../../assets/case-studies/project8/lens-platform.png';
 import project6_hero from '../../assets/case-studies/project6/bespoka-landing.png';
 import img_project6_marketplace from '../../assets/case-studies/project6/bespoka-marketplace-home.webp';
 import img_project6_signup from '../../assets/case-studies/project6/bespoka-signup-selection.webp';
@@ -100,6 +122,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Cutting eight stages to five**: I compressed the sign-up flow from eight stages to five, with real-time validation against standard input guidelines so an error got caught before submission, not after."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Before",
+            "right": "After",
+            "rows": [
+              [
+                "8 sign-up stages",
+                "5 sign-up stages"
+              ],
+              [
+                "Errors caught after submission",
+                "Real-time validation as you type"
+              ],
+              [
+                "48% drop-off",
+                "14% drop-off"
+              ]
+            ]
+          },
+          {
             "type": "image",
             "src": img_project4_onboarding,
             "alt": "Moore 5-step onboarding screens showing BVN/NIN verification, OTP, passcode and transaction PIN setup"
@@ -128,6 +170,28 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "paragraph",
             "text": "**The fix**: We threw the spinner out and built a step-by-step progress tracker that names exactly what's happening, in real time. PIN entry sits in its own clear space, a light vibration confirms every tap, and the transfer summary shows up right before you hit send, not after."
           },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Live progress tracker",
+                "text": "Names exactly what's happening, in real time."
+              },
+              {
+                "title": "PIN in its own space",
+                "text": "Clear, uncluttered entry."
+              },
+              {
+                "title": "Haptic confirmation",
+                "text": "A light vibration on every tap."
+              },
+              {
+                "title": "Summary before send",
+                "text": "See the transfer before it goes."
+              }
+            ]
+          },
 
         ]
       },
@@ -140,25 +204,32 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**One system, three platforms**: To scale Moore across iOS, Android, and web without three separate visual languages, I turned the early layouts into a proper component library, one that stayed consistent and was easy to update without touching every screen by hand."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Tokens linked to code",
+                "text": "Figma variables mapped to developer components; layout identical across iOS, Android and web."
+              },
+              {
+                "title": "Worst-case testing",
+                "text": "Bad networks and balances like ₦2,905,215.23, so nothing clips."
+              },
+              {
+                "title": "Accessibility built in",
+                "text": "WCAG 2.1 AA contrast, minimum font sizes, older Android phones."
+              },
+              {
+                "title": "Engineers, not around them",
+                "text": "One shared library and token set, so screens shipped without drift."
+              }
+            ]
+          },
+          {
             "type": "cta",
             "text": "Read about our post-design-system Figma variables & AI accessibility presentation at UX Scotland",
             "url": "https://www.figma.com/deck/dylqMGVCzMlD4XPwP1l4is/AI-for-Accessibility-with-Variables?node-id=2014-27&t=RfplUrqVv6K3hFya-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
-          },
-          {
-            "type": "paragraph",
-            "text": "**Figma variables in, iteration time down**: Linking design tokens directly to developer components tightened handoff and cut iteration cycles, so layout stayed identical across platforms without anyone manually re-checking spacing."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Testing the worst case, not the best one**: We built realistic models of terrible network conditions rather than assuming good ones. We even tested what a balance like ₦2,905,215.23 looked like on screen, because the moment a number clips or wraps badly, trust drops with it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Accessibility, not as an afterthought**: Moore's users span a wide range of devices, many older and lower-end Android phones. Every interactive element hit WCAG 2.1 AA contrast, we checked legibility at minimum font sizes, and we walked the payment flow with a screen reader before calling it done. High-contrast text, haptic patterns, and clear error states were in the first iteration, not bolted on later."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Working with engineers, not around them**: I worked directly with our developers so the design translated into code without drift. Aligning the Figma library to their tokens meant they could build identical, polished screens across mobile and web fast."
           },
           {
             "type": "image",
@@ -172,16 +243,34 @@ export const CASE_STUDIES: Record<string, any> = {
         "type": "section",
         "items": [
           {
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "48% → 14%",
+                "label": "onboarding abandonment"
+              },
+              {
+                "value": "0.2%",
+                "label": "accidental double-tap errors"
+              },
+              {
+                "value": "½",
+                "label": "engineering handoff time"
+              },
+              {
+                "value": "8,000+",
+                "label": "organic downloads, no paid marketing"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Design gates**: As the team grew, I introduced Design Gates, short review checkpoints so nothing shipped without a check for errors, edge cases, and visual polish. It also gave junior designers a clear standard to work against without needing me in every review."
           },
           {
             "type": "paragraph",
-            "text": "**Growth without a marketing budget**: Because the product was usable and accessible from day one, Moore reached over **8,000 downloads** organically, with no paid marketing behind it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**The numbers that mattered**: Re-architecting sign-up dropped onboarding abandonment from 48% to 14%. Fixing the payment verification flow cut accidental double-tap errors to 0.2%. Shipping the token system cut engineering handoff time by half."
+            "text": "**Growth without a marketing budget**: Because the product was usable and accessible from day one, Moore reached over 8,000 downloads organically, with no paid marketing behind it."
           },
           {
             "type": "paragraph",
@@ -246,12 +335,50 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "To turn that into a working safety net, I focused on three things:"
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Familiar landmarks",
+                "text": "Local photos and state colours: Taraba red, Benue black, Nasarawa blue.",
+                "tag": "1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Fewer roles, faster action",
+                "text": "Five user types, designed around one link: Citizen → Monitor.",
+                "tag": "2",
+                "tone": "neutral"
+              },
+              {
+                "title": "Built for bad signal",
+                "text": "No login, no typing: background GPS and offline storage.",
+                "tag": "3",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**1. Familiar landmarks, not a generic app**: Working with local governments, the app's look changes by state, custom local photos and state colours (red for Taraba, black for Benue, blue for Nasarawa) on the onboarding screens. In a high-tension environment, that recognisability builds comfort you can't fake with generic UI."
           },
           {
             "type": "paragraph",
             "text": "**2. Fewer roles, faster action**: The system supports five user types, Citizens, Monitors, Security, Observers, Admins. I focused the design on the one connection that mattered most, a Citizen sending an alert and a local Monitor validating it, and cut the middle-management steps that didn't need to be there."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Five user types",
+            "chips": [
+              "Citizen ★",
+              "Monitor ★",
+              "Security",
+              "Observer",
+              "Admin"
+            ],
+            "caption": "★ The connection the design prioritised: a Citizen sends an alert, a local Monitor validates it."
           },
           {
             "type": "image",
@@ -286,6 +413,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "I dropped the swipe entirely and built a single-screen grid showing every alert type at once, in plain black icons. Nothing hidden, nothing to scroll for."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "First try: swipe cards",
+            "right": "Final: one-screen grid",
+            "rows": [
+              [
+                "Alert types hidden behind swipes",
+                "Every alert type visible at once"
+              ],
+              [
+                "Tunnel vision made it slower",
+                "Plain black icons, nothing to scroll"
+              ],
+              [
+                "Typing needed for details",
+                "One-tap voice recorder: tap, speak, send"
+              ]
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Voice over text**: Field data confirmed what we suspected, typing was impossible for someone running from danger, or for anyone who struggled with reading. So I put a large, one-tap voice recorder directly on the alert screen. Tap, speak, send."
           },
@@ -301,6 +448,22 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**A trade-off worth fighting for**: Stakeholders originally wanted voice notes translated to text on-device before sending. On low-tier phones that processing took up to 12 seconds, a dangerous gap mid-crisis. I argued to drop on-device translation entirely and stream raw audio instead, which brought transmission down to under 2 seconds."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "On-device translation",
+            "right": "What we shipped",
+            "rows": [
+              [
+                "Up to 12 seconds on low-tier phones",
+                "Raw audio sent immediately"
+              ],
+              [
+                "Dangerous gap mid-crisis",
+                "Translation handled after sending"
+              ]
+            ]
           },
           {
             "type": "paragraph",
@@ -339,16 +502,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "alt": "high-fidelity desktop and mobile app screens showing multilingual support and conflict maps"
           },
           {
-            "type": "paragraph",
-            "text": "In final field trials, every single participant successfully sent a crisis alert through the simplified grid layout. 100%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Removing the login requirement eliminated registration drop-off outright, reaching the 42% of citizens who'd previously stayed silent."
-          },
-          {
-            "type": "paragraph",
-            "text": "Shifting from text entry to one-tap voice reporting cut emergency report generation from an average of 95 seconds down to 4, time that matters when someone's waiting on responders."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "100%",
+                "label": "of field-trial participants sent an alert"
+              },
+              {
+                "value": "95s → 4s",
+                "label": "emergency report time"
+              },
+              {
+                "value": "42%",
+                "label": "of citizens who'd never reported, now reachable without login"
+              },
+              {
+                "value": "12–15",
+                "label": "community leaders, farmers and security staff in live trials"
+              }
+            ]
           }
         ]
       }
@@ -381,6 +554,25 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The dilemma**: The tool had to work for two very different people at once, engineers reading raw data logs, and bank office staff checking bills and transaction histories. Neither could feel like an afterthought."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Engineers",
+                "text": "Reading raw data logs and configuring keys.",
+                "tag": "Audience 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Bank office staff",
+                "text": "Checking bills and transaction histories.",
+                "tag": "Audience 2",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**What we did**: I replaced confusing charts with a clean, filter-driven view and moved technical documentation directly into the workspace. Engineers and business managers could finally use the same tool without stepping on each other."
           },
@@ -395,6 +587,32 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The chaos before Hydra**: Financial institutions bought payment processing, balance checks, and transaction tracking from separate vendors, each with its own code style, its own bill, its own messy spreadsheet export. For the people using it daily, that was three jobs pretending to be one."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Payment processing",
+                "text": "Own vendor, own code style, own bill.",
+                "tag": "Vendor A",
+                "tone": "neutral"
+              },
+              {
+                "title": "Balance checks",
+                "text": "Own vendor, own code style, own bill.",
+                "tag": "Vendor B",
+                "tone": "neutral"
+              },
+              {
+                "title": "Transaction tracking",
+                "text": "Own vendor, own spreadsheet export.",
+                "tag": "Vendor C",
+                "tone": "neutral"
+              }
+            ],
+            "caption": "Hydra pulled all of them into one place."
+          },
+          {
             "type": "paragraph",
             "text": "**Mapping it out**: I ran a card-sorting exercise with real users to see how they actually grouped information, which shaped a navigation system built on how people think, not how the APIs happened to be structured."
           },
@@ -402,6 +620,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project1_card_sorting,
             "alt": "Card sorting results and research grouping information mapping"
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "The team",
+            "chips": [
+              "1 designer (me)",
+              "1 project manager",
+              "1 product manager",
+              "3 engineers",
+              "2-month timeline"
+            ]
           },
           {
             "type": "paragraph",
@@ -428,6 +658,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**The pivot**: Our first analytics screens used multi-coloured circle charts. Users found them confusing and tiring for daily work. We stripped them out for plain line graphs and simple dropdown filters, so isolating a date range or a transaction problem took seconds, not guesswork."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Before",
+            "right": "After",
+            "rows": [
+              [
+                "Multi-coloured circle charts",
+                "Plain line graphs"
+              ],
+              [
+                "Hard to read daily",
+                "Simple dropdown filters for date range and issues"
+              ],
+              [
+                "Docs in another tab",
+                "Code structure in a slide-out drawer on the same screen"
+              ]
+            ]
+          },
+          {
             "type": "image",
             "src": img_project1_dashboards,
             "alt": "Hydra analytics dashboard pivot showing line graphs and transaction filters"
@@ -439,6 +689,22 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**A trade-off worth naming**: Engineering flagged that a live payload preview would mean an expensive API call every time the drawer opened, slowing the whole dashboard down. I compromised with local JSON schema caching, showing structural mock payloads instantly client-side and saving live calls for final validation only."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Live payload preview",
+            "right": "What we shipped",
+            "rows": [
+              [
+                "Expensive API call every time the drawer opened",
+                "Local JSON schema caching"
+              ],
+              [
+                "Slower dashboard",
+                "Structural mock payloads, shown instantly"
+              ]
+            ]
           },
           {
             "type": "image",
@@ -473,20 +739,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Accessibility**: Every financial data table, status badge, and billing display was checked against WCAG 2.1 AA, so dense content, transaction histories, API configurations, billing records, stayed legible and navigable for users relying on assistive technology."
           },
           {
-            "type": "paragraph",
-            "text": "Step-by-step setup guides and the side-drawer code panel cut developer integration times by 46%."
-          },
-          {
-            "type": "paragraph",
-            "text": "Simplifying the dense tables and status badges cut administrative billing entry errors by 38%."
-          },
-          {
-            "type": "paragraph",
-            "text": "The launch onboarded over 45 partner fintechs and traditional banks into the ecosystem."
-          },
-          {
-            "type": "paragraph",
-            "text": "The platform handled real volume from day one, securely processing over 60 million naira since launch."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "46%",
+                "label": "faster developer integration"
+              },
+              {
+                "value": "38%",
+                "label": "fewer billing entry errors"
+              },
+              {
+                "value": "45+",
+                "label": "partner fintechs and banks onboarded"
+              },
+              {
+                "value": "₦60M+",
+                "label": "processed securely since launch"
+              }
+            ]
           }
         ]
       }
@@ -521,6 +793,26 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**My approach**: I built a linear, step-by-step setup wizard. A non-technical bank operator could pick a theme, map their corporate colours, and generate a downloadable, testable preview of their app without touching a developer."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Pick a theme"
+              },
+              {
+                "title": "Map brand colours"
+              },
+              {
+                "title": "Preview the app",
+                "text": "Downloadable and testable."
+              },
+              {
+                "title": "Deploy",
+                "text": "No developer needed."
+              }
+            ]
           }
         ]
       },
@@ -541,12 +833,23 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Splitting the system in two**: I broke the platform into two distinct spaces:"
           },
           {
-            "type": "paragraph",
-            "text": "The Management Layer, a dashboard for bank admins to handle branding, permissions, and configuration."
-          },
-          {
-            "type": "paragraph",
-            "text": "The Customer Application Core, a standardised flow for transfers, bill payments, and expense tracking, built for everyday banking clients."
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Management Layer",
+                "text": "Dashboard for bank admins: branding, permissions, configuration.",
+                "tag": "For admins",
+                "tone": "accent"
+              },
+              {
+                "title": "Customer Application Core",
+                "text": "Standardised flow for transfers, bill payments and expense tracking.",
+                "tag": "For customers",
+                "tone": "new"
+              }
+            ]
           }
         ]
       },
@@ -601,12 +904,51 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**A strict rule, agreed with engineering**: Structural layouts stayed locked to prevent bugs. Visual properties were treated as dynamic variables. Getting product and engineering to agree on that split up front saved months of arguments later."
           },
           {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Locked",
+            "right": "Flexible",
+            "rows": [
+              [
+                "Structural layout",
+                "Colours (on safe surfaces only)"
+              ],
+              [
+                "Spacing and hierarchy",
+                "Logo placement"
+              ],
+              [
+                "Base palette: grey, white, black",
+                "Corner radius and typography"
+              ]
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**Dynamic tokens**: We used Figma Variables, exported through Style Dictionary into a shared config file engineers could plug straight into their codebase."
           },
           {
             "type": "paragraph",
             "text": "**Built to scale**: With that token ecosystem in place, a change to a colour value, spacing parameter, or component style compiled automatically across every micro-site and white-labeled module, no manual developer touch needed."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Figma Variables"
+              },
+              {
+                "title": "Style Dictionary"
+              },
+              {
+                "title": "Shared config file"
+              },
+              {
+                "title": "Every bank's app",
+                "text": "Updates compile automatically."
+              }
+            ]
           },
           {
             "type": "image",
@@ -647,16 +989,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Replacing manual engineering with an automated config tool delivered results fast:"
           },
           {
-            "type": "paragraph",
-            "text": "**From four months to an afternoon**: Microfinance institutions went from months of custom build to customising, previewing, and deploying their app in a single afternoon."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Onboarding failure, cut**: Locking accessibility at the platform level dropped customer onboarding failure from 45% to under 8%, regardless of which clashing theme a bank manager picked."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Scale**: The architecture scaled to power digital banking apps for over 500 microfinance banks across Africa."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "4 mo → 1 afternoon",
+                "label": "to launch a bank's app"
+              },
+              {
+                "value": "45% → <8%",
+                "label": "onboarding failure"
+              },
+              {
+                "value": "500+",
+                "label": "microfinance banks powered"
+              },
+              {
+                "value": "<2 min",
+                "label": "to open an account"
+              }
+            ]
           },
         ]
       }
@@ -688,6 +1040,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Approved by Nigeria's SEC, the platform opens up Mutual Funds, Bonds, Treasury Bills, Commercial Papers, and liquidity tools to retail investors, with an entry point as low as ₦1,000."
           },
           {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "What retail investors can now access, from ₦1,000",
+            "chips": [
+              "Mutual Funds",
+              "Bonds",
+              "Treasury Bills",
+              "Commercial Papers",
+              "Liquidity tools"
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**The tension**: We had to take compliance-heavy, paper-bound investment processes and turn them into something light enough for a mobile-first generation, without losing the decades of institutional trust the brand had built."
           },
@@ -698,6 +1062,16 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "Leading a team of three designers, my job went beyond screens: managing stakeholders across departments, mapping the end-to-end service blueprint, running research and testing, and building a design-to-code pipeline that wouldn't rack up technical debt as we scaled."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "chips": [
+              "3 products: app, web, Admin Control Desk",
+              "Team of 3 designers",
+              "4-month timeline",
+              "5-day alignment sprint"
+            ]
           },
           {
             "type": "image",
@@ -713,6 +1087,25 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**What was actually broken**: When someone wanted to put money into a Commercial Paper or a Bond, the process took 3 to 5 business days: a physical prospectus, KYC signed by post or courier, bank wire verification, and an account officer logging it all by hand into a spreadsheet."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Physical prospectus"
+              },
+              {
+                "title": "KYC by post or courier"
+              },
+              {
+                "title": "Bank wire verification"
+              },
+              {
+                "title": "Manual logging by an account officer"
+              }
+            ],
+            "caption": "Total: 3 to 5 business days to invest."
           },
           {
             "type": "paragraph",
@@ -761,6 +1154,24 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "We kept the token repository in a single JSON file, distributed via Style Dictionary straight into production."
           },
           {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Single JSON token file"
+              },
+              {
+                "title": "Style Dictionary"
+              },
+              {
+                "title": "Flutter (iOS + Android)"
+              },
+              {
+                "title": "Tailwind (web)"
+              }
+            ]
+          },
+          {
             "type": "image",
             "src": img_project3_design_system,
             "alt": "MAMVest design system snapshot showing color tokens and specifications"
@@ -799,16 +1210,26 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "Replacing paper-bound workflows with a proper digital architecture changed Mango's position in the market, in four months:"
           },
           {
-            "type": "paragraph",
-            "text": "**Time to invest, gone from days to minutes**: Discovering an asset, clearing compliance, and funding a portfolio dropped from 3 to 5 business days down to 3 minutes and 42 seconds."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Lower acquisition cost**: Turning regulatory sign-up into a chunked, progressive verification flow cut onboarding abandonment from 54% down to 11%, which brought acquisition cost down with it."
-          },
-          {
-            "type": "paragraph",
-            "text": "**Faster for the whole team**: A unified design system let Mango's internal teams build secondary features up to 40% faster, with far less technical debt accumulating behind them."
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "3–5 days → 3m 42s",
+                "label": "to discover, clear compliance and invest"
+              },
+              {
+                "value": "54% → 11%",
+                "label": "onboarding abandonment"
+              },
+              {
+                "value": "40%",
+                "label": "faster secondary feature builds"
+              },
+              {
+                "value": "₦1,000",
+                "label": "minimum entry point"
+              }
+            ]
           },
           {
             "type": "paragraph",
@@ -824,6 +1245,1266 @@ export const CASE_STUDIES: Record<string, any> = {
     ]
   },
 
+  "project9": {
+    "id": "project9",
+    "title": "Analytics That Hold Up at a Million Rows",
+    "metadata": {
+      "Client": "Wood Mackenzie",
+      "Role": "Lead Product Designer, Platform",
+      "Project Type": "Web, Enterprise Analytics",
+      "Timeline": "Dec 2023 – Present"
+    },
+    "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
+    "solution": "Re-platforming Wood Mackenzie's research and data into one analytics product. Users moved over from the old Portal, grew from 3,500 to 15,000 in three months, and landed in a platform with a navigation built around how they search, data tables analysts can shape without leaving for Excel, charts with a proper focus mode, and a map that explains itself.",
+    "heroImage": project9_hero,
+    "heroWide": true,
+    "heroWebm": project9_hero_webm,
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
+    "sections": [
+      {
+        "title": "Who Lens Is For",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Energy professionals, analysts, investors and decision-makers who need fast access to data and reports they can rely on. They don't share one workflow, and the platform had to stop pretending they did."
+          },
+          {
+            "type": "image",
+            "src": img_project9_users,
+            "alt": "Lens user groups: energy professionals, analysts, investors and decision-makers"
+          },
+          {
+            "type": "paragraph",
+            "text": "**What research told us**: user interviews, past session recordings and competitor analysis kept pointing to the same three problems."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Hard to navigate",
+                "text": "Users wanted more control and kept losing their place.",
+                "tag": "Theme 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Workflows blur together",
+                "text": "Different jobs looked the same, so people mixed them up.",
+                "tag": "Theme 2",
+                "tone": "neutral"
+              },
+              {
+                "title": "Features go unnoticed",
+                "text": "Many users never found chart refinement at all.",
+                "tag": "Theme 3",
+                "tone": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "My Role, and the Team Around It",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "I was the lead designer on the platform. Here's what I owned, and what came from the wider team."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "I owned",
+            "right": "The wider team owned",
+            "rows": [
+              [
+                "Information architecture and the global navigation",
+                "Product: priorities and the roadmap"
+              ],
+              [
+                "The map redesign and the shared mapping documentation",
+                "Engineering: building on AG-Grid and Mapbox"
+              ],
+              [
+                "Chart modes and the shared chart-settings vocabulary",
+                "Data team: data definitions and the NAPS data mapping"
+              ],
+              [
+                "The NAPS chart audit, access scenarios and Lyssna testing",
+                "Analysts: subject expertise on every dataset"
+              ],
+              [
+                "Hydrocarbon components and design clinics with developers",
+                "Everyone: shipping it"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Methods, and Why I Chose Them",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Interviews + session recordings",
+                "text": "What people say and what they do aren't the same. Recordings showed chart refinement going unused even though nobody complained about it.",
+                "tag": "Discovery",
+                "tone": "neutral"
+              },
+              {
+                "title": "Competitor review",
+                "text": "Analysts bring habits from other tools. Knowing those patterns stopped us inventing new ones for the sake of it.",
+                "tag": "Discovery",
+                "tone": "neutral"
+              },
+              {
+                "title": "Think-aloud tests in Lyssna",
+                "text": "For NAPS, naming was the risk. We needed to hear users' reasoning, not just see where they clicked.",
+                "tag": "Validation",
+                "tone": "accent"
+              },
+              {
+                "title": "Task-based testing with metrics",
+                "text": "Time on task, error rate and satisfaction gave a consistent way to compare one iteration with the next.",
+                "tag": "Validation",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Design Goals",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Orientation first",
+                "text": "Always know where you are and what you can do next."
+              },
+              {
+                "title": "Progressive power",
+                "text": "Simple defaults, deep control when needed."
+              },
+              {
+                "title": "Analyst-grade focus",
+                "text": "Less noise during deep analysis."
+              },
+              {
+                "title": "Scalability",
+                "text": "Patterns that work across datasets and domains."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Moving Everyone Off Portal",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Wood Mackenzie's content lived on an older platform called Portal, organised around how the business was structured rather than how a client looks for an answer. Every report, dataset and tool needed a new home that made sense to the person searching for it."
+          },
+          {
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "3,500",
+                "label": "active users on Portal"
+              },
+              {
+                "value": "15,000",
+                "label": "active users three months after the move to Lens"
+              },
+              {
+                "value": "4×",
+                "label": "growth in active users"
+              },
+              {
+                "value": "3 mo",
+                "label": "to get there"
+              }
+            ],
+            "caption": "Findability and searchability improved too, because content now lives where people expect it."
+          }
+        ]
+      },
+      {
+        "title": "Bringing NAPS Into Lens",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "NAPS (North America Power Supply) is the standalone tool North American power clients use for demand, supply and price data. Moving it into Lens sounded like a lift and shift. Then we put the two side by side."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "NAPS",
+            "right": "Lens",
+            "rows": [
+              [
+                "“View by” splits one chart into hundreds of variants",
+                "Filters and custom dashboards"
+              ],
+              [
+                "Energy price",
+                "Power price"
+              ],
+              [
+                "Its own list of demand types",
+                "A different list of demand types"
+              ],
+              [
+                "“Country” = Canada, Mexico, USA",
+                "North America region holds other countries"
+              ]
+            ],
+            "caption": "Same market, different ideas about how to show it."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The question that reframed it**: could a NAPS user still find their chart once we'd moved it? Drawing the charts was never the risk. Losing people in the move was."
+          },
+          {
+            "type": "graphic",
+            "graphic": "stats",
+            "items": [
+              {
+                "value": "5",
+                "label": "NAPS areas audited chart by chart"
+              },
+              {
+                "value": "10+",
+                "label": "chart-settings panels designed"
+              },
+              {
+                "value": "15",
+                "label": "entitlement and market-filter scenarios mapped"
+              },
+              {
+                "value": "12",
+                "label": "think-aloud test tasks built in Lyssna"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**A chart-by-chart audit**: every NAPS chart was compared with Lens and tagged."
+          },
+          {
+            "type": "graphic",
+            "graphic": "mapping",
+            "rows": [
+              {
+                "from": "Demand",
+                "to": "Demand dashboard",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Supply",
+                "to": "Supply dashboard",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Supply (plant detail)",
+                "to": "Supply detail",
+                "tag": "Decide",
+                "tone": "decide"
+              },
+              {
+                "from": "Prices",
+                "to": "Price dashboard",
+                "tag": "New",
+                "tone": "new"
+              },
+              {
+                "from": "Power plant economics",
+                "to": "Power plant economics",
+                "tag": "Adapt",
+                "tone": "adapt"
+              },
+              {
+                "from": "Fuels (release 2)",
+                "to": "Home to be decided",
+                "tag": "Decide",
+                "tone": "decide",
+                "pending": true
+              }
+            ],
+            "legend": [
+              {
+                "tag": "Adapt",
+                "tone": "adapt",
+                "text": "a Lens chart mostly covers it"
+              },
+              {
+                "tag": "New",
+                "tone": "new",
+                "text": "Lens doesn't have it"
+              },
+              {
+                "tag": "Decide",
+                "tone": "decide",
+                "text": "placement or naming still open"
+              }
+            ],
+            "caption": "Example: Lens had capacity price by zone but not by auction, in $/MW-month or $/MW-day (UCAP). Options: colour by auction detail, change the unit, or build a new chart."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Settings instead of “view by”**: rather than hundreds of near-identical charts, each Lens chart gets a compact settings panel built from one shared vocabulary."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "One vocabulary of chart controls",
+            "chips": [
+              "Data to visualise",
+              "X-axis",
+              "Y-axis",
+              "Units",
+              "Year",
+              "Hour type: average · on peak · off peak",
+              "Colour by",
+              "+ chart-specific options"
+            ],
+            "caption": "Chart-specific options range from standard vs clean (carbon) implied heat rate to capture price by country, NERC sub-region, market or zone."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Entitlements decide what you see**: clients buy regions separately, so the view logic was settled once for every dashboard."
+          },
+          {
+            "type": "graphic",
+            "graphic": "branch",
+            "start": "Opens a dashboard",
+            "question": "More than one power entitlement? (e.g. America + EMEA)",
+            "outcomes": [
+              {
+                "label": "Yes",
+                "tone": "accent",
+                "title": "Normalised view by default",
+                "text": "Switch to a regional view from dashboard settings."
+              },
+              {
+                "label": "No",
+                "tone": "neutral",
+                "title": "Regional view only",
+                "text": "No normalised view to switch to."
+              }
+            ],
+            "caption": "Market filters (ERCOT alone, ERCOT + Alberta, ERCOT + Belgium) each got their own frame on top of this."
+          },
+          {
+            "type": "paragraph",
+            "text": "**Testing with people who already use NAPS**: think-aloud tasks in Lyssna, each ending with the same question: how would you use this chart in your own reports?"
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Find the view switch",
+                "text": "Normalised vs regional: can they find it, and what do the terms mean?"
+              },
+              {
+                "title": "Explore supply settings",
+                "text": "Are chart settings useful for real analysis?"
+              },
+              {
+                "title": "Read demand terms",
+                "text": "Do “Peak Power Demand” and “Power Demand” read as different?"
+              },
+              {
+                "title": "Name and colour",
+                "text": "Does “Supply Details” make sense? Which default colour?"
+              },
+              {
+                "title": "Explain new charts",
+                "text": "Capacity price by auction, and implied heat rate."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "One finding landed straight away: NAPS users love the quick filters on the page. That became a design question for Lens, where filters are less visible. The prototype then rebuilt the winning ideas inside the standard Lens dashboard shell, so NAPS arrived as part of Lens rather than beside it."
+          }
+        ]
+      },
+      {
+        "title": "Data Tables Analysts Don't Need to Export",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Built on AG-Grid**: filtering, grouping and custom formatting became the backbone of data exploration, with custom rules for decimal consistency and alignment. In energy and finance data, a misaligned decimal is a misread number."
+          },
+          {
+            "type": "image",
+            "src": img_project9_tables,
+            "alt": "AG-Grid data tables with column filtering and cell range selection"
+          },
+          {
+            "type": "image",
+            "src": img_project9_tables2,
+            "alt": "Custom decimal-place control and grouped row hierarchy in the data table"
+          },
+          {
+            "type": "paragraph",
+            "text": "Analysts stopped exporting to Excel before they could get to an insight."
+          }
+        ]
+      },
+      {
+        "title": "Charts With a Focus Mode",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Embedded overview",
+                "text": "Quick insight inside the dashboard.",
+                "tag": "Mode 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Focus mode",
+                "text": "One click to full screen, with a persistent settings panel, better axis controls, legends and comparison toggles.",
+                "tag": "Mode 2",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "src": img_project9_charts,
+            "alt": "Full-screen chart analysis mode with persistent settings panel"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Picking the right chart for energy data**: a capacity forecast, a generation mix and a price series each tell a different story, and the wrong chart type hides it. I matched chart types to kinds of energy data, then designed how filters and settings combine so the chart still reads correctly when an analyst narrows by region, technology or time."
+          },
+          {
+            "type": "image",
+            "src": img_project9_charts2,
+            "alt": "Key enhancements in full-screen chart mode"
+          }
+        ]
+      },
+      {
+        "title": "A Map That Explains Itself",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**What map users told us**:"
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Many layers at once",
+                "text": "They wanted several layer types together to understand surrounding infrastructure.",
+                "tag": "Insight",
+                "tone": "neutral"
+              },
+              {
+                "title": "Layers nobody could find",
+                "text": "Many layers clients asked for already existed.",
+                "tag": "Insight",
+                "tone": "neutral"
+              },
+              {
+                "title": "Confusing names",
+                "text": "Different layers shared names like “block”.",
+                "tag": "Insight",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**The overhaul, in Mapbox**: layers grouped by industry with thumbnails and descriptions, dashboard layers in their own section with one toggle, and legends under each layer with options to recolour or hide."
+          },
+          {
+            "type": "image",
+            "src": img_project9_map,
+            "alt": "Map interaction overview"
+          },
+          {
+            "type": "image",
+            "src": img_project9_map2,
+            "alt": "Annotated map interactions: layer groups, legends and dashboard layers"
+          },
+          {
+            "type": "paragraph",
+            "text": "I also standardised the mapping documentation (layer naming, legend rules, interaction patterns) so other teams start from the same rules. That fixed the “block” problem at the source."
+          }
+        ]
+      },
+      {
+        "title": "A Navigation Header With Room to Grow",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Hydrogen cost modelling, gas and LNG market modelling and analyst insights had nowhere to live, so each launch got squeezed in wherever there was space. I restructured the hierarchy around the questions clients bring rather than internal teams, kept search where users expect it, and added a single entry point into AI chat. Think of a library adding a new wing: with a proper catalogue, the new books just slot in."
+          },
+          {
+            "type": "image",
+            "src": img_project9_nav,
+            "alt": "Global navigation: products with no home"
+          },
+          {
+            "type": "image",
+            "src": img_project9_nav2,
+            "alt": "Annotated global navigation header"
+          }
+        ]
+      },
+      {
+        "title": "A Design System That Keeps Up",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Hydrocarbon",
+                "text": "Extended Wood Mackenzie's design system with components, templates and page patterns for the new tables, charts and map controls.",
+                "tag": "Design system",
+                "tone": "accent"
+              },
+              {
+                "title": "Design clinics",
+                "text": "Regular sessions with developers during build. Small calls, like a decimal rule or a legend's empty state, got settled in ten minutes instead of becoming bugs.",
+                "tag": "Practice",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "How I Used AI to Work Faster",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Prototypes in code",
+                "text": "Claude Code, Cursor and Figma Make for interactions a static frame can't show. Engineers clicked real behaviour before estimating it."
+              },
+              {
+                "title": "Research on tap",
+                "text": "Dovetail connected to Claude, so I could check an idea against years of customer conversations in minutes."
+              },
+              {
+                "title": "Time back for people",
+                "text": "AI didn't design the platform. It took the slow parts out, so I spent more time with users and the data team."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Decisions, and the Options We Didn't Take",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Most of the work was choosing between reasonable options. These are the calls that shaped the platform."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Option we didn't take",
+            "right": "What we chose, and why",
+            "rows": [
+              [
+                "Keep squeezing new products into the existing menu",
+                "Navigation built around client questions, so new products have a predictable home"
+              ],
+              [
+                "Rebuild every NAPS “view by” variant",
+                "One settings vocabulary per chart: hundreds of near-identical charts are impossible to find or compare"
+              ],
+              [
+                "One long map layer list",
+                "Layers grouped by industry with descriptions: users didn't know what existed, so they couldn't search for it"
+              ],
+              [
+                "One chart style everywhere",
+                "Two modes: an overview for dashboards and a focus mode for real analysis"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Validation & Outcome",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Task-based testing on tables and maps, tracked against three usability metrics:"
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Time on task",
+                "text": "Average time per task, per participant."
+              },
+              {
+                "title": "Error rate",
+                "text": "Errors per task, grouped into common issues."
+              },
+              {
+                "title": "Satisfaction",
+                "text": "Post-task Likert questionnaire on ease of use."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "It surfaced real friction, like unclear drag instructions in tables and hard-to-see legends on maps, and each got clearer visuals, cues and better defaults."
+          },
+          {
+            "type": "paragraph",
+            "text": "**The result**: one consistent Lens across tables, maps and dashboards. Users and stakeholders reported more confidence, less training time and support overhead, and more use of the advanced data tools."
+          }
+        ]
+      },
+      {
+        "title": "What Didn't Work, and What I Learned",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Drag-to-group wasn't obvious",
+                "text": "Testing showed people didn't realise they could drag columns to group rows. Clearer cues fixed it.",
+                "tag": "Didn't work",
+                "tone": "decide"
+              },
+              {
+                "title": "Legends were hard to see",
+                "text": "On a busy map, legends got lost. Moving them under each layer solved it.",
+                "tag": "Didn't work",
+                "tone": "decide"
+              },
+              {
+                "title": "A feature nobody found",
+                "text": "Chart refinement existed before the redesign, but almost nobody used it. A feature people can't find may as well not exist.",
+                "tag": "Lesson",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  "project10": {
+    "id": "project10",
+    "title": "Strata: A Lego Set for Seven Products",
+    "metadata": {
+      "Client": "Qore Technologies",
+      "Role": "Design System Lead",
+      "Project Type": "Design System",
+      "Timeline": "Ongoing"
+    },
+    "problem": "Design and squads were rebuilding the same things in silos: five versions of an input field, three different modal styles, and 30–40% of every sprint spent reinventing what already existed. Users noticed.",
+    "solution": "Strata, one design system for Qore's multi-product ecosystem: a shared box of certified pieces, identical in Figma and in code, with every state covered and a syntax AI can build from.",
+    "heroImage": project10_hero,
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
+    "sections": [
+      {
+        "title": "Not a Figma File of Buttons",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "A design system isn't a colour palette and some button variants. Strata is a shared box of standard, certified pieces, so nobody hand-carves the same bricks every sprint. Figma is how things look, code is how things ship, and Strata is the single source of truth between them."
+          }
+        ]
+      },
+      {
+        "title": "Built in the Trenches",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Strata started inside real products, Recova, BankOne and Self-Service: high-stakes, user-facing interfaces with strict financial data and dense screens. That's why every component covers every state, loading, empty, error and success, from day one."
+          },
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Every component, every state",
+            "chips": [
+              "Loading",
+              "Empty",
+              "Error",
+              "Success"
+            ],
+            "caption": "Born in Recova, BankOne and Self-Service."
+          },
+          {
+            "type": "paragraph",
+            "text": "What a designer sees in the Figma component is identical to what a developer imports in code. One repository, one shared truth."
+          }
+        ]
+      },
+      {
+        "title": "From Product Suite to AI",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "AI shouldn't have to guess what an interface looks like. Strata gives it a deterministic syntax and an exact description of every component, so AI-built features come out on-system instead of approximately right."
+          }
+        ]
+      },
+      {
+        "title": "Keeping It Alive",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "A design system dies if it becomes a bottleneck or an ivory tower. Two pieces keep Strata from either: a clear contribution model, so any team that needs a new pattern can add it back to the core, and automated token pipelines, so design changes in Figma sync straight into code."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Contribution model",
+                "text": "Any team that needs a new pattern can add it back to the core."
+              },
+              {
+                "title": "Automated token pipelines",
+                "text": "Design changes in Figma sync to code automatically."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**What it frees design to do**: less time tweaking buttons and form fields, because that baseline is done. More time on user journeys, complex logic, edge cases, and orchestrating AI interactions."
+          }
+        ]
+      }
+    ]
+  },
+  "project8": {
+    "id": "project8",
+    "title": "Using AI to Connect Every Route to Our Data",
+    "metadata": {
+      "Client": "Wood Mackenzie",
+      "Role": "Lead Product Designer, Platform & AI",
+      "Project Type": "Web, Enterprise AI",
+      "Team": "12 engineers, 2 lead designers, 1 segment designer"
+    },
+    "problemLabel": "The Opportunity",
+    "problem": "How could we use AI to solve problems Lens had lived with for years? Help users get to data fast, help them reach insights from our sources across the whole Wood Mackenzie ecosystem, and bring every touchpoint to data together through one AI experience.",
+    "solution": "A new Lens structure (Home, Solutions, Reports & Analysis and Workstream) with Insight Assistant running through all of it: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
+    "heroImage": project8_hero,
+    "heroWide": true,
+    "heroWebm": project8_hero_webm,
+    "passwordHash": "48948e68206760924b1ea2bfc75f7fd2a385a4ec5a5340aa108bdc094d656fc2",
+    "sections": [
+      {
+        "title": "The Opportunity: AI Across Every Touchpoint",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Lens is where Wood Mackenzie's clients make sense of complex energy data. Some problems had been with it for years: data took too long to find, insights were spread across separate sources and tools, and search, chat and dashboards each worked on their own."
+          },
+          {
+            "type": "paragraph",
+            "text": "**AI gave us a chance to fix them together, not one by one.** The question became: how do we use AI to get people to the right data and insight faster, across everything Wood Mackenzie publishes?"
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Get to data fast",
+                "text": "Ask in plain language instead of hunting through filters and menus.",
+                "tag": "Opportunity 1",
+                "tone": "accent"
+              },
+              {
+                "title": "Insights from every source",
+                "text": "Reports, datasets and analysis from across the Wood Mackenzie ecosystem, in one answer.",
+                "tag": "Opportunity 2",
+                "tone": "accent"
+              },
+              {
+                "title": "One AI across every touchpoint",
+                "text": "Search, chat and dashboards connected by the same assistant.",
+                "tag": "Opportunity 3",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**Trust had to come with it.** An answer without its sources isn't useful to an analyst; they'd have to check it themselves. So every part of the design had to show where an answer came from."
+          }
+        ]
+      },
+      {
+        "title": "My Role, and the Team Around It",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Lens 2.0 was a team effort: 12 engineers, two lead designers and a segment designer. This is what I owned."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "I owned",
+            "right": "The wider team owned",
+            "rows": [
+              [
+                "The four-area structure and how Insight Assistant moves across it",
+                "Engineering: the AI services, search and the Synoptic integration"
+              ],
+              [
+                "The AI interaction model and principles from consequence scanning",
+                "Product and leadership: AI strategy and commercial deals"
+              ],
+              [
+                "Coded prototypes later used in customer demos",
+                "Fellow designers: detailed flows across other parts of Lens"
+              ],
+              [
+                "Insight Assistant's core flows",
+                "Everyone: shipping phase one"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Listening Before Designing",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "How we got there",
+            "chips": [
+              "Cross-functional AI strategy workshops",
+              "User interviews",
+              "Testing with customers, analysts and decision-makers"
+            ]
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "“Searching for data, and refining filters to get results complicates my work.”",
+                "tag": "Principal analyst"
+              },
+              {
+                "title": "“If I draw a polygon around it, can I get commentary on this area?”",
+                "tag": "GIS expert",
+                "tone": "accent"
+              },
+              {
+                "title": "“I just want to come in and see the latest relevant stuff.”",
+                "tag": "Investor"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Deciding What AI Should and Shouldn't Do",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**Consequence scanning first**: what are the intended and unintended consequences, which do we amplify, which do we mitigate? The answers became five AI principles for Lens."
+          },
+          {
+            "type": "image",
+            "src": img_project8_principles,
+            "alt": "AI principles in Lens: brand identity, trust and transparency, human-AI collaboration, privacy and ethics, inclusive and unified UX"
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Unify interaction",
+                "text": "Search, chat and dashboards feel like one system.",
+                "tag": "Goal 1",
+                "tone": "accent"
+              },
+              {
+                "title": "Preserve trust",
+                "text": "Always show data provenance and reasoning.",
+                "tag": "Goal 2",
+                "tone": "accent"
+              },
+              {
+                "title": "Maintain context",
+                "text": "AI understands what the user is looking at.",
+                "tag": "Goal 3",
+                "tone": "accent"
+              },
+              {
+                "title": "Scale intelligence",
+                "text": "Agents perform meaningful actions, not just respond.",
+                "tag": "Goal 4",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "src": img_project8_overview,
+            "alt": "Overview of AI features in Lens mapped to touchpoints and display styles"
+          }
+        ]
+      },
+      {
+        "title": "A New Structure: Four Places and One Assistant",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**If a client opens Lens with a question, where do they go first?** The old answer depended on which tool they happened to know. So before designing any AI feature, I fixed the structure it would live in."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 4,
+            "items": [
+              {
+                "title": "Home",
+                "text": "What's new and relevant to you."
+              },
+              {
+                "title": "Solutions",
+                "text": "Products and tools by industry."
+              },
+              {
+                "title": "Reports & Analysis",
+                "text": "Research you read and trust."
+              },
+              {
+                "title": "Workstream",
+                "text": "The agentic experience, powered by Synoptic.",
+                "tag": "Agentic",
+                "tone": "new"
+              }
+            ]
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "items": [
+              {
+                "title": "Insight Assistant: one persistent chat across every area",
+                "text": "It knows which page and data you're looking at. Move between Workstream and the classic pages without losing your thread, so analysts who trust reports aren't pushed into an agent.",
+                "tag": "Everywhere",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This structure is what lets one AI experience reach every touchpoint, instead of becoming another separate tool."
+          },
+          {
+            "type": "paragraph",
+            "text": "**What's shipped**: phase one, Insight Assistant, is live across Lens. The full agentic Workstream is still being built, and the rest of this case study shows where it's heading."
+          },
+          {
+            "type": "youtube",
+            "id": "BkNPSuQazIk",
+            "alt": "Insight Assistant launch video"
+          }
+        ]
+      },
+      {
+        "title": "Decisions, and the Options We Didn't Take",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Option we didn't take",
+            "right": "What we chose, and why",
+            "rows": [
+              [
+                "Add a chatbot on top of the existing tools",
+                "Fix the structure first: otherwise AI becomes one more separate tool"
+              ],
+              [
+                "A dedicated AI page",
+                "One persistent assistant: people need help where they already are"
+              ],
+              [
+                "Make the agentic flow the default for everyone",
+                "Let users move between Workstream and the classic pages: analysts who trust reports shouldn't be pushed out of them"
+              ],
+              [
+                "Cleaner answers without citations",
+                "Sources on every answer: analysts verify everything, so no sources means no trust"
+              ],
+              [
+                "AI dashboards as a separate output",
+                "Generated dashboards open in Discovery like any other Lens dashboard"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Unified Search & Chat",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Ask in plain language",
+                "text": "Natural language is the front door."
+              },
+              {
+                "title": "Get an answer with sources",
+                "text": "Clickable source cards link to the underlying reports and datasets."
+              },
+              {
+                "title": "Turn it into a dashboard",
+                "text": "An AI agent offers to build one from the search."
+              },
+              {
+                "title": "Go deeper in chat",
+                "text": "Hand over to Insight Assistant without starting again."
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "src": img_project8_search,
+            "alt": "Unified search results with AI-generated answer, source attribution cards, AI dashboard agent and Insight Assistant call to action"
+          }
+        ]
+      },
+      {
+        "title": "Beyond Search: AI That Understands Where You Are",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "**AI dashboard generation**: the AI builds a dashboard with relevant widgets that opens in Discovery like any other Lens dashboard, with chat alongside."
+          },
+          {
+            "type": "image",
+            "src": img_project8_dashboard,
+            "alt": "AI-generated dashboard opened in Discovery with Insight Assistant alongside"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Charts inside the conversation**: charts, tables and images render in chat, follow Lens chart standards, and open into full-screen chart mode."
+          },
+          {
+            "type": "image",
+            "src": img_project8_inchat,
+            "alt": "Charts and AI dashboard cards rendered directly inside Insight Assistant"
+          },
+          {
+            "type": "paragraph",
+            "text": "**Context-aware summaries**: one click summarises a chart. Draw a polygon on the map and the AI summarises that area, answering the GIS expert's question almost word for word."
+          },
+          {
+            "type": "image",
+            "src": img_project8_context,
+            "alt": "AI context summary of a map area drawn with the polygon tool"
+          }
+        ]
+      },
+      {
+        "title": "How I Worked: AI in the Process, Not Just the Product",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Prototyping the conversation",
+                "text": "Streamed answers, source cards and agent follow-ups can't be judged in a static frame. I prototyped them with Claude Code, Cursor and Figma Make, and those prototypes became the customer demos.",
+                "tag": "Build",
+                "tone": "accent"
+              },
+              {
+                "title": "Validating against what customers already said",
+                "text": "Dovetail connected to Claude let me check each idea against years of customer conversations. Some ideas got stronger; a few got dropped early, which is cheaper than after a sprint.",
+                "tag": "Research",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Methods, and Why I Chose Them",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Cross-functional workshops",
+                "text": "AI strategy needed product, engineering and research agreeing before anyone designed screens.",
+                "tag": "Alignment",
+                "tone": "neutral"
+              },
+              {
+                "title": "Consequence scanning",
+                "text": "To decide what AI should not do before designing what it should.",
+                "tag": "Risk",
+                "tone": "neutral"
+              },
+              {
+                "title": "Coded prototypes",
+                "text": "Streamed answers and agent steps can't be judged in a static frame. People reacted to behaviour, not mock-ups.",
+                "tag": "Build",
+                "tone": "accent"
+              },
+              {
+                "title": "Dovetail + Claude",
+                "text": "A quick check of every new idea against what customers had already told us.",
+                "tag": "Research",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Outcome & Impact",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Helped win a five-year strategic deal",
+                "text": "Early prototypes were used in demos with a strategic prospect.",
+                "tag": "Commercial",
+                "tone": "accent"
+              },
+              {
+                "title": "Shaped the rebrand",
+                "text": "The framework fed the new narrative, “Business Interconnect Intelligence”.",
+                "tag": "Brand",
+                "tone": "accent"
+              },
+              {
+                "title": "Faster alignment, room to scale",
+                "text": "Prototypes cut ambiguity across teams and set patterns future AI features build on.",
+                "tag": "Delivery",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "image",
+            "src": img_project8_showcase,
+            "alt": "Lens: get insights that connect everything"
+          }
+        ]
+      },
+      {
+        "title": "Honest About Where It Stands",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Shipped",
+                "text": "Phase one: Insight Assistant, available across Lens.",
+                "tag": "Done",
+                "tone": "accent"
+              },
+              {
+                "title": "In progress",
+                "text": "The full agentic experience in Workstream.",
+                "tag": "Next",
+                "tone": "new"
+              },
+              {
+                "title": "Not measured yet",
+                "text": "Usage and task-time data for Insight Assistant. The evidence so far is commercial and qualitative.",
+                "tag": "Gap",
+                "tone": "decide"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**What I'd watch next**: whether people actually move between Workstream and the classic pages, or stay in one. That tells us if the structure is doing its job."
+          }
+        ]
+      }
+    ]
+  },
   "project7": {
     "id": "project7",
     "title": "Bespoka: Building an Operating System for an Industry Nobody Digitised",
@@ -865,6 +2546,25 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Two very different jobs under one roof**: A buyer needs to trust a stranger with their body measurements and a deposit before they've seen a single stitch. A tailor needs a tool sophisticated enough to actually replace the notebook, not a simplified toy version of their real workflow. Building both into one coherent product meant neither side could compromise the other."
           },
           {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Buyer: needs trust",
+                "text": "Hand a stranger your measurements and a deposit before seeing a stitch.",
+                "tag": "Side 1",
+                "tone": "neutral"
+              },
+              {
+                "title": "Tailor: needs depth",
+                "text": "A tool real enough to replace the notebook, not a toy version.",
+                "tag": "Side 2",
+                "tone": "neutral"
+              }
+            ]
+          },
+          {
             "type": "paragraph",
             "text": "**One design system, two audiences**: I built a single navy-and-white, border-led design system, shared design tokens synced by hand between the web and mobile codebases, so the marketplace felt calm and trustworthy for a first-time buyer while the same visual language held up under the density of a real business dashboard: revenue, active orders, staff permissions, invoices."
           },
@@ -882,6 +2582,28 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Turning \"trust me\" into \"watch it happen\"**: The single feature I'd point to as the core of the product is the 6-stage order tracker, cutting, first fitting, sewing, quality check, and delivery. Every garment moves through it, and every stage change fires an automatic update to the client by SMS or email."
+          },
+          {
+            "type": "graphic",
+            "graphic": "flow",
+            "steps": [
+              {
+                "title": "Cutting"
+              },
+              {
+                "title": "First fitting"
+              },
+              {
+                "title": "Sewing"
+              },
+              {
+                "title": "Quality check"
+              },
+              {
+                "title": "Delivery"
+              }
+            ],
+            "caption": "Every stage change sends the client an automatic SMS or email update."
           },
           {
             "type": "paragraph",
@@ -911,6 +2633,18 @@ export const CASE_STUDIES: Record<string, any> = {
             "text": "**Where that discipline shows up**: subscription tiers (Free, Growth, Fashion House) are enforced server-side, not just hidden in the UI, and every tier-gated feature has to agree on both layers before I consider it done. A five-state rule runs across the whole interface, populated, empty, loading, error, and disabled, so nothing ships half-finished just because the happy path looks good in a demo."
           },
           {
+            "type": "graphic",
+            "graphic": "chips",
+            "title": "Five states on every screen",
+            "chips": [
+              "Populated",
+              "Empty",
+              "Loading",
+              "Error",
+              "Disabled"
+            ]
+          },
+          {
             "type": "image",
             "src": img_project6_dashboard,
             "alt": "Bespoka tailor dashboard showing active workroom orders, revenue, upcoming timeline, and weekly capacity"
@@ -928,6 +2662,31 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**Pricing built for how the industry actually grows**: Free for a solo tailor with up to 5 clients, ₦5,000/month once a workshop needs unlimited clients and a small team, ₦15,000/month for a multi-tailor fashion house with staff permissions and marketing tools. The tiers map to how a workshop actually scales, not to arbitrary feature buckets."
+          },
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Free",
+                "text": "Solo tailor, up to 5 clients.",
+                "tag": "Free",
+                "tone": "neutral"
+              },
+              {
+                "title": "Growth",
+                "text": "Unlimited clients and a small team.",
+                "tag": "₦5,000/mo",
+                "tone": "accent"
+              },
+              {
+                "title": "Fashion House",
+                "text": "Multi-tailor house with staff permissions and marketing tools.",
+                "tag": "₦15,000/mo",
+                "tone": "new"
+              }
+            ]
           },
           {
             "type": "image",
