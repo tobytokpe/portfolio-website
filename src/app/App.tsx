@@ -60,7 +60,7 @@ const PROJECTS_BASE = [
   {
     id: 'project8',
     slug: 'Lens',
-    title: 'Wood Mackenzie Lens 2.0: Using AI to Connect Every Route to Our Data',
+    title: 'Using AI to Connect Every Route to Our Data',
     description: 'Using AI to get analysts to data and insight faster, across every Wood Mackenzie source, with one assistant across every touchpoint.',
     tag: 'Enterprise AI',
     iframeUrl: '',
@@ -70,7 +70,7 @@ const PROJECTS_BASE = [
   {
     id: 'project9',
     slug: 'Lens-Platform',
-    title: 'Lens Platform: Analytics That Hold Up at a Million Rows',
+    title: 'Analytics That Hold Up at a Million Rows',
     description: 'Data tables, charts, maps and navigation redesigned so enterprise analysts can work at scale without leaving for Excel.',
     tag: 'Enterprise Analytics',
     iframeUrl: '',

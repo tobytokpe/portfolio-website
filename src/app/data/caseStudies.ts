@@ -1247,7 +1247,7 @@ export const CASE_STUDIES: Record<string, any> = {
 
   "project9": {
     "id": "project9",
-    "title": "Lens Platform: Analytics That Hold Up at a Million Rows",
+    "title": "Analytics That Hold Up at a Million Rows",
     "metadata": {
       "Client": "Wood Mackenzie",
       "Role": "Lead Product Designer, Platform",
@@ -1932,10 +1932,6 @@ export const CASE_STUDIES: Record<string, any> = {
                 "tone": "accent"
               }
             ]
-          },
-          {
-            "type": "paragraph",
-            "text": "**Honest about the evidence**: the 3,500 to 15,000 growth came from the move to Lens and the new structure together; I can't separate design's share from the rest. Some NAPS questions, like where combined history and forecast data should live, are still open."
           }
         ]
       }
@@ -2035,13 +2031,12 @@ export const CASE_STUDIES: Record<string, any> = {
   },
   "project8": {
     "id": "project8",
-    "title": "Wood Mackenzie Lens 2.0: Using AI to Connect Every Route to Our Data",
+    "title": "Using AI to Connect Every Route to Our Data",
     "metadata": {
       "Client": "Wood Mackenzie",
       "Role": "Lead Product Designer, Platform & AI",
       "Project Type": "Web, Enterprise AI",
-      "Team": "12 engineers, 2 lead designers, 1 segment designer",
-      "Timeline": "Phase 1 shipped, agentic phase in progress"
+      "Team": "12 engineers, 2 lead designers, 1 segment designer"
     },
     "problemLabel": "The Opportunity",
     "problem": "How could we use AI to solve problems Lens had lived with for years? Help users get to data fast, help them reach insights from our sources across the whole Wood Mackenzie ecosystem, and bring every touchpoint to data together through one AI experience.",
