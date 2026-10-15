@@ -150,7 +150,9 @@ const PROJECTS_BASE = [
     imageSrc: projectImg6
   },
 ];
-const PROJECTS = PROJECTS_BASE.map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
+// Case studies hidden until they're finished
+const HIDDEN_PROJECTS = ['project10'];
+const PROJECTS = PROJECTS_BASE.filter((p) => !HIDDEN_PROJECTS.includes(p.id)).map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
 
 // Leadership experience data
 const LEADERSHIP = [
@@ -966,9 +968,10 @@ function ProjectPage() {
         )}
 
         {/* Custom Dynamic Sections */}
-        <MaybePasswordGate key={slug} storageKey={slug!} passwordHash={data.passwordHash} onBack={() => navigate('/')}>
+        <MaybePasswordGate key={slug} storageKey={slug!} passwordHash={data.passwordHash} encryptedId={data.encrypted} sections={data.sections} onBack={() => navigate('/')}>
+        {(sections: any[]) => (
         <div className="space-y-16">
-          {data.sections.map((section: any, idx: number) => (
+          {sections.map((section: any, idx: number) => (
             <section key={idx} className="space-y-6">
               {section.title && (
                 <h2
@@ -1094,6 +1097,7 @@ function ProjectPage() {
             </section>
           ))}
         </div>
+        )}
         </MaybePasswordGate>
 
         {/* Project Pagination (Prev / Next) */}
