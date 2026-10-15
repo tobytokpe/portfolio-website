@@ -1306,6 +1306,81 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "My Role, and the Team Around It",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "I was the lead designer on the platform. Here's what I owned, and what came from the wider team."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "I owned",
+            "right": "The wider team owned",
+            "rows": [
+              [
+                "Information architecture and the global navigation",
+                "Product: priorities and the roadmap"
+              ],
+              [
+                "The map redesign and the shared mapping documentation",
+                "Engineering: building on AG-Grid and Mapbox"
+              ],
+              [
+                "Chart modes and the shared chart-settings vocabulary",
+                "Data team: data definitions and the NAPS data mapping"
+              ],
+              [
+                "The NAPS chart audit, access scenarios and Lyssna testing",
+                "Analysts: subject expertise on every dataset"
+              ],
+              [
+                "Hydrocarbon components and design clinics with developers",
+                "Everyone: shipping it"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Methods, and Why I Chose Them",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Interviews + session recordings",
+                "text": "What people say and what they do aren't the same. Recordings showed chart refinement going unused even though nobody complained about it.",
+                "tag": "Discovery",
+                "tone": "neutral"
+              },
+              {
+                "title": "Competitor review",
+                "text": "Analysts bring habits from other tools. Knowing those patterns stopped us inventing new ones for the sake of it.",
+                "tag": "Discovery",
+                "tone": "neutral"
+              },
+              {
+                "title": "Think-aloud tests in Lyssna",
+                "text": "For NAPS, naming was the risk. We needed to hear users' reasoning, not just see where they clicked.",
+                "tag": "Validation",
+                "tone": "accent"
+              },
+              {
+                "title": "Task-based testing with metrics",
+                "text": "Time on task, error rate and satisfaction gave a consistent way to compare one iteration with the next.",
+                "tag": "Validation",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Design Goals",
         "type": "section",
         "items": [
@@ -1759,6 +1834,40 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "Decisions, and the Options We Didn't Take",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Most of the work was choosing between reasonable options. These are the calls that shaped the platform."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Option we didn't take",
+            "right": "What we chose, and why",
+            "rows": [
+              [
+                "Keep squeezing new products into the existing menu",
+                "Navigation built around client questions, so new products have a predictable home"
+              ],
+              [
+                "Rebuild every NAPS “view by” variant",
+                "One settings vocabulary per chart: hundreds of near-identical charts are impossible to find or compare"
+              ],
+              [
+                "One long map layer list",
+                "Layers grouped by industry with descriptions: users didn't know what existed, so they couldn't search for it"
+              ],
+              [
+                "One chart style everywhere",
+                "Two modes: an overview for dashboards and a focus mode for real analysis"
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "title": "Validation & Outcome",
         "type": "section",
         "items": [
@@ -1792,6 +1901,41 @@ export const CASE_STUDIES: Record<string, any> = {
           {
             "type": "paragraph",
             "text": "**The result**: one consistent Lens across tables, maps and dashboards. Users and stakeholders reported more confidence, less training time and support overhead, and more use of the advanced data tools."
+          }
+        ]
+      },
+      {
+        "title": "What Didn't Work, and What I Learned",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Drag-to-group wasn't obvious",
+                "text": "Testing showed people didn't realise they could drag columns to group rows. Clearer cues fixed it.",
+                "tag": "Didn't work",
+                "tone": "decide"
+              },
+              {
+                "title": "Legends were hard to see",
+                "text": "On a busy map, legends got lost. Moving them under each layer solved it.",
+                "tag": "Didn't work",
+                "tone": "decide"
+              },
+              {
+                "title": "A feature nobody found",
+                "text": "Chart refinement existed before the redesign, but almost nobody used it. A feature people can't find may as well not exist.",
+                "tag": "Lesson",
+                "tone": "accent"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**Honest about the evidence**: the 3,500 to 15,000 growth came from the move to Lens and the new structure together; I can't separate design's share from the rest. Some NAPS questions, like where combined history and forecast data should live, are still open."
           }
         ]
       }
@@ -1951,6 +2095,40 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "My Role, and the Team Around It",
+        "type": "section",
+        "items": [
+          {
+            "type": "paragraph",
+            "text": "Lens 2.0 was a team effort: 12 engineers, two lead designers and a segment designer. This is what I owned."
+          },
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "I owned",
+            "right": "The wider team owned",
+            "rows": [
+              [
+                "The four-area structure and how Insight Assistant moves across it",
+                "Engineering: the AI services, search and the Synoptic integration"
+              ],
+              [
+                "The AI interaction model and principles from consequence scanning",
+                "Product and leadership: AI strategy and commercial deals"
+              ],
+              [
+                "Coded prototypes later used in customer demos",
+                "Fellow designers: detailed flows across other parts of Lens"
+              ],
+              [
+                "Insight Assistant's core flows",
+                "Everyone: shipping phase one"
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "title": "Listening Before Designing",
         "type": "section",
         "items": [
@@ -2098,6 +2276,40 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "Decisions, and the Options We Didn't Take",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "compare",
+            "left": "Option we didn't take",
+            "right": "What we chose, and why",
+            "rows": [
+              [
+                "Add a chatbot on top of the existing tools",
+                "Fix the structure first: otherwise AI becomes one more separate tool"
+              ],
+              [
+                "A dedicated AI page",
+                "One persistent assistant: people need help where they already are"
+              ],
+              [
+                "Make the agentic flow the default for everyone",
+                "Let users move between Workstream and the classic pages: analysts who trust reports shouldn't be pushed out of them"
+              ],
+              [
+                "Cleaner answers without citations",
+                "Sources on every answer: analysts verify everything, so no sources means no trust"
+              ],
+              [
+                "AI dashboards as a separate output",
+                "Generated dashboards open in Discovery like any other Lens dashboard"
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "title": "Unified Search & Chat",
         "type": "section",
         "items": [
@@ -2189,6 +2401,43 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "title": "Methods, and Why I Chose Them",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 2,
+            "items": [
+              {
+                "title": "Cross-functional workshops",
+                "text": "AI strategy needed product, engineering and research agreeing before anyone designed screens.",
+                "tag": "Alignment",
+                "tone": "neutral"
+              },
+              {
+                "title": "Consequence scanning",
+                "text": "To decide what AI should not do before designing what it should.",
+                "tag": "Risk",
+                "tone": "neutral"
+              },
+              {
+                "title": "Coded prototypes",
+                "text": "Streamed answers and agent steps can't be judged in a static frame. People reacted to behaviour, not mock-ups.",
+                "tag": "Build",
+                "tone": "accent"
+              },
+              {
+                "title": "Dovetail + Claude",
+                "text": "A quick check of every new idea against what customers had already told us.",
+                "tag": "Research",
+                "tone": "accent"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "Outcome & Impact",
         "type": "section",
         "items": [
@@ -2221,6 +2470,41 @@ export const CASE_STUDIES: Record<string, any> = {
             "type": "image",
             "src": img_project8_showcase,
             "alt": "Lens: get insights that connect everything"
+          }
+        ]
+      },
+      {
+        "title": "Honest About Where It Stands",
+        "type": "section",
+        "items": [
+          {
+            "type": "graphic",
+            "graphic": "cards",
+            "columns": 3,
+            "items": [
+              {
+                "title": "Shipped",
+                "text": "Phase one: Insight Assistant, available across Lens.",
+                "tag": "Done",
+                "tone": "accent"
+              },
+              {
+                "title": "In progress",
+                "text": "The full agentic experience in Workstream.",
+                "tag": "Next",
+                "tone": "new"
+              },
+              {
+                "title": "Not measured yet",
+                "text": "Usage and task-time data for Insight Assistant. The evidence so far is commercial and qualitative.",
+                "tag": "Gap",
+                "tone": "decide"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**What I'd watch next**: whether people actually move between Workstream and the classic pages, or stay in one. That tells us if the structure is doing its job."
           }
         ]
       }
