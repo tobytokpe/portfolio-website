@@ -1254,8 +1254,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Project Type": "Web, Enterprise Analytics",
       "Timeline": "Dec 2023 – Present"
     },
-    "problem": "Enterprise users were wrangling huge datasets, with millions of rows and dense maps, through tools that forced a trade-off between performance and usability. Navigation was confusing, workflows blurred into each other, and powerful features went unnoticed.",
-    "solution": "Re-platforming Wood Mackenzie's research and data into one analytics product. Users moved over from the old Portal, grew from 3,500 to 15,000 in three months, and landed in a platform with a navigation built around how they search, data tables analysts can shape without leaving for Excel, charts with a proper focus mode, and a map that explains itself.",
+    "problem": "Analysts work with large, complex datasets across tables, charts and maps. The platform needed to be clearer and easier to navigate.",
+    "solution": "A redesigned analytics experience: clearer navigation, data tables and charts built for deeper analysis, and a map that's easier to read.",
     "heroImage": project9_hero,
     "heroWide": true,
     "heroWebm": project9_hero_webm,
@@ -1290,8 +1290,8 @@ export const CASE_STUDIES: Record<string, any> = {
       "Team": "12 engineers, 2 lead designers, 1 segment designer"
     },
     "problemLabel": "The Opportunity",
-    "problem": "How could we use AI to solve problems Lens had lived with for years? Help users get to data fast, help them reach insights from our sources across the whole Wood Mackenzie ecosystem, and bring every touchpoint to data together through one AI experience.",
-    "solution": "A new Lens structure (Home, Solutions, Reports & Analysis and Workstream) with Insight Assistant running through all of it: ask in plain language, get an answer with its sources, and turn it into a dashboard without leaving the page.",
+    "problem": "How could AI help people find data and insight more easily, and bring the different ways of working with that data together?",
+    "solution": "A clearer structure for the platform, with an AI assistant available throughout that helps people ask questions and explore data in one place.",
     "heroImage": project8_hero,
     "heroWide": true,
     "heroWebm": project8_hero_webm,
