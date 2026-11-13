@@ -2,8 +2,9 @@ import { Download } from 'lucide-react';
 import { StatStrip } from './StatStrip';
 import { PrincipleCards } from './PrincipleCards';
 import { CareerRail } from './CareerRail';
+import { ABOUT_BIO, ABOUT_QUOTE, RESUME_URL } from '../data/site';
 
-export const RESUME_URL = '/resume/Tobi-Olowu-CV.pdf';
+export { RESUME_URL };
 
 function SubHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -14,28 +15,28 @@ function SubHeading({ children }: { children: React.ReactNode }) {
 export function AboutContent() {
   return (
     <div className="space-y-12">
-      <div className="space-y-6">
+      <div className="space-y-6" data-search-id="about/bio">
         <p className="text-gray-600 leading-relaxed font-[Architects_Daughter]">
-          A decade into product design, the thread running through my work isn't one industry or one kind of interface. It's a habit of taking something genuinely complicated and making it usable without flattening the complexity that actually matters.
+          {ABOUT_BIO}
         </p>
         <blockquote className="border-l-4 border-gray-900 pl-5">
           <p className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug" style={{ fontFamily: 'Syne, sans-serif' }}>
-            "I'd rather ship something slightly rough and fix it in the open than wait for a version that never ships at all."
+            "{ABOUT_QUOTE}"
           </p>
         </blockquote>
       </div>
 
-      <div>
+      <div data-search-id="about/impact">
         <SubHeading>Impact</SubHeading>
         <StatStrip />
       </div>
 
-      <div>
+      <div data-search-id="about/principles">
         <SubHeading>Design philosophy</SubHeading>
         <PrincipleCards />
       </div>
 
-      <div>
+      <div data-search-id="about/experience">
         <SubHeading>Where I've worked</SubHeading>
         <CareerRail />
         <a

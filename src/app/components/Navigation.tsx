@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import imgProfile from '../../imports/Frame1618869041/f3f35b7a6790541de22042d57017d5ec284cae1b.png';
 import { NavPopup } from './NavPopup';
+import { AskAiButton } from '../assistant/AskAiButton';
 
 export const HomeIcon = ({ size = 24 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="none" viewBox="0 0 24 24" id="home" className="block size-full">
@@ -121,7 +122,7 @@ export function Navigation({
         )}
 
         {/* Nav pill */}
-        <div className="bg-white flex gap-[22px] sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] rounded-[16px] drop-shadow-[0px_8px_16px_rgba(0,0,0,0.14)] max-w-[calc(100vw-24px)]">
+        <div data-app-nav className="bg-white flex gap-[16px] sm:gap-[24px] items-center px-4 py-3 sm:px-[20px] sm:py-[16px] rounded-[16px] drop-shadow-[0px_8px_16px_rgba(0,0,0,0.14)] max-w-[calc(100vw-24px)]">
           {/* Profile block */}
           <div className="flex gap-0 sm:gap-[16px] items-center shrink-0">
             <div className="relative rounded-full shrink-0 size-[38px]">
@@ -192,6 +193,9 @@ export function Navigation({
               </div>
             );
           })}
+
+          {/* Search: the Bespoka assistant orb, no label */}
+          <AskAiButton />
         </div>
       </div>
     </motion.div>

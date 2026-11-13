@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Mail, Linkedin, Check, Copy, Download } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -10,6 +10,9 @@ import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
 import { AboutContent, RESUME_URL } from './AboutContent';
 import { AchievementBadges } from './AchievementBadges';
+import { useAssistantPanel, useJumpHandler } from '../assistant/AssistantContext';
+import { findAnchor, highlight, prefersReducedMotion } from '../search/highlight';
+import { CONTACT, CONTACT_INTRO, HERO_HEADLINE, HERO_INTRO, HERO_TAGLINE } from '../data/site';
 
 interface Project {
   id: string;
@@ -47,10 +50,39 @@ function SectionCard({ id, children }: { id: string; children: React.ReactNode }
 export function MobileView({ projects, leadership, heroImage }: MobileViewProps) {
   const navigate = useNavigate();
   const [emailCopied, setEmailCopied] = useState(false);
+  const { setOpen } = useAssistantPanel();
+
+  // Search jumps to canvas frames scroll this page instead (the anchor if it's shown here, else the section).
+  useJumpHandler((target) => {
+    if (target.type !== 'frame') return false;
+    setOpen(false);
+    const el = target.anchor ? findAnchor(target.anchor) : null;
+    if (el) {
+      el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
+      window.setTimeout(() => highlight(el), 500);
+    } else {
+      scrollTo(target.frame);
+    }
+    return true;
+  });
+
+  // Links like /#about/experience open on the right section here too.
+  useEffect(() => {
+    const raw = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    if (!raw) return;
+    const t = window.setTimeout(() => {
+      const el = findAnchor(raw);
+      if (el) {
+        el.scrollIntoView({ block: 'center' });
+        highlight(el);
+      } else scrollTo(raw.split('/')[0]);
+    }, 150);
+    return () => window.clearTimeout(t);
+  }, []);
 
   function handleCopyEmail() {
     const textarea = document.createElement('textarea');
-    textarea.value = 'oluwatobi.olowu@outlook.com';
+    textarea.value = CONTACT.email;
     textarea.style.cssText = 'position:fixed;opacity:0';
     document.body.appendChild(textarea);
     textarea.select();
@@ -129,16 +161,16 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
             </div>
             <div className="text-center relative px-6">
               <p className="text-[10px] font-bold text-gray-500 mb-3 uppercase tracking-widest">
-                Tobi Olowu · Product Design Lead, London
+                {HERO_TAGLINE}
               </p>
               <h1
                 className="text-[34px] font-bold text-gray-900 mb-4 leading-[1.05] tracking-tight"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
-                I make complicated things usable.
+                {HERO_HEADLINE}
               </h1>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.
+                {HERO_INTRO}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -209,7 +241,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               if (leader) window.open(leader.iframeUrl, '_blank');
             }}
           />
-          <div className="mt-10 pt-10 border-t border-gray-200">
+          <div className="mt-10 pt-10 border-t border-gray-200" data-search-id="leadership/recognition">
             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
             <AchievementBadges />
           </div>
@@ -220,12 +252,13 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           <div className="h-full flex flex-col items-center justify-center text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
             <p className="text-gray-600 mb-8 max-w-sm text-sm">
-              Got a project, a question, or just want to talk shop? Reach out through any of these.
+              {CONTACT_INTRO}
             </p>
             <div className="space-y-3 w-full max-w-xs mx-auto">
               <div className="flex gap-3">
                 <a
-                  href="mailto:oluwatobi.olowu@outlook.com"
+                  href={`mailto:${CONTACT.email}`}
+                  data-search-id="contact/email"
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm"
                 >
                   <Mail size={20} />
@@ -242,13 +275,15 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               <a
                 href={RESUME_URL}
                 download
+                data-search-id="contact/cv"
                 className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
               >
                 <Download size={20} />
                 <span>Download CV</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/olowutobi/"
+                href={CONTACT.linkedin}
+                data-search-id="contact/linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
@@ -258,7 +293,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               </a>
               <div className="flex gap-3">
                 <a
-                  href="https://www.webbie.io/u/001"
+                  href={CONTACT.webbie}
+                  data-search-id="contact/webbie"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
@@ -273,7 +309,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                   <span>Webbie</span>
                 </a>
                 <a
-                  href="https://www.behance.net/oluwatobiolowu"
+                  href={CONTACT.behance}
+                  data-search-id="contact/behance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"

@@ -1,7 +1,20 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Routes, Route, useNavigate, useParams, useLocation } from 'react-router';
 import { CASE_STUDIES } from './data/caseStudies';
+import {
+  PROJECTS as SITE_PROJECTS,
+  HIDDEN_PROJECTS,
+  LEADERSHIP as SITE_LEADERSHIP,
+  HERO_TAGLINE,
+  HERO_HEADLINE,
+  HERO_INTRO,
+  CONTACT,
+  CONTACT_INTRO,
+} from './data/site';
+import { AssistantProvider, useAssistantPanel, useJumpHandler } from './assistant/AssistantContext';
+import { findAnchor, highlight, prefersReducedMotion, scrollToAndHighlight } from './search/highlight';
+import type { FrameId } from './search/types';
 import { Navigation } from './components/Navigation';
 import { MiniMap } from './components/MiniMap';
 import { Frame } from './components/Frame';
@@ -55,157 +68,72 @@ const VELOCITY_THRESHOLD = 0.1;
 const CANVAS_WIDTH = 8000;
 const CANVAS_HEIGHT = 2200;
 
-// Case study projects data
-const PROJECTS_BASE = [
-  {
-    id: 'project8',
-    slug: 'Lens',
-    title: 'Using AI to Connect Every Route to Our Data',
-    description: 'Using AI to make data and insight easier to find, with one assistant across the platform.',
-    tag: 'Enterprise AI',
-    iframeUrl: '',
-    imageSrc: projectImg8,
-    imageWebm: projectImg8Webm
-  },
-  {
-    id: 'project9',
-    slug: 'Lens-Platform',
-    title: 'Analytics That Hold Up at a Million Rows',
-    description: 'Redesigning tables, charts, maps and navigation for an enterprise analytics platform.',
-    tag: 'Enterprise Analytics',
-    iframeUrl: '',
-    imageSrc: projectImg9,
-    imageWebm: projectImg9Webm
-  },
-  {
-    id: 'project10',
-    slug: 'Strata',
-    title: 'Strata: A Lego Set for Seven Products',
-    description: "One design system for Qore's seven products: identical in Figma and code, every state covered, and readable by AI.",
-    tag: 'Design System',
-    iframeUrl: '',
-    imageSrc: projectImg10
-  },
-  { 
-    id: 'project1',
-    slug: 'Hydra',
-    title: 'Hydra: When Banks Speak Five Different Languages',
-    description: 'A B2B API gateway that pulls fragmented banking integrations into one dashboard, cutting integration time and giving fintechs one bill instead of five.',
-    tag: 'Fintech', 
-    iframeUrl: 'https://oolowu.com/select-projects/hydra-project-cc/',
-    imageSrc: projectImg1
-  },
-  { 
-    id: 'project2',
-    slug: 'Qore',
-    title: 'Qore: 500 Banks, One Afternoon Each',
-    description: 'A no-code setup wizard that lets African microfinance banks configure and launch a fully branded banking app, cutting deployment from months to a single afternoon across 500+ institutions.',
-    tag: 'Banking', 
-    iframeUrl: 'https://oolowu.com/select-projects/qore-cc/',
-    imageSrc: projectImg2
-  },
-  { 
-    id: 'project3',
-    slug: 'MAMVest',
-    title: 'MAMVest: From a Three-Day Wire Transfer to Under Four Minutes',
-    description: 'A digital wealth platform that opens Mutual Funds, Bonds, and Treasury Bills to retail investors, replacing a paper-bound process that used to take days.',
-    tag: 'Wealth Management', 
-    iframeUrl: 'https://oolowu.com/select-projects/mamvest-cc/',
-    imageSrc: projectImg3
-  },
-  { 
-    id: 'project4',
-    slug: 'Moore',
-    title: "Moore: Banking That Doesn't Feel Like Banking",
-    description: 'A digital banking app that cut onboarding drop-off from 48% to 14% and turned a heavy banking backend into something that feels warm and fast, even on a slow connection.',
-    tag: 'Banking', 
-    iframeUrl: 'https://oolowu.com/select-projects/moore-cc/',
-    imageSrc: projectImg4
-  },
-  { 
-    id: 'project5',
-    slug: 'UNDP',
-    title: 'UNDP: The Panic Button That Had to Work in Four Seconds',
-    description: 'A voice-first early-warning app for conflict zones in Northern Nigeria, letting people send a location-tagged alert with no login and no signal, in seconds.',
-    tag: 'Social Impact', 
-    iframeUrl: 'https://oolowu.com/select-projects/cewers-cc/',
-    imageSrc: projectImg5
-  },
-  {
-    id: 'project7',
-    slug: 'Bespoka',
-    title: 'Bespoka: Building an Operating System for an Industry Nobody Digitised',
-    description: 'A marketplace and full operating system for bespoke tailors, designed and built solo end to end, from client booking to order tracking to split-deposit invoicing.',
-    tag: 'Marketplace',
-    iframeUrl: '',
-    imageSrc: projectImg7
-  },
-  {
-    id: 'project6',
-    slug: 'Signature-Bank',
-    title: 'Signature Bank',
-    description: 'A public website for a tier 1 bank, built to make digital banking feel straightforward for customers across Nigeria.',
-    tag: 'Banking', 
-    iframeUrl: 'https://www.signaturebankng.com/',
-    imageSrc: projectImg6
-  },
-];
-// Case studies hidden until they're finished
-const HIDDEN_PROJECTS = ['project10'];
+// Case study and leadership copy lives in data/site.ts (the search index reads it too); images are attached here.
+const PROJECT_MEDIA: Record<string, { imageSrc: string; imageWebm?: string }> = {
+  project8: { imageSrc: projectImg8, imageWebm: projectImg8Webm },
+  project9: { imageSrc: projectImg9, imageWebm: projectImg9Webm },
+  project10: { imageSrc: projectImg10 },
+  project1: { imageSrc: projectImg1 },
+  project2: { imageSrc: projectImg2 },
+  project3: { imageSrc: projectImg3 },
+  project4: { imageSrc: projectImg4 },
+  project5: { imageSrc: projectImg5 },
+  project7: { imageSrc: projectImg7 },
+  project6: { imageSrc: projectImg6 },
+};
+const PROJECTS_BASE = SITE_PROJECTS.map((p) => ({ ...p, ...PROJECT_MEDIA[p.id] }));
+// Case studies hidden until they're finished (HIDDEN_PROJECTS in data/site.ts)
 const PROJECTS = PROJECTS_BASE.filter((p) => !HIDDEN_PROJECTS.includes(p.id)).map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
 
-// Leadership experience data
-const LEADERSHIP = [
-  {
-    id: 'leader1',
-    title: 'Talk: AI for Accessible Design Systems with Variables',
-    description: 'A UX Scotland talk on how I used AI and Figma variables to build design systems that are accessible by default, not by a later audit.',
-    imageSrc: leadershipImg1,
-    iframeUrl: 'https://uxscotland.net/programme/leveraging-ai-accessible-design-systems-variables'
-  },
-  {
-    id: 'leader2',
-    title: 'Article: AI & Variables, Accessible Design Systems at Scale (Zeroheight)',
-    description: 'Published on Zeroheight: how AI and variables together got us to an accessible, scalable design system faster than doing it by hand.',
-    imageSrc: leadershipImg2,
-    iframeUrl: 'https://zeroheight.com/blog/ai-and-variables-building-more-accessible-design-systems-faster/'
-  },
-  {
-    id: 'leader3',
-    title: 'Article: Mastering AG-Grid, Efficient Data Tables at Scale (Woodmac)',
-    description: 'Published on Medium for Woodmac\'s design practice: what it actually takes to design a data table that stays usable at enterprise scale.',
-    imageSrc: leadershipImg3,
-    iframeUrl: 'https://medium.com/woodmac/mastering-ag-grid-designing-efficient-and-user-centered-data-tables-8fa35580f4f7'
-  },
-  {
-    id: 'leader4',
-    title: 'CVSpan Product Design Learning Course',
-    description: 'A hands-on curriculum I designed and taught, covering UX research, interaction design, systems thinking, and cross-platform development, for the next generation of African designers.',
-    imageSrc: leadershipImg4,
-    iframeUrl: 'https://learn.cvspan.com/'
-  },
-  {
-    id: 'leader5',
-    title: 'CVSpan Design Jam Competition',
-    description: 'Organised and led collaborative design sprints, building real teamwork and momentum inside a growing community of designers and developers.',
-    imageSrc: leadershipImg5,
-    iframeUrl: 'https://community.cvspan.com/designjam-2025/'
-  },
-  {
-    id: 'leader6',
-    title: 'Article: Design Thinking in Fintech, Crafting User-Centric Experiences (Qore)',
-    description: 'Published on the Qore blog: how systems-level design thinking turned traditional banking processes into digital experiences people actually trust.',
-    imageSrc: leadershipImg6,
-    iframeUrl: 'https://qore.inc/design-thinking-in-crafting-user-centric-experiences/'
-  },
-];
+const LEADERSHIP_IMAGES: Record<string, string> = {
+  leader1: leadershipImg1,
+  leader2: leadershipImg2,
+  leader3: leadershipImg3,
+  leader4: leadershipImg4,
+  leader5: leadershipImg5,
+  leader6: leadershipImg6,
+};
+const LEADERSHIP = SITE_LEADERSHIP.map((l) => ({ ...l, imageSrc: LEADERSHIP_IMAGES[l.id] }));
+
+// The search card is only downloaded the first time someone opens it.
+const SearchPanel = lazy(() => import('./assistant/SearchPanel'));
+
+const FRAMES: Record<FrameId, { x: number; y: number; width: number; height: number }> = {
+  hero: { x: 50, y: 200, width: 800, height: 580 },
+  about: { x: 950, y: 200, width: 800, height: 900 },
+  work: { x: 1850, y: 200, width: 800, height: 1600 },
+  leadership: { x: 2750, y: 200, width: 800, height: 1600 },
+  contact: { x: 3650, y: 200, width: 800, height: 560 },
+};
+const FRAME_IDS = Object.keys(FRAMES) as FrameId[];
+const NAV_SCALE = 1.56;
+
+/** "#about/experience" -> frame "about", anchor "about/experience". Anchors always start with their frame. */
+function parseCanvasHash(hash: string): { frame: FrameId; anchor?: string } | null {
+  const raw = decodeURIComponent(hash.replace(/^#/, ''));
+  const frame = raw.split('/')[0] as FrameId;
+  if (!FRAME_IDS.includes(frame)) return null;
+  return { frame, anchor: raw.includes('/') ? raw : undefined };
+}
+
+/** The part of the canvas the search card doesn't cover: its horizontal centre and width. */
+function visibleArea(): { centerX: number; width: number } {
+  const panel = document.querySelector('[data-search-panel]')?.getBoundingClientRect();
+  if (!panel || window.innerWidth < 768 || panel.left < window.innerWidth / 2) return { centerX: window.innerWidth / 2, width: window.innerWidth };
+  const width = Math.max(panel.left, 0);
+  return { centerX: width / 2, width };
+}
 
 const WORK_FRAME_MIN_HEIGHT = 1600;
 
 function FigmaCanvas() {
   const canvasRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  // Search jumps glide; dragging and wheel stay instant.
+  const [gliding, setGliding] = useState(false);
+  const glideTimer = useRef<number | null>(null);
 
   // These frames size themselves to their content instead of a fixed height,
   // so adding/removing cards or copy never clips the frame again.
@@ -404,61 +332,72 @@ function FigmaCanvas() {
     };
   }, []);
 
-  // Handle hash changes on mount or location update to navigate canvas to frame
-  useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (hash && ['hero', 'about', 'work', 'leadership', 'contact'].includes(hash)) {
-      const timer = setTimeout(() => {
-        handleNavigate(hash);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [location.hash]);
+  const transformRef = useRef(transform);
+  transformRef.current = transform;
 
-  // Navigation handlers
-  const handleNavigate = useCallback((id: string) => {
+  const glide = useCallback(() => {
+    if (prefersReducedMotion()) return;
+    setGliding(true);
+    if (glideTimer.current) window.clearTimeout(glideTimer.current);
+    glideTimer.current = window.setTimeout(() => setGliding(false), 650);
+  }, []);
+
+  // Navigation handlers. With an anchor (from search), centre that block instead of the frame and highlight it.
+  const handleNavigate = useCallback((id: string, anchor?: string, animate = false) => {
     // Stop any velocity
     setVelocity({ x: 0, y: 0 });
-    
-    // Frame coordinates: [x, y, width, height]
-    // Calculate center position for each frame at 1.56 zoom
-    const frames: Record<string, { x: number; y: number; width: number; height: number }> = {
-      hero: { x: 50, y: 200, width: 800, height: 580 },
-      about: { x: 950, y: 200, width: 800, height: 900 },
-      work: { x: 1850, y: 200, width: 800, height: 1600 },
-      leadership: { x: 2750, y: 200, width: 800, height: 1600 },
-      contact: { x: 3650, y: 200, width: 800, height: 560 },
-    };
 
-    const frame = frames[id];
-    if (frame) {
-      const scale = 1.56;
-      const viewportCenterX = window.innerWidth / 2;
-      const viewportCenterY = window.innerHeight / 2;
-      
-      // For the about, work and leadership sections, align to top instead of centering
-      if (id === 'about' || id === 'work' || id === 'leadership') {
-        const frameCenterX = frame.x + frame.width / 2;
-        const frameTop = frame.y;
-        
-        // Position frame top near the top of viewport (with some padding)
-        const topPadding = 100; // pixels from top of viewport
-        const x = viewportCenterX - frameCenterX * scale;
-        const y = topPadding - frameTop * scale;
-        
-        setTransform({ x, y, scale });
-      } else {
-        // Center the frame in viewport (default behavior)
-        const frameCenterX = frame.x + frame.width / 2;
-        const frameCenterY = frame.y + frame.height / 2;
-        
-        const x = viewportCenterX - frameCenterX * scale;
-        const y = viewportCenterY - frameCenterY * scale;
-        
-        setTransform({ x, y, scale });
-      }
+    const frame = FRAMES[id as FrameId];
+    if (!frame) return;
+    // A search jump fits the frame into the space beside the search card (zooming out a little if needed).
+    const area = animate ? visibleArea() : { centerX: window.innerWidth / 2, width: window.innerWidth };
+    const scale = animate ? Math.max(MIN_ZOOM, Math.min(NAV_SCALE, (area.width - 48) / frame.width)) : NAV_SCALE;
+    const viewportCenterX = area.centerX;
+    const viewportCenterY = window.innerHeight / 2;
+    const frameCenterX = frame.x + frame.width / 2;
+    const x = viewportCenterX - frameCenterX * scale;
+    if (animate) glide();
+
+    const content = contentRef.current;
+    const el = anchor && content ? findAnchor(anchor, content) : null;
+    if (el && content) {
+      const current = transformRef.current.scale;
+      const base = content.getBoundingClientRect();
+      const box = el.getBoundingClientRect();
+      const top = (box.top - base.top) / current;
+      const height = Math.min(box.height / current, (window.innerHeight * 0.6) / scale);
+      setTransform({ x, y: viewportCenterY - (top + height / 2) * scale, scale });
+      window.setTimeout(() => highlight(el), animate && !prefersReducedMotion() ? 650 : 50);
+      return;
     }
-  }, []);
+
+    if (id === 'about' || id === 'work' || id === 'leadership') {
+      // For the about, work and leadership sections, align to top instead of centering
+      const topPadding = 100; // pixels from top of viewport
+      setTransform({ x, y: topPadding - frame.y * scale, scale });
+    } else {
+      // Center the frame in viewport (default behavior)
+      const frameCenterY = frame.y + frame.height / 2;
+      setTransform({ x, y: viewportCenterY - frameCenterY * scale, scale });
+    }
+  }, [glide]);
+
+  // Handle hash changes on mount or location update: "#about" pans to a frame, "#about/experience" to a block in it.
+  useEffect(() => {
+    const parsed = parseCanvasHash(location.hash);
+    if (!parsed) return;
+    const timer = setTimeout(() => {
+      handleNavigate(parsed.frame, parsed.anchor, Boolean(parsed.anchor));
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [location.hash, handleNavigate]);
+
+  // Search jumps to canvas frames pan here instead of reloading the route.
+  useJumpHandler((target) => {
+    if (target.type !== 'frame') return false;
+    handleNavigate(target.frame, target.anchor, true);
+    return true;
+  });
 
   const handleZoomToFit = useCallback(() => {
     setTransform({ x: -800, y: -50, scale: 0.5 });
@@ -539,14 +478,11 @@ function FigmaCanvas() {
             y: transform.y,
             scale: transform.scale,
           }}
-          transition={{
-            type: 'tween',
-            duration: 0,
-            ease: 'linear'
-          }}
+          transition={gliding ? { type: 'tween', duration: 0.6, ease: 'easeInOut' } : { type: 'tween', duration: 0, ease: 'linear' }}
           style={{
             transformOrigin: '0 0',
           }}
+          ref={contentRef}
           className="absolute"
         >
           {/* Hero Frame */}
@@ -566,7 +502,7 @@ function FigmaCanvas() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                >Tobi Olowu · Product Design Lead, London</motion.p>
+                >{HERO_TAGLINE}</motion.p>
 
                 <motion.h1
                   className="font-bold text-gray-900 mb-5 text-[48px] leading-[1.05] tracking-tight"
@@ -574,14 +510,14 @@ function FigmaCanvas() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                >I make complicated things usable.</motion.h1>
+                >{HERO_HEADLINE}</motion.h1>
 
                 <motion.p
                   className="text-gray-500 max-w-md font-[Architects_Daughter]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                >Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.</motion.p>
+                >{HERO_INTRO}</motion.p>
 
                 <motion.a
                   href={RESUME_URL}
@@ -684,7 +620,7 @@ function FigmaCanvas() {
                   if (leader) window.open(leader.iframeUrl, '_blank');
                 }}
               />
-              <div className="mt-12 pt-12 border-t border-gray-200">
+              <div className="mt-12 pt-12 border-t border-gray-200" data-search-id="leadership/recognition">
                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
                 <AchievementBadges />
               </div>
@@ -703,12 +639,13 @@ function FigmaCanvas() {
             <div className="h-full flex flex-col items-center justify-center p-12 text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
               <p className="text-gray-600 mb-8 max-w-sm">
-                Got a project, a question, or just want to talk shop? Reach out through any of these.
+                {CONTACT_INTRO}
               </p>
               <div className="space-y-3 w-full max-w-xs">
                 <div className="flex gap-3">
                   <a
-                    href="mailto:oluwatobi.olowu@outlook.com"
+                    href={`mailto:${CONTACT.email}`}
+                    data-search-id="contact/email"
                     className="flex-1 flex items-center justify-center gap-3 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
                   >
                     <Mail size={20} />
@@ -719,7 +656,7 @@ function FigmaCanvas() {
                       onClick={() => {
                         // Fallback method for copying text (works without Clipboard API)
                         const textarea = document.createElement('textarea');
-                        textarea.value = 'oluwatobi.olowu@outlook.com';
+                        textarea.value = CONTACT.email;
                         textarea.style.position = 'fixed';
                         textarea.style.opacity = '0';
                         document.body.appendChild(textarea);
@@ -748,7 +685,8 @@ function FigmaCanvas() {
                   </div>
                 </div>
                 <a
-                  href="https://www.linkedin.com/in/olowutobi/"
+                  href={CONTACT.linkedin}
+                  data-search-id="contact/linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
@@ -759,6 +697,7 @@ function FigmaCanvas() {
                 <a
                   href={RESUME_URL}
                   download
+                  data-search-id="contact/cv"
                   className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
                 >
                   <Download size={20} />
@@ -766,7 +705,8 @@ function FigmaCanvas() {
                 </a>
                 <div className="flex gap-3">
                   <a
-                    href="https://www.webbie.io/u/001"
+                    href={CONTACT.webbie}
+                    data-search-id="contact/webbie"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
@@ -781,7 +721,8 @@ function FigmaCanvas() {
                     <span>Webbie</span>
                   </a>
                   <a
-                    href="https://www.behance.net/oluwatobiolowu"
+                    href={CONTACT.behance}
+                    data-search-id="contact/behance"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
@@ -805,6 +746,7 @@ function FigmaCanvas() {
 function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const project = PROJECTS.find((p) => p.slug === slug);
@@ -822,6 +764,29 @@ function ProjectPage() {
       containerRef.current.scrollTop = 0;
     }
   }, [slug]);
+
+  // Scroll to the section in the hash (from search or a shared link), e.g. /works/Hydra#hydra/sorting-the-mess.
+  useEffect(() => {
+    const anchor = decodeURIComponent(location.hash.replace(/^#/, ''));
+    if (!anchor) return;
+    // Wait two frames so the sections have rendered before measuring.
+    let id = requestAnimationFrame(() => {
+      id = requestAnimationFrame(() => scrollToAndHighlight(anchor));
+    });
+    return () => cancelAnimationFrame(id);
+  }, [slug, location.hash]);
+
+  // A search jump to a section of this same case study: update the hash (the effect above scrolls), or rescroll if it's already there.
+  useJumpHandler((target) => {
+    if (target.type !== 'case-study' || target.slug !== slug) return false;
+    if (target.anchor) {
+      if (decodeURIComponent(location.hash.replace(/^#/, '')) === target.anchor) scrollToAndHighlight(target.anchor);
+      else navigate(`/works/${target.slug}#${target.anchor}`, { replace: true });
+    } else {
+      containerRef.current?.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (data) {
@@ -972,7 +937,7 @@ function ProjectPage() {
         {(sections: any[]) => (
         <div className="space-y-16">
           {sections.map((section: any, idx: number) => (
-            <section key={idx} className="space-y-6">
+            <section key={section.id ?? idx} id={section.id} data-search-id={section.id} className="space-y-6 scroll-mt-10">
               {section.title && (
                 <h2
                   className="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-200 pb-3"
@@ -1206,11 +1171,24 @@ function Home() {
   return <FigmaCanvas />;
 }
 
+/** Mounted only while open, so a closed card never downloads anything. */
+function SearchCard() {
+  const { open } = useAssistantPanel();
+  return open ? (
+    <Suspense fallback={null}>
+      <SearchPanel />
+    </Suspense>
+  ) : null;
+}
+
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/works/:slug" element={<ProjectPage />} />
-    </Routes>
+    <AssistantProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/works/:slug" element={<ProjectPage />} />
+      </Routes>
+      <SearchCard />
+    </AssistantProvider>
   );
 }
