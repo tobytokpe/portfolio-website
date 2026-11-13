@@ -4,12 +4,18 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "build:index": "tsx --import ./scripts/asset-stub.mjs scripts/build-search-index.ts",
+    "predev": "npm run build:index",
+    "dev": "vite",
+    "prebuild": "npm run build:index",
     "build": "vite build",
-    "dev": "vite"
+    "pretest": "npm run build:index",
+    "test": "vitest run"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
+    "@google/genai": "^3.3.0",
     "@mui/icons-material": "7.3.5",
     "@mui/material": "7.3.5",
     "@popperjs/core": "2.11.8",
@@ -39,6 +45,7 @@
     "@radix-ui/react-toggle": "1.1.2",
     "@radix-ui/react-toggle-group": "1.1.2",
     "@radix-ui/react-tooltip": "1.1.8",
+    "@upstash/redis": "^1.41.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "0.7.1",
@@ -47,7 +54,9 @@
     "date-fns": "3.6.0",
     "embla-carousel-react": "8.6.0",
     "input-otp": "1.4.2",
+    "lottie-react": "^2.4.1",
     "lucide-react": "0.487.0",
+    "minisearch": "^7.2.0",
     "motion": "12.23.24",
     "next-themes": "0.4.6",
     "playwright": "^1.61.1",
@@ -68,9 +77,13 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
+    "@testing-library/react": "^16.3.0",
     "@vitejs/plugin-react": "4.7.0",
+    "jsdom": "^26.1.0",
     "tailwindcss": "4.1.12",
-    "vite": "6.3.5"
+    "tsx": "^4.23.15",
+    "vite": "6.3.5",
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
     "react": "18.3.1",

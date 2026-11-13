@@ -58,6 +58,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "heroImage": project4_hero,
     "sections": [
       {
+        "id": "moore/visual-flow",
         "title": "Establishing the End-to-End Visual & Interaction Flow",
         "type": "section",
         "items": [
@@ -82,6 +83,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "moore/onboarding",
         "title": "Optimizing Onboarding: Redesigning Sign-Up Friction",
         "type": "section",
         "items": [
@@ -110,6 +112,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "moore/payment-experience",
         "title": "Removing Fear: Designing a Stress-Free Payment Experience",
         "type": "section",
         "items": [
@@ -126,6 +129,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "moore/tokenized-system",
         "title": "Tokenizing the Visual System: Aligning Cross-Platform Layouts",
         "type": "section",
         "items": [
@@ -162,6 +166,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "moore/results",
         "title": "Proven Growth & Performance Results",
         "type": "section",
         "items": [
@@ -205,6 +210,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "heroImage": project5_hero,
     "sections": [
       {
+        "id": "undp/digital-lifelines",
         "title": "Digital Lifelines: Rethinking Crisis Response for the United Nations",
         "type": "section",
         "items": [
@@ -228,6 +234,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "undp/trust-disconnected",
         "title": "Designing for Trust Across Disconnected Areas",
         "type": "section",
         "items": [
@@ -259,6 +266,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "undp/panic-button",
         "title": "Designing a Stress-Free Panic Button",
         "type": "section",
         "items": [
@@ -307,6 +315,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "undp/built-to-last",
         "title": "Built to Last and Expand",
         "type": "section",
         "items": [
@@ -363,6 +372,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "heroImage": img_project1_payload_structure,
     "sections": [
       {
+        "id": "hydra/control-center",
         "title": "The Control Center for Connected Finance",
         "type": "section",
         "items": [
@@ -381,6 +391,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "hydra/sorting-the-mess",
         "title": "Sorting the Mess: Organizing Scattered Bank Tools",
         "type": "section",
         "items": [
@@ -410,6 +421,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "hydra/dashboards-code-lookups",
         "title": "Redesigning Dashboards and Code Lookups",
         "type": "section",
         "items": [
@@ -463,6 +475,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "hydra/results",
         "title": "From Fragmented APIs to ₦60M+ in Processed Transactions",
         "type": "section",
         "items": [
@@ -505,6 +518,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "heroImage": project2_hero,
     "sections": [
       {
+        "id": "qore/zero-to-deploy",
         "title": "Banking Apps for Africa: The Zero-to-Deploy Playbook",
         "type": "section",
         "items": [
@@ -523,6 +537,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/white-label-engine",
         "title": "Untangling Legacy Code into a Core White-Label Engine",
         "type": "section",
         "items": [
@@ -549,6 +564,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/management-layer",
         "title": "The Management Layer: Configuration and Customization Dashboard",
         "type": "section",
         "items": [
@@ -568,6 +584,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/customer-app-core",
         "title": "The Customer Application Core: Optimizing White-Label Onboarding",
         "type": "section",
         "items": [
@@ -591,6 +608,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/token-blueprint",
         "title": "Aligning the Team & The Token Blueprint",
         "type": "section",
         "items": [
@@ -614,6 +632,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/color-problem",
         "title": "The Color Problem: Protecting Readability in a White-Labeled World",
         "type": "section",
         "items": [
@@ -637,6 +656,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "qore/results",
         "title": "Shifting from Months of Code to Instant Scaling",
         "type": "section",
         "items": [
@@ -674,6 +694,7 @@ export const CASE_STUDIES: Record<string, any> = {
     "heroImage": project3_hero,
     "sections": [
       {
+        "id": "mamvest/legacy-institution",
         "title": "Re-Engineering a Legacy Institution: Designing the First Digital Wealth Platform",
         "type": "section",
         "items": [
@@ -705,6 +726,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "mamvest/service-blueprint",
         "title": "From Paper to Pixels: Service Blueprinting & Cross-Functional Alignment",
         "type": "section",
         "items": [
@@ -747,6 +769,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "mamvest/design-system",
         "title": "The 3-Tier Design System & Token Architecture",
         "type": "section",
         "items": [
@@ -775,6 +798,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "mamvest/stress-testing",
         "title": "High-Density Stress Testing & Real-World Layout Scaling",
         "type": "section",
         "items": [
@@ -789,6 +813,7 @@ export const CASE_STUDIES: Record<string, any> = {
         ]
       },
       {
+        "id": "mamvest/results",
         "title": "Business Performance & Systemic Transformation Impact",
         "type": "section",
         "items": [

@@ -1,5 +1,11 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/ask.ts": {
+      "includeFiles": "src/generated/**",
+      "maxDuration": 15
+    }
+  }
 }

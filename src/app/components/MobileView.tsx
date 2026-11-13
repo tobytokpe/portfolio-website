@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Mail, Linkedin, Check, Copy } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -9,6 +9,9 @@ import aboutMeSvg from '../../assets/about-me.svg';
 import starSticker from '../../assets/stickers/star.png';
 import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
+import { useAssistantPanel, useJumpHandler } from '../assistant/AssistantContext';
+import { findAnchor, highlight, prefersReducedMotion } from '../search/highlight';
+import { CONTACT } from '../data/site';
 
 interface Project {
   id: string;
@@ -46,10 +49,39 @@ function SectionCard({ id, children }: { id: string; children: React.ReactNode }
 export function MobileView({ projects, leadership, heroImage }: MobileViewProps) {
   const navigate = useNavigate();
   const [emailCopied, setEmailCopied] = useState(false);
+  const { setOpen } = useAssistantPanel();
+
+  // Search jumps to canvas frames scroll this page instead (the anchor if it's shown here, else the section).
+  useJumpHandler((target) => {
+    if (target.type !== 'frame') return false;
+    setOpen(false);
+    const el = target.anchor ? findAnchor(target.anchor) : null;
+    if (el) {
+      el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
+      window.setTimeout(() => highlight(el), 500);
+    } else {
+      scrollTo(target.frame);
+    }
+    return true;
+  });
+
+  // Links like /#about/global-talent open on the right section here too.
+  useEffect(() => {
+    const raw = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    if (!raw) return;
+    const t = window.setTimeout(() => {
+      const el = findAnchor(raw);
+      if (el) {
+        el.scrollIntoView({ block: 'center' });
+        highlight(el);
+      } else scrollTo(raw.split('/')[0]);
+    }, 150);
+    return () => window.clearTimeout(t);
+  }, []);
 
   function handleCopyEmail() {
     const textarea = document.createElement('textarea');
-    textarea.value = 'oluwatobi.olowu@outlook.com';
+    textarea.value = CONTACT.email;
     textarea.style.cssText = 'position:fixed;opacity:0';
     document.body.appendChild(textarea);
     textarea.select();
@@ -155,11 +187,11 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
             About Me
           </h2>
           <div className="space-y-6 text-[#5d6c7c] text-sm leading-[1.7]">
-            <p className="font-[Architects_Daughter]">
+            <p className="font-[Architects_Daughter]" data-search-id="about/bio">
               A Designer dedicated to iterative improvement, ensuring products are usable with extensive experience in B2C and B2B SaaS products across mobile and web platforms. With about a decade of experience, I have led design initiatives across diverse industries, including Finance, Energy, and Technology, delivering user-centric solutions that drive significant business impact. Recently, I received the esteemed endorsement as an exceptional talent for the Global Talent UK, an acknowledgement of my dedication to the world of Design and Technology.
             </p>
             
-            <div className="pt-6">
+            <div className="pt-6" data-search-id="about/journey">
               <img
                 src={aboutMeSvg}
                 alt="Skills and Expertise Overview"
@@ -219,7 +251,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
             <div className="space-y-3 w-full max-w-xs mx-auto">
               <div className="flex gap-3">
                 <a
-                  href="mailto:oluwatobi.olowu@outlook.com"
+                  href={`mailto:${CONTACT.email}`}
+                  data-search-id="contact/email"
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm"
                 >
                   <Mail size={20} />
@@ -234,7 +267,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                 </button>
               </div>
               <a
-                href="https://www.linkedin.com/in/olowutobi/"
+                href={CONTACT.linkedin}
+                data-search-id="contact/linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
@@ -244,7 +278,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               </a>
               <div className="flex gap-3">
                 <a
-                  href="https://www.webbie.io/u/001"
+                  href={CONTACT.webbie}
+                  data-search-id="contact/webbie"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
@@ -259,7 +294,8 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                   <span>Webbie</span>
                 </a>
                 <a
-                  href="https://www.behance.net/oluwatobiolowu"
+                  href={CONTACT.behance}
+                  data-search-id="contact/behance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"

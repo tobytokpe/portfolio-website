@@ -184,3 +184,34 @@
     line-height: 1.5;
   }
 }
+/* Bespoka design tokens (src/design/tokens.ts in tailor-s-canvas), used by the AI search card.
+   They give the same classes as Bespoka: text-ink-800, border-ink-200, text-marker, bg-marker-soft. */
+@theme {
+  --color-ink-900: #0A133A;
+  --color-ink-800: #131C44;
+  --color-ink-700: #1F2A58;
+  --color-ink-500: #717182;
+  --color-ink-400: #8A90A6;
+  --color-ink-300: #C8CCD6;
+  --color-ink-200: #ECECF0;
+  --color-ink-100: #F4F6FF;
+  --color-ink-50: #FAFBFD;
+  --color-marker: #4361EE;
+  --color-marker-soft: #E0E7FF;
+}
+
+/* What a "Jump to section" lands on: a marker outline that fades after a moment. */
+.search-hit {
+  outline: 2px solid #4361EE;
+  outline-offset: 6px;
+  border-radius: 12px;
+  background-color: rgba(224, 231, 255, 0.55);
+  transition: outline-color 0.6s ease, background-color 0.6s ease;
+}
+.search-hit-fade {
+  outline-color: transparent;
+  background-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .search-hit { transition: none; }
+}

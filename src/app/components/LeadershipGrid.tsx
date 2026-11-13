@@ -5,11 +5,14 @@ interface LeadershipCardProps {
   description: string;
   imageSrc?: string;
   onClick?: () => void;
+  /** Where search's "Jump to section" lands. */
+  searchId?: string;
 }
 
-function LeadershipCard({ title, description, imageSrc, onClick }: LeadershipCardProps) {
+function LeadershipCard({ title, description, imageSrc, onClick, searchId }: LeadershipCardProps) {
   return (
-    <div 
+    <div
+      data-search-id={searchId}
       className="bg-white rounded-[16px] overflow-hidden shadow-sm cursor-pointer hover:shadow-lg transition-shadow"
       onClick={onClick}
     >
@@ -50,6 +53,7 @@ interface LeadershipGridProps {
     title: string;
     description: string;
     imageSrc?: string;
+    searchId?: string;
   }>;
   onLeadershipClick?: (id: string) => void;
 }
@@ -63,6 +67,7 @@ export function LeadershipGrid({ leaders, onLeadershipClick }: LeadershipGridPro
           title={leader.title}
           description={leader.description}
           imageSrc={leader.imageSrc}
+          searchId={leader.searchId}
           onClick={() => onLeadershipClick?.(leader.id)}
         />
       ))}
