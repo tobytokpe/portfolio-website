@@ -1,29 +1,64 @@
 import type { SearchDoc } from './types.js';
 import { MAX_DOC_WORDS } from './indexConfig.js';
 import type { SiteLeadership, SiteProject } from '../data/site.js';
+import type { CvRole } from '../data/cv.js';
 
 export interface DocSources {
   caseStudies: Record<string, any>;
   projects: SiteProject[];
+  /** Hidden case studies are never indexed. */
+  hiddenProjects: string[];
   leadership: SiteLeadership[];
-  heroIntro: string;
-  aboutBio: string;
-  globalTalent: { label: string; text: string };
-  designJourney: string;
-  contact: { email: string; linkedin: string; webbie: string; behance: string };
+  hero: { tagline: string; headline: string; intro: string };
+  about: { bio: string; quote: string };
+  stats: Array<{ value: string; label: string; category: string }>;
+  principles: Array<{ title: string; body: string }>;
+  experience: Array<{ role: string; company: string; years: string }>;
+  achievements: Array<{ title: string; detail: string; year: string }>;
+  contact: { email: string; linkedin: string; webbie: string; behance: string; intro: string };
+  resumeUrl: string;
+  cv: {
+    summary: string;
+    skills: string;
+    roles: CvRole[];
+    education: string;
+    certifications: string;
+    achievements: string;
+  };
 }
 
 /** Extra words people search with that the copy itself doesn't always use. */
 const PROJECT_KEYWORDS: Record<string, string[]> = {
+  lens: ['Wood Mackenzie', 'AI assistant', 'enterprise AI', 'Lens 2.0', 'energy', 'data'],
+  'lens-platform': ['Wood Mackenzie', 'Lens', 'analytics', 'data tables', 'charts', 'maps', 'enterprise', 'energy'],
   hydra: ['API gateway', 'B2B', 'SaaS', 'developer dashboard', 'billing', 'Qore Technologies', 'enterprise'],
   qore: ['white-label', 'multi-tenant', 'microfinance', 'no-code', 'Africa', 'design tokens', 'Qore Technologies'],
   mamvest: ['wealth management', 'investment', 'mutual funds', 'SEC', 'Mango Asset Management', 'service blueprint'],
   moore: ['onboarding', 'payments', 'startup', 'founding designer', 'seed round', 'mobile banking'],
   undp: ['United Nations', 'CEWERS', 'humanitarian', 'crisis', 'early warning', 'Nigeria', 'voice', 'panic button'],
+  bespoka: ['tailors', 'fashion', 'marketplace', 'founder', 'side project', 'built solo', 'invoicing', 'orders'],
   'signature-bank': ['website', 'tier 1 bank', 'Nigeria'],
 };
 
 export const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+
+/** The readable text inside an infographic item (titles, steps, before/after rows, stats). */
+function graphicText(node: unknown): string[] {
+  if (typeof node === 'string') return [node];
+  if (Array.isArray(node)) return node.flatMap(graphicText);
+  if (node && typeof node === 'object') {
+    return Object.entries(node as Record<string, unknown>)
+      .filter(([k]) => !['type', 'graphic', 'src', 'id', 'icon', 'tone', 'variant', 'url'].includes(k))
+      .flatMap(([, v]) => graphicText(v));
+  }
+  return [];
+}
+
+function itemText(item: any): string {
+  if (item.type === 'paragraph' || item.type === 'subheading' || item.type === 'cta') return item.text ?? '';
+  if (item.type === 'graphic') return graphicText(item).join('. ');
+  return '';
+}
 
 /** Splits text over MAX_DOC_WORDS into chunks at sentence ends. */
 function chunks(text: string): string[] {
@@ -52,23 +87,32 @@ export function buildDocs(src: DocSources): SearchDoc[] {
   };
 
   for (const p of src.projects) {
+    if (src.hiddenProjects.includes(p.id)) continue;
     const key = p.searchKey;
     const short = p.title.split(':')[0].trim();
     const keywords = [p.tag, ...(PROJECT_KEYWORDS[key] ?? [])];
     if (p.external) {
-      push({
-        id: `${key}/overview`,
-        kind: 'case-study',
-        title: p.title,
-        text: p.description,
-        keywords,
-        target: { type: 'external', url: p.iframeUrl },
-        url: p.iframeUrl,
-      });
+      push({ id: `${key}/overview`, kind: 'case-study', title: p.title, text: p.description, keywords, target: { type: 'external', url: p.iframeUrl }, url: p.iframeUrl });
       continue;
     }
     const cs = src.caseStudies[p.id];
     if (!cs) throw new Error(`No case study data for ${p.id}`);
+
+    // Password-protected (NDA) case studies: only the card text that's on the home page. Never their summary,
+    // metadata or sections, so nothing behind the password reaches the index, the browser bundle or Gemini.
+    if (cs.passwordHash) {
+      push({
+        id: `${key}/overview`,
+        kind: 'case-study',
+        title: p.title,
+        parent: p.tag,
+        text: `${p.description} This case study is password protected; ask Tobi for access.`,
+        keywords,
+        target: { type: 'case-study', slug: p.slug },
+      });
+      continue;
+    }
+
     const meta = Object.entries(cs.metadata ?? {})
       .map(([k, v]) => `${k}: ${v}.`)
       .join(' ');
@@ -77,21 +121,13 @@ export function buildDocs(src: DocSources): SearchDoc[] {
       kind: 'case-study',
       title: cs.title,
       parent: p.tag,
-      text: plain([p.description, meta, cs.problem && `The challenge: ${cs.problem}`, cs.solution && `The solution: ${cs.solution}`].filter(Boolean).join(' ')),
+      text: plain([p.description, meta, cs.problem && `${cs.problemLabel ?? 'The challenge'}: ${cs.problem}`, cs.solution && `The solution: ${cs.solution}`].filter(Boolean).join(' ')),
       keywords: [...keywords, ...Object.values(cs.metadata ?? {}).map(String)],
       target: { type: 'case-study', slug: p.slug },
     });
     for (const section of cs.sections ?? []) {
-      if (!section.id) throw new Error(`Section "${section.title}" in ${p.id} has no id`);
-      const text = plain(
-        (section.items ?? [])
-          .map((item: any) => {
-            if (item.type === 'paragraph' || item.type === 'subheading' || item.type === 'cta') return item.text;
-            return '';
-          })
-          .filter(Boolean)
-          .join(' '),
-      );
+      if (!section.id) throw new Error(`Section "${section.title}" in ${p.id} has no id. Add an "id" (e.g. "${key}/short-name") in caseStudies.ts.`);
+      const text = plain((section.items ?? []).map(itemText).filter(Boolean).join(' '));
       push({
         id: section.id,
         kind: 'section',
@@ -104,30 +140,60 @@ export function buildDocs(src: DocSources): SearchDoc[] {
     }
   }
 
-  push({ id: 'about/intro', kind: 'about', title: "Hi, I'm Tobi Olowu", text: src.heroIntro, keywords: ['introduction', 'who', 'product designer'], target: { type: 'frame', frame: 'hero' } });
-  push({ id: 'about/bio', kind: 'about', title: 'About Me', text: src.aboutBio, keywords: ['experience', 'background', 'years', 'industries', 'biography'], target: { type: 'frame', frame: 'about', anchor: 'about/bio' } });
-  push({ id: 'about/global-talent', kind: 'about', title: src.globalTalent.label, text: src.globalTalent.text, keywords: ['Tech Nation', 'visa', 'UK', 'award', 'endorsement', 'exceptional talent'], target: { type: 'frame', frame: 'about', anchor: 'about/global-talent' } });
-  push({ id: 'about/journey', kind: 'about', title: 'My design journey', text: src.designJourney, keywords: ['education', 'university', 'school', 'story', 'how he started'], target: { type: 'frame', frame: 'about', anchor: 'about/journey' } });
+  const about = (id: string, title: string, text: string, keywords: string[]) =>
+    push({ id, kind: 'about', title, parent: 'About', text, keywords, target: { type: 'frame', frame: 'about', anchor: id } });
+
+  push({
+    id: 'about/intro',
+    kind: 'about',
+    title: src.hero.headline,
+    text: `${src.hero.tagline}. ${src.hero.headline} ${src.hero.intro}`,
+    keywords: ['introduction', 'who', 'product designer', 'design lead', 'London'],
+    target: { type: 'frame', frame: 'hero' },
+  });
+  about('about/bio', 'About Me', `${src.about.bio} "${src.about.quote}"`, ['background', 'approach', 'philosophy']);
+  about('about/impact', 'Impact', src.stats.map((s) => `${s.category}: ${s.value} ${s.label}.`).join(' '), ['results', 'metrics', 'numbers', 'achievements']);
+  about('about/principles', 'Design philosophy', src.principles.map((p) => `${p.title}: ${p.body}`).join(' '), ['principles', 'values', 'how he works']);
+  about(
+    'about/experience',
+    "Where I've worked",
+    src.experience.map((e) => `${e.role} at ${e.company} (${e.years}).`).join(' '),
+    ['experience', 'career', 'jobs', 'roles', 'employers', 'current role', 'CV'],
+  );
 
   for (const l of src.leadership) {
-    push({
-      id: l.searchId,
-      kind: 'leadership',
-      title: l.title,
-      parent: 'Leadership',
-      text: l.description,
-      keywords: l.keywords,
-      target: { type: 'frame', frame: 'leadership', anchor: l.searchId },
-      url: l.iframeUrl,
-    });
+    push({ id: l.searchId, kind: 'leadership', title: l.title, parent: 'Leadership', text: l.description, keywords: l.keywords, target: { type: 'frame', frame: 'leadership', anchor: l.searchId }, url: l.iframeUrl });
   }
+  push({
+    id: 'leadership/recognition',
+    kind: 'leadership',
+    title: 'Recognition',
+    parent: 'Leadership',
+    text: src.achievements.map((a) => `${a.title}: ${a.detail} (${a.year}).`).join(' '),
+    keywords: ['awards', 'Global Talent', 'Tech Nation', 'visa', 'UK', 'speaker', 'Young CISO', 'endorsement', 'exceptional talent'],
+    target: { type: 'frame', frame: 'leadership', anchor: 'leadership/recognition' },
+  });
 
   const c = src.contact;
-  const contactIntro = 'Interested in working together? Feel free to reach out through any of these channels.';
-  push({ id: 'contact/email', kind: 'contact', title: 'Email', parent: 'Contact', text: `${contactIntro} Email Tobi at ${c.email}.`, keywords: ['email', 'mail', 'hire', 'work together', c.email], target: { type: 'frame', frame: 'contact', anchor: 'contact/email' }, url: `mailto:${c.email}` });
-  push({ id: 'contact/linkedin', kind: 'contact', title: 'LinkedIn', parent: 'Contact', text: 'Connect with Tobi on LinkedIn.', keywords: ['linkedin', 'social', 'connect'], target: { type: 'frame', frame: 'contact', anchor: 'contact/linkedin' }, url: c.linkedin });
-  push({ id: 'contact/behance', kind: 'contact', title: 'Behance', parent: 'Contact', text: "More of Tobi's visual work on Behance.", keywords: ['behance', 'visual', 'portfolio', 'shots'], target: { type: 'frame', frame: 'contact', anchor: 'contact/behance' }, url: c.behance });
-  push({ id: 'contact/webbie', kind: 'contact', title: 'Webbie', parent: 'Contact', text: "Tobi's Webbie profile.", keywords: ['webbie', 'profile'], target: { type: 'frame', frame: 'contact', anchor: 'contact/webbie' }, url: c.webbie });
+  const contact = (id: string, title: string, text: string, keywords: string[], url: string) =>
+    push({ id, kind: 'contact', title, parent: 'Contact', text, keywords, target: { type: 'frame', frame: 'contact', anchor: id }, url });
+  contact('contact/email', 'Email', `${c.intro} Email Tobi at ${c.email}.`, ['email', 'mail', 'hire', 'work together', c.email], `mailto:${c.email}`);
+  contact('contact/linkedin', 'LinkedIn', 'Connect with Tobi on LinkedIn.', ['linkedin', 'social', 'connect'], c.linkedin);
+  contact('contact/cv', 'Download CV', "Download Tobi's full CV as a PDF.", ['cv', 'resume', 'download', 'pdf'], src.resumeUrl);
+  contact('contact/behance', 'Behance', "More of Tobi's visual work on Behance.", ['behance', 'visual', 'portfolio', 'shots'], c.behance);
+  contact('contact/webbie', 'Webbie', "Tobi's Webbie profile.", ['webbie', 'profile'], c.webbie);
+
+  // The CV: searchable text from the PDF. Jumps go to "Where I've worked"; "Open" downloads the PDF.
+  const cv = (id: string, title: string, text: string, keywords: string[]) =>
+    push({ id, kind: 'cv', title, parent: 'CV', text, keywords: ['cv', 'resume', ...keywords], target: { type: 'frame', frame: 'about', anchor: 'about/experience' }, url: src.resumeUrl });
+  cv('cv/summary', 'Professional summary', src.cv.summary, ['summary', 'profile', 'overview', 'years', 'experience']);
+  cv('cv/skills', 'Skills and tools', src.cv.skills, ['skills', 'tools', 'software', 'figma', 'stack']);
+  for (const r of src.cv.roles) {
+    cv(`cv/role-${r.id}`, `${r.role}, ${r.company}`, `${r.role} at ${r.company}, ${r.place}, ${r.dates}. ${r.points.join(' ')}`, ['experience', 'job', 'role', r.company]);
+  }
+  cv('cv/education', 'Education', src.cv.education, ['education', 'degree', 'university', 'masters', 'msc', 'bsc', 'study']);
+  cv('cv/certifications', 'Certifications', src.cv.certifications, ['certifications', 'courses', 'qualifications']);
+  cv('cv/achievements', 'Key achievements', src.cv.achievements, ['achievements', 'awards']);
 
   return docs;
 }

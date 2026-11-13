@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, AtSign, BookOpen, Briefcase, FileText, User, type LucideIcon } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, AtSign, BookOpen, Briefcase, FileText, ScrollText, User, type LucideIcon } from 'lucide-react';
 import { stem, words } from '../search/normalise';
 import type { Result } from '../search/engine';
 import type { DocKind } from '../search/types';
@@ -6,6 +6,7 @@ import type { DocKind } from '../search/types';
 const GROUPS: Array<{ label: string; kinds: DocKind[] }> = [
   { label: 'Case studies', kinds: ['case-study', 'section'] },
   { label: 'About', kinds: ['about'] },
+  { label: 'CV', kinds: ['cv'] },
   { label: 'Leadership', kinds: ['leadership'] },
   { label: 'Contact', kinds: ['contact'] },
 ];
@@ -14,6 +15,7 @@ const ICONS: Record<DocKind, LucideIcon> = {
   'case-study': Briefcase,
   section: FileText,
   about: User,
+  cv: ScrollText,
   leadership: BookOpen,
   contact: AtSign,
 };

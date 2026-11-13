@@ -9,25 +9,15 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import MiniSearch from 'minisearch';
-import { CASE_STUDIES } from '../src/app/data/caseStudies.ts';
-import { PROJECTS, LEADERSHIP, HERO_INTRO, ABOUT_BIO, GLOBAL_TALENT, DESIGN_JOURNEY, CONTACT } from '../src/app/data/site.ts';
 import { PREWRITTEN_ANSWERS, STARTER_CHIPS } from '../src/app/data/prewrittenAnswers.ts';
+import { SOURCES, LIVE_SLUGS } from '../src/app/search/sources.ts';
 import { buildDocs, validateDocs } from '../src/app/search/buildDocs.ts';
 import { INDEX_OPTIONS } from '../src/app/search/indexConfig.ts';
 import type { DocMeta } from '../src/app/search/types.ts';
 
-const docs = buildDocs({
-  caseStudies: CASE_STUDIES,
-  projects: PROJECTS,
-  leadership: LEADERSHIP,
-  heroIntro: HERO_INTRO,
-  aboutBio: ABOUT_BIO,
-  globalTalent: GLOBAL_TALENT,
-  designJourney: DESIGN_JOURNEY,
-  contact: CONTACT,
-});
+const docs = buildDocs(SOURCES);
 
-validateDocs(docs, PREWRITTEN_ANSWERS, PROJECTS.map((p) => p.slug));
+validateDocs(docs, PREWRITTEN_ANSWERS, LIVE_SLUGS);
 for (const chip of STARTER_CHIPS) {
   if (!PREWRITTEN_ANSWERS.some((a) => a.id === chip.answerId)) throw new Error(`Starter chip "${chip.label}" points at missing answer ${chip.answerId}`);
 }

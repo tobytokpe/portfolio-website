@@ -8,7 +8,7 @@ export type JumpTarget =
   | { type: 'case-study'; slug: string; anchor?: string }
   | { type: 'external'; url: string };
 
-export type DocKind = 'case-study' | 'section' | 'about' | 'leadership' | 'contact';
+export type DocKind = 'case-study' | 'section' | 'about' | 'cv' | 'leadership' | 'contact';
 
 export interface SearchDoc {
   /** Stable, hand-written id, e.g. "hydra/sorting-the-mess". Also the DOM anchor (data-search-id). */

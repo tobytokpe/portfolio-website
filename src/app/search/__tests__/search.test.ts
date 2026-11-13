@@ -6,18 +6,10 @@ import { buildDocs, validateDocs } from '../buildDocs';
 import { search, findPrewritten } from '../engine';
 import { PREWRITTEN_ANSWERS, STARTER_CHIPS } from '../../data/prewrittenAnswers';
 import { CASE_STUDIES } from '../../data/caseStudies';
-import { PROJECTS, LEADERSHIP, HERO_INTRO, ABOUT_BIO, GLOBAL_TALENT, DESIGN_JOURNEY, CONTACT } from '../../data/site';
+import { PROJECTS, HIDDEN_PROJECTS } from '../../data/site';
+import { SOURCES, LIVE_SLUGS } from '../sources';
 
-const sources = {
-  caseStudies: CASE_STUDIES,
-  projects: PROJECTS,
-  leadership: LEADERSHIP,
-  heroIntro: HERO_INTRO,
-  aboutBio: ABOUT_BIO,
-  globalTalent: GLOBAL_TALENT,
-  designJourney: DESIGN_JOURNEY,
-  contact: CONTACT,
-};
+const sources = SOURCES;
 
 describe('normalise', () => {
   it('gives paraphrases the same cache identity', () => {
@@ -98,18 +90,38 @@ describe('index content', () => {
   const docs = buildDocs(sources);
 
   it('is valid: unique ids, real links, known slugs', () => {
-    expect(() => validateDocs(docs, PREWRITTEN_ANSWERS, PROJECTS.map((p) => p.slug))).not.toThrow();
+    expect(() => validateDocs(docs, PREWRITTEN_ANSWERS, LIVE_SLUGS)).not.toThrow();
   });
 
-  it('covers every case study section with its stable id', () => {
-    for (const p of PROJECTS.filter((x) => !x.external)) {
+  it('covers every public case study section with its stable id', () => {
+    for (const p of PROJECTS.filter((x) => !x.external && !HIDDEN_PROJECTS.includes(x.id))) {
       for (const s of CASE_STUDIES[p.id].sections) expect(docs.some((d) => d.id === s.id)).toBe(true);
     }
   });
 
+  it('never indexes hidden case studies', () => {
+    expect(docs.some((d) => d.id.startsWith('strata/') || /strata/i.test(d.text))).toBe(false);
+  });
+
+  it('only uses card text for password-protected case studies', () => {
+    for (const p of PROJECTS.filter((x) => (CASE_STUDIES as any)[x.id]?.passwordHash && !HIDDEN_PROJECTS.includes(x.id))) {
+      const own = docs.filter((d) => d.id.startsWith(`${p.searchKey}/`));
+      expect(own.map((d) => d.id)).toEqual([`${p.searchKey}/overview`]);
+      const cs = (CASE_STUDIES as any)[p.id];
+      for (const secret of [cs.problem, cs.solution, ...Object.values(cs.metadata ?? {})].filter(Boolean)) {
+        expect(own[0].text).not.toContain(String(secret));
+      }
+    }
+  });
+
+  it('keeps personal phone and email out of the CV text', () => {
+    const all = docs.map((d) => d.text).join(' ');
+    expect(all).not.toMatch(/\+44|7873|gmail/);
+  });
+
   it('rejects duplicates and broken links', () => {
-    expect(() => validateDocs([...docs, docs[0]], [], PROJECTS.map((p) => p.slug))).toThrow(/Duplicate/);
-    expect(() => validateDocs(docs, [{ id: 'x', links: ['nope/missing'] }], PROJECTS.map((p) => p.slug))).toThrow(/missing id/);
+    expect(() => validateDocs([...docs, docs[0]], [], LIVE_SLUGS)).toThrow(/Duplicate/);
+    expect(() => validateDocs(docs, [{ id: 'x', links: ['nope/missing'] }], LIVE_SLUGS)).toThrow(/missing id/);
   });
 });
 
@@ -117,7 +129,9 @@ describe('live search', () => {
   const top = (q: string) => search(q)[0]?.id;
   it('finds things by name', () => {
     expect(top('qore')).toMatch(/^qore\//);
-    expect(top('global talent')).toBe('about/global-talent');
+    expect(top('global talent')).toBe('leadership/recognition');
+    expect(top('bespoka')).toMatch(/^bespoka\//);
+    expect(search('education').some((r) => r.id === 'cv/education')).toBe(true);
     expect(top('linkedin')).toBe('contact/linkedin');
     expect(top('panic button')).toBe('undp/panic-button');
   });

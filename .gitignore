@@ -38,3 +38,6 @@ Thumbs.db
 
 # Raw case study source files
 Portfolio case studies/
+
+# Plaintext of password-protected case studies (encrypt with scripts/encrypt-cases.mjs)
+protected-src/

@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { Mail, Linkedin, Check, Copy } from 'lucide-react';
+import { Mail, Linkedin, Check, Copy, Download } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Navigation } from './Navigation';
 import { ProjectGrid } from './ProjectGrid';
 import { LeadershipGrid } from './LeadershipGrid';
-import aboutMeSvg from '../../assets/about-me.svg';
 import starSticker from '../../assets/stickers/star.png';
 import plus1Sticker from '../../assets/stickers/plus1.png';
 import { Sticker } from './Sticker';
+import { AboutContent, RESUME_URL } from './AboutContent';
+import { AchievementBadges } from './AchievementBadges';
 import { useAssistantPanel, useJumpHandler } from '../assistant/AssistantContext';
 import { findAnchor, highlight, prefersReducedMotion } from '../search/highlight';
-import { CONTACT } from '../data/site';
+import { CONTACT, CONTACT_INTRO, HERO_HEADLINE, HERO_INTRO, HERO_TAGLINE } from '../data/site';
 
 interface Project {
   id: string;
@@ -65,7 +66,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
     return true;
   });
 
-  // Links like /#about/global-talent open on the right section here too.
+  // Links like /#about/experience open on the right section here too.
   useEffect(() => {
     const raw = decodeURIComponent(window.location.hash.replace(/^#/, ''));
     if (!raw) return;
@@ -159,22 +160,35 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               />
             </div>
             <div className="text-center relative px-6">
+              <p className="text-[10px] font-bold text-gray-500 mb-3 uppercase tracking-widest">
+                {HERO_TAGLINE}
+              </p>
               <h1
-                className="text-3xl font-bold text-gray-900 mb-3"
+                className="text-[34px] font-bold text-gray-900 mb-4 leading-[1.05] tracking-tight"
                 style={{ fontFamily: 'Syne, sans-serif' }}
               >
-                Hi, I'm Tobi Olowu
+                {HERO_HEADLINE}
               </h1>
               <p className="text-[#5d6c7c] text-sm leading-[1.7] font-[Architects_Daughter]">
-                A product designer with a decade of pushing pixels, fixing flows, and making sense of chaos across fintech, SaaS, and energy, all in the name of building things people actually want to use.
+                {HERO_INTRO}
               </p>
             </div>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
-            >
-              Get in touch
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => scrollTo('contact')}
+                className="px-6 py-3 bg-gray-900 text-white text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors cursor-pointer"
+              >
+                Get in touch
+              </button>
+              <a
+                href={RESUME_URL}
+                download
+                className="inline-flex items-center gap-2 px-5 py-3 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium"
+              >
+                <Download size={16} />
+                CV
+              </a>
+            </div>
           </div>
         </SectionCard>
 
@@ -186,19 +200,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           >
             About Me
           </h2>
-          <div className="space-y-6 text-[#5d6c7c] text-sm leading-[1.7]">
-            <p className="font-[Architects_Daughter]" data-search-id="about/bio">
-              A Designer dedicated to iterative improvement, ensuring products are usable with extensive experience in B2C and B2B SaaS products across mobile and web platforms. With about a decade of experience, I have led design initiatives across diverse industries, including Finance, Energy, and Technology, delivering user-centric solutions that drive significant business impact. Recently, I received the esteemed endorsement as an exceptional talent for the Global Talent UK, an acknowledgement of my dedication to the world of Design and Technology.
-            </p>
-            
-            <div className="pt-6" data-search-id="about/journey">
-              <img
-                src={aboutMeSvg}
-                alt="Skills and Expertise Overview"
-                className="w-full h-auto object-contain rounded-2xl"
-              />
-            </div>
-          </div>
+          <AboutContent />
         </SectionCard>
 
         {/* Selected Work */}
@@ -239,6 +241,10 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
               if (leader) window.open(leader.iframeUrl, '_blank');
             }}
           />
+          <div className="mt-10 pt-10 border-t border-gray-200" data-search-id="leadership/recognition">
+            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
+            <AchievementBadges />
+          </div>
         </SectionCard>
 
         {/* Contact */}
@@ -246,7 +252,7 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
           <div className="h-full flex flex-col items-center justify-center text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
             <p className="text-gray-600 mb-8 max-w-sm text-sm">
-              Interested in working together? Feel free to reach out through any of these channels.
+              {CONTACT_INTRO}
             </p>
             <div className="space-y-3 w-full max-w-xs mx-auto">
               <div className="flex gap-3">
@@ -266,6 +272,15 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
                   {emailCopied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                 </button>
               </div>
+              <a
+                href={RESUME_URL}
+                download
+                data-search-id="contact/cv"
+                className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors text-sm"
+              >
+                <Download size={20} />
+                <span>Download CV</span>
+              </a>
               <a
                 href={CONTACT.linkedin}
                 data-search-id="contact/linkedin"

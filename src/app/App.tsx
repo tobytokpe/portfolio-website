@@ -4,11 +4,13 @@ import { Routes, Route, useNavigate, useParams, useLocation } from 'react-router
 import { CASE_STUDIES } from './data/caseStudies';
 import {
   PROJECTS as SITE_PROJECTS,
+  HIDDEN_PROJECTS,
   LEADERSHIP as SITE_LEADERSHIP,
+  HERO_TAGLINE,
+  HERO_HEADLINE,
   HERO_INTRO,
-  ABOUT_BIO,
-  GLOBAL_TALENT,
   CONTACT,
+  CONTACT_INTRO,
 } from './data/site';
 import { AssistantProvider, useAssistantPanel, useJumpHandler } from './assistant/AssistantContext';
 import { findAnchor, highlight, prefersReducedMotion, scrollToAndHighlight } from './search/highlight';
@@ -20,9 +22,13 @@ import { ProjectGrid } from './components/ProjectGrid';
 import { LeadershipGrid } from './components/LeadershipGrid';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import { MobileView } from './components/MobileView';
-import Frame1984078061 from '../imports/Frame1984078061';
-import { Mail, Linkedin, Copy, Check } from 'lucide-react';
+import { Mail, Linkedin, Copy, Check, Download } from 'lucide-react';
 import { InteractiveGridBackground } from './components/ui/InteractiveGridBackground';
+import { AboutContent, RESUME_URL } from './components/AboutContent';
+import { AchievementBadges } from './components/AchievementBadges';
+import { MaybePasswordGate } from './components/PasswordGate';
+import { CaseGraphic } from './components/CaseGraphic';
+import { AutoplayVideo } from './components/AutoplayVideo';
 
 // Project images
 import projectImg1 from 'figma:asset/947a82d5fe77e989a24f0980b7accca6b672e014.png';
@@ -31,6 +37,12 @@ import projectImg3 from '../assets/case-studies/project3/mamvest-hero-alt.png';
 import projectImg4 from 'figma:asset/7c865e05aec58c76ad849b692223a5fffeb0112c.png';
 import projectImg5 from 'figma:asset/a398778366b9324607d700ade24de8649ef3b369.png';
 import projectImg6 from 'figma:asset/3a62c1028d5d7219af66d2a4a1509be1fea7b2a7.png';
+import projectImg9 from '../assets/case-studies/project9/platform-hero.mp4';
+import projectImg9Webm from '../assets/case-studies/project9/platform-hero.webm';
+import projectImg10 from '../assets/case-studies/project10/strata-hero.png';
+import projectImg8 from '../assets/case-studies/project8/lens-hero.mp4';
+import projectImg8Webm from '../assets/case-studies/project8/lens-hero.webm';
+import projectImg7 from '../assets/case-studies/project6/bespoka-landing.png';
 
 // Leadership images
 import leadershipImg1 from 'figma:asset/c155cac86dd8ff90a2a85cab8016320721e754d1.png';
@@ -42,8 +54,6 @@ import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40
 
 // Hero image
 import tobiGif from '../assets/Tobi video.gif';
-import aboutMeSvg from '../assets/about-me.svg';
-import techNationLogo from '../assets/tech-nation-logo.png';
 
 // Stickers
 import starSticker from '../assets/stickers/star.png';
@@ -59,15 +69,21 @@ const CANVAS_WIDTH = 8000;
 const CANVAS_HEIGHT = 2200;
 
 // Case study and leadership copy lives in data/site.ts (the search index reads it too); images are attached here.
-const PROJECT_IMAGES: Record<string, string> = {
-  project1: projectImg1,
-  project2: projectImg2,
-  project3: projectImg3,
-  project4: projectImg4,
-  project5: projectImg5,
-  project6: projectImg6,
+const PROJECT_MEDIA: Record<string, { imageSrc: string; imageWebm?: string }> = {
+  project8: { imageSrc: projectImg8, imageWebm: projectImg8Webm },
+  project9: { imageSrc: projectImg9, imageWebm: projectImg9Webm },
+  project10: { imageSrc: projectImg10 },
+  project1: { imageSrc: projectImg1 },
+  project2: { imageSrc: projectImg2 },
+  project3: { imageSrc: projectImg3 },
+  project4: { imageSrc: projectImg4 },
+  project5: { imageSrc: projectImg5 },
+  project7: { imageSrc: projectImg7 },
+  project6: { imageSrc: projectImg6 },
 };
-const PROJECTS = SITE_PROJECTS.map((p) => ({ ...p, imageSrc: PROJECT_IMAGES[p.id] }));
+const PROJECTS_BASE = SITE_PROJECTS.map((p) => ({ ...p, ...PROJECT_MEDIA[p.id] }));
+// Case studies hidden until they're finished (HIDDEN_PROJECTS in data/site.ts)
+const PROJECTS = PROJECTS_BASE.filter((p) => !HIDDEN_PROJECTS.includes(p.id)).map((p) => ({ ...p, isProtected: !!(CASE_STUDIES as any)[p.id]?.passwordHash }));
 
 const LEADERSHIP_IMAGES: Record<string, string> = {
   leader1: leadershipImg1,
@@ -83,16 +99,16 @@ const LEADERSHIP = SITE_LEADERSHIP.map((l) => ({ ...l, imageSrc: LEADERSHIP_IMAG
 const SearchPanel = lazy(() => import('./assistant/SearchPanel'));
 
 const FRAMES: Record<FrameId, { x: number; y: number; width: number; height: number }> = {
-  hero: { x: 50, y: 200, width: 800, height: 500 },
-  about: { x: 950, y: 200, width: 800, height: 1400 },
+  hero: { x: 50, y: 200, width: 800, height: 580 },
+  about: { x: 950, y: 200, width: 800, height: 900 },
   work: { x: 1850, y: 200, width: 800, height: 1600 },
   leadership: { x: 2750, y: 200, width: 800, height: 1600 },
-  contact: { x: 3650, y: 200, width: 800, height: 500 },
+  contact: { x: 3650, y: 200, width: 800, height: 560 },
 };
 const FRAME_IDS = Object.keys(FRAMES) as FrameId[];
 const NAV_SCALE = 1.56;
 
-/** "#about/global-talent" -> frame "about", anchor "about/global-talent". Anchors always start with their frame. */
+/** "#about/experience" -> frame "about", anchor "about/experience". Anchors always start with their frame. */
 function parseCanvasHash(hash: string): { frame: FrameId; anchor?: string } | null {
   const raw = decodeURIComponent(hash.replace(/^#/, ''));
   const frame = raw.split('/')[0] as FrameId;
@@ -108,6 +124,8 @@ function visibleArea(): { centerX: number; width: number } {
   return { centerX: width / 2, width };
 }
 
+const WORK_FRAME_MIN_HEIGHT = 1600;
+
 function FigmaCanvas() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -116,14 +134,45 @@ function FigmaCanvas() {
   // Search jumps glide; dragging and wheel stay instant.
   const [gliding, setGliding] = useState(false);
   const glideTimer = useRef<number | null>(null);
-  
+
+  // These frames size themselves to their content instead of a fixed height,
+  // so adding/removing cards or copy never clips the frame again.
+  const workContentRef = useRef<HTMLDivElement>(null);
+  const [workFrameHeight, setWorkFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+  const aboutContentRef = useRef<HTMLDivElement>(null);
+  const [aboutFrameHeight, setAboutFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+  const leadershipContentRef = useRef<HTMLDivElement>(null);
+  const [leadershipFrameHeight, setLeadershipFrameHeight] = useState(WORK_FRAME_MIN_HEIGHT);
+
+  useEffect(() => {
+    const targets: [React.RefObject<HTMLDivElement>, (h: number) => void][] = [
+      [workContentRef, setWorkFrameHeight],
+      [aboutContentRef, setAboutFrameHeight],
+      [leadershipContentRef, setLeadershipFrameHeight],
+    ];
+
+    const observers = targets.map(([ref, setHeight]) => {
+      const el = ref.current;
+      if (!el) return null;
+
+      const update = () => setHeight(Math.max(el.scrollHeight, WORK_FRAME_MIN_HEIGHT));
+      update();
+
+      const observer = new ResizeObserver(update);
+      observer.observe(el);
+      return observer;
+    });
+
+    return () => observers.forEach((o) => o?.disconnect());
+  }, []);
+
   // Email copy state
   const [emailCopied, setEmailCopied] = useState(false);
   const [hoveredCopyButton, setHoveredCopyButton] = useState(false);
   
   // Calculate initial transform to match hero navigation
   const getInitialTransform = () => {
-    const frame = { x: 50, y: 200, width: 800, height: 500 };
+    const frame = { x: 50, y: 200, width: 800, height: 580 };
     const frameCenterX = frame.x + frame.width / 2;
     const frameCenterY = frame.y + frame.height / 2;
     const viewportCenterX = typeof window !== 'undefined' ? window.innerWidth / 2 : 960;
@@ -333,7 +382,7 @@ function FigmaCanvas() {
     }
   }, [glide]);
 
-  // Handle hash changes on mount or location update: "#about" pans to a frame, "#about/global-talent" to a block in it.
+  // Handle hash changes on mount or location update: "#about" pans to a frame, "#about/experience" to a block in it.
   useEffect(() => {
     const parsed = parseCanvasHash(location.hash);
     if (!parsed) return;
@@ -356,7 +405,7 @@ function FigmaCanvas() {
 
   const handleReset = useCallback(() => {
     // Use same centering logic as navigation for Hero card
-    const frame = { x: 50, y: 200, width: 800, height: 500 };
+    const frame = { x: 50, y: 200, width: 800, height: 580 };
     const frameCenterX = frame.x + frame.width / 2;
     const frameCenterY = frame.y + frame.height / 2;
     const viewportCenterX = window.innerWidth / 2;
@@ -414,11 +463,11 @@ function FigmaCanvas() {
         <InteractiveGridBackground
           transform={transform}
           cards={[
-            { x: 50, y: 200, width: 800, height: 500 },
+            { x: 50, y: 200, width: 800, height: 580 },
             { x: 950, y: 200, width: 800, height: 900 },
             { x: 1850, y: 200, width: 800, height: 1600 },
             { x: 2750, y: 200, width: 800, height: 1600 },
-            { x: 3650, y: 200, width: 800, height: 500 },
+            { x: 3650, y: 200, width: 800, height: 560 },
           ]}
         />
 
@@ -443,25 +492,44 @@ function FigmaCanvas() {
             x={50}
             y={200}
             width={800}
-            height={500}
+            height={580}
           >
             <div className="h-full flex items-center justify-between px-12 gap-8 relative">
               {/* Text on the left */}
               <div className="flex-1">
-                <motion.h1
-                  className="font-bold text-gray-900 mb-4 text-[36px]"
-                  style={{ fontFamily: 'Syne, sans-serif' }}
+                <motion.p
+                  className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                >Hi, I'm Tobi Olowu</motion.h1>
-                
+                >{HERO_TAGLINE}</motion.p>
+
+                <motion.h1
+                  className="font-bold text-gray-900 mb-5 text-[48px] leading-[1.05] tracking-tight"
+                  style={{ fontFamily: 'Syne, sans-serif' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >{HERO_HEADLINE}</motion.h1>
+
                 <motion.p
                   className="text-gray-500 max-w-md font-[Architects_Daughter]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >{HERO_INTRO}</motion.p>
+
+                <motion.a
+                  href={RESUME_URL}
+                  download
+                  className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <Download size={16} />
+                  Download CV
+                </motion.a>
               </div>
 
               {/* Image on the right */}
@@ -499,37 +567,11 @@ function FigmaCanvas() {
             x={950}
             y={200}
             width={800}
-            height={1400}
+            height={aboutFrameHeight}
           >
-            <div className="p-12">
+            <div ref={aboutContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Syne, sans-serif' }}>About Me</h2>
-              <div className="space-y-4 text-gray-600">
-                <p className="font-[Architects_Daughter]" data-search-id="about/bio">{ABOUT_BIO}</p>
-
-                <div className="mt-2 bg-white border border-gray-900 rounded-2xl p-4 flex items-start gap-3" data-search-id="about/global-talent">
-                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
-                    <img src={techNationLogo} alt="Tech Nation" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-gray-900 uppercase tracking-widest font-['Syne']">{GLOBAL_TALENT.label}</p>
-                    <p className="text-sm font-semibold text-gray-800 leading-snug mt-0.5">{GLOBAL_TALENT.text}</p>
-                  </div>
-                </div>
-                
-                <div className="pt-6" data-search-id="about/journey">
-                  <img
-                    src={aboutMeSvg}
-                    alt="Skills and Expertise Overview"
-                    className="w-full h-auto object-contain rounded-2xl"
-                  />
-                </div>
-
-                {/* My Design Process section hidden as requested */}
-                {/* <div className="pt-6">
-                  <h3 className="font-semibold text-gray-900 mb-4 font-[Syne] font-bold">My Design Process</h3>
-                  <Frame1984078061 />
-                </div> */}
-              </div>
+              <AboutContent />
             </div>
           </Frame>
 
@@ -540,9 +582,9 @@ function FigmaCanvas() {
             x={1850}
             y={200}
             width={800}
-            height={1600}
+            height={workFrameHeight}
           >
-            <div className="h-full w-full overflow-hidden p-12">
+            <div ref={workContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>Selected Work</h2>
               <ProjectGrid
                 projects={PROJECTS}
@@ -567,17 +609,21 @@ function FigmaCanvas() {
             x={2750}
             y={200}
             width={800}
-            height={1600}
+            height={leadershipFrameHeight}
           >
-            <div className="h-auto p-12">
+            <div ref={leadershipContentRef} className="w-full p-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>Leadership</h2>
-              <LeadershipGrid 
+              <LeadershipGrid
                 leaders={LEADERSHIP}
                 onLeadershipClick={(leadershipId) => {
                   const leader = LEADERSHIP.find(l => l.id === leadershipId);
                   if (leader) window.open(leader.iframeUrl, '_blank');
                 }}
               />
+              <div className="mt-12 pt-12 border-t border-gray-200" data-search-id="leadership/recognition">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Recognition</h3>
+                <AchievementBadges />
+              </div>
             </div>
           </Frame>
 
@@ -588,12 +634,12 @@ function FigmaCanvas() {
             x={3650}
             y={200}
             width={800}
-            height={500}
+            height={560}
           >
             <div className="h-full flex flex-col items-center justify-center p-12 text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Let's Connect</h2>
               <p className="text-gray-600 mb-8 max-w-sm">
-                Interested in working together? Feel free to reach out through any of these channels.
+                {CONTACT_INTRO}
               </p>
               <div className="space-y-3 w-full max-w-xs">
                 <div className="flex gap-3">
@@ -647,6 +693,15 @@ function FigmaCanvas() {
                 >
                   <Linkedin size={20} />
                   <span>LinkedIn</span>
+                </a>
+                <a
+                  href={RESUME_URL}
+                  download
+                  data-search-id="contact/cv"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                >
+                  <Download size={20} />
+                  <span>Download CV</span>
                 </a>
                 <div className="flex gap-3">
                   <a
@@ -743,11 +798,20 @@ function ProjectPage() {
         metaDescription.setAttribute('name', 'description');
         document.head.appendChild(metaDescription);
       }
-      metaDescription.setAttribute('content', data.problem || data.title);
+      // Protected (NDA) case studies: generic description, and tell crawlers and AI bots to keep out
+      metaDescription.setAttribute('content', data.passwordHash ? 'Protected case study.' : (data.problem || data.title));
+      if (data.passwordHash) {
+        const robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        robots.setAttribute('content', 'noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai');
+        robots.setAttribute('data-protected', '');
+        document.head.appendChild(robots);
+      }
     }
     
     return () => {
-      document.title = 'Tobi | Designer | Product Innovator |';
+      document.title = 'Tobi Olowu — Product Design Lead';
+      document.querySelectorAll('meta[data-protected]').forEach((m) => m.remove());
     };
   }, [data]);
 
@@ -816,7 +880,7 @@ function ProjectPage() {
             {data.problem && (
               <div className="bg-white rounded-3xl p-8 border border-[#E5E5E5] shadow-[0px_8px_30px_rgba(0,0,0,0.02)]">
                 <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>
-                  The Challenge
+                  {data.problemLabel || 'The Challenge'}
                 </h3>
                 <p className="text-[#4A5568] text-[15px] leading-[1.7] whitespace-pre-line">
                   {data.problem}
@@ -839,7 +903,14 @@ function ProjectPage() {
         {/* Hero Image / Header Display */}
         {data.heroImage && (
           <div className="mb-16">
-            {data.heroImage.endsWith('.mp4') ? (
+            {data.heroImage.endsWith('.mp4') && data.heroWide ? (
+              <AutoplayVideo
+                src={data.heroImage}
+                webm={data.heroWebm}
+                label={`${data.title} preview`}
+                className="w-full h-auto rounded-[32px] shadow-[0px_16px_40px_rgba(0,0,0,0.06)] border border-[#E5E5E5] block"
+              />
+            ) : data.heroImage.endsWith('.mp4') ? (
               <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
                 <video
                   src={data.heroImage}
@@ -862,8 +933,10 @@ function ProjectPage() {
         )}
 
         {/* Custom Dynamic Sections */}
+        <MaybePasswordGate key={slug} storageKey={slug!} passwordHash={data.passwordHash} encryptedId={data.encrypted} sections={data.sections} onBack={() => navigate('/')}>
+        {(sections: any[]) => (
         <div className="space-y-16">
-          {data.sections.map((section: any, idx: number) => (
+          {sections.map((section: any, idx: number) => (
             <section key={section.id ?? idx} id={section.id} data-search-id={section.id} className="space-y-6 scroll-mt-10">
               {section.title && (
                 <h2
@@ -920,6 +993,13 @@ function ProjectPage() {
                     );
                   }
                   if (item.type === 'video') {
+                    if (item.controls) {
+                      return (
+                        <div key={itemIdx} style={{ margin: '2rem 0' }}>
+                          <video src={item.src} controls playsInline preload="metadata" aria-label={item.alt} style={{ width: '100%', borderRadius: '24px', display: 'block', background: '#000' }} />
+                        </div>
+                      );
+                    }
                     if (item.fullWidth) {
                       return (
                         <div key={itemIdx} style={{ margin: '2rem 0' }}>
@@ -949,6 +1029,23 @@ function ProjectPage() {
                       </div>
                     );
                   }
+                  if (item.type === 'youtube') {
+                    return (
+                      <div key={itemIdx} className="my-8 w-full aspect-video rounded-2xl overflow-hidden bg-black">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${item.id}?rel=0`}
+                          title={item.alt}
+                          className="w-full h-full"
+                          loading="lazy"
+                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                          allowFullScreen
+                        />
+                      </div>
+                    );
+                  }
+                  if (item.type === 'graphic') {
+                    return <CaseGraphic key={itemIdx} item={item} />;
+                  }
                   if (item.type === 'image') {
                     return (
                       <img
@@ -965,6 +1062,8 @@ function ProjectPage() {
             </section>
           ))}
         </div>
+        )}
+        </MaybePasswordGate>
 
         {/* Project Pagination (Prev / Next) */}
         {(() => {

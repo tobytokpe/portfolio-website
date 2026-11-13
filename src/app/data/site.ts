@@ -19,11 +19,38 @@ export interface SiteProject {
 
 export const PROJECTS: SiteProject[] = [
   {
+    id: 'project8',
+    slug: 'Lens',
+    searchKey: 'lens',
+    title: 'Using AI to Connect Every Route to Our Data',
+    description: 'Using AI to make data and insight easier to find, with one assistant across the platform.',
+    tag: 'Enterprise AI',
+    iframeUrl: '',
+  },
+  {
+    id: 'project9',
+    slug: 'Lens-Platform',
+    searchKey: 'lens-platform',
+    title: 'Analytics That Hold Up at a Million Rows',
+    description: 'Redesigning tables, charts, maps and navigation for an enterprise analytics platform.',
+    tag: 'Enterprise Analytics',
+    iframeUrl: '',
+  },
+  {
+    id: 'project10',
+    slug: 'Strata',
+    searchKey: 'strata',
+    title: 'Strata: A Lego Set for Seven Products',
+    description: "One design system for Qore's seven products: identical in Figma and code, every state covered, and readable by AI.",
+    tag: 'Design System',
+    iframeUrl: '',
+  },
+  {
     id: 'project1',
     slug: 'Hydra',
     searchKey: 'hydra',
-    title: 'HYDRA: Bringing Order to Fragmented Banking Code',
-    description: 'User-centric SaaS B2B platform for financial industries, streamlining API integration, reducing costs, and driving fintech innovation.',
+    title: 'Hydra: When Banks Speak Five Different Languages',
+    description: 'A B2B API gateway that pulls fragmented banking integrations into one dashboard, cutting integration time and giving fintechs one bill instead of five.',
     tag: 'Fintech',
     iframeUrl: 'https://oolowu.com/select-projects/hydra-project-cc/',
   },
@@ -31,8 +58,8 @@ export const PROJECTS: SiteProject[] = [
     id: 'project2',
     slug: 'Qore',
     searchKey: 'qore',
-    title: 'QORE: Launching Banking Apps Instantly',
-    description: 'White-label B2B platform enabling African microfinance banks to launch fully branded digital banking apps instantly, scaling to 500+ institutions and cutting deployment from months to a single afternoon.',
+    title: 'Qore: 500 Banks, One Afternoon Each',
+    description: 'A no-code setup wizard that lets African microfinance banks configure and launch a fully branded banking app, cutting deployment from months to a single afternoon across 500+ institutions.',
     tag: 'Banking',
     iframeUrl: 'https://oolowu.com/select-projects/qore-cc/',
   },
@@ -40,8 +67,8 @@ export const PROJECTS: SiteProject[] = [
     id: 'project3',
     slug: 'MAMVest',
     searchKey: 'mamvest',
-    title: 'MAMVest: Digitizing Traditional Wealth Management',
-    description: 'Digital wealth management platform democratizing access to institutional-grade instruments like Mutual Funds, Bonds, and Bills.',
+    title: 'MAMVest: From a Three-Day Wire Transfer to Under Four Minutes',
+    description: 'A digital wealth platform that opens Mutual Funds, Bonds, and Treasury Bills to retail investors, replacing a paper-bound process that used to take days.',
     tag: 'Wealth Management',
     iframeUrl: 'https://oolowu.com/select-projects/mamvest-cc/',
   },
@@ -49,8 +76,8 @@ export const PROJECTS: SiteProject[] = [
     id: 'project4',
     slug: 'Moore',
     searchKey: 'moore',
-    title: 'Moore: Making Digital Banking Simple for New Markets',
-    description: 'Digital banking app offering comprehensive financial management tools, from budgeting to secure transactions, in one user-friendly platform.',
+    title: "Moore: Banking That Doesn't Feel Like Banking",
+    description: 'A digital banking app that cut onboarding drop-off from 48% to 14% and turned a heavy banking backend into something that feels warm and fast, even on a slow connection.',
     tag: 'Banking',
     iframeUrl: 'https://oolowu.com/select-projects/moore-cc/',
   },
@@ -58,22 +85,34 @@ export const PROJECTS: SiteProject[] = [
     id: 'project5',
     slug: 'UNDP',
     searchKey: 'undp',
-    title: 'UNDP: Rebuilding Security and Alert Systems in Crisis Zones',
-    description: 'Mobile app empowering users in conflict-prone areas with incident reporting, real-time updates, and authority connections for better safety.',
+    title: 'UNDP: The Panic Button That Had to Work in Four Seconds',
+    description: 'A voice-first early-warning app for conflict zones in Northern Nigeria, letting people send a location-tagged alert with no login and no signal, in seconds.',
     tag: 'Social Impact',
     iframeUrl: 'https://oolowu.com/select-projects/cewers-cc/',
+  },
+  {
+    id: 'project7',
+    slug: 'Bespoka',
+    searchKey: 'bespoka',
+    title: 'Bespoka: Building an Operating System for an Industry Nobody Digitised',
+    description: 'A marketplace and full operating system for bespoke tailors, designed and built solo end to end, from client booking to order tracking to split-deposit invoicing.',
+    tag: 'Marketplace',
+    iframeUrl: '',
   },
   {
     id: 'project6',
     slug: 'Signature-Bank',
     searchKey: 'signature-bank',
     title: 'Signature Bank',
-    description: 'A website for a tier 1 bank delivering a seamless digital banking experience for customers across Nigeria.',
+    description: 'A public website for a tier 1 bank, built to make digital banking feel straightforward for customers across Nigeria.',
     tag: 'Banking',
     iframeUrl: 'https://www.signaturebankng.com/',
     external: true,
   },
 ];
+
+/** Case studies hidden until they're finished: not on the site, and never in search. */
+export const HIDDEN_PROJECTS = ['project10'];
 
 export interface SiteLeadership {
   id: string;
@@ -88,8 +127,8 @@ export const LEADERSHIP: SiteLeadership[] = [
   {
     id: 'leader1',
     searchId: 'leadership/talk-ai-design-systems',
-    title: 'Talk: Leveraging AI for Accessible Design Systems with Variables',
-    description: 'Diving into how I harnessed AI to build more inclusive, scalable, and flexible design systems.',
+    title: 'Talk: AI for Accessible Design Systems with Variables',
+    description: 'A UX Scotland talk on how I used AI and Figma variables to build design systems that are accessible by default, not by a later audit.',
     iframeUrl: 'https://uxscotland.net/programme/leveraging-ai-accessible-design-systems-variables',
     keywords: ['UX Scotland', 'conference', 'speaking', 'talk', 'figma variables', 'accessibility', 'AI'],
   },
@@ -97,7 +136,7 @@ export const LEADERSHIP: SiteLeadership[] = [
     id: 'leader2',
     searchId: 'leadership/zeroheight-article',
     title: 'Article: AI & Variables, Accessible Design Systems at Scale (Zeroheight)',
-    description: 'Published on Zeroheight: a strategic exploration of how AI accelerates the development of accessible, scalable design systems using variables.',
+    description: 'Published on Zeroheight: how AI and variables together got us to an accessible, scalable design system faster than doing it by hand.',
     iframeUrl: 'https://zeroheight.com/blog/ai-and-variables-building-more-accessible-design-systems-faster/',
     keywords: ['writing', 'blog', 'article', 'design tokens', 'accessibility', 'AI'],
   },
@@ -105,7 +144,7 @@ export const LEADERSHIP: SiteLeadership[] = [
     id: 'leader3',
     searchId: 'leadership/ag-grid-article',
     title: 'Article: Mastering AG-Grid, Efficient Data Tables at Scale (Woodmac)',
-    description: "Published in Woodmac's design practice on Medium: a practical deep-dive into designing user-centred, high-performance data tables for enterprise-grade products.",
+    description: "Published on Medium for Woodmac's design practice: what it actually takes to design a data table that stays usable at enterprise scale.",
     iframeUrl: 'https://medium.com/woodmac/mastering-ag-grid-designing-efficient-and-user-centered-data-tables-8fa35580f4f7',
     keywords: ['writing', 'medium', 'Wood Mackenzie', 'enterprise', 'data tables', 'AG Grid'],
   },
@@ -113,7 +152,7 @@ export const LEADERSHIP: SiteLeadership[] = [
     id: 'leader4',
     searchId: 'leadership/cvspan-course',
     title: 'CVSpan Product Design Learning Course',
-    description: 'Designed and facilitated a hands-on product design curriculum, covering UX research, interaction design, systems thinking, and cross-platform development, to equip the next generation of African designers.',
+    description: 'A hands-on curriculum I designed and taught, covering UX research, interaction design, systems thinking, and cross-platform development, for the next generation of African designers.',
     iframeUrl: 'https://learn.cvspan.com/',
     keywords: ['teaching', 'mentoring', 'course', 'education', 'curriculum'],
   },
@@ -121,7 +160,7 @@ export const LEADERSHIP: SiteLeadership[] = [
     id: 'leader5',
     searchId: 'leadership/cvspan-design-jam',
     title: 'CVSpan Design Jam Competition',
-    description: 'Organized and led collaborative design sprints, fostering innovation and teamwork within a vibrant community of designers and developers.',
+    description: 'Organised and led collaborative design sprints, building real teamwork and momentum inside a growing community of designers and developers.',
     iframeUrl: 'https://community.cvspan.com/designjam-2025/',
     keywords: ['community', 'competition', 'design sprint', 'hackathon', 'organising'],
   },
@@ -129,26 +168,23 @@ export const LEADERSHIP: SiteLeadership[] = [
     id: 'leader6',
     searchId: 'leadership/qore-design-thinking',
     title: 'Article: Design Thinking in Fintech, Crafting User-Centric Experiences (Qore)',
-    description: 'Published on the Qore blog: how design thinking and systems-level creativity can reshape traditional banking into engaging, trust-building digital experiences.',
+    description: 'Published on the Qore blog: how systems-level design thinking turned traditional banking processes into digital experiences people actually trust.',
     iframeUrl: 'https://qore.inc/design-thinking-in-crafting-user-centric-experiences/',
     keywords: ['writing', 'article', 'fintech', 'design thinking', 'banking'],
   },
 ];
 
+export const HERO_TAGLINE = 'Tobi Olowu · Product Design Lead, London';
+export const HERO_HEADLINE = 'I make complicated things usable.';
 export const HERO_INTRO =
-  "A product designer with a decade of untangling complex systems, fixing broken flows, and making sense of chaos across fintech, SaaS, and energy, from platforms serving 500+ banks to life-critical tools for the United Nations, all in the name of building things people actually want to use.";
+  'Core banking for 500+ microfinance banks, a crisis alert system for the UN, and now AI and analytics tools at Wood Mackenzie.';
 
 export const ABOUT_BIO =
-  "A product designer with over a decade of experience building B2C and B2B SaaS products across mobile and web platforms. I've led design initiatives across Finance, Wealth Management, Energy, and Humanitarian technology, directing teams of designers, aligning stakeholders across departments, and delivering user-centric solutions that drive significant business impact. Recently, I received the prestigious endorsement as an Exceptional Talent in Digital Technology by the UK Government, an acknowledgement of my dedication to the world of Design and Technology.";
+  "A decade into product design, the thread running through my work isn't one industry or one kind of interface. It's a habit of taking something genuinely complicated and making it usable without flattening the complexity that actually matters.";
+export const ABOUT_QUOTE =
+  "I'd rather ship something slightly rough and fix it in the open than wait for a version that never ships at all.";
 
-export const GLOBAL_TALENT = {
-  label: 'UK Global Talent Endorsement',
-  text: 'Recognised as an Exceptional Talent in Digital Technology by the UK Government, a highly selective credential for those making outstanding contributions to tech and design.',
-};
-
-/** The text inside the About "journey" illustration (src/assets/about-me.svg), which is an image. */
-export const DESIGN_JOURNEY =
-  'Early years: immersed in fine arts, indulging in activities like tracing images and colorizing them. Secondary school: honed my design skills using Corel Draw, creating captivating flyers and artwork. University: had the opportunity to delve into design-related courses, such as Interaction Design, New Media and Novel Interactive Technologies. The synergy: design was the perfect synergy of my computer skills and creative passion.';
+export const RESUME_URL = '/resume/Tobi-Olowu-CV.pdf';
 
 export const CONTACT = {
   email: 'oluwatobi.olowu@outlook.com',
@@ -156,3 +192,4 @@ export const CONTACT = {
   webbie: 'https://www.webbie.io/u/001',
   behance: 'https://www.behance.net/oluwatobiolowu',
 };
+export const CONTACT_INTRO = 'Got a project, a question, or just want to talk shop? Reach out through any of these.';
