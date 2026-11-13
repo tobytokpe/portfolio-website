@@ -19,12 +19,19 @@ export const ANSWER_SCHEMA = {
   required: ['answer', 'sectionIds', 'answerable'],
 };
 
-/** One single-turn call: no history, JSON out, a hard output cap, minimal thinking, and an 8 second timeout. */
-export function geminiGenerate(apiKey: string, model: string): Generate {
+/** Default model order: 3.5 Flash-Lite answered in about 1 to 2s in testing; 3.1 Flash-Lite (cheaper, but its latency swung from 1s to 20s) is the fallback. */
+export const DEFAULT_MODELS = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+const TIMEOUT_MS = 8000;
+
+/**
+ * One single-turn call: no history, JSON out, a hard output cap, minimal thinking. Each model gets 8 seconds; if
+ * one times out or errors, the next is tried once.
+ */
+export function geminiGenerate(apiKey: string, models: string[] = DEFAULT_MODELS): Generate {
   const ai = new GoogleGenAI({ apiKey });
-  return async (system, prompt) => {
+  const once = async (model: string, system: string, prompt: string): Promise<Generated> => {
     const abort = new AbortController();
-    const timer = setTimeout(() => abort.abort(), 8000);
+    const timer = setTimeout(() => abort.abort(), TIMEOUT_MS);
     try {
       const res = await ai.models.generateContent({
         model,
@@ -48,5 +55,17 @@ export function geminiGenerate(apiKey: string, model: string): Generate {
     } finally {
       clearTimeout(timer);
     }
+  };
+  return async (system, prompt) => {
+    let lastError: unknown;
+    for (const model of models) {
+      try {
+        return await once(model, system, prompt);
+      } catch (err) {
+        lastError = err;
+        console.log(`[ask] ${model} failed: ${err instanceof Error ? err.message : String(err)}`);
+      }
+    }
+    throw lastError;
   };
 }

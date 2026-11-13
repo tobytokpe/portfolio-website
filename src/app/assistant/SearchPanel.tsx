@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerE
 import { ArrowUp, AtSign, BookOpen, Briefcase, GripHorizontal, Layers, Plus, User, Landmark, X, type LucideIcon } from 'lucide-react';
 import { useAssistantPanel } from './AssistantContext';
 import { AiOrb } from './AiOrb';
-import { AnswerCard, ThinkingPill, type AnswerSource } from './AnswerCard';
+import { AnswerCard, ThinkingSteps, TIMING, type AnswerKind, type ThinkingStep } from './AnswerCard';
 import { ResultList, displayOrder } from './ResultList';
 import { clampToViewport, saveDragPosition, savedDragPosition, useFloatingFrame, type DragPosition } from './floatingFrame';
 import { DOCS, CONTENT_VERSION, findPrewritten, prewrittenById, search, type Result } from '../search/engine';
@@ -11,7 +11,7 @@ import { needsAi } from '../search/answerGate';
 import { answerKey } from '../search/normalise';
 import { getSavedAnswer, saveAnswer } from '../search/answerCache';
 import { askServer } from '../search/askClient';
-import type { DocMeta } from '../search/types';
+import type { DocMeta, FallbackReason } from '../search/types';
 
 const MAX_CHARS = 200;
 const CHIP_ICONS: Record<string, LucideIcon> = {
@@ -26,12 +26,31 @@ const CHIP_ICONS: Record<string, LucideIcon> = {
 interface Answer {
   text: string;
   links: string[];
-  source: AnswerSource;
+  kind: AnswerKind;
+  /** "Couldn't find that": offer the starter chips. */
+  suggest?: boolean;
+  /** Only matches were found: offer a written AI answer. */
+  offerAi?: boolean;
   /** The query it answers; editing the query clears it. */
   query: string;
 }
 
 const isMobile = () => window.innerWidth < 768;
+const sleep = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
+
+/** What the card says when it can't write an answer, by reason. Plain, honest, and always with somewhere to go next. */
+function noticeFor(reason: FallbackReason, q: string): string {
+  switch (reason) {
+    case 'no-match':
+      return `I couldn't find anything about "${q}" in Tobi's portfolio. I can help with his case studies, experience and CV, talks and writing, or how to reach him.`;
+    case 'unanswerable':
+      return "Tobi's portfolio doesn't answer that directly. These are the closest sections I found:";
+    case 'limit':
+      return "I've written a lot of answers today, so here are the most relevant sections instead. You can also ask Tobi directly.";
+    default:
+      return "I couldn't write an answer just now. Here are the most relevant sections instead.";
+  }
+}
 
 /**
  * The search card: Bespoka's assistant panel (same frame, drag, hero background and welcome screen) with live
@@ -98,7 +117,8 @@ export default function SearchPanel() {
   const [text, setText] = useState('');
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState<Answer | null>(null);
-  const [thinking, setThinking] = useState(false);
+  const [steps, setSteps] = useState<ThinkingStep[] | null>(null);
+  const thinking = steps !== null;
   const [activeId, setActiveId] = useState<string | null>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const request = useRef(0);
@@ -125,54 +145,105 @@ export default function SearchPanel() {
     if (isMobile() && doc.target.type !== 'external') setOpen(false);
   };
 
-  /** Enter or send: prewritten answer → (gate) → saved answer → AI. Stops at the first that answers. */
-  const submit = async () => {
-    const q = text.trim();
-    if (!q || thinking) return;
+  /**
+   * Enter, send, a chip or "Ask AI": prewritten answer → (gate) → saved answer → AI, stopping at the first that
+   * answers. Every path shows the thinking steps for at least TIMING.minThinking and ends in a reply card, even when
+   * the answer was instant or the AI couldn't help.
+   */
+  const run = async (q: string, opts: { forceAi?: boolean; answerId?: string } = {}) => {
+    if (!q) return;
+    // A new run supersedes any in flight (each checks its ticket before touching the card).
     const ticket = ++request.current;
+    const live = () => ticket === request.current;
+    const started = Date.now();
+    let list: ThinkingStep[] = [{ label: "Searching Tobi's portfolio", done: false }];
+    const show = (next: ThinkingStep[]) => {
+      list = next;
+      if (live()) setSteps(next);
+    };
+    const tick = (label?: string) => show([...list.map((x) => ({ ...x, done: true })), ...(label ? [{ label, done: false }] : [])]);
+    const finish = async (a: Answer) => {
+      await sleep(Math.max(0, TIMING.minThinking - (Date.now() - started)));
+      if (!live()) return;
+      tick();
+      await sleep(TIMING.step / 3);
+      if (!live()) return;
+      setSteps(null);
+      setAnswer(a);
+    };
 
-    const pre = findPrewritten(q);
+    setAnswer(null);
+    show(list);
+    const hits = search(q);
+    const top = (n: number) => hits.slice(0, n).map((h) => h.id);
+
+    // 1. A prewritten answer (chips go straight here).
+    const pre = opts.answerId ? prewrittenById(opts.answerId) : opts.forceAi ? null : findPrewritten(q);
+    await sleep(TIMING.step);
+    if (!live()) return;
     if (pre) {
-      setAnswer({ text: pre.answer, links: pre.links, source: 'quick', query: q });
-      return;
+      tick('Found a matching answer');
+      return finish({ text: pre.answer, links: pre.links, kind: 'quick', query: q });
     }
-    if (needsAi(q, search(q).length) === 'results') {
-      setAnswer(null);
-      return;
+
+    // 2. Nothing in the portfolio: say so, kindly, without spending anything.
+    if (!hits.length) {
+      tick('Nothing in the portfolio matches');
+      return finish({ text: noticeFor('no-match', q), links: [], kind: 'notice', query: q, suggest: true });
     }
+
+    // 3. A lookup ("qore", "design tokens"): the matches are the answer, with a written answer one click away.
+    if (!opts.forceAi && needsAi(q, hits.length) === 'results') {
+      tick(`Found ${hits.length} matching section${hits.length === 1 ? '' : 's'}`);
+      const best = hits[0].doc;
+      return finish({ text: `The best match is "${best.title}".`, links: top(3), kind: 'notice', query: q, offerAi: true });
+    }
+
+    // 4. Saved in this browser.
     const key = await answerKey(q, CONTENT_VERSION);
     const saved = getSavedAnswer(key);
     if (saved) {
-      if (ticket === request.current) setAnswer({ text: saved.answer, links: saved.links, source: 'ai', query: q });
-      return;
+      tick('Found a saved answer');
+      return finish({ text: saved.answer, links: saved.links, kind: 'ai', query: q });
     }
-    setThinking(true);
-    const res = await askServer(q);
-    if (ticket !== request.current) return;
-    setThinking(false);
+
+    // 5. Ask the server (it checks its own saved answers before Gemini). The request starts now; the steps play meanwhile.
+    const pending = askServer(q);
+    tick(`Reading ${Math.min(hits.length, 4)} relevant section${hits.length === 1 ? '' : 's'}`);
+    await sleep(TIMING.step);
+    if (!live()) return;
+    tick('Writing an answer');
+    const res = await pending;
+    if (!live()) return;
     if (res.fallback) {
-      // Limits, errors and "can't answer" all land here: the results are the answer, and nothing else is said.
-      setAnswer(null);
-      return;
+      const reason = res.reason ?? 'unavailable';
+      return finish({
+        text: noticeFor(reason, q),
+        links: reason === 'limit' ? [...top(2), 'contact/email'] : top(3),
+        kind: 'notice',
+        query: q,
+        suggest: reason === 'no-match',
+      });
     }
     const links = res.links.filter((id) => DOCS.has(id));
     saveAnswer(key, { answer: res.answer, links });
-    setAnswer({ text: res.answer, links, source: 'ai', query: q });
+    return finish({ text: res.answer, links, kind: 'ai', query: q });
+  };
+
+  const submit = () => {
+    if (!thinking) void run(text.trim());
   };
 
   const pickChip = (answerId: string, label: string) => {
-    const pre = prewrittenById(answerId);
-    if (!pre) return;
-    request.current++;
-    setThinking(false);
+    if (!prewrittenById(answerId)) return;
     setText(label);
-    setAnswer({ text: pre.answer, links: pre.links, source: 'quick', query: label });
+    void run(label, { answerId });
   };
 
   const newSearch = () => {
     request.current++;
     setActiveId(null);
-    setThinking(false);
+    setSteps(null);
     setText('');
     setAnswer(null);
     inputRef.current?.focus();
@@ -271,8 +342,18 @@ export default function SearchPanel() {
           </div>
         )}
 
-        {thinking && <ThinkingPill />}
-        {showAnswer && <AnswerCard text={showAnswer.text} links={linkDocs(showAnswer.links)} source={showAnswer.source} onJump={go} />}
+        {steps && <ThinkingSteps steps={steps} />}
+        {showAnswer && (
+          <AnswerCard
+            text={showAnswer.text}
+            links={linkDocs(showAnswer.links)}
+            kind={showAnswer.kind}
+            onJump={go}
+            suggestions={showAnswer.suggest ? STARTER_CHIPS : undefined}
+            onSuggestion={pickChip}
+            onAskAi={showAnswer.offerAi ? () => void run(showAnswer.query, { forceAi: true }) : undefined}
+          />
+        )}
         {results.length > 0 && (
           <ResultList results={results} activeId={activeId} onPick={(r: Result) => go(r.doc)} />
         )}

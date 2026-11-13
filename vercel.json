@@ -19,7 +19,7 @@
   "functions": {
     "api/ask.ts": {
       "includeFiles": "src/generated/**",
-      "maxDuration": 15
+      "maxDuration": 25
     }
   }
 }

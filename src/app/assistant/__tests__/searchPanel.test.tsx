@@ -10,6 +10,10 @@ import SearchPanel from '../SearchPanel';
 import { AssistantProvider } from '../AssistantContext';
 import { AskAiButton } from '../AskAiButton';
 import { clampToViewport, floatingFrame } from '../floatingFrame';
+import { TIMING } from '../AnswerCard';
+
+// No thinking delays or typing in tests.
+Object.assign(TIMING, { step: 0, minThinking: 0, wordMs: 0 });
 
 function renderPanel() {
   return render(
@@ -44,20 +48,31 @@ describe('SearchPanel', () => {
     }
   });
 
-  it('answers a chip instantly without calling the server', () => {
+  it('answers a chip without calling the server', async () => {
     renderPanel();
     fireEvent.click(screen.getByRole('button', { name: /Get in touch/ }));
-    expect(screen.getByText(/oluwatobi\.olowu@outlook\.com/)).toBeTruthy();
-    expect(screen.getByText('Quick answer')).toBeTruthy();
+    await waitFor(() => expect(screen.getByText('Quick answer')).toBeTruthy());
+    expect(screen.getAllByText(/oluwatobi\.olowu@outlook\.com/).length).toBeGreaterThan(0);
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it('shows live results while typing, with no network', async () => {
     renderPanel();
-    fireEvent.change(input(), { target: { value: 'qore' } });
+    fireEvent.change(input(), { target: { value: 'panic button' } });
     await waitFor(() => expect(screen.getByRole('listbox', { name: 'Search results' })).toBeTruthy());
     expect(screen.getAllByRole('option').length).toBeGreaterThan(0);
     fireEvent.keyDown(input(), { key: 'Enter' });
+    await waitFor(() => expect(screen.getByRole('button', { name: /Ask AI for a written answer/ })).toBeTruthy());
+    expect(screen.getAllByText(/The best match is/).length).toBeGreaterThan(0);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('replies kindly to questions about things not in the portfolio, without the server', async () => {
+    renderPanel();
+    fireEvent.change(input(), { target: { value: 'What is Joy torru' } });
+    fireEvent.keyDown(input(), { key: 'Enter' });
+    await waitFor(() => expect(screen.getAllByText(/couldn't find anything about "What is Joy torru"/).length).toBeGreaterThan(0));
+    expect(screen.getByText('Try asking about')).toBeTruthy();
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -68,8 +83,8 @@ describe('SearchPanel', () => {
     fireEvent.change(input(), { target: { value: q } });
     await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
-    await waitFor(() => expect(screen.getByText('He cut drop-off from 48% to 14%.')).toBeTruthy());
-    expect(screen.getByText('AI answer')).toBeTruthy();
+    await waitFor(() => expect(screen.getByText('AI answer')).toBeTruthy());
+    expect(screen.getAllByText('He cut drop-off from 48% to 14%.').length).toBeGreaterThan(0);
     expect(screen.getByRole('button', { name: /Optimizing Onboarding/ })).toBeTruthy();
     expect(fetchMock).toHaveBeenCalledTimes(1);
 
@@ -78,20 +93,19 @@ describe('SearchPanel', () => {
     fireEvent.change(input(), { target: { value: q } });
     await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
-    await waitFor(() => expect(screen.getByText('He cut drop-off from 48% to 14%.')).toBeTruthy());
+    await waitFor(() => expect(screen.getByText('AI answer')).toBeTruthy());
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it('says nothing when the server falls back', async () => {
-    fetchMock.mockResolvedValue(new Response(JSON.stringify({ fallback: true })));
+  it('explains a server fallback instead of going quiet', async () => {
+    fetchMock.mockResolvedValue(new Response(JSON.stringify({ fallback: true, reason: 'limit' })));
     renderPanel();
     fireEvent.change(input(), { target: { value: 'How did Hydra handle billing for partners?' } });
     await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
-    await waitFor(() => expect(screen.queryByText('Thinking…')).toBeNull());
+    await waitFor(() => expect(screen.getAllByText(/written a lot of answers today/).length).toBeGreaterThan(0));
     expect(screen.queryByText('AI answer')).toBeNull();
-    expect(screen.queryByRole('alert')).toBeNull();
     expect(screen.getAllByRole('option').length).toBeGreaterThan(0);
   });
 });

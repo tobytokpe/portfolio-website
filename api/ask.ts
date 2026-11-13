@@ -10,7 +10,7 @@ import { INDEX_OPTIONS } from '../src/app/search/indexConfig.js';
 import { runQuery } from '../src/app/search/query.js';
 import { ask, configFromEnv, memoryCaps, type Corpus } from './_lib/core.js';
 import { getStore } from './_lib/store.js';
-import { geminiGenerate } from './_lib/gemini.js';
+import { geminiGenerate, DEFAULT_MODELS } from './_lib/gemini.js';
 
 let loaded: { index: MiniSearch; corpus: Corpus; version: string } | null = null;
 
@@ -74,7 +74,8 @@ export async function handle(request: Request): Promise<Response> {
       { q, clientId, ip },
       {
         store,
-        generate: key ? geminiGenerate(key, process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite') : null,
+        // GEMINI_MODEL (optional) puts one model first, ahead of the defaults.
+        generate: key ? geminiGenerate(key, [...new Set([process.env.GEMINI_MODEL, ...DEFAULT_MODELS].filter(Boolean) as string[])]) : null,
         search: (text, limit) => runQuery(index, text, limit),
         corpus,
         version,
@@ -85,7 +86,7 @@ export async function handle(request: Request): Promise<Response> {
     return json(result);
   } catch (err) {
     console.error('[ask] failed', err instanceof Error ? err.message : err);
-    return json({ fallback: true });
+    return json({ fallback: true, reason: 'unavailable' });
   }
 }
 

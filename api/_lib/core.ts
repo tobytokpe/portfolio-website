@@ -1,6 +1,6 @@
 import { answerKey, sha256Hex } from '../../src/app/search/normalise.js';
 import { baseId, type Hit } from '../../src/app/search/query.js';
-import type { AskResponse } from '../../src/app/search/types.js';
+import type { AskResponse, FallbackReason } from '../../src/app/search/types.js';
 import type { Store } from './store.js';
 import type { Generate } from './gemini.js';
 
@@ -50,7 +50,7 @@ export const SYSTEM_PROMPT = [
   'Return sectionIds: the ids of up to 3 sections the answer relies on, most relevant first.',
 ].join(' ');
 
-const fallback: AskResponse = { fallback: true };
+const fallback = (reason: FallbackReason): AskResponse => ({ fallback: true, reason });
 
 const words = (text: string, max: number) => {
   const w = text.split(/\s+/);
@@ -100,7 +100,7 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
   const q = input.q.trim();
   if (!store) {
     log('ai-off: no store');
-    return fallback;
+    return fallback('unavailable');
   }
 
   const key = await answerKey(q, deps.version);
@@ -108,7 +108,7 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
   if (saved) {
     try {
       const s = JSON.parse(saved);
-      if (s.answerable === false) return fallback;
+      if (s.answerable === false) return fallback('unanswerable');
       return { answer: s.answer, links: s.links, source: 'cache' };
     } catch {
       // A corrupt entry is treated as a miss.
@@ -117,12 +117,12 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
 
   if (!config.enabled || !deps.generate) {
     log('ai-off: disabled');
-    return fallback;
+    return fallback('unavailable');
   }
 
   // Retrieval first: with nothing relevant to ground an answer, don't spend anything.
   const hits = deps.search(q, TOP_SECTIONS);
-  if (!hits.length) return fallback;
+  if (!hits.length) return fallback('no-match');
 
   const day = (deps.now?.() ?? new Date()).toISOString().slice(0, 10);
   const ipHash = (await sha256Hex(config.ipSalt + input.ip)).slice(0, 16);
@@ -131,14 +131,14 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
   // One question at a time per visitor, at most one every 3 seconds.
   if (!(await store.setIfAbsent(`gap:${visitorHash}`, '1', 3))) {
     log('limit: burst');
-    return fallback;
+    return fallback('limit');
   }
 
   const spentMicros = Number((await store.get(`spend:${day}`)) ?? 0);
   const worstMicros = Math.ceil(WORST_CASE_IN * config.priceIn + WORST_CASE_OUT * config.priceOut);
   if (spentMicros + worstMicros > config.usdDailyCap * 1e6) {
     log('limit: daily spend cap', { spentMicros });
-    return fallback;
+    return fallback('limit');
   }
   // Counting before the call means parallel requests can't slip past a limit together.
   const [visitor, ipCount, calls] = await Promise.all([
@@ -148,7 +148,7 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
   ]);
   if (visitor > config.perVisitorDaily || ipCount > config.perIpDaily || calls > config.globalCallsDaily) {
     log('limit: daily count', { visitor, ipCount, calls });
-    return fallback;
+    return fallback('limit');
   }
 
   const sections = hits
@@ -165,13 +165,16 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
     parsed = parseAnswer(out.text, sentIds);
   } catch (err) {
     log('gemini error', { error: err instanceof Error ? err.message : String(err) });
-    return fallback;
+    return fallback('unavailable');
   }
-  if (!parsed) return fallback;
+  if (!parsed) return fallback('unavailable');
 
   // Unanswerable questions are saved too, so the same one never costs twice.
   await store.set(key, JSON.stringify(parsed), ANSWER_TTL);
-  if (!parsed.answerable) return fallback;
+  if (!parsed.answerable) {
+    log('unanswerable');
+    return fallback('unanswerable');
+  }
   return { answer: parsed.answer, links: parsed.links.map((id) => (deps.corpus[id] ? id : baseId(id))), source: 'ai' };
 }
 
@@ -197,8 +200,9 @@ export function configFromEnv(env: NodeJS.ProcessEnv = process.env): AskConfig {
     perIpDaily: num(env.AI_DAILY_CALLS_PER_IP, 10),
     globalCallsDaily: num(env.AI_DAILY_CALLS_GLOBAL, 150),
     usdDailyCap: num(env.AI_DAILY_USD_CAP, 0.25),
-    priceIn: num(env.GEMINI_PRICE_IN_PER_M, 0.25),
-    priceOut: num(env.GEMINI_PRICE_OUT_PER_M, 1.5),
+    // Gemini 3.5 Flash-Lite prices (the costlier of the two models, so caps stay safe either way).
+    priceIn: num(env.GEMINI_PRICE_IN_PER_M, 0.3),
+    priceOut: num(env.GEMINI_PRICE_OUT_PER_M, 2.5),
     ipSalt: env.AI_IP_SALT ?? 'portfolio-search',
   };
 }

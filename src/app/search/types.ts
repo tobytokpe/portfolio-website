@@ -39,7 +39,10 @@ export interface PrewrittenAnswer {
   links: string[];
 }
 
-/** /api/ask response. `fallback` means "show results only, say nothing". */
+/** Why the server didn't write an answer. The card explains it in plain words; the visitor still gets the results. */
+export type FallbackReason = 'no-match' | 'unanswerable' | 'limit' | 'unavailable';
+
+/** /api/ask response. `fallback` means no written answer, with the reason. */
 export type AskResponse =
-  | { fallback: true }
+  | { fallback: true; reason: FallbackReason }
   | { fallback?: false; answer: string; links: string[]; source: 'ai' | 'cache' };

@@ -41,19 +41,19 @@ describe('ask()', () => {
 
   it('fails closed with no store', async () => {
     const d = deps({ store: null });
-    expect(await ask(input(), d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toMatchObject({ fallback: true });
     expect(d.generate).not.toHaveBeenCalled();
   });
 
   it('does nothing when disabled', async () => {
     const d = deps({ config: { ...config, enabled: false } });
-    expect(await ask(input(), d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toMatchObject({ fallback: true });
     expect(d.generate).not.toHaveBeenCalled();
   });
 
   it('skips Gemini when nothing relevant is found', async () => {
     const d = deps({ search: () => [] });
-    expect(await ask(input(), d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toEqual({ fallback: true, reason: 'no-match' });
     expect(d.generate).not.toHaveBeenCalled();
   });
 
@@ -67,41 +67,41 @@ describe('ask()', () => {
       expect(await ask(visitor(n), d)).toMatchObject({ source: 'ai' });
       t += 5000;
     }
-    expect(await ask(visitor(3), d)).toEqual({ fallback: true });
+    expect(await ask(visitor(3), d)).toMatchObject({ fallback: true });
     expect(d.generate).toHaveBeenCalledTimes(2);
   });
 
   it('enforces the burst gap', async () => {
     const d = deps();
     await ask({ q: 'first question about moore?', clientId: 'x', ip: '3.3.3.3' }, d);
-    expect(await ask({ q: 'second question about moore?', clientId: 'x', ip: '3.3.3.3' }, d)).toEqual({ fallback: true });
+    expect(await ask({ q: 'second question about moore?', clientId: 'x', ip: '3.3.3.3' }, d)).toMatchObject({ fallback: true });
   });
 
   it('stops at the daily spend cap', async () => {
     const d = deps({ config: { ...config, usdDailyCap: 0.0001 } });
-    expect(await ask(input(), d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toEqual({ fallback: true, reason: 'limit' });
     expect(d.generate).not.toHaveBeenCalled();
   });
 
   it('records spend from the reported tokens', async () => {
     const store = new MemoryStore();
     await ask(input(), deps({ store }));
-    // 1500 × $0.25/M + 120 × $1.50/M = $0.000555 → 555 micro-dollars.
-    expect(await store.get('spend:2026-11-13')).toBe('555');
+    // 1500 × $0.30/M + 120 × $2.50/M = $0.00075 → 750 micro-dollars.
+    expect(await store.get('spend:2026-11-13')).toBe('750');
   });
 
   it('saves unanswerable questions so they never cost twice', async () => {
     const d = deps();
     d.generate.mockResolvedValueOnce({ text: JSON.stringify({ answer: "The sections don't say.", sectionIds: [], answerable: false }), inputTokens: 1, outputTokens: 1 });
-    expect(await ask(input(), d)).toEqual({ fallback: true });
-    expect(await ask({ ...input(), clientId: 'other', ip: '4.4.4.4' }, d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toEqual({ fallback: true, reason: 'unanswerable' });
+    expect(await ask({ ...input(), clientId: 'other', ip: '4.4.4.4' }, d)).toMatchObject({ fallback: true });
     expect(d.generate).toHaveBeenCalledTimes(1);
   });
 
   it('falls back on Gemini errors', async () => {
     const d = deps();
     d.generate.mockRejectedValueOnce(new Error('timeout'));
-    expect(await ask(input(), d)).toEqual({ fallback: true });
+    expect(await ask(input(), d)).toMatchObject({ fallback: true });
   });
 });
 
