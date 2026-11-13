@@ -175,6 +175,20 @@ export async function ask(input: AskInput, deps: AskDeps): Promise<AskResponse> 
   return { answer: parsed.answer, links: parsed.links.map((id) => (deps.corpus[id] ? id : baseId(id))), source: 'ai' };
 }
 
+/**
+ * With no shared store, each warm instance counts on its own, so the daily caps apply per instance and are kept
+ * tight: by default 40 calls and $0.05 a day (about 120 answers' worth of headroom). Override with
+ * AI_MEMORY_DAILY_CALLS / AI_MEMORY_DAILY_USD_CAP.
+ */
+export function memoryCaps(config: AskConfig, env: NodeJS.ProcessEnv = process.env): AskConfig {
+  const num = (v: string | undefined, d: number) => (v != null && v !== '' && !Number.isNaN(Number(v)) ? Number(v) : d);
+  return {
+    ...config,
+    globalCallsDaily: Math.min(config.globalCallsDaily, num(env.AI_MEMORY_DAILY_CALLS, 40)),
+    usdDailyCap: Math.min(config.usdDailyCap, num(env.AI_MEMORY_DAILY_USD_CAP, 0.05)),
+  };
+}
+
 export function configFromEnv(env: NodeJS.ProcessEnv = process.env): AskConfig {
   const num = (v: string | undefined, d: number) => (v != null && v !== '' && !Number.isNaN(Number(v)) ? Number(v) : d);
   return {

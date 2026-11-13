@@ -5,7 +5,7 @@ Status: **built 13 Nov 2026** (build steps 1 to 5; the CV frame, step 6, is wait
 ### As built: differences from the plan below
 - The dock button is the orb alone, with no label or tooltip (Tobi's call). Its accessible name is "Ask AI". Until lottie loads after idle, it shows a still gradient orb.
 - `src/generated/*` is **committed**, not gitignored, so `api/ask.ts` always finds it on Vercel. `npm run dev/build/test` regenerate it anyway.
-- Without Upstash Redis env vars, production and preview **fail closed** (AI off, results only). Local dev uses an in-memory store.
+- **No database needed.** Without Upstash Redis, `api/ask.ts` keeps saved answers and counters in the function's own memory (warm instances persist between requests). Limits then count per instance, so the daily caps tighten to 40 calls and $0.05 per instance (`AI_MEMORY_DAILY_CALLS`, `AI_MEMORY_DAILY_USD_CAP`). Adding Upstash later switches to shared limits with no code change. The final spend backstop is a Google Cloud budget on the Gemini key.
 - Model `gemini-3.1-flash-lite` checked live: ~1,000 input and 40 to 150 output tokens per answer (≈ $0.0003 to $0.0005). Thinking is set to MINIMAL, and no thinking tokens were billed.
 - Results are grouped by kind, and groups are ordered by their best hit. Hits under 25% of the top score are dropped.
 - No CV frame yet. "Experience" answers point to About and Contact.

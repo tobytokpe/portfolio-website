@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { ask, parseAnswer, buildPrompt, configFromEnv, type AskDeps } from './core';
-import { MemoryStore } from './store';
+import { ask, parseAnswer, buildPrompt, configFromEnv, memoryCaps, type AskDeps } from './core';
+import { MemoryStore, getStore } from './store';
 import { handle } from '../ask';
 
 const corpus = {
@@ -102,6 +102,20 @@ describe('ask()', () => {
     const d = deps();
     d.generate.mockRejectedValueOnce(new Error('timeout'));
     expect(await ask(input(), d)).toEqual({ fallback: true });
+  });
+});
+
+describe('no-database mode', () => {
+  it('uses the function memory when Redis is not configured, including on Vercel', () => {
+    expect(getStore({ VERCEL_ENV: 'production' } as any)).toMatchObject({ shared: false });
+    expect(getStore({ VERCEL_ENV: 'production' } as any).store).toBeInstanceOf(MemoryStore);
+    expect(getStore({ KV_REST_API_URL: 'https://x.upstash.io', KV_REST_API_TOKEN: 't' } as any).shared).toBe(true);
+  });
+  it('tightens the daily caps per instance', () => {
+    const c = memoryCaps(configFromEnv({ GEMINI_API_KEY: 'k' } as any), {} as any);
+    expect(c.globalCallsDaily).toBe(40);
+    expect(c.usdDailyCap).toBe(0.05);
+    expect(c.perVisitorDaily).toBe(5);
   });
 });
 

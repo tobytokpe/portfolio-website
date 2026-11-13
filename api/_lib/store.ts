@@ -56,16 +56,21 @@ export class MemoryStore implements Store {
 
 let memory: MemoryStore | null = null;
 
+export interface StoreChoice {
+  store: Store;
+  /** True for Redis: one cache and one set of counters for every instance. False for in-memory. */
+  shared: boolean;
+}
+
 /**
  * Upstash Redis when configured (the Vercel Marketplace integration sets KV_REST_API_* or UPSTASH_REDIS_REST_*).
- * Without it: an in-memory store on a local machine, and null on Vercel, which turns AI off (fail closed: no
- * limiter means no AI, never unlimited AI).
+ * Without it, the function's own memory: Vercel keeps instances warm between requests, so saved answers and
+ * counters live as long as the instance does (a low-traffic site is mostly served by one). Limits then count per
+ * instance, so the caller tightens them (see memoryCaps in core.ts).
  */
-export function getStore(env: NodeJS.ProcessEnv = process.env): Store | null {
+export function getStore(env: NodeJS.ProcessEnv = process.env): StoreChoice {
   const url = env.UPSTASH_REDIS_REST_URL ?? env.KV_REST_API_URL;
   const token = env.UPSTASH_REDIS_REST_TOKEN ?? env.KV_REST_API_TOKEN;
-  if (url && token) return new UpstashStore(new Redis({ url, token }));
-  const onVercel = env.VERCEL_ENV === 'production' || env.VERCEL_ENV === 'preview';
-  if (onVercel) return null;
-  return (memory ??= new MemoryStore());
+  if (url && token) return { store: new UpstashStore(new Redis({ url, token })), shared: true };
+  return { store: (memory ??= new MemoryStore()), shared: false };
 }

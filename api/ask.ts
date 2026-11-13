@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import MiniSearch from 'minisearch';
 import { INDEX_OPTIONS } from '../src/app/search/indexConfig.js';
 import { runQuery } from '../src/app/search/query.js';
-import { ask, configFromEnv, type Corpus } from './_lib/core.js';
+import { ask, configFromEnv, memoryCaps, type Corpus } from './_lib/core.js';
 import { getStore } from './_lib/store.js';
 import { geminiGenerate } from './_lib/gemini.js';
 
@@ -63,7 +63,9 @@ export async function handle(request: Request): Promise<Response> {
   if (q.length < 3 || q.length > 200) return json({ error: 'Bad request' }, 400);
 
   const ip = (request.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || request.headers.get('x-real-ip') || 'unknown';
-  const config = configFromEnv();
+  const { store, shared } = getStore();
+  // Without Redis, limits are counted per warm instance, so they're tighter.
+  const config = shared ? configFromEnv() : memoryCaps(configFromEnv());
   const { index, corpus, version } = data();
   const key = process.env.GEMINI_API_KEY;
 
@@ -71,7 +73,7 @@ export async function handle(request: Request): Promise<Response> {
     const result = await ask(
       { q, clientId, ip },
       {
-        store: getStore(),
+        store,
         generate: key ? geminiGenerate(key, process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite') : null,
         search: (text, limit) => runQuery(index, text, limit),
         corpus,
