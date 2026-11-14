@@ -56,12 +56,14 @@ describe('SearchPanel', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it('shows live results while typing, with no network', async () => {
+  it('shows nothing while typing, then results after send, with no network', async () => {
     renderPanel();
     fireEvent.change(input(), { target: { value: 'panic button' } });
-    await waitFor(() => expect(screen.getByRole('listbox', { name: 'Search results' })).toBeTruthy());
-    expect(screen.getAllByRole('option').length).toBeGreaterThan(0);
+    await new Promise((r) => setTimeout(r, 150));
+    expect(screen.queryByRole('listbox', { name: 'Search results' })).toBeNull();
+    expect(screen.getByText('What would you like to know?')).toBeTruthy();
     fireEvent.keyDown(input(), { key: 'Enter' });
+    await waitFor(() => expect(screen.getByRole('listbox', { name: 'Search results' })).toBeTruthy());
     await waitFor(() => expect(screen.getByRole('button', { name: /Ask AI for a written answer/ })).toBeTruthy());
     expect(screen.getAllByText(/The best match is/).length).toBeGreaterThan(0);
     expect(fetchMock).not.toHaveBeenCalled();
@@ -81,7 +83,6 @@ describe('SearchPanel', () => {
     renderPanel();
     const q = 'How did he reduce onboarding drop-off at Moore?';
     fireEvent.change(input(), { target: { value: q } });
-    await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
     await waitFor(() => expect(screen.getByText('AI answer')).toBeTruthy());
     expect(screen.getAllByText('He cut drop-off from 48% to 14%.').length).toBeGreaterThan(0);
@@ -91,7 +92,6 @@ describe('SearchPanel', () => {
     // Same question again (new search, retype): served from this browser, no second request.
     fireEvent.click(screen.getByRole('button', { name: 'New search' }));
     fireEvent.change(input(), { target: { value: q } });
-    await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
     await waitFor(() => expect(screen.getByText('AI answer')).toBeTruthy());
     expect(fetchMock).toHaveBeenCalledTimes(1);
@@ -101,7 +101,6 @@ describe('SearchPanel', () => {
     fetchMock.mockResolvedValue(new Response(JSON.stringify({ fallback: true, reason: 'limit' })));
     renderPanel();
     fireEvent.change(input(), { target: { value: 'How did Hydra handle billing for partners?' } });
-    await waitFor(() => expect(screen.getAllByRole('option').length).toBeGreaterThan(0));
     fireEvent.keyDown(input(), { key: 'Enter' });
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     await waitFor(() => expect(screen.getAllByText(/written a lot of answers today/).length).toBeGreaterThan(0));

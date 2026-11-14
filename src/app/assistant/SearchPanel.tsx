@@ -115,7 +115,8 @@ export default function SearchPanel() {
   };
 
   const [text, setText] = useState('');
-  const [query, setQuery] = useState('');
+  /** The question last sent. Nothing is searched or shown until the visitor presses send or Enter. */
+  const [submitted, setSubmitted] = useState('');
   const [answer, setAnswer] = useState<Answer | null>(null);
   const [steps, setSteps] = useState<ThinkingStep[] | null>(null);
   const thinking = steps !== null;
@@ -127,16 +128,14 @@ export default function SearchPanel() {
     inputRef.current?.focus();
   }, []);
 
-  // Live results, a beat after typing stops.
-  useEffect(() => {
-    const id = window.setTimeout(() => setQuery(text), 80);
-    return () => window.clearTimeout(id);
-  }, [text]);
-  const results = useMemo(() => (query.trim().length >= 2 ? displayOrder(search(query)) : []), [query]);
-  useEffect(() => setActiveId(null), [query]);
+  const sentResults = useMemo(() => (submitted ? displayOrder(search(submitted)) : []), [submitted]);
+  useEffect(() => setActiveId(null), [submitted]);
 
   const showAnswer = answer && answer.query === text.trim() ? answer : null;
-  const showStart = !text.trim() && !showAnswer && !thinking;
+  // Results appear with the answer, after send, and go away as soon as the question is edited.
+  const results = showAnswer && !thinking && submitted === text.trim() ? sentResults : [];
+  // The welcome screen stays while typing; it only gives way once a question is sent.
+  const showStart = !showAnswer && !thinking;
   const linkDocs = (ids: string[]) => ids.map((id) => DOCS.get(id)).filter((d): d is DocMeta => Boolean(d));
 
   const go = (doc: DocMeta) => {
@@ -173,6 +172,7 @@ export default function SearchPanel() {
     };
 
     setAnswer(null);
+    setSubmitted(q);
     show(list);
     const hits = search(q);
     const top = (n: number) => hits.slice(0, n).map((h) => h.id);
@@ -271,7 +271,6 @@ export default function SearchPanel() {
     }
   };
 
-  const noMatches = query.trim().length >= 3 && results.length === 0 && !showAnswer && !thinking;
 
   return (
     <aside
@@ -356,11 +355,6 @@ export default function SearchPanel() {
         )}
         {results.length > 0 && (
           <ResultList results={results} activeId={activeId} onPick={(r: Result) => go(r.doc)} />
-        )}
-        {noMatches && (
-          <p className="px-3 pt-2 text-xs text-ink-500">
-            No matches yet. Try “design systems”, “Qore” or “contact”.
-          </p>
         )}
       </div>
 
