@@ -131,13 +131,13 @@ export function MobileView({ projects, leadership, heroImage }: MobileViewProps)
       <div className="pt-6 pb-28">
         <SectionCard id="hero">
           <div className="flex flex-col items-center justify-between gap-6 py-6">
-            <div className="relative w-[180px] h-[180px] flex-shrink-0">
+            <div className="relative w-[180px] h-[260px] flex-shrink-0">
               <div className="w-full h-full overflow-hidden">
-                {heroImage.endsWith('.gif') || heroImage.endsWith('.mp4') ? (
+                {heroImage.endsWith('.gif') || heroImage.endsWith('.webp') ? (
                   <img
                     src={heroImage}
                     alt="Tobi Olowu"
-                    className="w-full h-full object-cover mix-blend-multiply"
+                    className="w-full h-full object-contain pointer-events-none"
                   />
                 ) : (
                   <ImageWithFallback

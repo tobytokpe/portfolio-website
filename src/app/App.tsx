@@ -53,7 +53,7 @@ import leadershipImg5 from 'figma:asset/30b8b64f96a5c24586ebb4bfd106e35cb3241c25
 import leadershipImg6 from 'figma:asset/b1106f77731fd77fc20c20de852879d67213bf40.png';
 
 // Hero image
-import tobiGif from '../assets/Tobi video.gif';
+import tobiAnimation from '../assets/tobi-pencil.webp';
 
 // Stickers
 import starSticker from '../assets/stickers/star.png';
@@ -534,15 +534,15 @@ function FigmaCanvas() {
 
               {/* Image on the right */}
               <motion.div
-                className="w-[280px] h-[280px] overflow-hidden flex-shrink-0 relative"
+                className="w-[280px] h-[400px] overflow-hidden flex-shrink-0 relative"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
               >
                 <img
-                  src={tobiGif}
+                  src={tobiAnimation}
                   alt="Tobi Olowu"
-                  className="w-full h-full object-cover mix-blend-multiply"
+                  className="w-full h-full object-contain pointer-events-none"
                 />
               </motion.div>
 
@@ -1163,7 +1163,7 @@ function Home() {
       <MobileView
         projects={PROJECTS}
         leadership={LEADERSHIP}
-        heroImage={tobiGif}
+        heroImage={tobiAnimation}
       />
     );
   }
